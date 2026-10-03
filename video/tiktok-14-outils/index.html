@@ -1,0 +1,123 @@
+<!doctype html>
+<html lang="fr"><head><meta charset="utf-8"><title>Scalify 14 outils</title>
+<style>
+@font-face{font-family:Anton;src:url(Anton-400.woff2)}
+@font-face{font-family:IT;font-weight:600;src:url(InterTight-600.woff2)}
+@font-face{font-family:IT;font-weight:700;src:url(InterTight-700.woff2)}
+@font-face{font-family:IT;font-weight:800;src:url(InterTight-800.woff2)}
+:root{--sun:#ffd731;--mint:#55db9c;--violet:#5c4ade;--ember:#fb4903;--sky:#dceeff;--lav:#e9ccff}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{width:1080px;height:1920px;overflow:hidden;background:#000}
+body{font-family:IT,sans-serif;color:#fff}
+#stage{position:absolute;inset:0;overflow:hidden}
+.layer{position:absolute;inset:0}
+.emo{font-family:"Noto Color Emoji";font-weight:400}
+.disp{font-family:Anton;text-transform:uppercase;line-height:.95}
+.ui{position:absolute;opacity:0}
+.pill{display:inline-flex;align-items:center;gap:14px;border-radius:999px;padding:16px 34px;font-weight:800;font-size:42px;white-space:nowrap}
+#bg{background:radial-gradient(120% 80% at 50% 38%,#3b2ca8 0%,#17123f 45%,#07061a 100%)}
+.shot{position:absolute;inset:-6%;opacity:0}
+.shot img{width:100%;height:100%;object-fit:cover}
+#grade{mix-blend-mode:soft-light;background:linear-gradient(160deg,#ff9a3c 0%,#ff6a3c00 45%,#1f7a8c00 55%,#14537a 100%)}
+#shade{background:linear-gradient(180deg,#000a 0%,#0003 30%,#0003 60%,#000d 100%)}
+canvas#three{position:absolute;inset:0;width:1080px;height:1920px}
+
+/* --- écran verrouillé (accroche) --- */
+#lock{opacity:0;overflow:hidden}
+#lockBg{position:absolute;inset:-60px;background:url(ph/31846864.jpg) center/cover;filter:blur(26px) brightness(.45) saturate(1.4)}
+#lockTint{position:absolute;inset:0;background:linear-gradient(180deg,#0b1240cc,#05061acc)}
+#lockTop{position:absolute;top:130px;left:0;right:0;text-align:center}
+#lockTop .d{font-size:44px;font-weight:700;opacity:.9}
+#lockTop .h{font-size:210px;font-weight:800;letter-spacing:-.04em;line-height:1}
+#notifs{position:absolute;left:36px;right:36px;top:430px;height:1000px}
+.nt{position:absolute;left:0;right:0;display:flex;align-items:center;gap:26px;padding:30px 32px;border-radius:50px;background:#f4f4f8e6;color:#000;box-shadow:0 18px 40px #0007;transform-origin:50% 0}
+.nt .ic{flex:none;display:grid;place-items:center;width:112px;height:112px;border-radius:28px;font-size:64px}
+.nt .tx{flex:1;min-width:0}
+.nt .tx b{display:flex;justify-content:space-between;font-size:42px;font-weight:800}
+.nt .tx b small{font-size:28px;font-weight:600;color:#666}
+.nt .tx span{display:block;margin-top:4px;font-size:38px;font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;color:#222}
+#nCount{left:0;right:0;top:1265px;text-align:center}
+#nCount .pill{background:var(--ember);font-size:46px}
+
+/* --- intro marque --- */
+#brand{left:0;right:0;top:1000px;text-align:center;font-size:190px}
+#tools{left:0;right:0;top:1220px;text-align:center}
+#tools .pill{background:var(--sun);color:#000;font-size:52px}
+
+/* --- liste des 14 outils --- */
+#counter{left:70px;top:150px;font-family:Anton;font-size:120px;line-height:1}
+#counter small{font-size:56px;opacity:.7}
+#bar{left:70px;right:70px;top:300px;display:flex;gap:8px}
+#bar i{flex:1;height:14px;border-radius:9px;background:#ffffff40}
+#bar i.on{background:var(--sun)}
+#cardWrap{position:absolute;left:70px;right:70px;top:560px;height:600px;perspective:1800px;opacity:0}
+#card{position:absolute;inset:0;display:grid;align-content:end;gap:22px;padding:56px;border-radius:64px;background:#fff;color:#000;box-shadow:0 40px 90px #000a;transform-style:preserve-3d}
+#card .big{position:absolute;top:56px;left:56px;display:grid;place-items:center;width:200px;height:200px;border-radius:52px;font-size:124px;box-shadow:inset 0 0 0 5px #0001}
+#card .tag{position:absolute;top:70px;right:56px;padding:12px 26px;border-radius:999px;border:4px solid #000;font-size:34px;font-weight:800}
+#card h2{font-family:Anton;text-transform:uppercase;font-size:118px;line-height:.92}
+#card p{font-size:46px;font-weight:700;color:#333;line-height:1.2}
+#card .num{position:absolute;right:50px;bottom:40px;font-family:Anton;font-size:200px;line-height:1;color:#0000000d}
+
+/* --- mur des 14 / 2 min --- */
+#wall{position:absolute;left:60px;right:60px;top:300px;display:grid;grid-template-columns:repeat(4,1fr);gap:22px;perspective:1600px;opacity:0}
+#wall div{display:grid;place-items:center;aspect-ratio:1;border-radius:40px;font-size:96px;box-shadow:0 18px 40px #0008}
+#perWeek{left:0;right:0;top:1150px;text-align:center;font-size:100px}
+#wa{left:0;right:0;top:1270px;text-align:center}
+#wa .pill{background:#fff;color:#000;font-size:46px}
+#perMonth{left:0;right:0;top:1000px;text-align:center;font-size:110px}
+#note{left:0;right:0;top:1130px;text-align:center;font-size:36px;font-weight:700;opacity:.8}
+#launch{left:0;right:0;top:250px;text-align:center}
+#launch .pill{background:var(--ember);font-size:50px}
+#offer{left:60px;right:60px;top:1020px;text-align:center}
+#offer .pill{background:var(--sun);color:#000;font-family:Anton;font-size:72px;font-weight:400;padding:18px 50px;text-transform:uppercase}
+#seats{left:120px;right:120px;top:880px;display:flex;flex-wrap:wrap;justify-content:center;gap:14px}
+#seats i{width:58px;height:58px;border-radius:50%;background:var(--violet);border:4px solid #fff;opacity:0}
+#endTag{left:0;right:0;top:1010px;text-align:center;font-size:58px;font-weight:800}
+#follow{left:0;right:0;top:1130px;text-align:center}
+#follow .pill{background:var(--ember);font-size:68px;padding:26px 60px;box-shadow:0 18px 50px #fb490388}
+
+#leak{mix-blend-mode:screen;opacity:0;background:radial-gradient(60% 45% at 20% 25%,#ff7a2f 0%,#ff3d6e88 35%,#0000 70%),radial-gradient(50% 40% at 85% 80%,#ffd731aa 0%,#0000 70%)}
+#flash{background:#fff;opacity:0}
+#vig{background:radial-gradient(120% 75% at 50% 45%,#0000 55%,#000a 100%)}
+#grain{mix-blend-mode:overlay;opacity:.14;width:1080px;height:1920px}
+#caps{position:absolute;left:50px;right:50px;height:300px;display:flex;flex-wrap:wrap;justify-content:center;align-content:center;gap:0 40px}
+.w{display:inline-block;font-family:Anton;text-transform:uppercase;line-height:1.06;color:#fff;-webkit-text-stroke:16px #000;paint-order:stroke fill;text-shadow:0 10px 0 #000,0 0 40px #0008}
+</style>
+<script type="importmap">{"imports":{"three":"./node_modules/three/build/three.module.js","three/addons/":"./node_modules/three/examples/jsm/"}}</script>
+</head><body>
+<div id="stage">
+  <div class="layer" id="bg"></div>
+  <div class="layer" id="shots"></div>
+  <div class="layer" id="grade"></div>
+  <div class="layer" id="shade"></div>
+  <div class="layer" id="lock"><div id="lockBg"></div><div id="lockTint"></div>
+    <div id="lockTop"><div class="d">samedi</div><div class="h">03:12</div></div>
+    <div id="notifs"></div>
+    <div class="ui" id="nCount"><span class="pill"><span class="emo">🔔</span><span id="nNum">+12</span> pendant la nuit</span></div>
+  </div>
+  <div class="layer" id="wallL"><div id="wall"></div></div>
+  <canvas id="three" width="1080" height="1920"></canvas>
+  <div class="layer">
+    <div class="ui disp" id="brand">Scalify</div>
+    <div class="ui" id="tools"><span class="pill">14 outils pour votre commerce</span></div>
+    <div class="ui" id="counter"><span id="cNum">01</span><small>/14</small></div>
+    <div class="ui" id="bar"></div>
+    <div id="cardWrap"><div id="card"><div class="big"><span class="emo" id="cEmo"></span></div><span class="tag" id="cTag"></span><span class="num" id="cBg"></span><h2 id="cName"></h2><p id="cSub"></p></div></div>
+    <div class="ui disp" id="perWeek">par semaine</div>
+    <div class="ui" id="wa"><span class="pill"><span class="emo">💬</span>Vous validez sur WhatsApp</span></div>
+    <div class="ui disp" id="perMonth">par mois</div>
+    <div class="ui" id="note">selon l’offre · options à la carte</div>
+    <div class="ui" id="launch"><span class="pill"><span class="emo">🚀</span>Lancement</span></div>
+    <div class="ui" id="seats"></div>
+    <div class="ui" id="offer"><span class="pill">-30 % pour les 15 premiers</span></div>
+    <div class="ui" id="endTag">Lancement dans 30 jours</div>
+    <div class="ui" id="follow"><span class="pill"><span class="emo">🔔</span>Abonnez-vous</span></div>
+  </div>
+  <div class="layer" id="leak"></div>
+  <div class="layer" id="vig"></div>
+  <canvas class="layer" id="grain" width="360" height="640"></canvas>
+  <div class="layer" id="flash"></div>
+  <div id="caps"></div>
+</div>
+<script type="module" src="main.js"></script>
+</body></html>

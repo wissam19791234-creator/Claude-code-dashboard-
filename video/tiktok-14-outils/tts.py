@@ -2,7 +2,7 @@ import asyncio, ssl, os, json, sys, edge_tts, edge_tts.communicate as c
 c._SSL_CTX = ssl.create_default_context(cafile="/root/.ccr/ca-bundle.crt")
 TEXT = ("Trois heures du matin. Vous dormez, "
         "et votre commerce, lui, bosse. "
-        "Voici tout ce que Scalify fait pour vous : "
+        "Voici tout ce que Scalifaï fait pour vous : "
         "site internet, fiche Google, avis, réseaux sociaux, "
         "IA vingt-quatre heures sur vingt-quatre, relances automatiques, pub Google et Instagram, "
         "standard téléphonique, devis, commande en ligne, réservations, carte de fidélité, vidéos TikTok, boutique en ligne. "

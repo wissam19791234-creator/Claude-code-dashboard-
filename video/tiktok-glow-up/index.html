@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="fr"><head><meta charset="utf-8"><title>Scalify Glow-up overlay</title>
+<style>
+@font-face{font-family:IT;font-weight:600;src:url(InterTight-600.woff2)}
+@font-face{font-family:IT;font-weight:700;src:url(InterTight-700.woff2)}
+@font-face{font-family:IT;font-weight:800;src:url(InterTight-800.woff2)}
+@font-face{font-family:Anton;src:url(Anton-400.woff2)}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{width:1080px;height:1920px;overflow:hidden;background:transparent}
+body{font-family:IT,sans-serif;color:#000;-webkit-font-smoothing:antialiased}
+#stage{position:absolute;inset:0;overflow:hidden}
+.o{position:absolute;opacity:0;will-change:transform,opacity}
+.emo{font-family:"Noto Color Emoji";font-weight:400}
+/* texte style natif TikTok : boîte blanche, texte noir, coins arrondis */
+.tk{display:inline;background:#fff;color:#000;font-weight:800;font-size:58px;line-height:1.5;padding:6px 18px;border-radius:14px;-webkit-box-decoration-break:clone;box-decoration-break:clone}
+.tk.dark{background:#000;color:#fff}
+.tk.y{background:#ffd731}
+#hook{left:70px;right:70px;top:300px;text-align:center}
+#head{left:70px;right:70px;top:220px;text-align:center}
+#head .tk{font-size:46px}
+/* équation */
+#eq{left:80px;right:80px;top:560px;display:flex;flex-direction:column;gap:30px;align-items:flex-start}
+.row{display:flex;align-items:center;gap:22px;opacity:0}
+.op{width:84px;height:84px;flex:none;display:grid;place-items:center;border-radius:50%;background:#fff;font:800 58px/1 IT;color:#000;box-shadow:0 10px 30px #0006}
+.chip{display:flex;align-items:center;gap:20px;padding:22px 28px;border-radius:28px;background:#fffffff2;box-shadow:0 16px 40px #0007;font-size:44px;font-weight:800;color:#111}
+.chip .ic{font-size:54px}
+.chip small{display:block;font-size:30px;font-weight:600;color:#666;margin-top:2px}
+.bad{color:#d93025}
+#face{left:0;right:0;top:1180px;text-align:center;font-size:260px}
+/* après : cartes d'interface */
+.ui{left:70px;right:70px;top:1040px;display:flex;justify-content:center}
+.card{width:100%;max-width:900px;border-radius:36px;background:#fff;box-shadow:0 24px 60px #0008;padding:30px 34px;color:#111}
+.g-top{display:flex;align-items:center;gap:18px}
+.g-logo{width:64px;height:64px;border-radius:50%;background:conic-gradient(#4285f4 0 25%,#34a853 0 50%,#fbbc05 0 75%,#ea4335 0);display:grid;place-items:center}
+.g-logo i{width:36px;height:36px;border-radius:50%;background:#fff}
+.g-name{font-size:40px;font-weight:800}
+.g-sub{font-size:28px;color:#555;font-weight:600}
+.stars{font-size:46px;color:#f4b400;letter-spacing:2px}
+.big5{font:800 92px/1 IT;letter-spacing:-.03em}
+.rev{margin-top:12px;font-size:32px;font-weight:600;color:#333}
+.reply{margin-top:14px;padding:18px 22px;border-radius:22px;background:#eef3ff;font-size:30px;font-weight:600;color:#1a3a8a}
+.reply b{display:block;font-size:24px;color:#5c4ade;letter-spacing:.06em;margin-bottom:4px}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:16px}
+.grid i{aspect-ratio:1;border-radius:10px;background:linear-gradient(135deg,var(--a),var(--b))}
+.notif{display:flex;gap:20px;align-items:center;padding:26px 30px;border-radius:34px;background:#f4f4f6f0;box-shadow:0 20px 50px #0007;width:100%;max-width:900px}
+.notif .ic{width:96px;height:96px;flex:none;border-radius:24px;display:grid;place-items:center;font-size:56px;background:#e9ccff}
+.notif b{display:flex;justify-content:space-between;font-size:36px}
+.notif b small{font-size:28px;color:#777;font-weight:600}
+.notif span{display:block;font-size:34px;font-weight:600;color:#222;margin-top:4px}
+.browser{border-radius:30px;overflow:hidden;background:#fff;box-shadow:0 24px 60px #0008;width:100%;max-width:900px}
+.bar{display:flex;gap:10px;align-items:center;padding:16px 22px;background:#f1f1f3;font-size:26px;color:#555;font-weight:600}
+.bar i{width:16px;height:16px;border-radius:50%;background:#ff5f57}.bar i+i{background:#febc2e}.bar i+i+i{background:#28c840}
+.bar span{margin-left:12px;padding:6px 18px;border-radius:999px;background:#fff;flex:1}
+.hero{height:300px;display:grid;align-content:end;padding:26px 30px;background:linear-gradient(160deg,#2b1d10,#c47a2c);color:#fff}
+.hero b{font:400 74px/.95 Anton;text-transform:uppercase}
+.hero em{font-style:normal;margin-top:12px;display:inline-block;justify-self:start;padding:12px 26px;border-radius:999px;background:#ffd731;color:#000;font-weight:800;font-size:30px}
+/* glow-up */
+#glow{left:0;right:0;top:760px;text-align:center}
+#glow .eq{font:400 150px/1 Anton;color:#fff;text-shadow:0 0 40px #ffd73199,0 8px 0 #0006}
+#glow .w{display:block;font:400 270px/.9 Anton;letter-spacing:-.01em;background:linear-gradient(180deg,#fff 20%,#ffd731 60%,#ff8a3c);-webkit-background-clip:text;background-clip:text;color:transparent;filter:drop-shadow(0 10px 24px #0008)}
+/* fin */
+#end{left:0;right:0;top:360px;display:grid;justify-items:center;gap:30px;text-align:center}
+#logo{width:230px;height:230px;border-radius:50%;background:#fff;display:grid;place-items:center;box-shadow:0 0 0 6px #ffffff33,0 30px 80px #000a}
+#end .name{font:400 170px/.9 Anton;color:#fff;letter-spacing:.02em;text-transform:uppercase}
+#end .tag{font-size:50px;font-weight:800;color:#fff;max-width:900px;line-height:1.2}
+#end .pill{padding:20px 40px;border-radius:999px;background:#ffd731;color:#000;font-size:42px;font-weight:800}
+#end .follow{display:inline-flex;gap:14px;align-items:center;padding:24px 54px;border-radius:999px;background:#fff;color:#000;font-size:56px;font-weight:800}
+#end .soon{font:400 64px/1 Anton;color:#fff;letter-spacing:.12em}
+/* transition ventilateur */
+#fan{position:absolute;left:540px;top:2700px;width:9000px;height:9000px;margin:-4500px 0 0 -4500px;border-radius:50%;opacity:0;--a:0deg;background:conic-gradient(from var(--a),#0b0b10 0deg 104deg,#0000 104deg 360deg)}
+#flash{position:absolute;inset:0;background:#fff;opacity:0}
+</style></head>
+<body><div id="stage">
+  <div class="o" id="hook"><span class="tk">Pourquoi le commerce d’en face est toujours plein&nbsp;? <span class="emo">👀</span></span></div>
+  <div class="o" id="head"><span class="tk dark" id="headTxt"></span></div>
+
+  <div class="o" id="eq">
+    <div class="row" id="r1"><span class="chip"><span class="ic emo">📍</span><span>Fiche Google à <span class="bad">3,8 ★</span><small>0 photo · horaires faux</small></span></span></div>
+    <div class="row" id="r2"><span class="op">+</span><span class="chip"><span class="ic emo">💬</span><span><span class="bad">12 avis</span> sans réponse<small>dont 3 négatifs</small></span></span></div>
+    <div class="row" id="r3"><span class="op">+</span><span class="chip"><span class="ic emo">📸</span><span>Dernier post&nbsp;: <span class="bad">2024</span><small>Instagram à l’abandon</small></span></span></div>
+  </div>
+  <div class="o" id="face"><span class="op" style="display:inline-grid;width:140px;height:140px;font-size:96px;vertical-align:middle;margin-right:24px">=</span><span class="emo">😬</span></div>
+
+  <div class="o ui" id="u1"><div class="card"><div class="g-top"><div class="g-logo"><i></i></div><div><div class="g-name">Votre commerce</div><div class="g-sub">Ouvert · fiche à jour · 48 photos</div></div></div>
+    <div style="display:flex;align-items:center;gap:22px;margin-top:16px"><span class="big5" id="score">4,9</span><span><span class="stars">★★★★★</span><div class="g-sub">212 avis</div></span></div></div></div>
+  <div class="o ui" id="u2"><div class="card"><div class="g-top"><span class="stars" style="font-size:40px">★★★★★</span><span class="g-sub" style="margin-left:auto">il y a 2 h</span></div>
+    <div class="rev">« Accueil top, je reviens la semaine prochaine ! »</div>
+    <div class="reply"><b>VOTRE RÉPONSE · AUTOMATIQUE</b>Merci Léa, à très vite chez nous ! 🙏</div></div></div>
+  <div class="o ui" id="u3"><div class="card"><div class="g-top"><div class="g-logo" style="background:linear-gradient(45deg,#feda75,#fa7e1e,#d62976,#962fbf)"><i></i></div><div><div class="g-name">3 posts / semaine</div><div class="g-sub">publiés pour vous, aux meilleures heures</div></div></div>
+    <div class="grid"><i style="background:url(thumbs/t1.jpg) center/cover"></i><i style="background:url(thumbs/t2.jpg) center/cover"></i><i style="background:url(thumbs/t3.jpg) center/cover"></i><i style="background:url(thumbs/t4.jpg) center/cover"></i><i style="background:url(thumbs/t5.jpg) center/cover"></i><i style="background:url(thumbs/t6.jpg) center/cover"></i></div></div></div>
+  <div class="o ui" id="u4"><div class="browser"><div class="bar"><i></i><i></i><i></i><span>votre-commerce.fr</span></div><div class="hero"><b>Votre commerce<br>en ligne en 7 jours</b><em>Réserver</em></div></div></div>
+  <div class="o ui" id="u5"><div class="notif"><span class="ic emo">🤖</span><span style="flex:1"><b>Assistant IA <small>23:47</small></b><span>Table pour 4 réservée · samedi 20 h</span></span></div></div>
+  <div class="o ui" id="u6"><div class="notif"><span class="ic emo" style="background:#c9f5dc">🛍️</span><span style="flex:1"><b>Nouvelle commande <small>maintenant</small></b><span>Click &amp; collect · prête à 12 h</span></span></div></div>
+
+  <div class="o" id="glow"><span class="eq">=</span><span class="w">GLOW-UP</span></div>
+
+  <div class="o" id="end">
+    <div id="logo"><svg viewBox="0 0 32 32" width="170" height="170"><path d="M21 10.8H13.9a2.85 2.85 0 0 0 0 5.7h4.3a2.85 2.85 0 0 1 0 5.7H11" fill="none" stroke="#000" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/><circle cx="22.4" cy="21.8" r="2" fill="#4da2ff"/></svg></div>
+    <div class="name" id="endName">Scalify</div>
+    <div class="tag" id="endTag">Le glow-up de votre commerce, sans y passer vos soirées.</div>
+    <div class="pill" id="endPill">J-?? · 15 places fondateurs · -30 %</div>
+    <div class="follow" id="endFollow"><span class="emo">🔔</span>Abonnez-vous</div>
+  </div>
+
+  <div id="fan"></div>
+  <div id="flash"></div>
+</div>
+<script src="overlay.js"></script>
+</body></html>

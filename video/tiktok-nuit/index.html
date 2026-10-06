@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="fr"><head><meta charset="utf-8"><title>Scalify Nuit</title>
+<style>
+@font-face{font-family:Corm;font-style:italic;src:url(CormorantGaramond-italic.woff2)}
+@font-face{font-family:Corm;font-style:normal;src:url(CormorantGaramond-normal.woff2)}
+@font-face{font-family:IT;font-weight:500;src:url(InterTight-normal.woff2)}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{width:1080px;height:1920px;overflow:hidden;background:transparent}
+.c{position:absolute;left:90px;right:90px;text-align:center;opacity:0;color:#f3ede4;will-change:opacity,filter,letter-spacing}
+.line{top:1160px;font:italic 500 84px/1.1 Corm;text-shadow:0 2px 30px #000c}
+#brand{top:820px;font:500 70px/1 IT;letter-spacing:.62em;padding-left:.62em}
+#rule{position:absolute;left:50%;top:930px;width:0;height:1px;background:#f3ede488;transform:translateX(-50%)}
+#feat{top:965px;font:500 27px/1 IT;letter-spacing:.32em;color:#f3ede4aa;text-transform:uppercase}
+#jour{top:1080px;font:italic 500 150px/1 Corm;color:#e9c98f}
+</style></head><body>
+<div class="c line" id="l0">23 h 47.</div>
+<div class="c line" id="l1">La ville s’éteint.</div>
+<div class="c line" id="l2">Vos clients, eux, cherchent encore.</div>
+<div class="c line" id="l3">Votre commerce leur répond.</div>
+<div class="c" id="brand">SCALIFY</div><div id="rule"></div>
+<div class="c" id="feat">Site · Google · Avis · IA 24/7</div>
+<div class="c" id="jour">J-27</div>
+<script>
+const $=id=>document.getElementById(id),cl=(x,a=0,b=1)=>Math.min(b,Math.max(a,x)),pr=(t,a,b)=>cl((t-a)/(b-a));
+const ease=k=>1-Math.pow(1-k,3);
+// apparition « mise au point » : flou → net, léger écartement des lettres qui continue de respirer
+function card(el,t,a,b,{sp0=.02,sp1=.06}={}){
+  if(t<a||t>=b){el.style.opacity=0;return}
+  const k=ease(pr(t,a,a+.6)),o=pr(t,b-.25,b);
+  el.style.opacity=k*(1-o); el.style.filter=`blur(${(1-k)*14+o*8}px)`;
+  el.style.letterSpacing=(sp0+(sp1-sp0)*pr(t,a,b))+'em';
+}
+const L=[[.15,1.95],[2.12,3.72],[3.87,5.47],[5.62,7.4]];
+window.seek=t=>{
+  L.forEach(([a,b],i)=>card($('l'+i),t,a,b));
+  const e=7.7;
+  const kb=ease(pr(t,e,e+.9)); const B=$('brand'); B.style.opacity=kb; B.style.filter=`blur(${(1-kb)*18}px)`;
+  B.style.letterSpacing=(.9-.28*ease(pr(t,e,10)))+'em'; B.style.paddingLeft=B.style.letterSpacing;
+  $('rule').style.width=520*ease(pr(t,e+.4,e+1.2))+'px';
+  const kf=ease(pr(t,e+.7,e+1.3)); $('feat').style.opacity=kf; $('feat').style.filter=`blur(${(1-kf)*8}px)`;
+  const kj=ease(pr(t,e+1.25,e+1.9)); const J=$('jour'); J.style.opacity=kj; J.style.filter=`blur(${(1-kj)*16}px)`; J.style.transform=`scale(${1.08-.08*kj})`;
+};
+window.ready=true;
+if(!location.search.includes('render')){const t0=performance.now();(function f(){seek(((performance.now()-t0)/1000)%10);requestAnimationFrame(f)})()}
+</script></body></html>

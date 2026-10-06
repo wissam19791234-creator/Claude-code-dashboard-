@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="fr"><head><meta charset="utf-8"><title>Scalify Bande-annonce</title>
+<style>
+@font-face{font-family:Anton;src:url(Anton-400.woff2)}
+@font-face{font-family:IT;font-weight:600;src:url(InterTight-600.woff2)}
+@font-face{font-family:IT;font-weight:700;src:url(InterTight-700.woff2)}
+@font-face{font-family:IT;font-weight:800;src:url(InterTight-800.woff2)}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{width:1080px;height:1920px;overflow:hidden;background:#000}
+body{font-family:IT,sans-serif;color:#fff}
+#stage{position:absolute;inset:0;overflow:hidden;background:#000}
+.layer{position:absolute;inset:0}
+#shots{z-index:0;isolation:isolate}.shot{position:absolute;inset:-8%;opacity:0}
+.shot img{width:100%;height:100%;object-fit:cover}
+#grade{mix-blend-mode:soft-light;background:linear-gradient(180deg,#1a6a8a 0%,#0e3a52 45%,#ff8a3c 100%);opacity:.7}
+#tint{mix-blend-mode:color;background:#163c5c;opacity:0}
+#shade{background:linear-gradient(180deg,#000c 0%,#0000 30%,#0000 62%,#000e 100%)}
+#rays{opacity:0;background:repeating-conic-gradient(from 0deg at 50% 115%,#fff0 0deg 4deg,#ffe8b80f 4deg 6deg,#fff0 6deg 11deg);-webkit-mask:radial-gradient(70% 70% at 50% 100%,#000 0%,#0000 75%);mask:radial-gradient(70% 70% at 50% 100%,#000 0%,#0000 75%)}
+#glow{opacity:0;background:radial-gradient(45% 30% at 50% 42%,#ffcf7a55 0%,#5c4ade33 45%,#0000 75%)}
+canvas#three{position:absolute;inset:0;width:1080px;height:1920px}
+.card{position:absolute;left:0;right:0;text-align:center;opacity:0;white-space:nowrap}
+.trk{font-weight:800;text-transform:uppercase;letter-spacing:.5em;font-size:34px}
+.big{font-family:Anton;text-transform:uppercase;line-height:.95}
+#present{top:930px}
+#etsi{top:840px;font-size:200px}
+#beat{top:830px;font-size:160px;text-shadow:0 0 60px #000a}
+#beatSub{top:1030px}
+#ui{position:absolute;left:90px;right:90px;top:760px;text-align:center;opacity:0}
+#ui span{display:inline-block;padding:22px 34px;border-radius:24px;background:#0009;border:2px solid #ff4d3a;font-size:48px;font-weight:800;color:#fff;backdrop-filter:blur(6px)}
+#brand{top:1080px;font-size:170px}
+#launchTop{top:560px}
+#offer{top:1180px}
+#offer span{display:inline-block;padding:18px 36px;border:2px solid #ffd731;border-radius:999px;font-size:40px;font-weight:800;color:#ffd731;letter-spacing:.06em}
+#soon{top:720px}
+#follow{top:1210px}
+#follow span{display:inline-flex;gap:14px;align-items:center;padding:24px 56px;border-radius:999px;background:#fff;color:#000;font-size:60px;font-weight:800}
+.emo{font-family:"Noto Color Emoji";font-weight:400}
+#flare{opacity:0;mix-blend-mode:screen;background:linear-gradient(180deg,#0000 calc(50% - 60px),#3d7bff22 calc(50% - 30px),#bfe0ff 50%,#3d7bff22 calc(50% + 30px),#0000 calc(50% + 60px))}
+#flareDot{position:absolute;width:520px;height:520px;margin:-260px 0 0 -260px;border-radius:50%;opacity:0;mix-blend-mode:screen;background:radial-gradient(circle,#fff 0%,#9fc8ff88 12%,#3d7bff22 35%,#0000 70%)}
+#leak{mix-blend-mode:screen;opacity:0;background:radial-gradient(60% 45% at 15% 25%,#ff7a2f 0%,#ff3d6e66 35%,#0000 70%),radial-gradient(50% 40% at 90% 75%,#ffd731aa 0%,#0000 70%)}
+#vig{background:radial-gradient(110% 70% at 50% 48%,#0000 50%,#000d 100%)}
+#grain{mix-blend-mode:overlay;opacity:.2;width:1080px;height:1920px}
+#bars:before,#bars:after{content:"";position:absolute;left:0;right:0;height:var(--bar,0px);background:#000}
+#bars:before{top:0}#bars:after{bottom:0}
+#black{background:#000;opacity:0}
+#flash{background:#fff;opacity:0}
+#subs{position:absolute;left:60px;right:60px;top:1450px;text-align:center;font-size:58px;font-weight:700;line-height:1.25;text-shadow:0 2px 12px #000,0 0 3px #000}
+#subs b{font-weight:700;transition:none}
+</style>
+<script type="importmap">{"imports":{"three":"./node_modules/three/build/three.module.js","three/addons/":"./node_modules/three/examples/jsm/"}}</script>
+</head><body>
+<div id="stage">
+  <div class="layer" id="shots"></div>
+  <div class="layer" id="tint"></div>
+  <div class="layer" id="grade"></div>
+  <div class="layer" id="shade"></div>
+  <div class="layer" id="glow"></div>
+  <div class="layer" id="rays"></div>
+  <div id="ui"><span id="uiText"></span></div>
+  <canvas id="three" width="1080" height="1920"></canvas>
+  <div class="card trk" id="present">Scalify présente</div>
+  <div class="card big" id="etsi">Et si…</div>
+  <div class="card big" id="beat"></div>
+  <div class="card trk" id="beatSub"></div>
+  <div class="card big" id="brand">Scalify</div>
+  <div class="card trk" id="launchTop">Lancement imminent</div>
+  <div class="card" id="offer"><span>15 places fondateurs · -30 % sur l’annuel</span></div>
+  <div class="card trk" id="soon">Prochainement</div>
+  <div class="card" id="follow"><span><span class="emo">🔔</span>Abonnez-vous</span></div>
+  <div class="layer" id="leak"></div>
+  <div class="layer" id="flare"></div>
+  <div id="flareDot"></div>
+  <div class="layer" id="vig"></div>
+  <canvas class="layer" id="grain" width="360" height="640"></canvas>
+  <div id="subs"></div>
+  <div class="layer" id="bars"></div>
+  <div class="layer" id="black"></div>
+  <div class="layer" id="flash"></div>
+</div>
+<script type="module" src="main.js"></script>
+</body></html>

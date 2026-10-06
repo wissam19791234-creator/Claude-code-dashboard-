@@ -1,0 +1,376 @@
+{
+ "E": {
+  "present": 0.15,
+  "sadEnd": 7.561124,
+  "braam": 13.91,
+  "l4": 15.26,
+  "montage": [
+   17.532,
+   18.983,
+   20.713,
+   21.885,
+   23.056
+  ],
+  "hope": 25.099,
+  "logo": 28.582,
+  "launch": [
+   30.683,
+   32.204
+  ],
+  "follow": 34.4,
+  "end": 36.77
+ },
+ "subs": [
+  {
+   "t": 1.5,
+   "e": 3.721,
+   "text": "Chaque matin ils lèvent le rideau",
+   "words": [
+    {
+     "w": "Chaque",
+     "t": 1.56
+    },
+    {
+     "w": "matin",
+     "t": 1.932
+    },
+    {
+     "w": "ils",
+     "t": 2.677
+    },
+    {
+     "w": "lèvent",
+     "t": 2.837
+    },
+    {
+     "w": "le",
+     "t": 3.009
+    },
+    {
+     "w": "rideau",
+     "t": 3.129
+    }
+   ]
+  },
+  {
+   "t": 4.171,
+   "e": 6.206,
+   "text": "Chaque soir ils le baissent",
+   "words": [
+    {
+     "w": "Chaque",
+     "t": 4.231
+    },
+    {
+     "w": "soir",
+     "t": 4.59
+    },
+    {
+     "w": "ils",
+     "t": 5.282
+    },
+    {
+     "w": "le",
+     "t": 5.401
+    },
+    {
+     "w": "baissent",
+     "t": 5.521
+    }
+   ]
+  },
+  {
+   "t": 6.656,
+   "e": 7.561,
+   "text": "Épuisés",
+   "words": [
+    {
+     "w": "Épuisés",
+     "t": 6.716
+    }
+   ]
+  },
+  {
+   "t": 8.111,
+   "e": 9.721,
+   "text": "Les avis sans réponse",
+   "words": [
+    {
+     "w": "Les",
+     "t": 8.171
+    },
+    {
+     "w": "avis",
+     "t": 8.37
+    },
+    {
+     "w": "sans",
+     "t": 8.676
+    },
+    {
+     "w": "réponse",
+     "t": 8.862
+    }
+   ]
+  },
+  {
+   "t": 10.021,
+   "e": 11.365,
+   "text": "Les posts oubliés",
+   "words": [
+    {
+     "w": "Les",
+     "t": 10.081
+    },
+    {
+     "w": "posts",
+     "t": 10.32
+    },
+    {
+     "w": "oubliés",
+     "t": 10.666
+    }
+   ]
+  },
+  {
+   "t": 11.664,
+   "e": 13.46,
+   "text": "Les clients qui partent ailleurs",
+   "words": [
+    {
+     "w": "Les",
+     "t": 11.724
+    },
+    {
+     "w": "clients",
+     "t": 11.963
+    },
+    {
+     "w": "qui",
+     "t": 12.322
+    },
+    {
+     "w": "partent",
+     "t": 12.509
+    },
+    {
+     "w": "ailleurs",
+     "t": 12.775
+    }
+   ]
+  },
+  {
+   "t": 15.26,
+   "e": 17.082,
+   "text": "Et si quelqu'un s'occupait de tout",
+   "words": [
+    {
+     "w": "Et",
+     "t": 15.32
+    },
+    {
+     "w": "si",
+     "t": 15.493
+    },
+    {
+     "w": "quelqu'un",
+     "t": 15.666
+    },
+    {
+     "w": "s'occupait",
+     "t": 16.065
+    },
+    {
+     "w": "de",
+     "t": 16.517
+    },
+    {
+     "w": "tout",
+     "t": 16.663
+    }
+   ]
+  },
+  {
+   "t": 17.532,
+   "e": 18.703,
+   "text": "Votre site",
+   "words": [
+    {
+     "w": "Votre",
+     "t": 17.592
+    },
+    {
+     "w": "site",
+     "t": 18.071
+    }
+   ]
+  },
+  {
+   "t": 18.983,
+   "e": 20.433,
+   "text": "Votre fiche Google",
+   "words": [
+    {
+     "w": "Votre",
+     "t": 19.043
+    },
+    {
+     "w": "fiche",
+     "t": 19.482
+    },
+    {
+     "w": "Google",
+     "t": 19.708
+    }
+   ]
+  },
+  {
+   "t": 20.713,
+   "e": 21.604,
+   "text": "Vos avis",
+   "words": [
+    {
+     "w": "Vos",
+     "t": 20.773
+    },
+    {
+     "w": "avis",
+     "t": 21.012
+    }
+   ]
+  },
+  {
+   "t": 21.885,
+   "e": 22.776,
+   "text": "Vos réseaux",
+   "words": [
+    {
+     "w": "Vos",
+     "t": 21.945
+    },
+    {
+     "w": "réseaux",
+     "t": 22.184
+    }
+   ]
+  },
+  {
+   "t": 23.056,
+   "e": 24.599,
+   "text": "Une IA jour et nuit",
+   "words": [
+    {
+     "w": "Une",
+     "t": 23.116
+    },
+    {
+     "w": "IA",
+     "t": 23.342
+    },
+    {
+     "w": "jour",
+     "t": 23.847
+    },
+    {
+     "w": "et",
+     "t": 24.073
+    },
+    {
+     "w": "nuit",
+     "t": 24.113
+    }
+   ]
+  },
+  {
+   "t": 25.099,
+   "e": 28.131,
+   "text": "Bientôt votre commerce ne dormira plus jamais",
+   "words": [
+    {
+     "w": "Bientôt",
+     "t": 25.159
+    },
+    {
+     "w": "votre",
+     "t": 26.037
+    },
+    {
+     "w": "commerce",
+     "t": 26.356
+    },
+    {
+     "w": "ne",
+     "t": 26.795
+    },
+    {
+     "w": "dormira",
+     "t": 26.954
+    },
+    {
+     "w": "plus",
+     "t": 27.393
+    },
+    {
+     "w": "jamais",
+     "t": 27.579
+    }
+   ]
+  },
+  {
+   "t": 29.132,
+   "e": 30.183,
+   "text": "Scalifaï",
+   "words": [
+    {
+     "w": "Scalifaï",
+     "t": 29.192
+    }
+   ]
+  },
+  {
+   "t": 30.683,
+   "e": 31.854,
+   "text": "Lancement imminent",
+   "words": [
+    {
+     "w": "Lancement",
+     "t": 30.743
+    },
+    {
+     "w": "imminent",
+     "t": 31.262
+    }
+   ]
+  },
+  {
+   "t": 32.204,
+   "e": 33.8,
+   "text": "Quinze places fondateurs",
+   "words": [
+    {
+     "w": "Quinze",
+     "t": 32.264
+    },
+    {
+     "w": "places",
+     "t": 32.57
+    },
+    {
+     "w": "fondateurs",
+     "t": 32.862
+    }
+   ]
+  },
+  {
+   "t": 34.4,
+   "e": 35.371,
+   "text": "Abonnez-vous",
+   "words": [
+    {
+     "w": "Abonnez-vous",
+     "t": 34.46
+    }
+   ]
+  }
+ ]
+}

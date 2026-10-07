@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="fr"><head><meta charset="utf-8"><title>Scalify 19 h</title>
+<style>
+@font-face{font-family:Anton;src:url(Anton-400.woff2)}
+@font-face{font-family:IT;font-weight:500;src:url(InterTight-normal.woff2)}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{width:1080px;height:1920px;overflow:hidden;background:transparent}
+/* sous-titres mot à mot : gros, centrés, mot prononcé en jaune */
+#cap{position:absolute;left:70px;right:70px;top:1040px;text-align:center;font:400 112px/1.02 Anton;text-transform:uppercase;color:#fff;
+ -webkit-text-stroke:3px #000;paint-order:stroke fill;text-shadow:0 8px 0 #000a,0 0 40px #000c}
+#cap span{display:inline-block;margin:0 .1em;opacity:0;transform-origin:50% 80%}
+#cap span.on{color:#ffd400}
+#end{position:absolute;inset:0;opacity:0;color:#fff;text-align:center}
+#name{position:absolute;left:0;right:0;top:430px;font:400 190px/1 Anton;letter-spacing:.04em}
+#sub{position:absolute;left:0;right:0;top:640px;font:500 40px/1 IT;color:#ffffffb0}
+#grid{position:absolute;left:110px;right:110px;top:760px;display:grid;grid-template-columns:1fr 1fr;gap:26px}
+.chip{padding:34px 10px;border-radius:30px;background:#ffffff14;border:2px solid #ffffff30;font:400 64px/1 Anton;text-transform:uppercase;opacity:0}
+.chip.hot{background:#ffd400;color:#000;border-color:#ffd400}
+#jour{position:absolute;left:0;right:0;top:1150px;font:400 230px/1 Anton;color:#ffd400;opacity:0}
+#offer{position:absolute;left:0;right:0;top:1410px;font:500 42px/1.2 IT;opacity:0}
+</style></head><body>
+<div id="cap"></div>
+<div id="end"><div id="name">SCALIFY</div><div id="sub">Votre commerce, en ligne 24/7</div>
+ <div id="grid"><div class="chip" id="c0">Site</div><div class="chip" id="c1">Google</div><div class="chip" id="c2">Avis</div><div class="chip" id="c3">Réservations</div></div>
+ <div id="jour">J-26</div><div id="offer">-30 % pour les 15 premiers commerces</div></div>
+<script>
+const $=id=>document.getElementById(id),cl=(x,a=0,b=1)=>Math.min(b,Math.max(a,x)),pr=(t,a,b)=>cl((t-a)/(b-a));
+const ob=(k,s=2)=>1+(s+1)*Math.pow(k-1,3)+s*Math.pow(k-1,2);
+const DISP={'19 heures':'19 h','Scalifaï':'Scalify','eux':'eux,','clients':'clients,','encore':'encore.','concurrent':'concurrent.','seul':'seul.','nuit':'nuit.','fermez':'fermez','heures':'h'};
+let TL; fetch('timeline.json').then(r=>r.json()).then(j=>{TL=j;window.ready=true});
+window.seek=t=>{
+  const cap=$('cap'); const end=TL.cuts[TL.cuts.length-1];
+  // l4 : deux groupes (« Avec Scalify… seul. » puis « Jour et nuit. »)
+  let groups=[];
+  for(const k of ['l1','l2','l3','l4']){const L=TL.lines[k];
+    if(k==='l4'){const i=L.words.findIndex(w=>w.w==='Jour');groups.push(L.words.slice(0,i),L.words.slice(i))} else groups.push(L.words)}
+  let g=null; groups.forEach((ws,i)=>{const nx=groups[i+1]; const stop=nx?nx[0].t-.05:end; if(t>=ws[0].t-.06&&t<stop) g=ws});
+  if(g&&t<end){ const key=g[0].t; if(cap.dataset.k!=key){cap.dataset.k=key;
+      cap.innerHTML=g.map(w=>`<span>${DISP[w.w]||w.w}${w.w==='19 heures'?' ?':''}</span>`).join(' ')}
+    [...cap.children].forEach((s,i)=>{const w=g[i];const k=pr(t,w.t-.06,w.t+.12);
+      s.style.opacity=k>0?1:0; s.style.transform=`scale(${.7+.3*ob(k)})`; s.classList.toggle('on',t>=w.t-.06&&t<w.e+.05)});
+  } else cap.innerHTML='',cap.dataset.k='';
+  // carton final
+  const E=$('end'); E.style.opacity=t>=end?1:0;
+  const pop=(el,a)=>{const k=pr(t,a,a+.22);el.style.opacity=k>0?1:0;el.style.transform=`scale(${.6+.4*ob(k)})`};
+  pop($('name'),end); pop($('sub'),end+.2);
+  const W=TL.lines.l5.words; [0,1,2,3].forEach(i=>{const w=W[i===0?0:i+1-(i>0?0:0)]});
+  const at=[W[0].t,W.find(w=>w.w==='Google').t,W.find(w=>w.w==='avis').t,W.find(w=>w.w==='réservations').t];
+  at.forEach((a,i)=>{const c=$('c'+i);pop(c,a-.05);c.classList.toggle('hot',t>=a-.05&&t<(at[i+1]||TL.lines.l5.end+.1))});
+  const l6=TL.lines.l6; pop($('jour'),l6.words[2].t-.05); pop($('offer'),l6.end+.1);
+};
+if(!location.search.includes('render')){const t0=performance.now();(function f(){if(TL)seek(((performance.now()-t0)/1000)%TL.end);requestAnimationFrame(f)})()}
+</script></body></html>

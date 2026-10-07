@@ -4,7 +4,7 @@ const VERT = location.search.includes('v');
 const W = VERT ? 1080 : 1920, H = VERT ? 1920 : 1080, END = 40;
 document.documentElement.style.setProperty('--W', W + 'px');
 document.documentElement.style.setProperty('--H', H + 'px');
-if (VERT) { document.documentElement.style.setProperty('--u', '1.15px'); document.addEventListener('DOMContentLoaded', () => { $('cop').style.width = '1010px'; $('cop').style.fontSize = '24px'; }); }
+if (VERT) { document.documentElement.style.setProperty('--u', '1.15px'); document.addEventListener('DOMContentLoaded', () => { $('cop').style.width = '1010px'; $('cop').style.fontSize = '25px'; document.querySelectorAll('.toast').forEach(e => (e.style.bottom = '20%')); $('hl').style.top = '9%'; }); }
 const $ = id => document.getElementById(id);
 const cl = (x, a = 0, b = 1) => Math.min(b, Math.max(a, x));
 const pr = (t, a, b) => cl((t - a) / (b - a));
@@ -25,7 +25,7 @@ const WORDS = ['12 nouveaux messages', 'Objectif non atteint', 'Rapport en retar
 const NUMS = ['+3,2 %', '48 260 €', '−12 %', '1 284', 'ROI 4,1', 'CTR 2,8 %', '0,74', '−4,9 %', '312 €', '17:42', '+0,8 pt', '9 412', '63 %', 'Q3', '2 140 €', '−1,2 %', '88/100', '4,6 ★'];
 function frag(type) {
   const c = document.createElement('canvas'), g = c.getContext('2d'); let w = 200, h = 60;
-  const bright = rnd() < .35, col = bright ? '#ecebe7' : '#8a8b90';
+  const bright = rnd() < .55, col = bright ? '#f4f3ef' : '#b4b5b9';
   if (type === 'num') { const s = NUMS[Math.floor(rnd() * NUMS.length)]; g.font = '500 30px JM'; w = g.measureText(s).width + 8; h = 40; c.width = w; c.height = h; g.font = '500 30px JM'; g.fillStyle = col; g.fillText(s, 4, 30); }
   else if (type === 'note') { const s = WORDS[Math.floor(rnd() * WORDS.length)]; g.font = '400 22px IT'; w = g.measureText(s).width + 62; h = 50; c.width = w; c.height = h;
     g.fillStyle = '#16171bcc'; g.strokeStyle = '#ffffff22'; g.lineWidth = 1.5; g.beginPath(); g.roundRect(1, 1, w - 2, h - 2, 14); g.fill(); g.stroke();
@@ -65,7 +65,7 @@ function drawFrags(t, mode) {
     if (tf < f.ts) continue;
     const p = project(f, tf); if (!p) continue;
     const dz = Math.abs(p.z - 1.15); const L = dz < .35 ? 0 : dz < .9 ? 1 : 2;
-    let a = cl((tf - f.ts) / .3) * (L === 2 ? .55 : .9) * cl(1.6 - p.z * .35, .25, 1);
+    let a = cl((tf - f.ts) / .3) * (L === 2 ? .7 : 1) * cl(1.7 - p.z * .3, .4, 1);
     let x = p.x, y = p.y, sc = p.sc;
     if (mode === 'pulse') { // impulsion lumineuse, puis attraction vers le centre
       const band = lerp(-.15 * W, 1.15 * W, oc(pr(t, 5.35, 5.8)));
@@ -103,10 +103,11 @@ function drawFrags(t, mode) {
 
 // ---------------------------------------------------------------- dashboard
 const dash = $('dash'), cam = $('cam');
-const DS = VERT ? 1.3 : 1;
+const DS = VERT ? 1.3 : 1.12;
+cam.style.top = VERT ? '55%' : '58%';
 const KEYS = [ // t, x, y, échelle, rotX, rotY
-  [9.0, 340, 200, 2.3, 30, -18], [10.6, 720, 210, 2.0, 25, -12], [12.1, 1180, 240, 1.7, 19, -6],
-  [13.6, 980, 480, 1.25, 12, 4], [15.1, 1250, 560, 1.0, 8, 7], [16.6, 1080, 640, .82, 6, 2], [18.2, 960, 600, .72, 4, 0]];
+  [9.0, 470, 215, 2.0, 26, -14], [10.5, 1020, 215, 1.85, 20, -8], [12.0, 1560, 240, 1.7, 15, -2],
+  [13.5, 1250, 520, 1.3, 10, 4], [15.0, 900, 800, 1.15, 8, 3], [16.5, 1300, 900, 1.0, 6, -2], [18.2, 1070, 640, .74, 4, 0]];
 function camAt(t) {
   t = cl(t, KEYS[0][0], KEYS[KEYS.length - 1][0]);
   let i = 0; while (i < KEYS.length - 2 && t > KEYS[i + 1][0]) i++;
@@ -117,44 +118,46 @@ function camAt(t) {
 }
 const CARDS = [...dash.querySelectorAll('.card')].map(el => ({ el, x: el.offsetLeft + el.offsetWidth / 2, y: el.offsetTop + el.offsetHeight / 2 }));
 // données de démonstration (déterministes)
-seed = 3; const D1 = [], D2 = []; let v = 1200, v2 = 1150;
-for (let i = 0; i < 30; i++) { v += (rnd() - .38) * 160 + i * 4; v2 += (rnd() - .45) * 120; D1.push(v); D2.push(v2); }
+seed = 3; const D1 = [], D2 = []; let v = 1200, v2 = 1180;
+for (let i = 0; i < 30; i++) { v += (rnd() - .35) * 150 + i * 5; v2 += (rnd() - .5) * 110; D1.push(v); D2.push(v2); }
 const mx = Math.max(...D1, ...D2) * 1.08, mn = Math.min(...D1, ...D2) * .9;
 const PX = i => i / 29 * 1175, PY = y => 290 - (y - mn) / (mx - mn) * 270;
-$('grid').innerHTML = [0, 1, 2, 3, 4].map(i => `<line x1="0" x2="1175" y1="${20 + i * 67}" y2="${20 + i * 67}" stroke="#ffffff0d"/>`).join('');
+$('grid').innerHTML = [0, 1, 2, 3, 4].map(i => `<line x1="0" x2="1175" y1="${20 + i * 67}" y2="${20 + i * 67}" stroke="#0000000d"/>`).join('');
 $('l2').setAttribute('d', D2.map((y, i) => (i ? 'L' : 'M') + PX(i) + ' ' + PY(y)).join(''));
-const SP = [0, 1, 2].map(s => { seed = 20 + s; let y = 20; return Array.from({ length: 24 }, (_, i) => (y = cl(y + (rnd() - .5 - (s === 1 ? .12 : .06)) * 12, 3, 37))); });
-const BARS = [['Site', .82], ['Google', .64], ['Avis', .47], ['Réseaux', .38], ['Direct', .29]];
-$('bars').innerHTML = BARS.map(([n], i) => `<rect id="b${i}" x="${i * 110 + 6}" y="250" width="70" height="0" rx="8" fill="${i ? '#ffffff26' : '#a6dcbf'}"/><text x="${i * 110 + 41}" y="282" fill="#8d8e93" font-size="14" text-anchor="middle" font-family="IT">${n}</text>`).join('');
+seed = 20; let yy = 34; const SP1 = Array.from({ length: 24 }, (_, i) => (yy = cl(yy - .9 + (rnd() - .5) * 9, 3, 41)));
 function partial(pts, k, X, Y) { const n = Math.max(2, Math.floor(1 + k * (pts.length - 1))); return pts.slice(0, n).map((y, i) => (i ? 'L' : 'M') + X(i) + ' ' + Y(y)).join(''); }
+const pop = (el, t, a, d = .45, dy = 14) => { const k = oc(pr(t, a, a + d)); el.style.opacity = k; el.style.transform = `translateY(${(1 - k) * dy}px) scale(${lerp(.96, 1, k)})`; };
 
 function drawDash(t) {
-  // caméra
   const [px, py, s0, rx, ry] = camAt(t), s = s0 * DS;
   dash.style.transform = `rotateX(${rx}deg) rotateY(${ry}deg) scale(${s}) translate(${-px}px,${-py}px)`;
-  // profondeur de champ : flou selon la distance au point visé
   const cop = pr(t, 17.8, 18.5);
   for (const c of CARDS) {
     const d = Math.hypot((c.x - px) * s / W, (c.y - py) * s / H * (VERT ? .6 : 1));
-    c.el.style.filter = `blur(${(cl((d - .28) / .4) * 6 + cop * 12).toFixed(2)}px)`;
+    c.el.style.filter = `blur(${(cl((d - .3) / .4) * 3.5 + cop * 8).toFixed(2)}px)`;
   }
-  // chiffres
-  $('vRev').textContent = fr(Math.round(48260 * oc(pr(t, 9.3, 11.2)))) + ' €';
-  $('vGro').textContent = '+' + (18.4 * oc(pr(t, 10.2, 12.2))).toFixed(1).replace('.', ',') + ' %';
-  $('vPer').textContent = Math.round(87 * oc(pr(t, 11.2, 12.8)));
-  const ob = 82 * oc(pr(t, 11.6, 13.2)); $('vObj').textContent = Math.round(ob) + ' %'; $('ring').setAttribute('stroke-dashoffset', 314 * (1 - ob / 100));
-  ['sp1', 'sp2', 'sp3'].forEach((id, i) => $(id).setAttribute('d', partial(SP[i], oc(pr(t, 9.4 + i * .7, 11 + i * .7)), j => j / 23 * 340, y => y)));
-  const kl = io(pr(t, 11.8, 14.2)); const live = D1.map((y, i) => i === 29 ? y + Math.sin(t * 3) * 30 * (t > 14.2) : y);
+  // fiche Google
+  $('vViews').textContent = fr(Math.round(1240 * oc(pr(t, 9.3, 11)))) ;
+  $('sp1').setAttribute('d', partial(SP1, oc(pr(t, 9.4, 11.2)), j => j / 23 * 340, y => y));
+  // note Google
+  $('vNote').textContent = (4.8 * oc(pr(t, 9.6, 11.0))).toFixed(1).replace('.', ',');
+  $('stars').style.backgroundImage = ''; $('stars').style.opacity = .25 + .75 * pr(t, 9.7, 11.0);
+  // réservations IA
+  $('vRes').textContent = Math.round(12 * oc(pr(t, 11.3, 12.6)));
+  // chiffre d'affaires
+  const kl = io(pr(t, 12.6, 14.8)); const live = D1.map((y, i) => i === 29 ? y + Math.sin(t * 3) * 25 * (t > 14.8) : y);
   const l1 = partial(live, kl, PX, PY); $('l1').setAttribute('d', l1);
   const n = Math.max(2, Math.floor(1 + kl * 29)); $('area').setAttribute('d', l1 + `L${PX(n - 1)} 300L0 300Z`);
   $('pt').setAttribute('cx', PX(n - 1)); $('pt').setAttribute('cy', PY(live[n - 1]));
-  $('l2').style.opacity = pr(t, 11.2, 11.8);
-  BARS.forEach(([, h], i) => { const k = oe(pr(t, 13.4 + i * .12, 14.3 + i * .12)); const r = $('b' + i); r.setAttribute('height', 230 * h * k); r.setAttribute('y', 250 - 230 * h * k); });
-  dash.querySelectorAll('.ins').forEach((e, i) => { const k = oc(pr(t, 14.1 + i * .3, 14.6 + i * .3)); e.style.opacity = k; e.style.transform = `translateY(${(1 - k) * 12}px)`; });
-  $('a1').textContent = `${12 + Math.max(0, Math.floor((t - 13) / 1.1))} envoyées`;
-  $('a2').textContent = `${4 + Math.max(0, Math.floor((t - 14) / 1.6))} réponses`;
-  $('a3').textContent = 'Lun. 08:00';
-  $('a4').textContent = `${Math.round(lerp(41, 78, pr(t, 12, 18)))} %`;
+  $('l2').style.opacity = pr(t, 12.2, 12.8);
+  $('vGro').textContent = '+' + (18.4 * oc(pr(t, 12.8, 14.8))).toFixed(1).replace('.', ',') + ' %';
+  // avis : la réponse automatique apparaît
+  [0, 1, 2].forEach(i => pop($('ok' + i), t, 13.3 + i * .45, .35, 8));
+  // site, posts, assistant
+  $('vVis').textContent = fr(Math.round(2300 * oc(pr(t, 14.6, 16.2))));
+  dash.querySelectorAll('.pg i').forEach((e, i) => pop(e, t, 14.9 + i * .25, .4, 20));
+  $('vPosts').textContent = Math.round(3 * pr(t, 14.9, 15.6));
+  ['b0', 'b1', 'b2'].forEach((id, i) => pop($(id), t, 15.2 + i * .6, .4, 12));
 }
 
 // ---------------------------------------------------------------- grain
@@ -208,13 +211,13 @@ window.seek = (t, frame = Math.round(t * 30)) => {
   const dOp = pr(t, 8.9, 9.6) * (1 - pr(t, 22.9, 23.7));
   cam.style.opacity = dOp * (t >= 18 ? lerp(1, .45, pr(t, 17.8, 18.5)) : 1);
   if (dOp > 0) drawDash(t);
-  toast($('t1'), t, 12.6, 14.4); toast($('t2'), t, 14.6, 16.1); toast($('t3'), t, 16.2, 17.9);
+  toast($('t1'), t, 13.0, 14.7); toast($('t2'), t, 15.4, 16.9); toast($('t3'), t, 16.95, 17.95);
   // copilote
   const C = $('cop');
   if (win(t, 17.9, 23.4)) {
     const k = oe(pr(t, 17.9, 18.6)), o = pr(t, 22.9, 23.4);
-    vis(C, k * (1 - o), `translate(-50%,-50%) perspective(1600px) rotateX(${lerp(14, 0, k)}deg) scale(${lerp(.94, 1, k) * lerp(1, VERT ? 1.0 : 1.06, pr(t, 18.5, 23)) * (VERT ? .98 : 1)})`, o * 8);
-    const Q = 'Que se passe-t-il dans mon activité ?';
+    vis(C, k * (1 - o), `translate(-50%,${VERT ? -50 : -43}%) perspective(1600px) rotateX(${lerp(14, 0, k)}deg) scale(${lerp(.94, 1, k) * lerp(1, VERT ? 1.0 : 1.06, pr(t, 18.5, 23)) * (VERT ? .98 : 1.06)})`, o * 8);
+    const Q = 'Que se passe-t-il dans ma boutique ?';
     $('qt').textContent = Q.slice(0, Math.floor(Q.length * pr(t, 18.55, 19.65)));
     $('car').style.opacity = t < 19.9 && Math.floor(t * 2.4) % 2 === 0 ? 1 : 0;
     const sc = $('scan'); sc.style.opacity = win(t, 19.75, 20.35) ? 1 : 0; sc.style.backgroundPosition = `${lerp(-60, 160, pr(t, 19.75, 20.35))}% 0`;
@@ -241,7 +244,17 @@ window.seek = (t, frame = Math.round(t * 30)) => {
     const st = (el, a) => { const k = oc(pr(t, a, a + .7)); vis(el, k, `translateY(${(1 - k) * 8}px)`, (1 - k) * 6); };
     st(Fn.querySelector('svg'), 36.4); st(Fn.querySelector('.a'), 36.9); st(Fn.querySelector('.b'), 37.8);
   } else Fn.style.opacity = 0;
-  grain(frame, .07);
+  // lumière : le chaos est sombre, la clarté est lumineuse
+  const Lg = pr(t, 6.6, 6.7) * (1 - pr(t, 22.9, 23.6));
+  $('lightbg').style.opacity = Lg; $('vig').style.opacity = 1 - .75 * Lg;
+  const cc = Math.round(lerp(244, 18, Lg)); L.style.color = `rgb(${cc},${cc - 1},${cc - 3})`;
+  $('light').style.opacity = parseFloat($('light').style.opacity || 0) * (1 - Lg);
+  // titres explicatifs
+  const HL = [[9.3, 12.45, 'Votre site, votre fiche Google, vos avis.<br>Un seul écran.'], [12.5, 15.0, 'Scalify répond à vos avis. Automatiquement.'], [15.05, 17.95, 'Et à vos clients. Même la nuit.'], [18.05, 22.85, 'Une question ? Scalify vous dit quoi faire.']];
+  const hc = HL.find(([a, b]) => win(t, a, b)), hl = $('hl');
+  if (hc) { if (hl.dataset.k != hc[0]) { hl.innerHTML = hc[2]; hl.dataset.k = hc[0]; } const k = oc(pr(t, hc[0], hc[0] + .5)), o = pr(t, hc[1] - .3, hc[1]); vis(hl, k * (1 - o), `translateY(${(1 - k) * 16}px)`, (1 - k) * 8); } else hl.style.opacity = 0;
+  $('hlbg').style.opacity = pr(t, 9.1, 9.5) * (1 - pr(t, 22.7, 23.1));
+  grain(frame, .07 * (1 - .7 * Lg));
 };
 document.fonts.ready.then(async () => {
   await Promise.all(['300 20px IT', '400 20px IT', '500 20px IT', '400 20px JM', '500 20px JM'].map(f => document.fonts.load(f)));

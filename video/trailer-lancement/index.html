@@ -16,131 +16,156 @@ body{font-family:IT,sans-serif;color:var(--ink);-webkit-font-smoothing:antialias
 canvas.layer{width:100%;height:100%}
 /* ---------- textes plein écran ---------- */
 .ttl{position:absolute;left:0;right:0;text-align:center;opacity:0;white-space:nowrap;will-change:opacity,transform,filter}
-.t1{top:50%;font-weight:300;font-size:calc(var(--u)*54);letter-spacing:.01em;transform:translateY(-50%)}
-.cap{top:auto;bottom:11%;font-weight:400;font-size:calc(var(--u)*30);color:#d9d8d4;letter-spacing:.02em}
+.t1{top:50%;font-weight:400;font-size:calc(var(--u)*84);text-shadow:0 0 40px #000;letter-spacing:.01em;transform:translateY(-50%)}
+.cap{top:auto;bottom:16%;font-weight:400;font-size:calc(var(--u)*46);color:#fff;letter-spacing:.02em}
 /* ---------- logo ---------- */
 #logo{position:absolute;left:50%;top:50%;opacity:0;transform:translate(-50%,-50%);display:flex;flex-direction:column;align-items:center}
-#mark{width:calc(var(--u)*120);height:calc(var(--u)*120)}
-#mark path{fill:none;stroke:#f4f3ef;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}
-#word{margin-top:calc(var(--u)*34);font-weight:500;font-size:calc(var(--u)*64);letter-spacing:.42em;padding-left:.42em}
-#voici{margin-top:calc(var(--u)*30);font-weight:300;font-size:calc(var(--u)*30);color:#bdbcb7;letter-spacing:.04em}
+#mark{width:calc(var(--u)*150);height:calc(var(--u)*150)}
+#mark path{fill:none;stroke:currentColor;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}
+#word{margin-top:calc(var(--u)*34);font-weight:500;font-size:calc(var(--u)*80);letter-spacing:.42em;padding-left:.42em}
+#voici{margin-top:calc(var(--u)*30);font-weight:400;font-size:calc(var(--u)*44);color:inherit;letter-spacing:.04em}
 #sweep{position:absolute;inset:-20%;background:linear-gradient(100deg,#0000 40%,#ffffff09 50%,#0000 60%);mix-blend-mode:screen;opacity:0}
 /* ---------- dashboard ---------- */
 #cam{position:absolute;left:50%;top:50%;width:0;height:0;perspective:calc(var(--u)*1800);opacity:0}
-#dash{position:absolute;left:0;top:0;width:1920px;height:1200px;transform-origin:0 0;transform-style:preserve-3d;background:#08090b;border-radius:28px;
-  box-shadow:0 0 0 1px #ffffff10,0 80px 200px #000;font-size:16px;overflow:hidden}
-#dash .side{position:absolute;left:0;top:0;bottom:0;width:220px;border-right:1px solid var(--line);padding:28px 22px;background:#0a0b0d}
+#dash,.toast,#cop{--ink:#121316;--mute:#6e6f74;--line:#00000012;--card:#ffffff;--pos:#178a55;--acc:#a87a2a;--neg:#c4513f;color:var(--ink)}
+#dash{position:absolute;left:0;top:0;width:1920px;height:1200px;transform-origin:0 0;transform-style:preserve-3d;background:#f3f2ee;border-radius:28px;
+  box-shadow:0 0 0 1px #00000010,0 60px 160px #00000030;font-size:16px;overflow:hidden}
+#dash .side{position:absolute;left:0;top:0;bottom:0;width:220px;border-right:1px solid var(--line);padding:28px 22px;background:#fafaf8}
 .side .brand{display:flex;align-items:center;gap:10px;font-weight:600;letter-spacing:.24em;font-size:14px;margin-bottom:38px}
 .side .brand svg{width:26px;height:26px}
-.side .brand path{fill:none;stroke:#f4f3ef;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
+.side .brand path{fill:none;stroke:#121316;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
 .nav{display:flex;flex-direction:column;gap:6px}
 .nav div{padding:10px 12px;border-radius:9px;color:var(--mute);font-size:14px}
-.nav div.on{background:#ffffff0c;color:var(--ink)}
+.nav div.on{background:#0000000a;color:var(--ink)}
 .hdr{position:absolute;left:240px;right:20px;top:22px;height:56px;display:flex;align-items:center;gap:16px}
 .hdr h1{font-weight:500;font-size:22px;letter-spacing:-.01em}
 .hdr .sp{flex:1}
 .pill{padding:8px 14px;border:1px solid var(--line);border-radius:999px;font-size:13px;color:var(--mute)}
-.demo{color:#bba57c;border-color:#e7c58a33}
-.card{position:absolute;background:var(--card);border:1px solid var(--line);border-radius:18px;padding:22px 24px;overflow:hidden;will-change:filter}
+.demo{color:#8a6a2a;border-color:#a87a2a40}
+.card{position:absolute;background:var(--card);border:1px solid var(--line);border-radius:18px;padding:22px 24px;overflow:hidden;will-change:filter;box-shadow:0 1px 2px #0000000a,0 10px 30px #0000000a}
 .card .lab{font-size:13px;color:var(--mute);letter-spacing:.04em;text-transform:uppercase}
 .card .big{font-family:IT;font-weight:400;font-size:44px;letter-spacing:-.02em;margin-top:12px}
 .card .d{font-family:JM;font-size:13px;margin-top:8px;color:var(--pos)}
 .card h3{font-weight:500;font-size:17px}
 .card .sub{font-size:13px;color:var(--mute);margin-top:4px}
 svg.ch{position:absolute;left:24px;right:24px;bottom:22px}
-.ins{display:flex;gap:14px;padding:16px 0;border-top:1px solid var(--line);font-size:15px;line-height:1.4;color:#d6d5d1}
+.ins{display:flex;gap:14px;padding:16px 0;border-top:1px solid var(--line);font-size:15px;line-height:1.4;color:#3a3b3f}
 .ins:first-of-type{border-top:0}
 .ins i{flex:none;width:8px;height:8px;border-radius:50%;margin-top:7px;background:var(--acc)}
 .ins b{font-weight:500;color:var(--ink)}
-.auto{display:flex;align-items:center;gap:12px;padding:13px 0;border-top:1px solid var(--line);font-size:14px;color:#d6d5d1}
+.auto{display:flex;align-items:center;gap:12px;padding:13px 0;border-top:1px solid var(--line);font-size:14px;color:#3a3b3f}
 .auto:first-of-type{border-top:0}
 .auto .st{margin-left:auto;font-family:JM;font-size:12px;color:var(--mute)}
 .auto .dot{width:7px;height:7px;border-radius:50%;background:var(--pos)}
-.rep{display:flex;justify-content:space-between;padding:13px 0;border-top:1px solid var(--line);font-size:14px;color:#d6d5d1}
+.rep{display:flex;justify-content:space-between;padding:13px 0;border-top:1px solid var(--line);font-size:14px;color:#3a3b3f}
 .rep:first-of-type{border-top:0}
 .rep span:last-child{font-family:JM;font-size:12px;color:var(--mute)}
 /* ---------- toasts (espace écran) ---------- */
-.toast{position:absolute;left:50%;top:9%;transform:translateX(-50%);opacity:0;display:flex;align-items:center;gap:calc(var(--u)*16);
-  padding:calc(var(--u)*18) calc(var(--u)*28);border-radius:calc(var(--u)*18);background:#15161acc;border:1px solid #ffffff1c;
-  backdrop-filter:blur(18px);box-shadow:0 30px 80px #000c;font-size:calc(var(--u)*24);white-space:nowrap}
-.toast .k{width:calc(var(--u)*34);height:calc(var(--u)*34);border-radius:calc(var(--u)*10);display:grid;place-items:center;background:#ffffff10}
+.toast{position:absolute;left:50%;bottom:8%;transform:translateX(-50%);opacity:0;display:flex;align-items:center;gap:calc(var(--u)*16);
+  padding:calc(var(--u)*18) calc(var(--u)*28);border-radius:calc(var(--u)*18);background:#ffffffee;border:1px solid #00000012;
+  backdrop-filter:blur(18px);box-shadow:0 24px 70px #00000026;font-size:calc(var(--u)*32);white-space:nowrap}
+.toast .k{width:calc(var(--u)*34);height:calc(var(--u)*34);border-radius:calc(var(--u)*10);display:grid;place-items:center;background:#0000000a}
 .toast .k svg{width:60%;height:60%}
-.toast .k path{fill:none;stroke:#f4f3ef;stroke-width:2.4;stroke-linecap:round;stroke-linejoin:round}
+.toast .k path{fill:none;stroke:#121316;stroke-width:2.4;stroke-linecap:round;stroke-linejoin:round}
 .toast small{display:block;font-size:.62em;color:var(--mute);letter-spacing:.06em;text-transform:uppercase;margin-bottom:2px}
 .toast.reco{white-space:normal;max-width:calc(var(--u)*760);align-items:flex-start}
 /* ---------- copilote ---------- */
-#cop{position:absolute;left:50%;top:50%;width:calc(var(--u)*980);opacity:0;border-radius:calc(var(--u)*26);background:#101114e8;border:1px solid #ffffff1a;
-  backdrop-filter:blur(30px);box-shadow:0 60px 160px #000,inset 0 1px 0 #ffffff12;padding:calc(var(--u)*34) calc(var(--u)*40);font-size:calc(var(--u)*22)}
+#cop{position:absolute;left:50%;top:50%;width:calc(var(--u)*980);opacity:0;border-radius:calc(var(--u)*26);background:#fffffff2;border:1px solid #00000012;
+  backdrop-filter:blur(30px);box-shadow:0 50px 140px #00000038;padding:calc(var(--u)*34) calc(var(--u)*40);font-size:calc(var(--u)*22)}
 #cop .top{display:flex;align-items:center;gap:calc(var(--u)*12);color:var(--mute);font-size:.72em;letter-spacing:.1em;text-transform:uppercase}
 #cop .top svg{width:calc(var(--u)*22);height:calc(var(--u)*22)}
-#cop .top path{fill:none;stroke:#f4f3ef;stroke-width:2.4;stroke-linecap:round;stroke-linejoin:round}
-#q{margin-top:calc(var(--u)*24);padding:calc(var(--u)*20) calc(var(--u)*24);border-radius:calc(var(--u)*16);background:#ffffff08;border:1px solid #ffffff12;font-size:1.15em;min-height:calc(var(--u)*70)}
+#cop .top path{fill:none;stroke:#121316;stroke-width:2.4;stroke-linecap:round;stroke-linejoin:round}
+#q{margin-top:calc(var(--u)*24);padding:calc(var(--u)*20) calc(var(--u)*24);border-radius:calc(var(--u)*16);background:#0000000a;border:1px solid #0000000f;font-size:1.15em;min-height:calc(var(--u)*70)}
 #q .car{display:inline-block;width:2px;height:1em;background:var(--ink);vertical-align:-.12em;margin-left:2px}
-#scan{height:2px;margin:calc(var(--u)*22) 0 calc(var(--u)*6);border-radius:2px;background:linear-gradient(90deg,#0000,#e7c58a,#0000);background-size:40% 100%;background-repeat:no-repeat;opacity:0}
-.res{overflow:hidden;display:flex;align-items:baseline;gap:calc(var(--u)*18);padding:calc(var(--u)*14) 0;border-top:1px solid #ffffff10;opacity:0}
+#scan{height:2px;margin:calc(var(--u)*22) 0 calc(var(--u)*6);border-radius:2px;background:linear-gradient(90deg,#0000,#a87a2a,#0000);background-size:40% 100%;background-repeat:no-repeat;opacity:0}
+.res{overflow:hidden;display:flex;align-items:baseline;gap:calc(var(--u)*18);padding:calc(var(--u)*14) 0;border-top:1px solid #0000000f;opacity:0}
 .res .n{font-family:JM;font-weight:500;font-size:1.5em;width:calc(var(--u)*44);text-align:right}
-.res .w{color:#d6d5d1}
+.res .w{color:#3a3b3f}
 #rec{overflow:hidden;margin-top:calc(var(--u)*18);opacity:0}
 #rec .h{color:var(--mute);font-size:.82em}
-#rec .b{margin-top:calc(var(--u)*12);padding:calc(var(--u)*20) calc(var(--u)*24);border-radius:calc(var(--u)*16);border:1px solid #e7c58a40;background:linear-gradient(180deg,#e7c58a10,#e7c58a04);line-height:1.45}
+#rec .b{margin-top:calc(var(--u)*12);padding:calc(var(--u)*20) calc(var(--u)*24);border-radius:calc(var(--u)*16);border:1px solid #a87a2a40;background:linear-gradient(180deg,#a87a2a12,#a87a2a05);line-height:1.45}
+#rec .btn{display:block;width:max-content;margin-top:calc(var(--u)*16);padding:calc(var(--u)*12) calc(var(--u)*22);border-radius:999px;background:#121316;color:#fff;font-weight:500;font-size:.9em}
 #rec .b em{font-style:normal;color:var(--acc)}
 /* ---------- révélation ---------- */
 #launch{position:absolute;left:0;right:0;top:50%;transform:translateY(-50%);text-align:center;opacity:0}
-#lt{font-weight:400;font-size:calc(var(--u)*30);letter-spacing:.5em;padding-left:.5em;color:#c9c8c3}
+#lt{font-weight:400;font-size:calc(var(--u)*40);letter-spacing:.5em;padding-left:.5em;color:#c9c8c3}
 #num{font-weight:300;font-size:calc(var(--u)*420);line-height:.9;letter-spacing:-.04em;margin-top:calc(var(--u)*10);
   background:linear-gradient(180deg,#ffffff 30%,#9a9994);-webkit-background-clip:text;background-clip:text;color:transparent}
 #jrs{font-weight:500;font-size:calc(var(--u)*40);letter-spacing:.6em;padding-left:.6em;margin-top:calc(var(--u)*6)}
-#prep{font-weight:300;font-size:calc(var(--u)*32);color:#bdbcb7;margin-top:calc(var(--u)*46);letter-spacing:.03em}
+#prep{font-weight:400;font-size:calc(var(--u)*44);color:#e9e8e4;margin-top:calc(var(--u)*46);letter-spacing:.03em}
 #fin{position:absolute;left:0;right:0;top:50%;transform:translateY(-50%);text-align:center;opacity:0}
 #fin svg{width:calc(var(--u)*76);height:calc(var(--u)*76)}
 #fin path{fill:none;stroke:#f4f3ef;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
-#fin .a{font-weight:300;font-size:calc(var(--u)*44);margin-top:calc(var(--u)*40)}
-#fin .b{font-weight:400;font-size:calc(var(--u)*26);color:#a9a8a3;letter-spacing:.32em;text-transform:uppercase;margin-top:calc(var(--u)*24)}
+#fin .a{font-weight:400;font-size:calc(var(--u)*56);white-space:normal;padding:0 6%;margin-top:calc(var(--u)*40)}
+#fin .b{font-weight:500;font-size:calc(var(--u)*32);color:#e7c58a;letter-spacing:.32em;text-transform:uppercase;margin-top:calc(var(--u)*24)}
+
+.stars{color:#e3a72f;letter-spacing:2px;font-size:.62em;vertical-align:.12em}
+.card .big{font-size:58px}
+.card .lab{font-size:15px}
+.card h3{font-size:21px}.card .sub{font-size:15px}
+.tagp{font-family:JM;font-size:20px;color:#178a55;background:#178a5514;padding:4px 12px;border-radius:999px}
+.rv{padding:14px 0;border-top:1px solid var(--line)}.rv:first-child{border-top:0}
+.rh{display:flex;justify-content:space-between;align-items:center}.rh .stars{font-size:20px;vertical-align:0}.who{font-size:13px;color:#6e6f74}
+.rt{font-size:17px;color:#25262a;margin-top:4px}
+.ok{display:inline-block;margin-top:8px;font-size:13px;font-weight:500;color:#178a55;background:#178a5512;padding:4px 10px;border-radius:999px;opacity:0}
+.live{display:inline-block;width:9px;height:9px;border-radius:50%;background:#178a55;margin-right:8px;box-shadow:0 0 0 4px #178a5522}
+.mini{position:absolute;left:24px;right:24px;bottom:24px;height:250px;border-radius:14px;overflow:hidden;border:1px solid #00000012}
+.mb{display:flex;align-items:center;gap:6px;height:34px;padding:0 12px;background:#f1f0ec;font-size:12px;color:#6e6f74}
+.mb i{width:9px;height:9px;border-radius:50%;background:#d9d7d1}.mb span{margin-left:10px;padding:3px 12px;background:#fff;border-radius:999px;flex:1}
+.mh{height:216px;display:flex;flex-direction:column;justify-content:flex-end;align-items:flex-start;gap:10px;padding:20px;color:#fff;box-shadow:inset 0 -120px 80px -40px #000a}
+.mh b{font-size:28px;font-weight:600}.mh em{font-style:normal;font-size:14px;font-weight:600;background:#fff;color:#121316;padding:7px 16px;border-radius:999px}
+.pg{position:absolute;left:24px;right:24px;bottom:24px;display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.pg i{aspect-ratio:1;border-radius:12px;background-size:cover;background-position:center;opacity:0}
+.bub{max-width:80%;margin-top:14px;padding:12px 16px;border-radius:16px;font-size:16px;line-height:1.35;opacity:0}
+.bub small{display:block;font-size:11px;color:#8b8c90;margin-top:4px}
+.bub.c{background:#f1f0ec;border-bottom-left-radius:4px}
+.bub.a{margin-left:auto;background:#121316;color:#fff;border-bottom-right-radius:4px}.bub.a small{color:#ffffff88}
+#lightbg{background:radial-gradient(90% 75% at 50% 35%,#fdfcfa,#e5e3dd);opacity:0}
+#hl{position:absolute;left:5%;right:5%;top:6.5%;text-align:center;font-weight:500;font-size:calc(var(--u)*66);letter-spacing:-.02em;line-height:1.08;color:#121316;opacity:0}
+#hlbg{background:linear-gradient(180deg,#f7f6f3 0%,#f7f6f3f0 17%,#f7f6f300 33%);opacity:0}
 #light{background:radial-gradient(45% 35% at 50% 50%,#e7c58a1c,#0000 70%);opacity:0;mix-blend-mode:screen}
 #vig{background:radial-gradient(120% 90% at 50% 50%,#0000 55%,#000c 100%)}
 #black{background:#000;opacity:0}
 </style></head>
 <body><div id="stage">
+<div class="layer" id="lightbg"></div>
 <canvas class="layer" id="cv"></canvas>
 <div id="cam"><div id="dash">
   <div class="side"><div class="brand"><svg viewBox="0 0 32 32"><path d="M21 10.8H13.9a2.85 2.85 0 0 0 0 5.7h4.3a2.85 2.85 0 0 1 0 5.7H11"/></svg>SCALIFY</div>
-    <div class="nav"><div class="on">Vue d’ensemble</div><div>Revenus</div><div>Clients</div><div>Analyses</div><div>Automatisations</div><div>Objectifs</div><div>Rapports</div><div>Copilote</div></div></div>
-  <div class="hdr"><h1>Vue d’ensemble</h1><span class="sp"></span><span class="pill demo">Données de démonstration</span><span class="pill">30 derniers jours</span></div>
-  <div class="card" id="k1" style="left:240px;top:100px;width:395px;height:200px"><div class="lab">Revenus</div><div class="big" id="vRev">0 €</div><div class="d">▲ 12,1 % vs mois dernier</div><svg class="ch" height="40" viewBox="0 0 340 40" preserveAspectRatio="none"><path id="sp1" d="" fill="none" stroke="#a6dcbf" stroke-width="2"/></svg></div>
-  <div class="card" id="k2" style="left:655px;top:100px;width:395px;height:200px"><div class="lab">Croissance</div><div class="big" id="vGro">+0,0 %</div><div class="d">Tendance sur 90 jours</div><svg class="ch" height="40" viewBox="0 0 340 40" preserveAspectRatio="none"><path id="sp2" d="" fill="none" stroke="#e7c58a" stroke-width="2"/></svg></div>
-  <div class="card" id="k3" style="left:1070px;top:100px;width:395px;height:200px"><div class="lab">Performance</div><div class="big" id="vPer">0</div><div class="d" style="color:#8d8e93">Score global / 100</div><svg class="ch" height="40" viewBox="0 0 340 40" preserveAspectRatio="none"><path id="sp3" d="" fill="none" stroke="#f2f1ee" stroke-width="2"/></svg></div>
-  <div class="card" id="k4" style="left:1485px;top:100px;width:415px;height:200px"><div class="lab">Objectifs</div>
-    <svg style="position:absolute;right:28px;top:40px" width="120" height="120" viewBox="0 0 120 120"><circle cx="60" cy="60" r="50" fill="none" stroke="#ffffff12" stroke-width="8"/><circle id="ring" cx="60" cy="60" r="50" fill="none" stroke="#e7c58a" stroke-width="8" stroke-linecap="round" stroke-dasharray="314" stroke-dashoffset="314" transform="rotate(-90 60 60)"/></svg>
-    <div class="big" id="vObj">0 %</div><div class="d" style="color:#8d8e93">Objectif mensuel</div></div>
-  <div class="card" id="perf" style="left:240px;top:320px;width:1225px;height:420px"><h3>Croissance des revenus</h3><div class="sub">Revenus quotidiens · 30 jours</div>
-    <svg style="position:absolute;left:24px;top:90px" width="1175" height="300" viewBox="0 0 1175 300"><g id="grid"></g>
-      <defs><linearGradient id="ga" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#a6dcbf" stop-opacity=".22"/><stop offset="1" stop-color="#a6dcbf" stop-opacity="0"/></linearGradient></defs>
-      <path id="area" fill="url(#ga)" d=""/><path id="l1" fill="none" stroke="#a6dcbf" stroke-width="2.5" d=""/><path id="l2" fill="none" stroke="#ffffff40" stroke-width="1.5" stroke-dasharray="5 6" d=""/><circle id="pt" r="6" fill="#a6dcbf" stroke="#08090b" stroke-width="3"/></svg></div>
-  <div class="card" id="insc" style="left:1485px;top:320px;width:415px;height:420px"><h3>Insights IA</h3><div class="sub">Générés à partir de vos données</div><div style="margin-top:16px">
-    <div class="ins"><i></i><div><b>Clients fidèles</b> : 22 % des clients font 61 % du chiffre.</div></div>
-    <div class="ins"><i></i><div><b>Pic d’activité</b> le jeudi entre 17 h et 19 h.</div></div>
-    <div class="ins"><i style="background:#e79b8f"></i><div><b>Panier moyen</b> en baisse sur les nouveaux clients.</div></div></div></div>
-  <div class="card" id="ana" style="left:240px;top:760px;width:600px;height:420px"><h3>Analyses</h3><div class="sub">Revenus par canal</div><svg style="position:absolute;left:24px;top:96px" width="552" height="290" viewBox="0 0 552 290" id="bars"></svg></div>
-  <div class="card" id="aut" style="left:860px;top:760px;width:605px;height:420px"><h3>Automatisations</h3><div class="sub">En cours d’exécution</div><div style="margin-top:14px">
-    <div class="auto"><span class="dot"></span>Relance des devis sans réponse<span class="st" id="a1">—</span></div>
-    <div class="auto"><span class="dot"></span>Réponse aux nouveaux avis<span class="st" id="a2">—</span></div>
-    <div class="auto"><span class="dot"></span>Rapport hebdomadaire<span class="st" id="a3">—</span></div>
-    <div class="auto"><span class="dot" style="background:#e7c58a"></span>Segmentation des clients<span class="st" id="a4">—</span></div></div></div>
-  <div class="card" id="rap" style="left:1485px;top:760px;width:415px;height:420px"><h3>Rapports</h3><div class="sub">Prêts à partager</div><div style="margin-top:14px">
-    <div class="rep"><span>Synthèse mensuelle</span><span>PDF</span></div><div class="rep"><span>Performance par canal</span><span>PDF</span></div>
-    <div class="rep"><span>Cohortes clients</span><span>CSV</span></div><div class="rep"><span>Prévisions T4</span><span>PDF</span></div></div></div>
+    <div class="nav"><div class="on">Accueil</div><div>Site web</div><div>Fiche Google</div><div>Avis</div><div>Réservations</div><div>Publications</div><div>Assistant IA</div></div></div>
+  <div class="hdr"><h1>Boulangerie Martin</h1><span class="sp"></span><span class="pill demo">Commerce de démonstration</span><span class="pill">Cette semaine</span></div>
+  <div class="card" id="k1" style="left:240px;top:100px;width:500px;height:230px"><div class="lab">Vues de votre fiche Google</div><div class="big" id="vViews">0</div><div class="d" id="vViewsD">▲ +38 % vs semaine dernière</div><svg class="ch" height="44" viewBox="0 0 340 44" preserveAspectRatio="none"><path id="sp1" d="" fill="none" stroke="#178a55" stroke-width="2.5"/></svg></div>
+  <div class="card" id="k2" style="left:760px;top:100px;width:520px;height:230px"><div class="lab">Note Google</div><div class="big"><span id="vNote">0,0</span> <span class="stars" id="stars">★★★★★</span></div><div class="d" style="color:#3a3b3f">212 avis · <b style="color:#178a55">100 % répondus</b></div></div>
+  <div class="card" id="k3" style="left:1300px;top:100px;width:600px;height:230px"><div class="lab">Réservations prises par l’IA</div><div class="big"><span id="vRes">0</span> <span style="font-size:24px;color:#6e6f74;font-weight:400">cette nuit</span></div><div class="d" style="color:#3a3b3f">Pendant que vous dormiez · 22 h – 7 h</div></div>
+  <div class="card" id="perf" style="left:240px;top:350px;width:1040px;height:410px"><div style="display:flex;align-items:baseline;gap:16px"><h3>Chiffre d’affaires</h3><span class="tagp" id="vGro">+0,0 %</span></div><div class="sub">Depuis l’activation de Scalify</div>
+    <svg style="position:absolute;left:24px;top:96px" width="992" height="290" viewBox="0 0 1175 300" preserveAspectRatio="none"><g id="grid"></g>
+      <defs><linearGradient id="ga" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#178a55" stop-opacity=".18"/><stop offset="1" stop-color="#178a55" stop-opacity="0"/></linearGradient></defs>
+      <path id="area" fill="url(#ga)" d=""/><path id="l1" fill="none" stroke="#178a55" stroke-width="3" d=""/><path id="l2" fill="none" stroke="#00000035" stroke-width="1.5" stroke-dasharray="5 6" d=""/><circle id="pt" r="7" fill="#178a55" stroke="#ffffff" stroke-width="3"/></svg></div>
+  <div class="card" id="avis" style="left:1300px;top:350px;width:600px;height:410px"><h3>Avis récents</h3><div class="sub">Réponses rédigées et envoyées par Scalify</div><div style="margin-top:10px">
+    <div class="rv"><div class="rh"><span class="stars">★★★★★</span><span class="who">Julie · il y a 2 h</span></div><div class="rt">« Les meilleurs croissants du quartier ! »</div><div class="ok" id="ok0">✓ Répondu automatiquement</div></div>
+    <div class="rv"><div class="rh"><span class="stars">★★★★★</span><span class="who">Karim · hier</span></div><div class="rt">« Accueil adorable, pain toujours chaud. »</div><div class="ok" id="ok1">✓ Répondu automatiquement</div></div>
+    <div class="rv"><div class="rh"><span class="stars">★★★★☆</span><span class="who">Sophie · hier</span></div><div class="rt">« Très bon, un peu d’attente le samedi. »</div><div class="ok" id="ok2">✓ Répondu automatiquement</div></div></div></div>
+  <div class="card" id="site" style="left:240px;top:780px;width:500px;height:400px"><h3>Votre site</h3><div class="sub"><span class="live"></span>En ligne · <span id="vVis">0</span> visiteurs ce mois</div>
+    <div class="mini"><div class="mb"><i></i><i></i><i></i><span>boulangerie-martin.fr</span></div><div class="mh" style="background:url(thumbs/t2.jpg) center/cover"><b>Boulangerie Martin</b><em>Commander</em></div></div></div>
+  <div class="card" id="posts" style="left:760px;top:780px;width:520px;height:400px"><h3>Publications</h3><div class="sub"><span id="vPosts">0</span> posts publiés cette semaine · Instagram, Facebook, Google</div>
+    <div class="pg"><i style="background-image:url(thumbs/t1.jpg)"></i><i style="background-image:url(thumbs/t3.jpg)"></i><i style="background-image:url(thumbs/t5.jpg)"></i></div></div>
+  <div class="card" id="chat" style="left:1300px;top:780px;width:600px;height:400px"><h3>Assistant IA 24/7</h3><div class="sub">Répond à vos clients à votre place</div>
+    <div class="bub c" id="b0">Vous êtes ouverts dimanche ?<small>Client · 23:12</small></div>
+    <div class="bub a" id="b1">Oui, de 7 h à 13 h ! Je vous mets une baguette de côté ?<small>Scalify · 23:12</small></div>
+    <div class="bub c" id="b2">Oui, deux s’il vous plaît 🙏<small>Client · 23:13</small></div></div>
 </div></div>
-<div class="toast" id="t1"><span class="k"><svg viewBox="0 0 32 32"><path d="M21 10.8H13.9a2.85 2.85 0 0 0 0 5.7h4.3a2.85 2.85 0 0 1 0 5.7H11"/></svg></span><div><small>Scalify</small>Nouvelle opportunité détectée par SCALIFY.</div></div>
-<div class="toast" id="t2"><span class="k" style="color:#a6dcbf;font-family:JM">↗</span><div><small>Croissance</small>Croissance : <span style="color:#a6dcbf">+18,4 %</span></div></div>
-<div class="toast reco" id="t3"><span class="k"><svg viewBox="0 0 32 32"><path d="M21 10.8H13.9a2.85 2.85 0 0 0 0 5.7h4.3a2.85 2.85 0 0 1 0 5.7H11"/></svg></span><div><small>Recommandation IA</small>Concentrez-vous sur vos clients les plus actifs.</div></div>
-<div id="cop"><div class="top"><svg viewBox="0 0 32 32"><path d="M21 10.8H13.9a2.85 2.85 0 0 0 0 5.7h4.3a2.85 2.85 0 0 1 0 5.7H11"/></svg>Copilote Scalify</div>
+<div class="layer" id="hlbg"></div><div id="hl"></div>
+<div class="toast" id="t1"><span class="k" style="color:#e3a72f">★</span><div><small>Nouvel avis 5 étoiles</small>Réponse envoyée automatiquement.</div></div>
+<div class="toast" id="t2"><span class="k">☾</span><div><small>23:47 · Réservation prise par l’IA</small>Table pour 4 · samedi 20 h · confirmée</div></div>
+<div class="toast" id="t3"><span class="k" style="color:#178a55;font-family:JM">↗</span><div><small>Résultat</small>Chiffre d’affaires : <span style="color:#178a55">+18,4 %</span></div></div>
+<div id="cop"><div class="top"><svg viewBox="0 0 32 32"><path d="M21 10.8H13.9a2.85 2.85 0 0 0 0 5.7h4.3a2.85 2.85 0 0 1 0 5.7H11"/></svg>Assistant Scalify</div>
   <div id="q"><span id="qt"></span><span class="car" id="car"></span></div><div id="scan"></div>
-  <div class="res" id="r1"><span class="n">3</span><span class="w">changements importants détectés.</span></div>
-  <div class="res" id="r2"><span class="n">2</span><span class="w">opportunités identifiées.</span></div>
-  <div class="res" id="r3"><span class="n" style="color:#e79b8f">1</span><span class="w">problème nécessite votre attention.</span></div>
-  <div id="rec"><div class="h">Voici ce que nous vous recommandons :</div><div class="b">Relancez les <em>42 clients</em> inactifs depuis 30 jours, en priorité le jeudi après 17 h. <em>Impact estimé : +6 % de revenus.</em></div></div></div>
+  <div class="res" id="r1"><span class="n">3</span><span class="w">nouveaux avis 5 étoiles cette semaine.</span></div>
+  <div class="res" id="r2"><span class="n">2</span><span class="w">créneaux vides demain après-midi.</span></div>
+  <div class="res" id="r3"><span class="n" style="color:#c4513f">1</span><span class="w">avis négatif attend votre validation.</span></div>
+  <div id="rec"><div class="h">Voici ce que nous vous recommandons :</div><div class="b">Publiez l’offre <em>« -10 % demain de 14 h à 17 h »</em> : le post est déjà prêt. <em>Impact estimé : +15 clients.</em><span class="btn">Publier maintenant</span></div></div></div>
 <div class="layer" id="light"></div>
-<div id="logo"><svg id="mark" viewBox="0 0 32 32"><path id="mp" d="M21 10.8H13.9a2.85 2.85 0 0 0 0 5.7h4.3a2.85 2.85 0 0 1 0 5.7H11"/></svg><div id="word">SCALIFY</div><div id="voici">Voici SCALIFY.</div><div id="tag" style="opacity:0;margin-top:calc(var(--u)*30);font-weight:300;font-size:calc(var(--u)*34);color:#d0cfca">Votre centre de commande intelligent.</div></div>
+<div id="logo"><svg id="mark" viewBox="0 0 32 32"><path id="mp" d="M21 10.8H13.9a2.85 2.85 0 0 0 0 5.7h4.3a2.85 2.85 0 0 1 0 5.7H11"/></svg><div id="word">SCALIFY</div><div id="voici">Voici SCALIFY.</div><div id="tag" style="opacity:0;text-align:center;max-width:960px;line-height:1.2;margin-top:calc(var(--u)*30);font-weight:300;font-size:calc(var(--u)*46);color:#e9e8e4">Votre centre de commande intelligent.</div></div>
 <div class="layer" id="sweep"></div>
 <div class="ttl t1" id="x1">Trop de données.</div>
 <div class="ttl t1" id="x2">Pas assez de clarté.</div>

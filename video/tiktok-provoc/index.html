@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="fr"><head><meta charset="utf-8"><title>Scalify Provoc</title>
+<style>
+@font-face{font-family:Anton;src:url(Anton-400.woff2)}
+@font-face{font-family:IT;font-weight:500;src:url(InterTight-normal.woff2)}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{width:1080px;height:1920px;overflow:hidden;background:transparent}
+#t{position:absolute;left:60px;right:60px;top:50%;transform-origin:50% 50%;text-align:center;font:400 158px/.96 Anton;text-transform:uppercase;color:#fff;
+  text-shadow:0 6px 0 #0007,0 0 60px #000b;opacity:0}
+#t .r{color:#ff2b2b}
+#end{position:absolute;inset:0;display:grid;align-content:center;justify-items:center;gap:34px;opacity:0;text-align:center;color:#fff}
+#name{font:400 210px/.9 Anton;letter-spacing:.04em}
+#feat{font:500 34px/1 IT;letter-spacing:.3em;text-transform:uppercase;color:#ffffffb3}
+#jour{font:400 92px/1 Anton;color:#ff2b2b}
+#offer{font:500 38px/1.2 IT;color:#fff;padding:18px 34px;border:2px solid #fff6;border-radius:999px}
+#flash{position:absolute;inset:0;background:#fff;opacity:0}
+</style></head><body>
+<div id="t"></div>
+<div id="end"><div id="name">SCALIFY</div><div id="feat">Site · Google · Avis · IA 24/7</div><div id="jour">J-26</div><div id="offer">-30 % pour les 15 premiers</div></div>
+<div id="flash"></div>
+<script>
+const $=id=>document.getElementById(id),cl=(x,a=0,b=1)=>Math.min(b,Math.max(a,x)),pr=(t,a,b)=>cl((t-a)/(b-a));
+const oe=k=>k>=1?1:1-Math.pow(2,-10*k);
+// [début, fin, texte] — coupes calées sur timeline.json
+const C=[[0,.545,'Votre<br>commerce'],[.545,1.083,'Votre<br>commerce<br><span class=r>est mort.</span>'],
+ [1.083,1.625,'Dès<br>19 h.'],[1.625,2.167,'23 h :<br>ils<br>cherchent.'],[2.167,2.708,'Vous ?<br>Vous<br>dormez.'],
+ [2.708,3.29,'Votre<br>concurrent<br>répond.'],[3.29,3.83,'<span class=r>Client<br>perdu.</span>'],
+ [4.30,5.458,'Sauf si…'],[5.458,6.29,'Votre<br>commerce<br>répond.<br><span class=r>24/7.</span>']];
+window.seek=t=>{
+  const T=$('t'); let c=C.find(([a,b])=>t>=a&&t<b);
+  if(c){ if(T.dataset.k!==c[2]){T.innerHTML=c[2];T.dataset.k=c[2]}
+    const k=oe(pr(t,c[0],c[0]+.12)); const s=(1.35-.35*k)*(1+.04*pr(t,c[0],c[1]));
+    T.style.opacity=1; T.style.transform=`translateY(-50%) scale(${s})`; }
+  else T.style.opacity=0;
+  const e=6.29, E=$('end'); E.style.opacity=t>=e?1:0;
+  const st=(id,a)=>{const k=oe(pr(t,a,a+.18)); const el=$(id); el.style.opacity=k>0?1:0; el.style.transform=`scale(${1.3-.3*k})`};
+  st('name',e); st('feat',e+.27); st('jour',e+.545); st('offer',e+.82);
+  let f=0; [[.545,.55],[6.29,.5],[4.083,.25]].forEach(([a,s])=>{ if(t>=a&&t<a+.125) f=Math.max(f,s*(1-pr(t,a,a+.125))) });
+  $('flash').style.opacity=f;
+};
+window.ready=true;
+if(!location.search.includes('render')){const t0=performance.now();(function f(){seek(((performance.now()-t0)/1000)%8.17);requestAnimationFrame(f)})()}
+</script></body></html>

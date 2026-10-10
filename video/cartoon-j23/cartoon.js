@@ -80,7 +80,19 @@ const BG = [[0, '#ff8a3d'], [2.0, '#ff5a5f'], [4.6, '#7b5cff'], [7.3, '#3bceac']
 const keeper = $('keeper'), armL = $('armL'), armR = $('armR'), head = $('head'), blob = $('blob'), blobB = $('blobB');
 window.seek = (t, frame = Math.round(t * 30)) => {
   // fond qui change de couleur à chaque temps fort (coupe franche, façon dessin animé)
-  let bg = BG[0][1]; for (const [a, c] of BG) if (t >= a) bg = c; $('bg').setAttribute('fill', bg);
+  // fond : la nouvelle couleur s'ouvre en cercle depuis le centre (plus de coupe sèche)
+  let bi = 0; BG.forEach(([a], i) => { if (t >= a) bi = i; });
+  const wk = pr(t, BG[bi][0], BG[bi][0] + .4), DIAG = Math.hypot(W, H);
+  $('bg').setAttribute('fill', bi > 0 && wk < 1 ? BG[bi - 1][1] : BG[bi][1]);
+  const wp = $('wipe'); wp.setAttribute('cx', RC.x); wp.setAttribute('cy', RC.y); wp.setAttribute('fill', BG[bi][1]);
+  wp.setAttribute('r', bi > 0 && wk < 1 ? oc(wk) * DIAG : 0);
+  // changement de scène (9,05 s et 12,05 s) : un disque de couleur couvre tout, puis s'efface
+  const ir = $('iris'); let irr = 0, iro = 0, irc = '#ffb02e';
+  for (const [a, c] of [[9.05, '#ffb02e'], [12.05, '#ff6fb5']]) {
+    if (win(t, a - .3, a)) { irr = io(pr(t, a - .3, a)) * DIAG; iro = 1; irc = c; }
+    if (win(t, a, a + .25)) { irr = DIAG; iro = 1 - pr(t, a, a + .25); irc = c; }
+  }
+  ir.setAttribute('cx', W / 2); ir.setAttribute('cy', H / 2); ir.setAttribute('r', irr); ir.setAttribute('opacity', iro); ir.setAttribute('fill', irc);
   $('rays').setAttribute('transform', `rotate(${t * (t < 4 ? 8 + t * 6 : 10)} ${RC.x} ${RC.y})`);
   // ---- commerçant
   const stress = t < 4.6, happy = t >= 5.2;
@@ -109,7 +121,7 @@ window.seek = (t, frame = Math.round(t * 30)) => {
     bsx = 1 + sq; bsy = 1 - sq; if (k < 1) { bsx = .86; bsy = 1.18; }
     if (t > 5.35) { const b = Math.abs(Math.sin((t - 5.35) * 4.2)); by = 1010 - b * 26; bsy = 1 + (b - .5) * .06; bsx = 1 - (b - .5) * .06; }
   }
-  if (win(t, 9.05, 12.05)) { bop = 1; bx = 540; by = 340 - Math.abs(Math.sin(t * 4)) * 18; bsx = bsy = .72; } // sur le toit
+  if (win(t, 9.05, 12.05)) { const kj = pr(t, 9.45, 9.9); bop = t >= 9.45 ? 1 : 0; bx = lerp(900, 540, oc(kj)); by = lerp(1010, 340, oc(kj)) - Math.sin(Math.PI * kj) * 160 - (kj >= 1 ? Math.abs(Math.sin(t * 4)) * 18 : 0); bsx = bsy = .72; } // saute sur le toit
   if (t >= 12.05) { bop = 1; const k = spring(pr(t, 12.3, 12.9)); bx = VERT ? 790 : 790; by = 1010 - Math.abs(Math.sin(t * 4.5)) * 70; bsx = bsy = Math.max(.001, k * .95); }
   blob.setAttribute('opacity', bop); blob.setAttribute('transform', `translate(${bx} ${by})`);
   blobB.setAttribute('transform', `scale(${bsx} ${bsy})`);
@@ -166,7 +178,7 @@ window.seek = (t, frame = Math.round(t * 30)) => {
   subBg.setAttribute('opacity', win(t, sb.a, sb.b) && k9 > 0 ? 1 : 0);
   if (win(t, sb.a, sb.b)) { const bb = sb.g.getBBox(); subBg.setAttribute('x', bb.x - 40); subBg.setAttribute('y', bb.y - 18); subBg.setAttribute('width', bb.width + 80); subBg.setAttribute('height', bb.height + 36); subBg.setAttribute('transform', sb.g.getAttribute('transform')); }
   // ---- flash
-  let fl = 0; for (const [a, s] of [[4.0, .5], [4.95, .6], [12.35, .5]]) if (win(t, a, a + .15)) fl = Math.max(fl, s * (1 - pr(t, a, a + .15)));
+  let fl = 0; for (const [a, s] of []) if (win(t, a, a + .15)) fl = Math.max(fl, s * (1 - pr(t, a, a + .15)));
   $('flash').setAttribute('opacity', fl + pr(t, 15.6, 16) );
   $('flash').setAttribute('fill', t > 15 ? '#1d1b2e' : '#fff');
 };

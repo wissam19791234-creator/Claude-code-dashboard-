@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="fr"><head><meta charset="utf-8"><title>Scalify Marc</title>
+<style>
+@font-face{font-family:Lil;src:url(fonts/LilitaOne-400.woff2)}
+@font-face{font-family:Fre;font-weight:500 700;src:url(fonts/Fredoka-600.woff2)}
+*{margin:0;padding:0}html,body{overflow:hidden;background:#000}svg{display:block}
+.t{font-family:Lil;paint-order:stroke fill;stroke:#1d1b2e;stroke-linejoin:round}
+.f{font-family:Fre;font-weight:600}
+.ol{stroke:#1d1b2e;stroke-width:8;stroke-linejoin:round;stroke-linecap:round}
+</style></head><body>
+<svg id="sv" xmlns="http://www.w3.org/2000/svg">
+<defs>
+  <filter id="sh" x="-20%" y="-20%" width="140%" height="150%"><feDropShadow dx="0" dy="12" stdDeviation="0" flood-color="#1d1b2e" flood-opacity=".22"/></filter>
+  <pattern id="wall" width="90" height="90" patternUnits="userSpaceOnUse"><rect width="90" height="90" fill="#ffe7c2"/><circle cx="22" cy="22" r="7" fill="#ffd79a"/><circle cx="67" cy="67" r="7" fill="#ffd79a"/></pattern>
+  <pattern id="dots" width="36" height="36" patternUnits="userSpaceOnUse"><circle cx="18" cy="18" r="4" fill="#fff" fill-opacity=".2"/></pattern>
+  <path id="sPath" d="M21 10.8H13.9a2.85 2.85 0 0 0 0 5.7h4.3a2.85 2.85 0 0 1 0 5.7H11"/>
+  <!-- objets -->
+  <g id="iLaptop"><rect x="-66" y="-54" width="132" height="86" rx="12" fill="#7cc6fe" class="ol"/><rect x="-52" y="-41" width="104" height="60" rx="5" fill="#fff"/>
+    <rect x="-44" y="-33" width="54" height="11" rx="5" fill="#7b5cff"/><rect x="-44" y="-14" width="76" height="9" rx="4" fill="#cfd6e6"/><rect x="-44" y="1" width="58" height="9" rx="4" fill="#cfd6e6"/><rect x="-82" y="32" width="164" height="20" rx="10" fill="#e7ebf3" class="ol"/></g>
+  <g id="iPin"><path d="M0 64 C -10 30 -52 8 -52 -24 A52 52 0 1 1 52 -24 C 52 8 10 30 0 64 Z" fill="#ff5a5f" class="ol"/><circle cy="-24" r="21" fill="#fff" class="ol" stroke-width="6"/></g>
+  <g id="iStar"><path d="M0 -66 L19 -24 L64 -20 L30 10 L40 56 L0 32 L-40 56 L-30 10 L-64 -20 L-19 -24 Z" fill="#ffd23f" class="ol"/><circle cx="-14" cy="-6" r="6" fill="#1d1b2e"/><circle cx="14" cy="-6" r="6" fill="#1d1b2e"/><path d="M-12 12 q12 10 24 0" fill="none" class="ol" stroke-width="5"/></g>
+  <g id="iCam"><rect x="-64" y="-44" width="128" height="92" rx="24" fill="#ff6fb5" class="ol"/><circle r="30" fill="#fff" class="ol"/><circle r="13" fill="#1d1b2e"/><circle cx="40" cy="-26" r="7" fill="#fff"/></g>
+  <g id="iPhone"><rect x="-40" y="-64" width="80" height="128" rx="17" fill="#3bceac" class="ol"/><rect x="-28" y="-48" width="56" height="82" rx="6" fill="#fff"/>
+    <rect x="-20" y="-38" width="34" height="14" rx="7" fill="#e8e3ff"/><rect x="-14" y="-18" width="34" height="14" rx="7" fill="#3bceac"/><circle cy="50" r="6" fill="#1d1b2e"/>
+    <circle cx="36" cy="-60" r="19" fill="#ff5a5f" class="ol" stroke-width="6"/><text x="36" y="-52" text-anchor="middle" font-family="Lil" font-size="23" fill="#fff">9</text></g>
+  <g id="cust"><ellipse cx="0" cy="-60" rx="44" ry="60" fill="var(--c)" class="ol"/><circle cx="0" cy="-152" r="42" fill="var(--s)" class="ol"/>
+    <circle cx="-14" cy="-156" r="6" fill="#1d1b2e"/><circle cx="14" cy="-156" r="6" fill="#1d1b2e"/><path d="M-15 -137 q15 13 30 0" fill="none" stroke="#1d1b2e" stroke-width="6" stroke-linecap="round"/>
+    <ellipse cx="-26" cy="-140" rx="9" ry="6" fill="#ff6fb5" opacity=".6"/><ellipse cx="26" cy="-140" rx="9" ry="6" fill="#ff6fb5" opacity=".6"/></g>
+  <g id="loaf"><ellipse rx="62" ry="30" fill="#e8a75a" class="ol" stroke-width="6"/><path d="M-30 -14 q10 14 0 28 M0 -18 q10 16 0 34 M30 -14 q10 14 0 28" fill="none" stroke="#b97a33" stroke-width="5" stroke-linecap="round"/></g>
+  <g id="croi"><path d="M-60 10 Q -40 -40 0 -40 Q 40 -40 60 10 Q 40 -6 30 4 Q 14 -18 0 -18 Q -14 -18 -30 4 Q -40 -6 -60 10 Z" fill="#f2b55e" class="ol" stroke-width="6"/></g>
+  <g id="check"><circle r="34" fill="#3bceac" class="ol" stroke-width="7"/><path d="M-15 0 L-4 12 L17 -12" fill="none" stroke="#fff" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"/></g>
+</defs>
+<rect id="bgWall" width="100%" height="100%" fill="url(#wall)"/>
+<g id="rays" opacity="0"><rect id="raysBg" width="100%" height="100%" fill="#ff6fb5"/><g id="rayG"></g><rect width="100%" height="100%" fill="url(#dots)"/></g>
+<rect id="stressTint" width="100%" height="100%" fill="#ff5a5f" opacity="0"/>
+<g id="world">
+  <g id="stage">
+    <!-- étagères -->
+    <g id="decor">
+      <rect x="70" y="250" width="940" height="22" rx="8" fill="#b97a33" class="ol" stroke-width="6"/>
+      <rect x="70" y="470" width="940" height="22" rx="8" fill="#b97a33" class="ol" stroke-width="6"/>
+      <use href="#loaf" x="150" y="222"/><use href="#loaf" x="290" y="222"/><use href="#croi" x="800" y="232"/><use href="#croi" x="930" y="232"/><use href="#loaf" x="660" y="222"/>
+      <use href="#croi" x="140" y="452"/><use href="#loaf" x="270" y="442"/><use href="#loaf" x="810" y="442"/><use href="#croi" x="940" y="452"/>
+      
+    </g>
+    <!-- commerçant -->
+    <g id="keeper" filter="url(#sh)">
+      <g id="armL"><path d="M0 0 L-110 -120" stroke="#1d1b2e" stroke-width="52" stroke-linecap="round"/><path d="M0 0 L-110 -120" stroke="#ffcb9a" stroke-width="36" stroke-linecap="round"/></g>
+      <g id="armR"><path d="M0 0 L110 -120" stroke="#1d1b2e" stroke-width="52" stroke-linecap="round"/><path d="M0 0 L110 -120" stroke="#ffcb9a" stroke-width="36" stroke-linecap="round"/></g>
+      <path d="M-130 330 Q -140 20 0 0 Q 140 20 130 330 Z" fill="#3bceac" class="ol"/>
+      <path d="M-66 330 L -56 70 L 56 70 L 66 330 Z" fill="#fff" class="ol" stroke-width="6"/>
+      <g id="head">
+        <circle cx="0" cy="-112" r="108" fill="#ffcb9a" class="ol"/>
+        <ellipse cx="-104" cy="-104" rx="18" ry="26" fill="#ffcb9a" class="ol" stroke-width="6"/><ellipse cx="104" cy="-104" rx="18" ry="26" fill="#ffcb9a" class="ol" stroke-width="6"/>
+        <g fill="#fff" class="ol"><circle cx="-64" cy="-226" r="48"/><circle cx="64" cy="-226" r="48"/><circle cx="0" cy="-258" r="60"/></g>
+        <rect x="-86" y="-216" width="172" height="46" rx="10" fill="#fff" class="ol"/>
+        <g id="eyesO"><g id="eyeL"><ellipse cx="-38" cy="-120" rx="24" ry="30" fill="#fff" class="ol" stroke-width="6"/><circle id="pL" cx="-38" cy="-116" r="9" fill="#1d1b2e"/></g>
+          <g id="eyeR"><ellipse cx="38" cy="-120" rx="24" ry="30" fill="#fff" class="ol" stroke-width="6"/><circle id="pR" cx="38" cy="-116" r="9" fill="#1d1b2e"/></g></g>
+        <path id="brows" d="M-64 -166 L-14 -158 M64 -166 L14 -158" class="ol" stroke-width="8"/>
+        <g id="eyesH" opacity="0"><path d="M-62 -114 q24 -30 48 0 M14 -114 q24 -30 48 0" fill="none" class="ol" stroke-width="9"/></g>
+        <path d="M-60 -72 q30 -24 60 -4 q30 -20 60 4 q-30 22 -60 4 q-30 18 -60 -4z" fill="#7a4a2a" class="ol" stroke-width="5"/>
+        <path id="mouthS" d="M-28 -36 q9 -10 18 0 q9 10 18 0 q9 -10 18 0" fill="none" class="ol" stroke-width="7"/>
+        <path id="mouthO" d="M-20 -40 a20 24 0 1 0 40 0 a20 24 0 1 0 -40 0" fill="#1d1b2e" opacity="0"/>
+        <path id="mouthH" d="M-36 -44 q36 38 72 0 z" fill="#ff6fb5" class="ol" stroke-width="7" opacity="0"/>
+        <g id="sweat"><path d="M126 -176 q-15 26 0 32 q15 -6 0 -32z" fill="#7cc6fe" class="ol" stroke-width="5"/><path d="M-134 -136 q-13 22 0 28 q13 -6 0 -28z" fill="#7cc6fe" class="ol" stroke-width="5"/></g>
+      </g>
+      <g id="bag" opacity="0"><use href="#loaf" transform="translate(150 -130) rotate(-30) scale(1.1 .8)"/></g>
+    </g>
+    <!-- comptoir -->
+    <g id="counter" filter="url(#sh)">
+      <rect x="100" y="760" width="880" height="330" rx="14" fill="#fff4e0" class="ol"/>
+      <g id="stripes"></g>
+      <rect x="80" y="742" width="920" height="40" rx="14" fill="#b97a33" class="ol"/>
+      <g transform="translate(540 930)"><rect x="-250" y="-60" width="500" height="112" rx="28" fill="#7b5cff" class="ol"/><text y="22" text-anchor="middle" class="t" font-size="62" fill="#fff" stroke-width="10">BOULANGERIE MARC</text></g>
+      <g transform="translate(840 700)"><rect x="-80" y="-50" width="160" height="92" rx="14" fill="#7cc6fe" class="ol"/><rect x="-56" y="-36" width="70" height="30" rx="6" fill="#fff"/><rect x="-96" y="40" width="192" height="40" rx="10" fill="#e7ebf3" class="ol"/></g>
+      <g transform="translate(240 712)"><path d="M-80 -10 L80 -10 L64 30 L-64 30 Z" fill="#e8a75a" class="ol" stroke-width="6"/><use href="#croi" y="-24" transform="scale(.8)"/></g>
+    </g>
+    <!-- mascotte -->
+    <g id="blob" opacity="0" filter="url(#sh)"><g id="blobB">
+      <ellipse cx="-52" cy="-4" rx="42" ry="18" fill="#5a3fd6" class="ol" stroke-width="6"/><ellipse cx="52" cy="-4" rx="42" ry="18" fill="#5a3fd6" class="ol" stroke-width="6"/>
+      <path d="M-134 -10 C -154 -176 -92 -288 0 -288 C 92 -288 154 -176 134 -10 Q 0 20 -134 -10 Z" fill="#7b5cff" class="ol"/>
+      <path d="M-80 -250 q-20 -50 10 -70" fill="none" class="ol" stroke-width="7"/><circle cx="-70" cy="-322" r="14" fill="#ffd23f" class="ol" stroke-width="6"/>
+      <ellipse cx="0" cy="-92" rx="76" ry="66" fill="#efeaff" class="ol" stroke-width="6"/>
+      <use href="#sPath" transform="translate(-52 -142) scale(3.2)" fill="none" stroke="#7b5cff" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/>
+      <g id="bEyes"><ellipse cx="-46" cy="-204" rx="29" ry="35" fill="#fff" class="ol" stroke-width="6"/><ellipse cx="46" cy="-204" rx="29" ry="35" fill="#fff" class="ol" stroke-width="6"/>
+        <circle id="bpL" cx="-40" cy="-198" r="13" fill="#1d1b2e"/><circle id="bpR" cx="52" cy="-198" r="13" fill="#1d1b2e"/>
+        <circle cx="-35" cy="-205" r="4" fill="#fff"/><circle cx="57" cy="-205" r="4" fill="#fff"/></g>
+      <path d="M-26 -150 q26 22 52 0" fill="none" class="ol" stroke-width="7"/>
+      <ellipse cx="-90" cy="-152" rx="17" ry="10" fill="#ff6fb5" opacity=".7"/><ellipse cx="90" cy="-152" rx="17" ry="10" fill="#ff6fb5" opacity=".7"/>
+      <g id="bArmL"><path d="M-124 -124 L-196 -206" stroke="#1d1b2e" stroke-width="42" stroke-linecap="round"/><path d="M-124 -124 L-196 -206" stroke="#7b5cff" stroke-width="28" stroke-linecap="round"/></g>
+      <g id="bArmR"><path d="M124 -124 L196 -206" stroke="#1d1b2e" stroke-width="42" stroke-linecap="round"/><path d="M124 -124 L196 -206" stroke="#7b5cff" stroke-width="28" stroke-linecap="round"/></g>
+    </g></g>
+    <g id="queue"></g>
+    <g id="items"></g>
+    <g id="fx"></g>
+  </g>
+  <!-- carton final -->
+  <g id="final" opacity="0"></g>
+</g>
+<g id="caps"></g>
+<circle id="iris" r="0" fill="#ff6fb5"/>
+<rect id="fade" width="100%" height="100%" fill="#1d1b2e" opacity="0"/>
+</svg>
+<script src="marc.js"></script>
+</body></html>

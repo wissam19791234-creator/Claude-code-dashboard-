@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head><meta charset="UTF-8"><title>fin</title></head>
+<body>
+<template id="fin">
+<style>
+@font-face { font-family: "Anton"; src: url("../assets/fonts/Anton-400.woff2") format("woff2"); font-weight: 400; }
+@font-face { font-family: "JBM"; src: url("../assets/fonts/JetBrainsMono-500.woff2") format("woff2"); font-weight: 500; }
+
+#root { position: absolute; inset: 0; pointer-events: none; }
+.cta { position: absolute; display: flex; align-items: center; gap: 22px; font-family: "JBM"; font-weight: 500; }
+.pill { display: block; background: #161311; color: #ffd731; border-radius: 999px; padding: 18px 34px 16px; font-size: 40px; letter-spacing: 0.02em; }
+.meta { display: block; color: #161311; font-size: 34px; letter-spacing: 0.04em; }
+.lock { position: absolute; display: flex; align-items: center; gap: 22px; }
+.lock .mark { display: block; width: 104px; height: 104px; }
+.lock .word { display: block; font-family: "Anton"; font-size: 96px; line-height: 1; color: #161311; letter-spacing: 0.01em; }
+
+.cta { left: 74px; top: 590px; }
+.lock { left: 74px; top: 1392px; }
+</style>
+<div data-hf-id="hf-sdoc" id="root" data-composition-id="fin" data-width="1080" data-height="1920">
+<div data-hf-id="hf-apeu" class="cta"><span data-hf-id="hf-4q9i" id="fin-pill" class="pill">LIEN EN BIO →</span><span data-hf-id="hf-m8ru" id="fin-meta" class="meta">J-23 · LUNDI 2 NOVEMBRE</span></div>
+<div data-hf-id="hf-fhcd" class="lock"><img data-hf-id="hf-oy6n" id="fin-mark" class="mark" src="../assets/scalify-mark.svg" alt=""><span data-hf-id="hf-4sni" id="fin-word" class="word">Scalify</span></div>
+</div>
+<script>
+  const tl = gsap.timeline({ paused: true });
+  tl.fromTo('#fin-mark', { scale: 0, rotation: -120 }, { scale: 1, rotation: 0, duration: 0.6, ease: 'power3.out' }, 0.05);
+  tl.fromTo('#fin-word', { x: -30, opacity: 0 }, { x: 0, opacity: 1, duration: 0.5, ease: 'power3.out' }, 0.25);
+  tl.fromTo('#fin-pill', { scale: 0.4, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.5, ease: 'power3.out' }, 0.3);
+  tl.fromTo('#fin-meta', { y: 24, opacity: 0 }, { y: 0, opacity: 1, duration: 0.45, ease: 'power3.out' }, 0.5);
+  window.__timelines["fin"] = tl;
+</script>
+</template>
+</body>
+</html>

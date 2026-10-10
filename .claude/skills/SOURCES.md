@@ -7,3 +7,4 @@
 | Impeccable | https://github.com/pbakaus/impeccable (Apache 2.0) | impeccable — **hooks non activés** (activer avec `/impeccable hooks on`) ; son lanceur télécharge un binaire au premier usage |
 
 Mise à jour : recloner le dépôt source et recopier le dossier de la skill.
+| HyperFrames (HeyGen) | https://github.com/heygen-com/hyperframes (Apache 2.0) | hyperframes (point d'entrée vidéo) + hyperframes-core, -cli, -animation, -keyframes, -creative, -audio, -registry, -studio (requises par l'entrée). Utilise la CLI `npx hyperframes` au premier usage. |

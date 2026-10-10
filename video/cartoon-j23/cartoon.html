@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="fr"><head><meta charset="utf-8"><title>Scalify Cartoon</title>
+<style>
+@font-face{font-family:Lil;src:url(fonts/LilitaOne-400.woff2)}
+@font-face{font-family:Fre;font-weight:500 700;src:url(fonts/Fredoka-600.woff2)}
+*{margin:0;padding:0}
+html,body{overflow:hidden;background:#000}
+svg{display:block}
+.t{font-family:Lil;paint-order:stroke fill;stroke:#1d1b2e;stroke-linejoin:round}
+.f{font-family:Fre;font-weight:600;paint-order:stroke fill;stroke:#1d1b2e;stroke-linejoin:round}
+.ol{stroke:#1d1b2e;stroke-width:8;stroke-linejoin:round;stroke-linecap:round}
+</style></head>
+<body>
+<svg id="sv" xmlns="http://www.w3.org/2000/svg">
+<defs>
+  <pattern id="dots" width="36" height="36" patternUnits="userSpaceOnUse"><circle cx="18" cy="18" r="4" fill="#ffffff" fill-opacity=".18"/></pattern>
+  <path id="sPath" d="M21 10.8H13.9a2.85 2.85 0 0 0 0 5.7h4.3a2.85 2.85 0 0 1 0 5.7H11"/>
+  <!-- objets jonglés -->
+  <g id="iPhone"><rect x="-38" y="-62" width="76" height="124" rx="16" fill="#ff6fb5" class="ol"/><rect x="-26" y="-46" width="52" height="80" rx="6" fill="#fff"/><circle cy="48" r="6" fill="#1d1b2e"/>
+    <path d="M52 -40 q14 14 0 28 M66 -52 q24 26 0 52" fill="none" class="ol" stroke-width="6"/></g>
+  <g id="iLaptop"><rect x="-62" y="-50" width="124" height="80" rx="10" fill="#7cc6fe" class="ol"/><rect x="-48" y="-38" width="96" height="56" rx="4" fill="#fff"/>
+    <rect x="-40" y="-30" width="50" height="10" rx="5" fill="#7b5cff"/><rect x="-40" y="-12" width="70" height="8" rx="4" fill="#cfd6e6"/><rect x="-78" y="30" width="156" height="18" rx="9" fill="#e7ebf3" class="ol"/></g>
+  <g id="iPin"><path d="M0 62 C -10 30 -50 8 -50 -22 A50 50 0 1 1 50 -22 C 50 8 10 30 0 62 Z" fill="#ff5a5f" class="ol"/><circle cy="-22" r="20" fill="#fff" class="ol" stroke-width="6"/></g>
+  <g id="iCam"><rect x="-62" y="-42" width="124" height="88" rx="22" fill="#ffd23f" class="ol"/><circle r="28" fill="#fff" class="ol"/><circle r="12" fill="#1d1b2e"/><circle cx="38" cy="-24" r="7" fill="#ff6fb5"/></g>
+  <g id="iMail"><rect x="-62" y="-42" width="124" height="84" rx="12" fill="#fff" class="ol"/><path d="M-58 -36 L0 8 L58 -36" fill="none" class="ol" stroke-width="7"/><circle cx="50" cy="-40" r="18" fill="#ff5a5f" class="ol" stroke-width="6"/><text x="50" y="-33" text-anchor="middle" font-family="Lil" font-size="22" fill="#fff">9</text></g>
+  <!-- client -->
+  <g id="cust"><ellipse cx="0" cy="-60" rx="42" ry="58" fill="var(--c)" class="ol"/><circle cx="0" cy="-150" r="40" fill="#ffcb9a" class="ol"/>
+    <circle cx="-13" cy="-155" r="6" fill="#1d1b2e"/><circle cx="13" cy="-155" r="6" fill="#1d1b2e"/><path d="M-14 -136 q14 12 28 0" fill="none" stroke="#1d1b2e" stroke-width="6" stroke-linecap="round"/></g>
+</defs>
+<rect id="bg" width="100%" height="100%" fill="#ff8a3d"/>
+<g id="rays"></g>
+<rect width="100%" height="100%" fill="url(#dots)"/>
+
+<g id="stage">
+  <!-- sol -->
+  <ellipse cx="540" cy="1010" rx="520" ry="46" fill="#1d1b2e" fill-opacity=".18"/>
+  <!-- boutique (scène 4) -->
+  <g id="shop" opacity="0">
+    <rect x="250" y="420" width="580" height="590" rx="18" fill="#fff4e0" class="ol"/>
+    <g id="awn"></g>
+    <rect x="300" y="330" width="480" height="100" rx="20" fill="#7b5cff" class="ol"/>
+    <text x="540" y="400" text-anchor="middle" class="t" font-size="62" fill="#fff" stroke-width="10">CHEZ MARTIN</text>
+    <rect x="300" y="620" width="200" height="200" rx="14" fill="#bfe6ff" class="ol"/><path d="M400 620 V820 M300 720 H500" class="ol" stroke-width="6"/>
+    <rect x="580" y="640" width="200" height="370" rx="14" fill="#ff8a3d" class="ol"/><circle cx="750" cy="830" r="12" fill="#1d1b2e"/>
+    <g id="openSign"><rect x="610" y="680" width="140" height="56" rx="12" fill="#3bceac" class="ol" stroke-width="6"/><text x="680" y="722" text-anchor="middle" class="t" font-size="36" fill="#fff" stroke-width="6">OUVERT</text></g>
+  </g>
+  <g id="queue"></g>
+  <!-- commerçant -->
+  <g id="keeper">
+    <g id="armL"><path d="M0 0 L-100 -110" stroke="#1d1b2e" stroke-width="50" stroke-linecap="round"/><path d="M0 0 L-100 -110" stroke="#ffcb9a" stroke-width="34" stroke-linecap="round"/></g>
+    <g id="armR"><path d="M0 0 L100 -110" stroke="#1d1b2e" stroke-width="50" stroke-linecap="round"/><path d="M0 0 L100 -110" stroke="#ffcb9a" stroke-width="34" stroke-linecap="round"/></g>
+    <path d="M-120 260 Q -130 20 0 0 Q 130 20 120 260 Z" fill="#3bceac" class="ol"/>
+    <path d="M-62 260 L -52 70 L 52 70 L 62 260 Z" fill="#fff" class="ol" stroke-width="6"/>
+    <g id="head">
+      <circle cx="0" cy="-110" r="105" fill="#ffcb9a" class="ol"/>
+      <g fill="#fff" class="ol"><circle cx="-62" cy="-222" r="46"/><circle cx="62" cy="-222" r="46"/><circle cx="0" cy="-252" r="58"/></g>
+      <rect x="-82" y="-212" width="164" height="44" rx="10" fill="#fff" class="ol"/>
+      <g id="eyesStress"><ellipse cx="-38" cy="-118" rx="26" ry="32" fill="#fff" class="ol" stroke-width="6"/><ellipse cx="38" cy="-118" rx="26" ry="32" fill="#fff" class="ol" stroke-width="6"/>
+        <circle id="pL" cx="-38" cy="-114" r="8" fill="#1d1b2e"/><circle id="pR" cx="38" cy="-114" r="8" fill="#1d1b2e"/>
+        <path d="M-66 -166 L-14 -150 M66 -166 L14 -150" class="ol" stroke-width="8"/></g>
+      <g id="eyesHappy" opacity="0"><path d="M-62 -112 q24 -30 48 0 M14 -112 q24 -30 48 0" fill="none" class="ol" stroke-width="9"/></g>
+      <path d="M-58 -70 q30 -24 58 -4 q28 -20 58 4 q-30 22 -58 4 q-28 18 -58 -4z" fill="#7a4a2a" class="ol" stroke-width="5"/>
+      <path id="mouthS" d="M-26 -36 q8 -10 17 0 q8 10 17 0 q8 -10 17 0" fill="none" class="ol" stroke-width="7"/>
+      <path id="mouthH" d="M-34 -42 q34 36 68 0" fill="#ff6fb5" class="ol" stroke-width="7" opacity="0"/>
+      <g id="sweat"><path d="M120 -170 q-14 24 0 30 q14 -6 0 -30z" fill="#7cc6fe" class="ol" stroke-width="5"/><path d="M-128 -130 q-12 20 0 26 q12 -6 0 -26z" fill="#7cc6fe" class="ol" stroke-width="5"/></g>
+    </g>
+    <g id="cup" opacity="0"><rect x="70" y="-6" width="64" height="70" rx="12" fill="#fff" class="ol" stroke-width="6"/><path d="M134 12 q26 0 26 22 q0 22 -26 22" fill="none" class="ol" stroke-width="7"/>
+      <path d="M90 -20 q-10 -16 0 -32 M112 -20 q-10 -16 0 -32" fill="none" stroke="#fff" stroke-width="6" stroke-linecap="round" opacity=".9"/></g>
+  </g>
+  <!-- mascotte Scalify -->
+  <g id="blob" opacity="0"><g id="blobB">
+    <ellipse cx="-50" cy="-4" rx="40" ry="18" fill="#5a3fd6" class="ol" stroke-width="6"/><ellipse cx="50" cy="-4" rx="40" ry="18" fill="#5a3fd6" class="ol" stroke-width="6"/>
+    <path d="M-130 -10 C -150 -170 -90 -280 0 -280 C 90 -280 150 -170 130 -10 Q 0 20 -130 -10 Z" fill="#7b5cff" class="ol"/>
+    <ellipse cx="0" cy="-90" rx="74" ry="64" fill="#efeaff" class="ol" stroke-width="6"/>
+    <use href="#sPath" transform="translate(-50 -140) scale(3.1)" fill="none" stroke="#7b5cff" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/>
+    <ellipse cx="-44" cy="-200" rx="28" ry="34" fill="#fff" class="ol" stroke-width="6"/><ellipse cx="44" cy="-200" rx="28" ry="34" fill="#fff" class="ol" stroke-width="6"/>
+    <circle id="bpL" cx="-38" cy="-194" r="12" fill="#1d1b2e"/><circle id="bpR" cx="50" cy="-194" r="12" fill="#1d1b2e"/>
+    <circle cx="-34" cy="-200" r="4" fill="#fff"/><circle cx="54" cy="-200" r="4" fill="#fff"/>
+    <ellipse cx="-86" cy="-150" rx="16" ry="10" fill="#ff6fb5" opacity=".7"/><ellipse cx="86" cy="-150" rx="16" ry="10" fill="#ff6fb5" opacity=".7"/>
+    <g id="bArmL"><path d="M-120 -120 L-190 -200" stroke="#1d1b2e" stroke-width="40" stroke-linecap="round"/><path d="M-120 -120 L-190 -200" stroke="#7b5cff" stroke-width="26" stroke-linecap="round"/></g>
+    <g id="bArmR"><path d="M120 -120 L190 -200" stroke="#1d1b2e" stroke-width="40" stroke-linecap="round"/><path d="M120 -120 L190 -200" stroke="#7b5cff" stroke-width="26" stroke-linecap="round"/></g>
+  </g></g>
+  <g id="items"></g>
+  <g id="fx"></g>
+</g>
+
+<!-- textes -->
+<g id="txt" text-anchor="middle"></g>
+<rect id="flash" width="100%" height="100%" fill="#fff" opacity="0"/>
+</svg>
+<script src="cartoon.js"></script>
+</body></html>

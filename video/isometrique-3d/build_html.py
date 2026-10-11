@@ -35,6 +35,11 @@ HL = [
 ]
 
 
+# 16:9 : l'accroche passe sur trois lignes (colonne de texte plus étroite)
+if not P:
+    HL[0] = ('h1', 0.22, 2.12, [['Vos', 'clients'], ['vous', 'cherchent'], ['en', 'ligne…']], '')
+
+
 def word(w):
     return f'<span class="w" data-layout-allow-overflow data-layout-allow-occlusion><b>{html.escape(w)}</b></span>'
 

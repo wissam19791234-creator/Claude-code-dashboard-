@@ -349,6 +349,8 @@ export function buildWorld(canvas, W, H) {
   const ASP = W / H;
   // zone écran (NDC) réservée au sujet 3D : sous les titres en 9:16, à droite en 16:9
   const RECT = PORTRAIT ? { x0: -0.9, x1: 0.9, y0: -0.62, y1: 0.3 } : { x0: 0.0, x1: 0.93, y0: -0.84, y1: 0.8 };
+  // 16:9 : pendant l'accroche, la 3D se décale à droite pour laisser respirer les titres longs
+  const RECT_TOWN = PORTRAIT ? RECT : { x0: 0.13, x1: 0.95, y0: -0.84, y1: 0.8 };
   const camBasis = (az, el) => {
     const dir = V3(Math.cos(el) * Math.sin(az), Math.sin(el), Math.cos(el) * Math.cos(az));
     const r = V3(Math.cos(az), 0, -Math.sin(az));
@@ -390,10 +392,10 @@ export function buildWorld(canvas, W, H) {
   const endPts = [...boxPts(-5.0, 8.6, -0.6, 0.4, -2.4, 5.6, OB), ...boxPts(-1.9, -0.5, 0, 3.0, -1.3, 0.1, OB), ...boxPts(3.4, 5.4, 0, 4.9, -3.9, -2.9, OB), ...bbPts(off30C, 2.5, 0.8, ISO_AZ + 0.02, ISO_EL)];
   const CTA_RECT = PORTRAIT ? { x0: -0.9, x1: 0.9, y0: -0.4, y1: 0.27 } : RECT;
   const CK = [
-    { t: 0, f: fit(townPts(A_AZ, A_EL), A_AZ, A_EL, 0.9) },
-    { t: 4.3, f: fit(townPts(A_AZ, A_EL), A_AZ, A_EL, 0.86), e: ease.io2 },
-    { t: T.align, f: fit(townPts(ISO_AZ, ISO_EL), ISO_AZ, ISO_EL, 0.94), e: ease.io3 },
-    { t: T.align + 0.5, f: fit(townPts(ISO_AZ, ISO_EL), ISO_AZ, ISO_EL, 0.92), e: ease.io2 },
+    { t: 0, f: fit(townPts(A_AZ, A_EL), A_AZ, A_EL, 0.9, RECT_TOWN) },
+    { t: 4.3, f: fit(townPts(A_AZ, A_EL), A_AZ, A_EL, 0.86, RECT_TOWN), e: ease.io2 },
+    { t: T.align, f: fit(townPts(ISO_AZ, ISO_EL), ISO_AZ, ISO_EL, 0.94, RECT_TOWN), e: ease.io3 },
+    { t: T.align + 0.5, f: fit(townPts(ISO_AZ, ISO_EL), ISO_AZ, ISO_EL, 0.92, RECT_TOWN), e: ease.io2 },
     { t: 8.3, f: fit([...shopIslPts, ...shopPts, ...boxPts(2.5, 5, 3.6, 4.6, -1, 0)], ISO_AZ + 0.05, ISO_EL, 0.95), e: ease.io2 },
     { t: T.zoom[0], f: fit([...shopIslPts, ...shopPts, ...boxPts(2.5, 5, 3.6, 4.6, -1, 0)], ISO_AZ + 0.07, ISO_EL, 0.93), e: ease.io2 },
     { t: T.CUT, f: point(WIN_PT, 0.035, ISO_AZ + 0.16, ISO_EL), e: ease.ioExpo, zoom: true },

@@ -33,7 +33,7 @@ L'offre doit être comprise dès les 3 premières secondes. Le rythme doit perme
 ## Notes
 
 - Faits de l'offre : site, fiche Google, avis, posts, assistant IA 24/7 ; dès 49 €/mois ;
-  -30 % sur l'annuel pour les 15 premiers ; lancement le lundi 2 novembre 2026 (J-23 au 10 octobre) ;
+  -30 % sur l'annuel pour les 15 premiers ; lancement le lundi 2 novembre 2026 (J-22 au 11 octobre, date de publication prévue) ;
   pas de rendez-vous, pas de Calendly.
 - À éviter (retours précédents) : trop sombre, illisible en 3 s, plans trop rapides, « ça fait IA »,
   flashs blancs ou coupes sèches qui ressemblent à des bugs, thèmes déjà vus (nuit, avis seuls,

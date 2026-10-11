@@ -10,6 +10,7 @@ P = MODE == 'portrait'
 W, H = (1080, 1920) if P else (1920, 1080)
 DUR = 32.6
 FIN_START = 28.95
+JOURS = 22  # compte à rebours (publication le 11 octobre 2026 → lancement le 2 novembre)
 
 COL = {'ember': '#fb4903', 'mint': '#55db9c', 'sun': '#f6b431', 'yellow': '#ffd731', 'lav': '#e9ccff',
        'blue': '#4da2ff', 'violet': '#5c4ade', 'sky': '#dceeff'}
@@ -150,7 +151,7 @@ def build():
 
     # --- carton final (temps local : 0 = début du carton)
     body_f = ('<div class="cta"><span id="fin-pill" class="pill">LIEN EN BIO →</span>'
-              '<span id="fin-meta" class="meta">J-23 · LUNDI 2 NOVEMBRE</span></div>\n'
+              f'<span id="fin-meta" class="meta">J-{JOURS} · LUNDI 2 NOVEMBRE</span></div>\n'
               '<div class="lock"><img id="fin-mark" class="mark" src="../assets/scalify-mark.svg" alt="" />'
               '<span id="fin-word" class="word">Scalify</span></div>')
     js_f = """

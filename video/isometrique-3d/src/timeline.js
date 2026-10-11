@@ -1,5 +1,7 @@
 // Source unique de vérité pour le minutage (secondes). La voix off cale tout.
 export const DUR = 32.6;
+// Compte à rebours affiché (publication le 11 octobre 2026 → lancement le lundi 2 novembre 2026).
+export const JOURS = 22;
 
 export const VO = {
   v1: 0.30,   // « Vos clients vous cherchent en ligne… mais le chemin jusqu'à vous est coupé. »

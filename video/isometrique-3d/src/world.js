@@ -5,7 +5,7 @@ import {
   cl, lerp, seg, ease, k, pop, drop, rng, mesh, blk, at, grp, canvasTex, rrect, card, text3d,
   island, person, walkPose, scalifyCoin, croissant, star3d, pin, tree, cloud, lamp,
 } from './kit.js';
-import { T, DUR } from './timeline.js';
+import { T, DUR, JOURS } from './timeline.js';
 
 const V3 = (x = 0, y = 0, z = 0) => new THREE.Vector3(x, y, z);
 const FD = 'Anton', FM = 'JBM';
@@ -337,7 +337,7 @@ export function buildWorld(canvas, W, H) {
   { const b = mesh(new THREE.BoxGeometry(2.0, 2.35, 0.45), [toon(C.paper), toon(C.paper), toon(C.paper), toon(C.paper), new THREE.MeshBasicMaterial({ map: calTex }), toon(C.paper)]);
     b.geometry.translate(0, 1.175, 0); calendar.add(b);
     for (const x of [-0.55, 0.55]) calendar.add(at(blk(0.12, 0.35, 0.12, C.ink), x, 2.25, 0)); }
-  const jTag = card(2.1, 0.86, 0.14, 512, (g, w, h) => { g.fillStyle = C.ink; g.fillRect(0, 0, w, h); txt(g, 'J-23', w / 2, h * 0.75, 150, C.yellow, { align: 'center' }); });
+  const jTag = card(2.1, 0.86, 0.14, 512, (g, w, h) => { g.fillStyle = C.ink; g.fillRect(0, 0, w, h); txt(g, `J-${JOURS}`, w / 2, h * 0.75, 150, C.yellow, { align: 'center' }); });
   stack.add(jTag);
   const off30 = text3d('-30%', 1.35, 0.42, C.violet, { bevel: 0.03 }); stack.add(off30);
   const ctaCoin = scalifyCoin(0.75, 0.2); stack.add(ctaCoin);
@@ -661,7 +661,7 @@ export function buildWorld(canvas, W, H) {
       const glow = i === 0 ? ease.out2(seg(t, T.ctaCoin + 0.45, T.ctaCoin + 0.8)) : 0;
       g.userData.top.color.set('#ffffff').lerp(new THREE.Color(C.yellow), glow);
     });
-    // calendrier + J-23
+    // calendrier + compte à rebours
     { const d = drop(t, T.calendar, 5, 0.55); calendar.visible = t >= T.calendar; calendar.position.set(4.4, d.y, -3.4); calendar.rotation.y = ISO_AZ; calendar.scale.set(1.35, 1.35 * d.sq, 1.35); }
     { const s = pop(t, T.calendar + 0.55, 0.45); scaleIn(jTag, s); jTag.position.set(4.4, 4.3, -3.4); faceCam(jTag); }
     { const d = drop(t, T.off30, 5, 0.55); off30.visible = t >= T.off30; off30.position.set(-4.3, d.y, 3.6); off30.rotation.y = ISO_AZ; off30.scale.set(1, d.sq, 1); }

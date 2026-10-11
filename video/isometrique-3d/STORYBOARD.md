@@ -51,11 +51,11 @@ status: built
 src: index.html + compositions/titres.html
 beat: 23.6–28.4 s · offre fondateurs
 shape: blueprint `zoom-out-workspace-reveal`
-on_screen: recul : le bloc devient un monument sur l'île des fondateurs ; calendrier « lundi 2 novembre », « J-23 », « -30 % », 15 places numérotées qui surgissent en vague.
+on_screen: recul : le bloc devient un monument sur l'île des fondateurs ; calendrier « lundi 2 novembre », « J-22 », « -30 % », 15 places numérotées qui surgissent en vague.
 
 ## Frame 6
 status: built
 src: index.html + compositions/fin.html
 beat: 28.4–32.6 s · appel à l'action
 shape: blueprint `logo-assemble-lockup`
-on_screen: la pièce Scalify tombe sur la place n°1, une mini-boulangerie s'y pose (« Votre place ») ; « Réservez votre place. », « Lien en bio → », « J-23 · lundi 2 novembre », logo Scalify.
+on_screen: la pièce Scalify tombe sur la place n°1, une mini-boulangerie s'y pose (« Votre place ») ; « Réservez votre place. », « Lien en bio → », « J-22 · lundi 2 novembre », logo Scalify.

@@ -12,7 +12,7 @@ le chemin impossible entre vos clients et votre commerce (illusion à la Monumen
 | --- | --- |
 | `index.html` | composition racine : canevas 3D, sous-compositions, piste audio |
 | `compositions/titres.html` | titres cinétiques (Anton) et leur timeline GSAP |
-| `compositions/fin.html` | carton final (lien en bio, J-23, logo) |
+| `compositions/fin.html` | carton final (lien en bio, compte à rebours, logo) |
 | `src/engine.js` | rendu cel-shading + contours encre + papier pointillé multi-échelle |
 | `src/world.js` | tout le monde 3D, la caméra (cadrage calculé) et l'animation, fonction pure du temps |
 | `src/kit.js` | primitives (îles, personnage, croissant, pièce Scalify, cartes, texte 3D) |
@@ -35,5 +35,5 @@ npx hyperframes render --quality delivery --output renders/scalify-isometrique-9
 python3 build_html.py landscape . && npx hyperframes render --quality delivery --output renders/scalify-isometrique-16x9.mp4
 ```
 
-Changer le compte à rebours : `J-23` apparaît dans `src/world.js` (étiquette du calendrier) et dans
+Changer le compte à rebours : constante `JOURS` dans `src/timeline.js` (étiquette du calendrier) et dans
 `build_html.py` (carton final).

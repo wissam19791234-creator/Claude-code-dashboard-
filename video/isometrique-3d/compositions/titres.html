@@ -50,7 +50,8 @@
     if (b < 32.6 - 0.01) {
       const out = Math.max(a + 0.7, b - 0.36);
       tl.to(ws, { yPercent: -125, duration: 0.22, ease: 'power2.in', stagger: 0.01 }, out);
-      if (mks.length) tl.to(mks, { scaleX: 0, transformOrigin: '100% 50%', duration: 0.16, ease: 'power2.in' }, out + 0.16);
+      // l'encadré part avec son mot : il se replie vers le haut, en même temps
+      if (mks.length) tl.to(mks, { scaleY: 0, transformOrigin: '50% 0%', duration: 0.2, ease: 'power2.in' }, out);
     }
   });
   window.__timelines["titres"] = tl;

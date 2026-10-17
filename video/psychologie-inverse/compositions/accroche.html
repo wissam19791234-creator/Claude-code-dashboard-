@@ -1,0 +1,137 @@
+<!doctype html>
+<html lang="fr">
+<head><meta charset="UTF-8" /><title>accroche</title></head>
+<body>
+<template id="accroche">
+<style>
+@font-face { font-family: "Anton"; src: url("assets/fonts/Anton-400.woff2") format("woff2"); font-weight: 400; }
+@font-face { font-family: "JBM"; src: url("assets/fonts/JetBrainsMono-500.woff2") format("woff2"); font-weight: 500; }
+#root { position: absolute; inset: 0; overflow: hidden; }
+#a-stage, #a-p2 { position: absolute; inset: 0; }
+.a-t { position: absolute; left: 70px; right: 70px; font-family: "Anton"; color: #161311; text-transform: uppercase; line-height: 1; white-space: nowrap; }
+.a-w { display: inline-block; overflow: hidden; vertical-align: top; padding: 0.16em 0.04em 0.1em; margin: -0.16em -0.04em -0.1em; }
+.a-w > b { display: inline-block; font-weight: 400; }
+.a-mk { position: relative; display: inline-block; padding: 0 0.12em; }
+.a-mk > i { position: absolute; left: 0; right: 0; top: 0.04em; bottom: 0; background: #fb4903; border: 6px solid #161311; border-radius: 14px; display: block; transform-origin: 0 50%; }
+.a-mk > .a-w { position: relative; color: #fff; }
+#a-l1 { top: 250px; font-size: 96px; }
+#a-l2 { top: 372px; font-size: 156px; }
+#a-l3 { top: 548px; font-size: 206px; }
+#a-badge { position: absolute; left: 290px; top: 860px; width: 500px; height: 500px; }
+#a-badge svg { width: 100%; height: 100%; overflow: visible; }
+#a-ref { position: absolute; left: 0; right: 0; top: 1420px; text-align: center; font-family: "JBM"; font-size: 30px; letter-spacing: 0.08em; color: #6b6257; }
+#a-k1, #a-k2, #a-k3 { top: 250px; font-size: 118px; line-height: 1.08; }
+#a-cover { position: absolute; left: 160px; top: 650px; width: 760px; height: 880px; }
+#a-cover .sheet { position: absolute; inset: 0; background: #fffdf8; border: 8px solid #161311; border-radius: 10px; box-shadow: 18px 22px 0 rgba(22,19,17,0.13); overflow: hidden; }
+#a-cover .band { position: absolute; left: 0; right: 0; top: 0; height: 150px; background: #161311; }
+#a-cover .notice { position: absolute; left: 40px; top: 18px; font-family: "Anton"; font-size: 112px; line-height: 1; color: #fffdf8; letter-spacing: 0.02em; }
+#a-cover .ref { position: absolute; right: 36px; top: 58px; font-family: "JBM"; font-size: 30px; color: #ffd731; letter-spacing: 0.06em; }
+#a-cover .titre { position: absolute; left: 40px; right: 40px; top: 186px; font-family: "Anton"; font-size: 96px; line-height: 1.0; color: #161311; text-transform: uppercase; }
+#a-cover .sous { position: absolute; left: 42px; top: 400px; font-family: "JBM"; font-size: 32px; color: #161311; letter-spacing: 0.06em; }
+#a-cover svg { position: absolute; left: 0; top: 0; width: 760px; height: 880px; overflow: visible; }
+</style>
+<div id="root" data-composition-id="accroche" data-width="1080" data-height="1920">
+  <div id="a-stage">
+    <div id="a-l1" class="a-t"><span class="a-w"><b>Surtout…</b></span></div>
+    <div id="a-l2" class="a-t"><span class="a-w"><b>Ne</b></span> <span class="a-w"><b>prenez</b></span> <span class="a-mk"><i></i><span class="a-w"><b>pas</b></span></span></div>
+    <div id="a-l3" class="a-t"><span class="a-w"><b>Scalify.</b></span></div>
+    <div id="a-badge">
+      <svg viewBox="-260 -260 520 520">
+        <g id="a-logo">
+          <circle cx="0" cy="0" r="200" fill="#fff" stroke="#161311" stroke-width="14"/>
+          <path d="M 63 -66 H -30 a 37.5 37.5 0 0 0 0 75 h 56.6 a 37.5 37.5 0 0 1 0 75 H -66" transform="translate(0,-42)" fill="none" stroke="#161311" stroke-width="40" stroke-linecap="round" stroke-linejoin="round"/>
+          <circle cx="84" cy="81" r="26" fill="#4da2ff" stroke="#161311" stroke-width="10"/>
+        </g>
+        <g id="a-interdit">
+          <circle cx="0" cy="0" r="236" fill="none" stroke="#fb4903" stroke-width="44"/>
+          <line x1="-167" y1="-167" x2="167" y2="167" stroke="#fb4903" stroke-width="44" stroke-linecap="butt"/>
+          <circle cx="0" cy="0" r="258" fill="none" stroke="#161311" stroke-width="6"/>
+          <circle cx="0" cy="0" r="214" fill="none" stroke="#161311" stroke-width="5"/>
+        </g>
+      </svg>
+    </div>
+    <div id="a-ref">RÉF. SCX-016 · FORTEMENT DÉCONSEILLÉ</div>
+  </div>
+  <div id="a-p2">
+    <div id="a-k1" class="a-t"><span class="a-w"><b>Gardez</b></span> <span class="a-w"><b>votre</b></span><br><span class="a-w"><b>méthode.</b></span></div>
+    <div id="a-k2" class="a-t"><span class="a-w"><b>Elle</b></span> <span class="a-w"><b>marche</b></span><br><span class="a-w"><b>très</b></span> <span class="a-w"><b>bien…</b></span></div>
+    <div id="a-k3" class="a-t"><span class="a-w"><b>…pour</b></span> <span class="a-mk"><i></i><span class="a-w"><b>perdre</b></span></span><br><span class="a-w"><b>des</b></span> <span class="a-w"><b>clients.</b></span></div>
+    <div id="a-cover">
+      <div class="sheet">
+        <div class="band"></div>
+        <div class="notice">NOTICE</div>
+        <div class="ref">SCX-016</div>
+        <div class="titre">Comment perdre<br>vos clients</div>
+        <div class="sous">EN 5 ÉTAPES FACILES</div>
+      </div>
+      <svg id="a-cover-svg" viewBox="0 0 760 880">
+        <path id="a-ring" d="M 228 232 C 300 200, 452 204, 512 236 C 560 262, 520 300, 420 306 C 320 312, 220 300, 214 262 C 210 244, 240 230, 300 226" fill="none" stroke="#fb4903" stroke-width="9" stroke-linecap="round"/>
+        <g transform="translate(380,850) scale(0.98)"><g id="a-man-boil"></g></g>
+        <g id="a-spark" transform="translate(520,560)">
+          <path d="M 0 -34 L 0 34 M -34 0 L 34 0 M -22 -22 L 22 22 M -22 22 L 22 -22" stroke="#161311" stroke-width="7" stroke-linecap="round"/>
+        </g>
+      </svg>
+    </div>
+  </div>
+</div>
+<script>
+(function () {
+  var SK = window.SK;
+  document.getElementById('a-man-boil').innerHTML = SK.man('a-man', { mouth: 'grin' });
+  var tl = gsap.timeline({ paused: true });
+  var words = function (sel) { return document.querySelectorAll(sel + ' .a-w > b'); };
+  var rise = function (sel, at, d) { tl.fromTo(words(sel), { yPercent: 150, rotation: 2 }, { yPercent: 0, rotation: 0, duration: d || 0.42, ease: 'power3.out', stagger: 0.05 }, at); };
+  var out = function (sel, at) { tl.to(words(sel), { yPercent: -150, duration: 0.2, ease: 'power2.in', stagger: 0.015 }, at); };
+  // pivots SVG posés avant toute transformation
+  SK.piv('#a-logo, #a-interdit, #a-spark', '0 0');
+  SK.piv('#a-man-armR', SK.PIV.armR);
+  var slam = function (sel, at) {
+    tl.fromTo(sel, { scale: 1.45, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.24, ease: 'expo.out', transformOrigin: '0% 60%' }, at);
+    SK.shake(tl, '#a-stage', at + 0.12, 9);
+  };
+
+  // ---- 1. « Surtout… ne prenez pas Scalify. »
+  tl.fromTo('#a-logo', { scale: 0.35, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.5, ease: 'back.out(1.5)' }, 0.05);
+  rise('#a-l1', 0.12, 0.45);
+  gsap.set('#a-l2 .a-w > b, #a-l3 .a-w > b', { yPercent: 0 });
+  slam('#a-l2', 1.06);
+  tl.fromTo('#a-l2 .a-mk > i', { scaleX: 0 }, { scaleX: 1, duration: 0.2, ease: 'expo.out' }, 1.36);
+  tl.fromTo('#a-interdit', { scale: 2.3, rotation: -28, opacity: 0 }, { scale: 1, rotation: 0, opacity: 1, duration: 0.18, ease: 'power4.in' }, 1.3);
+  SK.shake(tl, '#a-stage', 1.48, 16);
+  tl.fromTo('#a-logo', { scaleX: 1, scaleY: 1 }, { scaleX: 1.08, scaleY: 0.9, duration: 0.07, yoyo: true, repeat: 1, ease: 'power2.out' }, 1.48);
+  slam('#a-l3', 1.62);
+  tl.fromTo('#a-ref', { opacity: 0, y: 14 }, { opacity: 1, y: 0, duration: 0.35, ease: 'power2.out' }, 1.85);
+
+  // ---- 2. sortie : le titre file, l'interdit devient un badge en haut à droite
+  out('#a-l1', 2.28); out('#a-l2', 2.3); out('#a-l3', 2.32);
+  tl.to('#a-l2 .a-mk > i', { scaleY: 0, transformOrigin: '50% 0%', duration: 0.18, ease: 'power2.in' }, 2.3);
+  tl.to('#a-ref', { opacity: 0, duration: 0.2 }, 2.3);
+  tl.to('#a-badge', { x: 352, y: -712, scale: 0.3, rotation: 12, duration: 0.6, ease: 'power3.inOut' }, 2.3);
+
+  // ---- 3. « Gardez votre méthode. Elle marche très bien… pour perdre des clients. »
+  rise('#a-k1', 2.45);
+  out('#a-k1', 3.58);
+  rise('#a-k2', 3.68);
+  tl.fromTo('#a-cover', { y: 1420, rotation: 9 }, { y: 0, rotation: -2.5, duration: 0.7, ease: 'power3.out' }, 3.5);
+  out('#a-k2', 4.74);
+  rise('#a-k3', 4.84, 0.36);
+  gsap.set('#a-k3 .a-mk .a-w', { opacity: 0 });
+  tl.fromTo('#a-k3 .a-mk .a-w', { opacity: 0 }, { opacity: 1, duration: 0.01, immediateRender: false }, 4.98);
+  tl.fromTo('#a-k3 .a-mk > i', { scaleX: 0 }, { scaleX: 1, duration: 0.3, ease: 'expo.out' }, 5.0);
+  SK.drawOn(tl, '#a-ring', 4.95, 0.45, { ease: 'power1.inOut' });
+  // le bonhomme lève le pouce, fier de lui
+  tl.fromTo('#a-man-armR', { rotation: 0 }, { rotation: -150, duration: 0.35, ease: 'back.out(2)' }, 4.3);
+  tl.fromTo('#a-spark', { scale: 0, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.25, ease: 'back.out(2)' }, 4.55);
+  tl.to('#a-spark', { scale: 0, opacity: 0, duration: 0.2, ease: 'power2.in' }, 5.1);
+  SK.boil(tl, ['#a-man-boil', '#a-logo', '#a-cover-svg'], { amp: 1.4, rot: 0.4, seed: 3 });
+
+  // ---- 4. sortie vers la notice (page qui glisse à gauche)
+  tl.to('#a-p2', { x: -1180, rotation: -3, duration: 0.42, ease: 'power3.in' }, 5.84);
+  tl.to('#a-badge', { opacity: 0, duration: 0.2 }, 5.9);
+  SK.drive(tl, 6.3);
+  window.__timelines["accroche"] = tl;
+})();
+</script>
+</template>
+</body>
+</html>

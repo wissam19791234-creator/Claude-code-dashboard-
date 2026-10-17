@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="fr">
+<head><meta charset="UTF-8" /><title>etape-4</title></head>
+<body>
+<template id="etape-4">
+<style>
+@font-face { font-family: "Anton"; src: url("assets/fonts/Anton-400.woff2") format("woff2"); font-weight: 400; }
+@font-face { font-family: "JBM"; src: url("assets/fonts/JetBrainsMono-500.woff2") format("woff2"); font-weight: 500; }
+@font-face { font-family: "Caveat"; src: url("assets/fonts/Caveat-700-latin.woff2") format("woff2"); font-weight: 700; }
+</style>
+<div id="root" data-composition-id="etape-4" data-width="1080" data-height="1920">
+  <!-- Étape 4 : « Quatre. Ne postez rien. Jamais. » — profil vide, criquets, virevoltant -->
+  <div id="e-p4" class="e-page">
+    <div class="e-num">4</div>
+    <div class="e-titre"><span class="e-ln"><span class="e-w"><b>Ne</b></span> <span class="e-w"><b>postez</b></span> <span class="e-w"><b>rien.</b></span></span><span class="e-ln"><span class="e-w"><b>Jamais.</b></span></span></div>
+    <div class="e-meta"><svg viewBox="0 0 44 44"><rect x="5" y="9" width="34" height="30" rx="4" fill="#fffdf8" stroke="#161311" stroke-width="4"/><rect x="5" y="9" width="34" height="10" rx="3" fill="#fb4903" stroke="#161311" stroke-width="4"/><path d="M 14 4 V 13 M 30 4 V 13" stroke="#161311" stroke-width="4" stroke-linecap="round"/></svg>FRÉQUENCE CONSEILLÉE : <em>JAMAIS</em></div>
+    <svg class="e-illu" viewBox="0 0 1080 880">
+      <g id="e4-boil">
+        <path d="M 60 812 L 1020 812" stroke="#161311" stroke-width="8" stroke-linecap="round"/>
+        <g transform="translate(742,0)">
+          <rect x="-196" y="44" width="392" height="746" rx="58" fill="#fffdf8" stroke="#161311" stroke-width="10"/>
+          <rect x="-48" y="70" width="96" height="20" rx="10" fill="#161311"/>
+          <circle cx="-112" cy="172" r="50" fill="#ece6da" stroke="#161311" stroke-width="6"/>
+          <text x="-112" y="192" text-anchor="middle" font-family="Anton" font-size="58" fill="#b3a893">?</text>
+          <text x="-42" y="160" font-family="JBM" font-size="23" fill="#161311">votre_commerce</text>
+          <text x="-42" y="196" font-family="JBM" font-size="21" fill="#6b6257">0 publication</text>
+          <path d="M -166 244 H 166" stroke="#d9d2c3" stroke-width="4" stroke-linecap="round"/>
+          <g id="e4-grid"></g>
+          <text x="0" y="672" text-anchor="middle" font-family="Anton" font-size="40" fill="#b3a893">AUCUNE PUBLICATION</text>
+          <rect x="-56" y="752" width="112" height="9" rx="4.5" fill="#161311"/>
+        </g>
+        <g transform="translate(372,734) rotate(-8)"><text id="e4-cri1" font-family="Caveat" font-size="50" fill="#6b6257">cri…</text></g>
+        <g transform="translate(448,694) rotate(-8)"><text id="e4-cri2" font-family="Caveat" font-size="50" fill="#6b6257">cri…</text></g>
+      </g>
+      <g transform="translate(222,812) scale(1.3)"><g id="e4-man-boil"></g></g>
+      <g transform="translate(352,352)"><text id="e4-q" x="0" y="0" text-anchor="middle" font-family="Anton" font-size="104" fill="#161311">?</text></g>
+      <g transform="translate(0,754)"><g id="e4-tw-x"><g id="e4-tw-y"><g id="e4-tw-r"></g></g></g></g>
+    </svg>
+    <div class="e-dim"></div>
+  </div>
+</div>
+<script>
+(function () {
+  var SK = window.SK, H = SK.hash, $ = function (id) { return document.getElementById(id); };
+  var O = 13.05, DUR = 2.95, T = function (t) { return +(t - O).toFixed(3); };
+
+  $('e4-man-boil').innerHTML = SK.man('e4-man', { mouth: 'flat' });
+  var grid = '', i;
+  for (var gy = 0; gy < 3; gy++) for (var gx = 0; gx < 3; gx++)
+    grid += '<rect x="' + (-168 + gx * 116) + '" y="' + (264 + gy * 116) + '" width="104" height="104" rx="8" fill="none" stroke="#cbbfab" stroke-width="4" stroke-dasharray="11 9"/>';
+  $('e4-grid').innerHTML = grid;
+  // virevoltant : boucles de brindilles (déterministes)
+  var tw = '';
+  for (i = 0; i < 11; i++) {
+    var rx = 30 + (H(i, 31) + 1) * 13, ry = 22 + (H(i, 37) + 1) * 13, ro = H(i, 41) * 180;
+    tw += '<ellipse cx="' + (H(i, 43) * 10).toFixed(1) + '" cy="' + (H(i, 47) * 10).toFixed(1) + '" rx="' + rx.toFixed(1) + '" ry="' + ry.toFixed(1) +
+      '" transform="rotate(' + ro.toFixed(1) + ')" fill="none" stroke="' + (i % 3 ? '#a8814f' : '#7d5f37') + '" stroke-width="5"/>';
+  }
+  for (i = 0; i < 7; i++) {
+    var at = (i / 7) * Math.PI * 2 + 0.4;
+    tw += '<path d="M ' + (Math.cos(at) * 44).toFixed(1) + ' ' + (Math.sin(at) * 44).toFixed(1) + ' L ' + (Math.cos(at + 0.12) * 64).toFixed(1) + ' ' +
+      (Math.sin(at + 0.12) * 64).toFixed(1) + '" stroke="#7d5f37" stroke-width="5" stroke-linecap="round"/>';
+  }
+  $('e4-tw-r').innerHTML = tw;
+
+  var tl = gsap.timeline({ paused: true }), ft = SK.ft(tl);
+  SK.page(tl, '#e-p4', { next: T(15.45) });
+  SK.words(tl, '#e-p4 .e-w > b', [T(13.68), T(13.85), T(14.19), T(14.67)]);
+
+  // criquets
+  gsap.set('#e4-cri1, #e4-cri2', { opacity: 0 });
+  ft('#e4-cri1', { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 0.25, ease: 'power2.out' }, T(13.6));
+  ft('#e4-cri2', { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 0.25, ease: 'power2.out' }, T(14.05));
+  // il hausse les épaules
+  ft('#e4-man-armL', { rotation: 0 }, { rotation: 44, duration: 0.3, ease: 'back.out(2)', svgOrigin: SK.PIV.armL }, T(13.92));
+  ft('#e4-man-armR', { rotation: 0 }, { rotation: -44, duration: 0.3, ease: 'back.out(2)', svgOrigin: SK.PIV.armR }, T(13.92));
+  ft('#e4-man-head', { rotation: 0 }, { rotation: 9, duration: 0.3, ease: 'back.out(2)', svgOrigin: SK.PIV.head }, T(13.95));
+  SK.piv('#e4-q', '0 -36');
+  gsap.set('#e4-q', { scale: 0 });
+  ft('#e4-q', { scale: 0, rotation: -20 }, { scale: 1, rotation: 8, duration: 0.32, ease: 'back.out(2.6)', svgOrigin: '0 -36' }, T(14.02));
+  // le virevoltant traverse en rebondissant
+  gsap.set('#e4-tw-x', { x: 1190 });
+  ft('#e4-tw-x', { x: 1190 }, { x: -170, duration: 2.0, ease: 'none' }, T(13.4));
+  ft('#e4-tw-r', { rotation: 0 }, { rotation: -820, duration: 2.0, ease: 'none', svgOrigin: '0 0' }, T(13.4));
+  for (i = 0; i < 4; i++) {
+    ft('#e4-tw-y', { y: 0 }, { y: -(78 - i * 14), duration: 0.25, ease: 'power2.out' }, T(13.4) + i * 0.5);
+    ft('#e4-tw-y', { y: -(78 - i * 14) }, { y: 0, duration: 0.25, ease: 'power2.in' }, T(13.65) + i * 0.5);
+  }
+
+  SK.boil(tl, ['#e4-boil', '#e4-man-boil'], { amp: 1.3, rot: 0.3, seed: 10 });
+  SK.drive(tl, DUR);
+  window.__timelines["etape-4"] = tl;
+})();
+</script>
+</template>
+</body>
+</html>

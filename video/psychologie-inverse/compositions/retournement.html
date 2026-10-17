@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="fr">
+<head><meta charset="UTF-8" /><title>retournement</title></head>
+<body>
+<template id="retournement">
+<style>
+@font-face { font-family: "Anton"; src: url("assets/fonts/Anton-400.woff2") format("woff2"); font-weight: 400; }
+@font-face { font-family: "JBM"; src: url("assets/fonts/JetBrainsMono-500.woff2") format("woff2"); font-weight: 500; }
+#r-card { position: absolute; inset: 0; transform-origin: 50% 50%; background: #ffd731; overflow: hidden; }
+#r-card::before { content: ""; position: absolute; inset: 0; background: url("assets/grain.png") repeat; opacity: 0.7; }
+#r-head { position: absolute; left: 60px; right: 60px; top: 150px; height: 80px; }
+#r-head .nt { position: absolute; left: 0; top: 0; font-family: "Anton"; font-size: 54px; line-height: 1; color: #161311; }
+#r-head .ref { position: absolute; left: 178px; top: 3px; font-family: "JBM"; font-size: 21px; line-height: 1.3; letter-spacing: 0.06em; color: #161311; }
+#r-head .ref em { font-style: normal; color: #fffdf8; background: #161311; padding: 0 6px; border-radius: 4px; }
+#r-head .fr { position: absolute; right: 0; top: 4px; width: 70px; height: 44px; border: 5px solid #161311; border-radius: 6px;
+  font-family: "JBM"; font-size: 24px; line-height: 34px; text-align: center; color: #161311; }
+#r-head .rule { position: absolute; left: 0; right: 0; top: 70px; height: 7px; background: #161311; border-radius: 4px; }
+.r-t { position: absolute; left: 70px; font-family: "Anton"; color: #161311; text-transform: uppercase; line-height: 1; white-space: nowrap; }
+.r-w { display: inline-block; overflow: hidden; vertical-align: top; padding: 0.16em 0.04em 0.1em; margin: -0.16em -0.04em -0.1em; }
+.r-w > b { display: inline-block; font-weight: 400; }
+#r-ou { top: 262px; font-size: 120px; }
+#r-tout { top: 664px; font-size: 104px; }
+#r-mark { position: absolute; left: 70px; top: 420px; width: 210px; height: 210px; }
+#r-mark svg { width: 100%; height: 100%; overflow: visible; }
+#r-nom { position: absolute; left: 304px; top: 420px; font-family: "Anton"; font-size: 190px; line-height: 210px; color: #161311; }
+#r-list { position: absolute; left: 60px; top: 822px; width: 960px; height: 620px; background: #fffdf8; border: 8px solid #161311; border-radius: 28px;
+  box-shadow: 16px 18px 0 rgba(22,19,17,0.16); transform: rotate(-1.2deg); }
+.r-row { position: absolute; left: 0; right: 0; height: 104px; }
+.r-box { position: absolute; left: 34px; top: 16px; width: 72px; height: 72px; border: 7px solid #161311; border-radius: 14px; background: #fffdf8; }
+.r-box > i { position: absolute; inset: 0; background: #55db9c; border-radius: 7px; display: block; }
+.r-box svg { position: absolute; left: -12px; top: -16px; width: 96px; height: 96px; overflow: visible; }
+.r-lab { position: absolute; left: 136px; top: 14px; font-family: "Anton"; font-size: 64px; line-height: 76px; color: #161311; white-space: nowrap; }
+.r-mk { position: relative; display: inline-block; padding: 0 0.12em; }
+.r-mk > i { position: absolute; left: 0; right: 0; top: 0.08em; bottom: 0.02em; background: #5c4ade; border: 5px solid #161311; border-radius: 12px; display: block; transform-origin: 0 50%; }
+.r-mk > span { position: relative; color: #fffdf8; }
+</style>
+<div id="root" data-composition-id="retournement" data-width="1080" data-height="1920">
+  <!-- « Ou alors… Scalify s'occupe de tout. 24 heures sur 24. » — la notice se retourne : comment GARDER vos clients -->
+  <div id="r-card">
+    <div id="r-head">
+      <div class="nt">NOTICE</div>
+      <div class="ref">SCX-016<br>COMMENT <em>GARDER</em> VOS CLIENTS</div>
+      <div class="fr">FR</div>
+      <div class="rule"></div>
+    </div>
+    <div id="r-ou" class="r-t"><span class="r-w"><b>Ou</b></span> <span class="r-w"><b>alors…</b></span></div>
+    <div id="r-mark">
+      <svg viewBox="-210 -210 420 420">
+        <g id="r-logo">
+          <circle cx="0" cy="0" r="200" fill="#fffdf8" stroke="#161311" stroke-width="16"/>
+          <path d="M 63 -66 H -30 a 37.5 37.5 0 0 0 0 75 h 56.6 a 37.5 37.5 0 0 1 0 75 H -66" transform="translate(0,-42)" fill="none" stroke="#161311" stroke-width="40" stroke-linecap="round" stroke-linejoin="round"/>
+          <circle cx="84" cy="81" r="26" fill="#4da2ff" stroke="#161311" stroke-width="10"/>
+        </g>
+      </svg>
+    </div>
+    <div id="r-nom" class="r-t" style="left:304px;top:420px;font-size:190px;line-height:210px"><span class="r-w"><b>Scalify</b></span></div>
+    <div id="r-tout" class="r-t"><span class="r-w"><b>S'occupe</b></span> <span class="r-w"><b>de</b></span> <span class="r-w"><b>tout.</b></span></div>
+    <div id="r-list">
+      <div class="r-row" style="top:34px"><div class="r-box"><i></i><svg viewBox="0 0 96 96"><path d="M 22 50 L 42 70 L 80 22" fill="none" stroke="#161311" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div class="r-lab">VOTRE FICHE GOOGLE</div></div>
+      <div class="r-row" style="top:148px"><div class="r-box"><i></i><svg viewBox="0 0 96 96"><path d="M 22 50 L 42 70 L 80 22" fill="none" stroke="#161311" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div class="r-lab">VOS AVIS</div></div>
+      <div class="r-row" style="top:262px"><div class="r-box"><i></i><svg viewBox="0 0 96 96"><path d="M 22 50 L 42 70 L 80 22" fill="none" stroke="#161311" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div class="r-lab">VOTRE SITE</div></div>
+      <div class="r-row" style="top:376px"><div class="r-box"><i></i><svg viewBox="0 0 96 96"><path d="M 22 50 L 42 70 L 80 22" fill="none" stroke="#161311" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div class="r-lab">VOS POSTS</div></div>
+      <div class="r-row" style="top:490px"><div class="r-box"><i></i><svg viewBox="0 0 96 96"><path d="M 22 50 L 42 70 L 80 22" fill="none" stroke="#161311" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div class="r-lab">UNE IA QUI RÉPOND <span class="r-mk"><i></i><span>24/7</span></span></div></div>
+    </div>
+  </div>
+</div>
+<script>
+(function () {
+  var SK = window.SK;
+  var O = 21.2, DUR = 4.8, T = function (t) { return +(t - O).toFixed(3); };
+  var tl = gsap.timeline({ paused: true }), ft = SK.ft(tl), i;
+
+  // la face jaune arrive par la tranche (la carte « Bravo » vient de pivoter à 90°)
+  gsap.set('#r-card', { rotationY: -90, transformPerspective: 1800 });
+  ft('#r-card', { rotationY: -90, transformPerspective: 1800 }, { rotationY: 0, transformPerspective: 1800, duration: 0.34, ease: 'power3.out' }, T(21.4));
+  SK.words(tl, '#r-ou .r-w > b', [T(21.36), T(21.44)], { dur: 0.36 });
+
+  // « Scalify » : le logo saute, le nom monte
+  SK.piv('#r-logo', '0 0');
+  gsap.set('#r-logo', { scale: 0 });
+  ft('#r-logo', { scale: 0, rotation: -40 }, { scale: 1, rotation: 0, duration: 0.5, ease: 'back.out(1.8)' }, T(21.98));
+  SK.words(tl, '#r-nom .r-w > b', [T(22.02)], { dur: 0.42 });
+  SK.words(tl, '#r-tout .r-w > b', [T(22.66), T(23.0), T(23.12)]);
+
+  // la liste remonte, chaque point est coché (dans l'ordre des 5 étapes)
+  gsap.set('#r-list', { y: 1150 });
+  ft('#r-list', { y: 1150, rotation: 4 }, { y: 0, rotation: -1.2, duration: 0.5, ease: 'power3.out' }, T(22.56));
+  var boxes = document.querySelectorAll('#r-list .r-box > i'), checks = document.querySelectorAll('#r-list .r-box path'), rows = document.querySelectorAll('#r-list .r-row');
+  gsap.set(boxes, { scale: 0 });
+  for (i = 0; i < 5; i++) {
+    var at = T(23.19) + i * 0.12;
+    ft(boxes[i], { scale: 0 }, { scale: 1, duration: 0.18, ease: 'back.out(2.5)' }, at);
+    SK.drawOn(tl, checks[i], at + 0.02, 0.2, { ease: 'power2.out' });
+    ft(rows[i], { x: 0 }, { x: 14, duration: 0.07, ease: 'power2.out', yoyo: true, repeat: 1 }, at);
+  }
+  // « 24 heures sur 24 »
+  gsap.set('#r-list .r-mk > i', { scaleX: 0 });
+  gsap.set('#r-list .r-mk > span', { opacity: 0 });
+  ft('#r-list .r-mk > span', { opacity: 0 }, { opacity: 1, duration: 0.01 }, T(23.68));
+  ft('#r-list .r-mk > i', { scaleX: 0 }, { scaleX: 1, duration: 0.26, ease: 'expo.out' }, T(23.66));
+  ft('#r-list .r-mk', { scale: 1 }, { scale: 1.14, duration: 0.14, ease: 'power2.out', yoyo: true, repeat: 1 }, T(24.56));
+
+  SK.drive(tl, DUR);
+  window.__timelines["retournement"] = tl;
+})();
+</script>
+</template>
+</body>
+</html>

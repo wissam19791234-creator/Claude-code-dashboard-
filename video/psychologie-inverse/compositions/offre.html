@@ -1,0 +1,122 @@
+<!doctype html>
+<html lang="fr">
+<head><meta charset="UTF-8" /><title>offre</title></head>
+<body>
+<template id="offre">
+<style>
+@font-face { font-family: "Anton"; src: url("assets/fonts/Anton-400.woff2") format("woff2"); font-weight: 400; }
+@font-face { font-family: "JBM"; src: url("assets/fonts/JetBrainsMono-500.woff2") format("woff2"); font-weight: 500; }
+@font-face { font-family: "Caveat"; src: url("assets/fonts/Caveat-700-latin.woff2") format("woff2"); font-weight: 700; }
+#o-head { position: absolute; left: 60px; right: 60px; top: 150px; height: 80px; }
+#o-head .nt { position: absolute; left: 0; top: 0; font-family: "Anton"; font-size: 54px; line-height: 1; color: #161311; }
+#o-head .ref { position: absolute; left: 178px; top: 3px; font-family: "JBM"; font-size: 21px; line-height: 1.3; letter-spacing: 0.06em; color: #6b6257; }
+#o-head .fr { position: absolute; right: 0; top: 4px; width: 70px; height: 44px; border: 5px solid #161311; border-radius: 6px;
+  font-family: "JBM"; font-size: 24px; line-height: 34px; text-align: center; color: #161311; }
+#o-head .rule { position: absolute; left: 0; right: 0; top: 70px; height: 7px; background: #161311; border-radius: 4px; }
+.o-t { position: absolute; font-family: "Anton"; color: #161311; text-transform: uppercase; line-height: 1; white-space: nowrap; }
+.o-w { display: inline-block; overflow: hidden; vertical-align: top; padding: 0.16em 0.04em 0.1em; margin: -0.16em -0.04em -0.1em; }
+.o-w > b { display: inline-block; font-weight: 400; }
+#o-kit { left: 70px; top: 262px; font-size: 80px; }
+#o-tiles { position: absolute; left: 60px; top: 372px; width: 960px; height: 220px; }
+.o-tile { position: absolute; top: 0; width: 168px; height: 168px; background: #fffdf8; border: 6px solid #161311; border-radius: 22px; }
+.o-tile svg { position: absolute; left: 28px; top: 28px; width: 100px; height: 100px; overflow: visible; }
+.o-tile .q { position: absolute; left: -18px; top: -18px; width: 58px; height: 58px; border-radius: 50%; background: #161311; color: #fffdf8;
+  font-family: "JBM"; font-size: 24px; line-height: 58px; text-align: center; letter-spacing: -0.04em; }
+.o-tile .lb { position: absolute; left: -20px; right: -20px; top: 182px; text-align: center; font-family: "JBM"; font-size: 22px; letter-spacing: 0.02em; color: #161311; white-space: nowrap; }
+#o-des { left: 74px; top: 640px; font-size: 80px; }
+#o-prix { left: 64px; top: 712px; font-size: 300px; }
+#o-mois { left: 612px; top: 868px; font-size: 110px; }
+#o-stamp { position: absolute; left: 80px; top: 1040px; width: 540px; height: 250px; border: 11px solid #5c4ade; border-radius: 22px; background: rgba(233,204,255,0.45); }
+#o-stamp .p { position: absolute; left: 0; right: 0; top: 2px; text-align: center; font-family: "Anton"; font-size: 180px; line-height: 1; color: #5c4ade; }
+#o-stamp .s { position: absolute; left: 0; right: 0; top: 186px; text-align: center; font-family: "JBM"; font-size: 30px; letter-spacing: 0.08em; color: #5c4ade; }
+#o-note { position: absolute; left: 660px; top: 1050px; width: 360px; font-family: "Caveat"; font-size: 62px; line-height: 0.95; color: #161311; transform: rotate(6deg); }
+#o-arrow { position: absolute; left: 600px; top: 1170px; width: 160px; height: 140px; overflow: visible; }
+#o-quinze { left: 70px; top: 1326px; font-size: 76px; }
+#o-band { position: absolute; left: 70px; top: 1432px; height: 66px; padding: 0 28px; background: #161311; border-radius: 14px; color: #fffdf8;
+  font-family: "JBM"; font-size: 29px; line-height: 66px; letter-spacing: 0.05em; white-space: nowrap; }
+#o-band em { font-style: normal; color: #ffd731; }
+</style>
+<div id="root" data-composition-id="offre" data-width="1080" data-height="1920">
+  <!-- « Dès 49 euros par mois. Moins 30 % pour les 15 premiers. » — la page « contenu du kit » de la notice -->
+  <div id="o-page" class="e-page">
+    <div id="o-head">
+      <div class="nt">NOTICE</div>
+      <div class="ref">SCX-016<br>CONTENU DU KIT</div>
+      <div class="fr">FR</div>
+      <div class="rule"></div>
+    </div>
+    <div id="o-kit" class="o-t"><span class="o-w"><b>Contenu</b></span> <span class="o-w"><b>du</b></span> <span class="o-w"><b>kit</b></span></div>
+    <div id="o-tiles">
+      <div class="o-tile" style="left:0px"><div class="q">1×</div>
+        <svg viewBox="0 0 100 100"><rect x="8" y="16" width="84" height="68" rx="9" fill="#dceeff" stroke="#161311" stroke-width="6"/><path d="M 8 34 H 92" stroke="#161311" stroke-width="6"/><circle cx="20" cy="25" r="3.5" fill="#161311"/><circle cx="31" cy="25" r="3.5" fill="#161311"/><rect x="18" y="44" width="40" height="8" rx="4" fill="#161311"/><rect x="18" y="60" width="62" height="7" rx="3.5" fill="#6b6257"/></svg>
+        <div class="lb">SITE</div></div>
+      <div class="o-tile" style="left:198px"><div class="q">1×</div>
+        <svg viewBox="0 0 100 100"><path d="M 50 92 C 50 92, 18 58, 18 38 A 32 32 0 0 1 82 38 C 82 58, 50 92, 50 92 Z" fill="#fb4903" stroke="#161311" stroke-width="6" stroke-linejoin="round"/><circle cx="50" cy="38" r="12" fill="#fffdf8" stroke="#161311" stroke-width="5"/></svg>
+        <div class="lb">FICHE GOOGLE</div></div>
+      <div class="o-tile" style="left:396px"><div class="q">1×</div>
+        <svg viewBox="0 0 100 100"><path id="o-star" d="M 0 0" fill="#ffd731" stroke="#161311" stroke-width="6" stroke-linejoin="round"/></svg>
+        <div class="lb">AVIS</div></div>
+      <div class="o-tile" style="left:594px"><div class="q">1×</div>
+        <svg viewBox="0 0 100 100"><rect x="14" y="14" width="72" height="72" rx="12" fill="#e9ccff" stroke="#161311" stroke-width="6"/><path d="M 14 74 L 38 48 L 54 62 L 66 52 L 86 72 V 74 Q 86 86 74 86 H 26 Q 14 86 14 74 Z" fill="#5c4ade" stroke="#161311" stroke-width="5" stroke-linejoin="round"/><circle cx="66" cy="32" r="8" fill="#ffd731" stroke="#161311" stroke-width="4"/></svg>
+        <div class="lb">POSTS</div></div>
+      <div class="o-tile" style="left:792px"><div class="q">1×</div>
+        <svg viewBox="0 0 100 100"><path d="M 20 14 H 80 Q 92 14 92 26 V 62 Q 92 74 80 74 H 46 L 26 90 L 30 74 H 20 Q 8 74 8 62 V 26 Q 8 14 20 14 Z" fill="#55db9c" stroke="#161311" stroke-width="6" stroke-linejoin="round"/><text x="50" y="58" text-anchor="middle" font-family="Anton" font-size="38" fill="#161311">IA</text></svg>
+        <div class="lb">IA 24/7</div></div>
+    </div>
+    <div id="o-des" class="o-t"><span class="o-w"><b>Dès</b></span></div>
+    <div id="o-prix" class="o-t"><span class="o-w"><b>49 €</b></span></div>
+    <div id="o-mois" class="o-t"><span class="o-w"><b>/mois</b></span></div>
+    <div id="o-stamp"><div class="p">−30 %</div><div class="s">SUR L'ANNUEL</div></div>
+    <div id="o-note">(mais rien<br>ne presse…)</div>
+    <svg id="o-arrow" viewBox="0 0 160 140"><path id="o-arrow-p" d="M 130 12 C 110 70, 70 100, 22 104 M 22 104 L 48 84 M 22 104 L 50 120" fill="none" stroke="#161311" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    <div id="o-quinze" class="o-t"><span class="o-w"><b>Pour</b></span> <span class="o-w"><b>les</b></span> <span class="o-w"><b>15</b></span> <span class="o-w"><b>premiers</b></span></div>
+    <div id="o-band">LANCEMENT LE 2 NOVEMBRE · <em>J-16</em></div>
+    <div class="e-dim"></div>
+  </div>
+</div>
+<script>
+(function () {
+  var SK = window.SK;
+  var O = 25.45, DUR = 4.2, T = function (t) { return +(t - O).toFixed(3); };
+  document.getElementById('o-star').setAttribute('d', SK.starD(50, 54, 44));
+
+  var tl = gsap.timeline({ paused: true }), ft = SK.ft(tl);
+  // la page arrive par la droite, par-dessus la face jaune ; poussée par la fin à 29,15 s
+  gsap.set('#o-page', { x: 1080 });
+  ft('#o-page', { x: 1080, rotation: 2.4 }, { x: 0, rotation: 0, duration: 0.5, ease: 'power3.out' }, 0);
+  ft('#o-page', { x: 0 }, { x: -380, duration: 0.5, ease: 'power3.out' }, T(29.15));
+  ft('#o-page .e-dim', { opacity: 0 }, { opacity: 0.2, duration: 0.5, ease: 'power2.out' }, T(29.15));
+
+  // contenu du kit
+  SK.words(tl, '#o-kit .o-w > b', [0.12, 0.17, 0.22], { dur: 0.3 });
+  var tiles = document.querySelectorAll('#o-tiles .o-tile');
+  gsap.set(tiles, { scale: 0 });
+  for (var i = 0; i < tiles.length; i++) ft(tiles[i], { scale: 0, rotation: -12 }, { scale: 1, rotation: 0, duration: 0.32, ease: 'back.out(2.2)' }, 0.2 + i * 0.07);
+
+  // « Dès 49 euros par mois »
+  SK.words(tl, '#o-des .o-w > b', [T(25.52)], { dur: 0.28 });
+  gsap.set('#o-prix', { opacity: 0 });
+  ft('#o-prix', { scale: 1.5, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.28, ease: 'expo.out', transformOrigin: '20% 60%' }, T(25.7));
+  SK.shake(tl, '#o-page', T(25.8), 10);
+  SK.words(tl, '#o-mois .o-w > b', [T(26.4)], { dur: 0.3 });
+
+  // « Moins 30 % » : le tampon violet claque
+  gsap.set('#o-stamp', { opacity: 0 });
+  ft('#o-stamp', { scale: 2.3, rotation: -16, opacity: 0 }, { scale: 1, rotation: -6, opacity: 1, duration: 0.2, ease: 'power4.in' }, T(27.1));
+  SK.shake(tl, '#o-page', T(27.3), 14);
+
+  // « pour les 15 premiers » … (mais rien ne presse)
+  SK.words(tl, '#o-quinze .o-w > b', [T(27.97), T(28.13), T(28.21), T(28.36)]);
+  gsap.set('#o-note', { clipPath: 'inset(0% 100% 0% 0%)' });
+  ft('#o-note', { clipPath: 'inset(0% 100% 0% 0%)' }, { clipPath: 'inset(0% 0% 0% 0%)', duration: 0.5, ease: 'power1.inOut' }, T(28.5));
+  SK.drawOn(tl, '#o-arrow-p', T(28.8), 0.35, { ease: 'power2.out' });
+  gsap.set('#o-band', { opacity: 0 });
+  ft('#o-band', { y: 40, opacity: 0 }, { y: 0, opacity: 1, duration: 0.35, ease: 'power3.out' }, T(28.62));
+
+  SK.drive(tl, DUR);
+  window.__timelines["offre"] = tl;
+})();
+</script>
+</template>
+</body>
+</html>

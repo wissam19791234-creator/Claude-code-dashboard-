@@ -1,0 +1,123 @@
+<!doctype html>
+<html lang="fr">
+<head><meta charset="UTF-8" /><title>etape-5</title></head>
+<body>
+<template id="etape-5">
+<style>
+@font-face { font-family: "Anton"; src: url("assets/fonts/Anton-400.woff2") format("woff2"); font-weight: 400; }
+@font-face { font-family: "JBM"; src: url("assets/fonts/JetBrainsMono-500.woff2") format("woff2"); font-weight: 500; }
+@font-face { font-family: "Caveat"; src: url("assets/fonts/Caveat-700-latin.woff2") format("woff2"); font-weight: 700; }
+</style>
+<div id="root" data-composition-id="etape-5" data-width="1080" data-height="1920">
+  <!-- Étape 5 : « Cinq. Répondez aux messages… le lendemain. » — il dort, l'horloge s'emballe, le client part -->
+  <div id="e-p5" class="e-page">
+    <div class="e-num">5</div>
+    <div class="e-titre"><span class="e-ln"><span class="e-w"><b>Répondez…</b></span></span><span class="e-ln"><span class="e-w"><b>le</b></span> <span class="e-w"><b>lendemain.</b></span></span></div>
+    <div class="e-meta"><svg viewBox="0 0 44 44"><path d="M 10 6 H 34 M 10 38 H 34" stroke="#161311" stroke-width="4" stroke-linecap="round"/><path d="M 13 6 C 13 18, 31 24, 31 38 M 31 6 C 31 18, 13 24, 13 38" fill="none" stroke="#161311" stroke-width="4"/><path d="M 16 36 L 22 27 L 28 36 Z" fill="#ffd731"/></svg>DÉLAI DE RÉPONSE : <em>24 H MINIMUM</em></div>
+    <svg class="e-illu" viewBox="0 0 1080 880">
+      <g id="e5-boil">
+        <path d="M 60 812 L 1020 812" stroke="#161311" stroke-width="8" stroke-linecap="round"/>
+        <g transform="translate(200,172)">
+          <circle cx="0" cy="0" r="106" fill="#fffdf8" stroke="#161311" stroke-width="9"/>
+          <g id="e5-ticks"></g>
+          <line id="e5-hh" x1="0" y1="0" x2="0" y2="-52" stroke="#161311" stroke-width="12" stroke-linecap="round"/>
+          <line id="e5-mh" x1="0" y1="0" x2="0" y2="-80" stroke="#161311" stroke-width="7" stroke-linecap="round"/>
+          <circle cx="0" cy="0" r="10" fill="#fb4903" stroke="#161311" stroke-width="4"/>
+        </g>
+        <g transform="translate(200,322)">
+          <text id="e5-day1" x="0" y="0" text-anchor="middle" font-family="JBM" font-size="28" fill="#161311">LUN. 10:02</text>
+          <text id="e5-day2" x="0" y="0" text-anchor="middle" font-family="JBM" font-size="28" fill="#fb4903">MAR. 09:47</text>
+        </g>
+        <rect x="380" y="30" width="630" height="515" rx="30" fill="#fffdf8" stroke="#161311" stroke-width="8"/>
+        <path d="M 380 114 V 60 Q 380 30 410 30 H 980 Q 1010 30 1010 60 V 114 Z" fill="#dceeff" stroke="#161311" stroke-width="8" stroke-linejoin="round"/>
+        <circle cx="432" cy="72" r="24" fill="#4da2ff" stroke="#161311" stroke-width="5"/>
+        <text x="472" y="88" font-family="Anton" font-size="40" fill="#161311">CLIENT</text>
+        <g transform="translate(410,262)">
+          <g id="e5-in">
+            <path d="M 22 -112 H 368 Q 390 -112 390 -90 V -22 Q 390 0 368 0 H 22 Q 0 0 0 -22 V -60 L -22 -40 L 0 -84 V -90 Q 0 -112 22 -112 Z" fill="#ece6da" stroke="#161311" stroke-width="6" stroke-linejoin="round"/>
+            <text x="24" y="-52" font-family="Anton" font-size="44" fill="#161311">VOUS ÊTES OUVERT ?</text>
+            <text x="370" y="-16" text-anchor="end" font-family="JBM" font-size="22" fill="#6b6257">10:02</text>
+          </g>
+        </g>
+        <g transform="translate(985,462)">
+          <g id="e5-out">
+            <path d="M -22 -124 H -405 Q -427 -124 -427 -102 V -22 Q -427 0 -405 0 H -22 Q 0 0 0 -22 V -40 L 22 -24 L 0 -70 V -102 Q 0 -124 -22 -124 Z" fill="#55db9c" stroke="#161311" stroke-width="6" stroke-linejoin="round"/>
+            <text x="-402" y="-62" font-family="Anton" font-size="44" fill="#161311">OUI, C'EST OUVERT !</text>
+            <text x="-20" y="-18" text-anchor="end" font-family="JBM" font-size="22" fill="#161311">le lendemain · 09:47</text>
+          </g>
+        </g>
+      </g>
+      <g transform="translate(900,812)"><g id="e5-walk"><g id="e5-cl-boil"></g></g></g>
+      <g transform="translate(196,812) scale(1.25)"><g id="e5-man-boil"></g></g>
+      <g id="e5-z"></g>
+      <g transform="translate(300,360)"><text id="e5-bang" x="0" y="0" text-anchor="middle" font-family="Anton" font-size="96" fill="#fb4903">!</text></g>
+    </svg>
+    <div class="e-dim"></div>
+  </div>
+</div>
+<script>
+(function () {
+  var SK = window.SK, C = SK.C, $ = function (id) { return document.getElementById(id); };
+  var O = 15.45, DUR = 2.97, T = function (t) { return +(t - O).toFixed(3); };
+
+  $('e5-man-boil').innerHTML = SK.man('e5-man', { mouth: 'o', eyes: 'closed' });
+  $('e5-man-head').insertAdjacentHTML('beforeend', '<g id="e5-man-awake">' +
+    '<circle cx="-16" cy="-302" r="8" fill="#fffdf8" stroke="#161311" stroke-width="4"/><circle cx="16" cy="-302" r="8" fill="#fffdf8" stroke="#161311" stroke-width="4"/>' +
+    '<circle cx="-16" cy="-302" r="3.4" fill="#161311"/><circle cx="16" cy="-302" r="3.4" fill="#161311"/></g>');
+  $('e5-cl-boil').innerHTML = SK.client('e5-cl', C.blue);
+  var ticks = '', i;
+  for (i = 0; i < 12; i++) {
+    var aa = (i * Math.PI) / 6, r0 = i % 3 ? 82 : 72;
+    ticks += '<line x1="' + (Math.cos(aa) * r0).toFixed(1) + '" y1="' + (Math.sin(aa) * r0).toFixed(1) + '" x2="' + (Math.cos(aa) * 92).toFixed(1) + '" y2="' +
+      (Math.sin(aa) * 92).toFixed(1) + '" stroke="#161311" stroke-width="' + (i % 3 ? 5 : 8) + '" stroke-linecap="round"/>';
+  }
+  $('e5-ticks').innerHTML = ticks;
+  var zz = '';
+  for (i = 0; i < 3; i++) zz += '<g transform="translate(262,428)"><g id="e5-z' + i + '"><text font-family="Caveat" font-size="' + (66 - i * 8) + '" fill="#161311">z</text></g></g>';
+  $('e5-z').innerHTML = zz;
+
+  var tl = gsap.timeline({ paused: true }), ft = SK.ft(tl);
+  SK.page(tl, '#e-p5', { out: T(18.04) });
+  SK.words(tl, '#e-p5 .e-w > b', [T(16.18), T(17.59), T(17.68)]);
+
+  // il dort
+  gsap.set('#e5-man-head', { rotation: 13, svgOrigin: SK.PIV.head });
+  gsap.set('#e5-man-awake', { opacity: 0 });
+  gsap.set('#e5-z g[id]', { opacity: 0 });
+  for (i = 0; i < 3; i++) SK.floatUp(tl, '#e5-z' + i, T(15.75) + i * 0.5, 22, 64, 8);
+  // « Vous êtes ouvert ? » 10:02… l'horloge s'emballe jusqu'au lendemain
+  SK.piv('#e5-in', '-22 -40');
+  SK.piv('#e5-out', '22 -24');
+  SK.piv('#e5-z g[id]', '0 0');
+  gsap.set('#e5-in, #e5-out', { scale: 0, opacity: 0 });
+  gsap.set('#e5-hh', { rotation: 301, svgOrigin: '0 0' });
+  gsap.set('#e5-mh', { rotation: 12, svgOrigin: '0 0' });
+  gsap.set('#e5-day2', { opacity: 0 });
+  ft('#e5-in', { scale: 0, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.3, ease: 'back.out(2.2)', svgOrigin: '-22 -40' }, T(16.18));
+  ft('#e5-mh', { rotation: 12 }, { rotation: 1002, duration: 1.3, ease: 'sine.inOut', svgOrigin: '0 0' }, T(16.32));
+  ft('#e5-hh', { rotation: 301 }, { rotation: 653.5, duration: 1.3, ease: 'sine.inOut', svgOrigin: '0 0' }, T(16.32));
+  ft('#e5-day1', { opacity: 1, y: 0 }, { opacity: 0, y: -16, duration: 0.18, ease: 'power2.in' }, T(17.5));
+  ft('#e5-day2', { opacity: 0, y: 16 }, { opacity: 1, y: 0, duration: 0.24, ease: 'power2.out' }, T(17.62));
+  // le client tape du pied puis s'en va
+  ft('#e5-cl-lR', { rotation: 0 }, { rotation: -16, duration: 0.14, ease: 'sine.inOut', yoyo: true, repeat: 5, svgOrigin: '15 -92' }, T(16.3));
+  ft('#e5-walk', { x: 0 }, { x: 330, duration: 0.7, ease: 'power1.in' }, T(17.0));
+  ft('#e5-cl-lL', { rotation: 0 }, { rotation: 22, duration: 0.14, ease: 'sine.inOut', yoyo: true, repeat: 4, svgOrigin: '-15 -92' }, T(17.0));
+  ft('#e5-cl-up', { y: 0 }, { y: -8, duration: 0.14, ease: 'sine.inOut', yoyo: true, repeat: 4 }, T(17.0));
+  // il se réveille et répond… le lendemain
+  ft('#e5-man-head', { rotation: 13 }, { rotation: 0, duration: 0.2, ease: 'back.out(2)', svgOrigin: SK.PIV.head }, T(17.58));
+  ft('#e5-man-eyes', { opacity: 1 }, { opacity: 0, duration: 0.05 }, T(17.58));
+  ft('#e5-man-awake', { opacity: 0 }, { opacity: 1, duration: 0.05 }, T(17.58));
+  ft('#e5-man', { y: 0 }, { y: -30, duration: 0.15, ease: 'power2.out', yoyo: true, repeat: 1 }, T(17.58));
+  SK.piv('#e5-bang', '0 -34');
+  gsap.set('#e5-bang', { scale: 0 });
+  ft('#e5-bang', { scale: 0, rotation: -16 }, { scale: 1, rotation: 6, duration: 0.26, ease: 'back.out(3)', svgOrigin: '0 -34' }, T(17.6));
+  ft('#e5-out', { scale: 0, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.3, ease: 'back.out(2.2)', svgOrigin: '22 -24' }, T(17.72));
+
+  SK.boil(tl, ['#e5-boil', '#e5-man-boil', '#e5-cl-boil'], { amp: 1.3, rot: 0.3, seed: 11 });
+  SK.drive(tl, DUR);
+  window.__timelines["etape-5"] = tl;
+})();
+</script>
+</template>
+</body>
+</html>

@@ -1,0 +1,164 @@
+<!doctype html>
+<html lang="fr">
+<head><meta charset="UTF-8" /><title>bravo</title></head>
+<body>
+<template id="bravo">
+<style>
+@font-face { font-family: "Anton"; src: url("assets/fonts/Anton-400.woff2") format("woff2"); font-weight: 400; }
+@font-face { font-family: "JBM"; src: url("assets/fonts/JetBrainsMono-500.woff2") format("woff2"); font-weight: 500; }
+#b-card { position: absolute; inset: 0; transform-origin: 50% 50%;
+  background: radial-gradient(120% 90% at 50% 42%, #faf7f0 0%, #f4efe3 70%, #ebe4d4 100%); }
+#b-card::before { content: ""; position: absolute; inset: 0; background: url("assets/grain.png") repeat; opacity: 0.9; }
+#b-titre { position: absolute; left: 0; right: 0; top: 196px; text-align: center; font-family: "Anton"; font-size: 250px; line-height: 1; color: #161311; }
+#b-sous { position: absolute; left: 70px; top: 500px; font-family: "Anton"; font-size: 86px; line-height: 1.06; color: #161311; text-transform: uppercase; }
+.b-ln { display: block; white-space: nowrap; }
+.b-w { display: inline-block; overflow: hidden; vertical-align: top; padding: 0.16em 0.04em 0.1em; margin: -0.16em -0.04em -0.1em; }
+.b-w > b { display: inline-block; font-weight: 400; }
+.b-mk { position: relative; display: inline-block; padding: 0 0.12em; }
+.b-mk > i { position: absolute; left: 0; right: 0; top: 0.06em; bottom: -0.02em; background: #fb4903; border: 6px solid #161311; border-radius: 14px; display: block; transform-origin: 0 50%; }
+.b-mk > .b-w { position: relative; color: #fffdf8; }
+#b-svg { position: absolute; left: 0; top: 0; width: 1080px; height: 1920px; overflow: visible; }
+</style>
+<div id="root" data-composition-id="bravo" data-width="1080" data-height="1920">
+  <!-- « Bravo. Vos clients sont chez le concurrent. » — fête ironique, les clients filent chez le voisin -->
+  <div id="b-card">
+    <svg id="b-svg" viewBox="0 0 1080 1920">
+      <defs>
+        <pattern id="b-awn1" width="64" height="80" patternUnits="userSpaceOnUse"><rect width="32" height="80" fill="#d9d2c3"/><rect x="32" width="32" height="80" fill="#fffdf8"/></pattern>
+        <pattern id="b-awn2" width="64" height="80" patternUnits="userSpaceOnUse"><rect width="32" height="80" fill="#55db9c"/><rect x="32" width="32" height="80" fill="#fffdf8"/></pattern>
+      </defs>
+      <g id="b-boil">
+        <path d="M 50 1440 L 1030 1440" stroke="#161311" stroke-width="8" stroke-linecap="round"/>
+        <!-- chez vous : terne, vide -->
+        <rect x="70" y="1040" width="400" height="400" fill="#fffdf8" stroke="#161311" stroke-width="8"/>
+        <rect x="96" y="930" width="348" height="74" rx="8" fill="#161311"/>
+        <text x="270" y="988" text-anchor="middle" font-family="Anton" font-size="54" fill="#fffdf8">CHEZ VOUS</text>
+        <path d="M 60 1004 H 480 V 1062 Q 459 1086 438 1062 Q 417 1086 396 1062 Q 375 1086 354 1062 Q 333 1086 312 1062 Q 291 1086 270 1062 Q 249 1086 228 1062 Q 207 1086 186 1062 Q 165 1086 144 1062 Q 123 1086 102 1062 Q 81 1086 60 1062 Z" fill="url(#b-awn1)" stroke="#161311" stroke-width="7" stroke-linejoin="round"/>
+        <rect x="100" y="1130" width="190" height="170" rx="6" fill="#e9e3d6" stroke="#161311" stroke-width="7"/>
+        <path d="M 195 1130 V 1300 M 100 1215 H 290" stroke="#161311" stroke-width="5"/>
+        <rect x="324" y="1200" width="118" height="240" fill="#e9e3d6" stroke="#161311" stroke-width="7"/>
+        <circle cx="342" cy="1324" r="7" fill="#161311"/>
+        <!-- le concurrent : coloré, étoilé, porte ouverte -->
+        <rect x="560" y="1040" width="400" height="400" fill="#fffdf8" stroke="#161311" stroke-width="8"/>
+        <rect x="586" y="930" width="348" height="74" rx="8" fill="#ffd731" stroke="#161311" stroke-width="7"/>
+        <text x="760" y="986" text-anchor="middle" font-family="Anton" font-size="48" fill="#161311">LE CONCURRENT</text>
+        <g id="b-stars"></g>
+        <path d="M 550 1004 H 970 V 1062 Q 949 1086 928 1062 Q 907 1086 886 1062 Q 865 1086 844 1062 Q 823 1086 802 1062 Q 781 1086 760 1062 Q 739 1086 718 1062 Q 697 1086 676 1062 Q 655 1086 634 1062 Q 613 1086 592 1062 Q 571 1086 550 1062 Z" fill="url(#b-awn2)" stroke="#161311" stroke-width="7" stroke-linejoin="round"/>
+        <rect x="590" y="1130" width="170" height="170" rx="6" fill="#dceeff" stroke="#161311" stroke-width="7"/>
+        <g id="b-foule"></g>
+        <rect x="790" y="1200" width="130" height="240" fill="#161311" stroke="#161311" stroke-width="7"/>
+        <rect x="806" y="1150" width="98" height="38" rx="6" fill="#55db9c" stroke="#161311" stroke-width="5"/>
+        <text x="855" y="1178" text-anchor="middle" font-family="Anton" font-size="26" fill="#161311">OUVERT</text>
+      </g>
+      <!-- la mouche qui tourne devant la vitrine vide -->
+      <path id="b-trail" d="M 0 0" fill="none" stroke="#6b6257" stroke-width="3" stroke-dasharray="2 9" stroke-linecap="round"/>
+      <g id="b-fly"><ellipse cx="-6" cy="-7" rx="7" ry="5" fill="#dceeff" stroke="#161311" stroke-width="2.5"/><ellipse cx="6" cy="-7" rx="7" ry="5" fill="#dceeff" stroke="#161311" stroke-width="2.5"/><circle cx="0" cy="0" r="6" fill="#161311"/></g>
+      <g transform="translate(130,1440) scale(0.9)"><g id="b-man-boil"></g></g>
+      <g id="b-clients"></g>
+      <g id="b-confetti"></g>
+    </svg>
+    <div id="b-titre">BRAVO.</div>
+    <div id="b-sous"><span class="b-ln"><span class="b-w"><b>Vos</b></span> <span class="b-w"><b>clients</b></span> <span class="b-w"><b>sont</b></span></span><span class="b-ln"><span class="b-w"><b>chez</b></span> <span class="b-w"><b>le</b></span> <span class="b-mk"><i></i><span class="b-w"><b>concurrent.</b></span></span></span></div>
+  </div>
+</div>
+<script>
+(function () {
+  var SK = window.SK, C = SK.C, H = SK.hash, $ = function (id) { return document.getElementById(id); };
+  var O = 18.2, DUR = 3.2, T = function (t) { return +(t - O).toFixed(3); };
+  var i;
+
+  // le patron, chapeau pointu et langue de belle-mère
+  $('b-man-boil').innerHTML = SK.man('b-man', { mouth: 'grin' });
+  $('b-man-head').insertAdjacentHTML('beforeend',
+    '<path d="M -34 -340 L 34 -340 L 4 -446 Z" fill="#e9ccff" stroke="#161311" stroke-width="7" stroke-linejoin="round"/>' +
+    '<path d="M -22 -380 L 20 -372 M -12 -412 L 12 -406" stroke="#5c4ade" stroke-width="7" stroke-linecap="round"/>' +
+    '<circle cx="4" cy="-450" r="13" fill="#ffd731" stroke="#161311" stroke-width="5"/>' +
+    '<path id="b-man-sad" d="M -16 -274 Q 0 -289 16 -274" fill="none" stroke="#161311" stroke-width="8" stroke-linecap="round" opacity="0"/>' +
+    '<g id="b-horn"><path id="b-horn-p" d="M 20 -282 L 120 -282 C 160 -282, 168 -246, 140 -238 C 118 -232, 112 -258, 132 -262" fill="none" stroke="#fb4903" stroke-width="13" stroke-linecap="round"/></g>');
+  $('b-stars').innerHTML = SK.stars(668, 900, 20, 46, 5, 5);
+
+  // clients (pictogrammes) : ils passent devant chez vous et entrent chez le concurrent
+  var COLS = [C.blue, C.mint, C.violet, C.red, C.lav], cm = '';
+  for (i = 0; i < 4; i++) cm += '<g id="b-c' + i + '">' + SK.client('b-cl' + i, COLS[i]) + '</g>';
+  $('b-clients').innerHTML = cm;
+  var CL = [];
+  for (i = 0; i < 4; i++) CL.push({ g: $('b-c' + i), lL: $('b-cl' + i + '-lL'), lR: $('b-cl' + i + '-lR'), up: $('b-cl' + i + '-up'), x0: 250 + i * 92 });
+  // déjà du monde dans la vitrine du concurrent
+  var fo = '';
+  [[628, C.mint], [676, C.yellow], [724, C.red]].forEach(function (h, k) {
+    fo += '<path d="M ' + (h[0] - 22) + ' 1300 Q ' + h[0] + ' ' + (1262 - k * 4) + ' ' + (h[0] + 22) + ' 1300 Z" fill="' + h[1] + '" stroke="#161311" stroke-width="5"/>' +
+      '<circle cx="' + h[0] + '" cy="' + (1236 - (k % 2) * 10) + '" r="19" fill="#fffdf8" stroke="#161311" stroke-width="5"/>';
+  });
+  $('b-foule').innerHTML = fo;
+
+  // confettis (balistique déterministe)
+  var CC = [C.red, C.yellow, C.mint, C.blue, C.violet, C.lav], cf = '', CF = [];
+  for (i = 0; i < 46; i++) {
+    var round = i % 4 === 0;
+    cf += round ? '<circle id="b-f' + i + '" cx="0" cy="0" r="9" fill="' + CC[i % 6] + '" stroke="#161311" stroke-width="3"/>'
+      : '<rect id="b-f' + i + '" x="-8" y="-13" width="16" height="26" rx="3" fill="' + CC[i % 6] + '" stroke="#161311" stroke-width="3"/>';
+    var a = -Math.PI / 2 + H(i, 51) * 1.25, sp = 900 + (H(i, 53) + 1) * 520;
+    CF.push({ vx: Math.cos(a) * sp * 0.82, vy: Math.sin(a) * sp, r0: H(i, 57) * 180, vr: H(i, 59) * 720, x0: 540 + H(i, 61) * 160, y0: 330 + H(i, 63) * 40 });
+  }
+  $('b-confetti').innerHTML = cf;
+  for (i = 0; i < CF.length; i++) CF[i].el = $('b-f' + i);
+
+  var tl = gsap.timeline({ paused: true }), ft = SK.ft(tl);
+
+  // « BRAVO. » qui claque, confettis, langue de belle-mère
+  gsap.set('#b-titre', { opacity: 0 });
+  ft('#b-titre', { scale: 1.7, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.3, ease: 'expo.out' }, T(18.48));
+  SK.shake(tl, '#b-card', T(18.62), 12);
+  SK.drawOn(tl, '#b-horn-p', T(18.52), 0.28, { ease: 'power2.out' });
+  // les mots, calés sur la voix
+  SK.words(tl, '#b-sous .b-w > b', [T(19.25), T(19.42), T(19.84), T(20.03), T(20.2), T(20.28)]);
+  gsap.set('#b-sous .b-mk > i', { scaleX: 0 });
+  gsap.set('#b-sous .b-mk .b-w', { opacity: 0 });
+  ft('#b-sous .b-mk .b-w', { opacity: 0 }, { opacity: 1, duration: 0.01 }, T(20.26));
+  ft('#b-sous .b-mk > i', { scaleX: 0 }, { scaleX: 1, duration: 0.24, ease: 'expo.out' }, T(20.25));
+  // la fête retombe : la langue de belle-mère pique du nez, le sourire s'éteint
+  SK.piv('#b-horn', '20 -282');
+  ft('#b-horn', { rotation: 0 }, { rotation: 62, duration: 0.5, ease: 'bounce.out' }, T(20.42));
+  ft('#b-man-mouth', { opacity: 1 }, { opacity: 0, duration: 0.08 }, T(20.42));
+  ft('#b-man-sad', { opacity: 0 }, { opacity: 1, duration: 0.08 }, T(20.42));
+
+  // rendu fonction du temps : confettis, clients qui marchent, mouche
+  var tBravo = T(18.5), tWalk = T(19.05), V = 420;
+  var fly = $('b-fly'), trail = $('b-trail');
+  var flyAt = function (u) { return [140 + Math.sin(u * 2.1) * 86 + Math.sin(u * 5.3) * 14, 1092 + Math.sin(u * 4.2) * 44 + Math.cos(u * 3.1) * 12]; };
+  SK.render(tl, function (t) {
+    var k, c, tau = t - tBravo;
+    for (k = 0; k < CF.length; k++) {
+      c = CF[k];
+      if (tau <= 0) { c.el.setAttribute('opacity', 0); continue; }
+      var x = c.x0 + c.vx * tau, y = c.y0 + c.vy * tau + 0.5 * 2600 * tau * tau;
+      c.el.setAttribute('transform', 'translate(' + x.toFixed(1) + ',' + y.toFixed(1) + ') rotate(' + (c.r0 + c.vr * tau).toFixed(1) + ')');
+      c.el.setAttribute('opacity', Math.max(0, Math.min(1, tau * 12, (1.5 - tau) * 2.5)).toFixed(3));
+    }
+    for (k = 0; k < CL.length; k++) {
+      c = CL[k];
+      var w = Math.max(0, t - tWalk), cx = c.x0 + V * w, ph = w * Math.PI * 2 / 0.34;
+      var sw = w > 0 ? Math.sin(ph) * 20 : 0, bob = w > 0 ? Math.abs(Math.sin(ph)) * 6 : 0;
+      c.g.setAttribute('transform', 'translate(' + cx.toFixed(1) + ',1440) scale(0.9)');
+      c.g.setAttribute('opacity', Math.max(0, Math.min(1, (912 - cx) / 56)).toFixed(3));
+      c.lL.setAttribute('transform', 'rotate(' + sw.toFixed(1) + ' -15 -92)');
+      c.lR.setAttribute('transform', 'rotate(' + (-sw).toFixed(1) + ' 15 -92)');
+      c.up.setAttribute('transform', 'translate(0,' + (-bob).toFixed(1) + ')');
+    }
+    var p = flyAt(t), d = 'M', u;
+    for (u = 0; u <= 14; u++) { var q = flyAt(t - 0.42 + u * 0.03); d += (u ? ' L ' : ' ') + q[0].toFixed(1) + ' ' + q[1].toFixed(1); }
+    trail.setAttribute('d', d);
+    fly.setAttribute('transform', 'translate(' + p[0].toFixed(1) + ',' + p[1].toFixed(1) + ')');
+  });
+
+  // retournement : la carte pivote sur la tranche (la face jaune arrive dans « retournement »)
+  ft('#b-card', { rotationY: 0, transformPerspective: 1800 }, { rotationY: 90, transformPerspective: 1800, duration: 0.2, ease: 'power2.in' }, T(21.2));
+
+  SK.boil(tl, ['#b-boil', '#b-man-boil'], { amp: 1.3, rot: 0.3, seed: 12 });
+  SK.drive(tl, DUR);
+  window.__timelines["bravo"] = tl;
+})();
+</script>
+</template>
+</body>
+</html>

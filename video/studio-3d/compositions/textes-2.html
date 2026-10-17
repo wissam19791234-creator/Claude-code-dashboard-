@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="fr">
+<head><meta charset="UTF-8" /><title>textes-2</title></head>
+<body>
+<template id="textes-2">
+<style>
+@font-face { font-family: "Inter Tight"; src: url("assets/fonts/InterTight-var.woff2") format("woff2"); font-weight: 100 900; }
+
+</style>
+<div id="root" data-composition-id="textes-2" data-width="1080" data-height="1920">
+  <!-- « Vos posts ? Publiés pour vous. » · IA 24/7 · « Le risque ? Avoir du temps libre. Beaucoup. » -->
+  <div id="x5" class="blk"><span class="ln"><span class="w q">Vos</span> <span class="w q">posts ?</span></span><span class="ln"><span class="w">Publiés</span></span><span class="ln"><span class="w g">pour</span> <span class="w g">vous.</span></span></div>
+  <div id="x6" class="blk" style="font-size:92px"><span class="ln"><span class="w">Et</span> <span class="w">une</span> <span class="w">IA</span> <span class="w">répond</span></span><span class="ln"><span class="w">à</span> <span class="w">vos</span> <span class="w">clients…</span></span><span class="ln"><span class="w g">même</span> <span class="w g">à</span> <span class="w g">3</span> <span class="w g">h</span> <span class="w g">du</span> <span class="w g">matin.</span></span></div>
+  <div id="x7" class="blk"><span class="ln"><span class="w q">Le</span> <span class="w q">risque ?</span></span><span class="ln"><span class="w">Avoir</span> <span class="w">du</span></span><span class="ln"><span class="w g">temps</span> <span class="w g">libre.</span></span><span class="ln"><span class="w">Beaucoup.</span></span></div>
+
+</div>
+<script>
+(function () {
+  var B = 11.85, tl = gsap.timeline({ paused: true });
+  TX.words(tl, '#x5 .w', [11.95, 12.237, 13.0, 13.461, 13.677], B);
+  TX.out(tl, '#x5', 14.25, B);
+  TX.words(tl, '#x6 .w', [14.55, 14.634, 14.791, 15.019, 15.331, 15.392, 15.512, 16.207, 16.388, 16.436, 16.628, 16.784, 16.868], B);
+  TX.out(tl, '#x6', 17.6, B);
+  TX.words(tl, '#x7 .w', [18.05, 18.178, 18.862, 19.186, 19.307, 19.487, 20.03], B);
+  TX.out(tl, '#x7', 21.15, B);
+  window.__timelines["textes-2"] = tl;
+})();
+</script>
+</template>
+</body>
+</html>

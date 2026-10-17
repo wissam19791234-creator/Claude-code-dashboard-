@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=1080, height=1920" />
+<title>Scalify — studio 3D</title>
+<script src="src/vendor/gsap.min.js"></script>
+<script src="src/tx.js"></script>
+<script type="importmap">{ "imports": { "three": "./src/vendor/three.module.js", "three/addons/": "./src/vendor/addons/" } }</script>
+<style>
+@font-face { font-family: "Inter Tight"; src: url("assets/fonts/InterTight-var.woff2") format("woff2"); font-weight: 100 900; }
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html, body { width: 1080px; height: 1920px; overflow: hidden; background: #f2f2f5; }
+#root { width: 100%; height: 100%; position: relative; overflow: hidden;
+  background: radial-gradient(75% 46% at 50% 60%, #ffffff 0%, #f7f7f9 48%, #ececf0 100%); }
+.clip { position: absolute; inset: 0; }
+#gl { width: 100%; height: 100%; display: block; }
+/* typographie partagée par compositions/textes-*.html */
+.blk { position: absolute; left: 76px; top: 236px; font-family: "Inter Tight", sans-serif; font-weight: 800; font-size: 108px; line-height: 1.0;
+  letter-spacing: -0.045em; color: #1d1d1f; }
+.ln { display: block; white-space: nowrap; }
+.w { display: inline-block; }
+.q { color: #86868b; }
+.g { background: linear-gradient(100deg, #fb4903 0%, #ff7a2f 42%, #a64bff 100%); -webkit-background-clip: text; background-clip: text; color: transparent;
+  padding: 0.1em 0.04em 0.18em; margin: -0.1em -0.04em -0.18em; }
+</style>
+</head>
+<body>
+<div id="root" data-composition-id="main" data-start="0" data-duration="30.5" data-width="1080" data-height="1920">
+  <canvas id="gl" class="clip" data-start="0" data-duration="30.5" data-track-index="0" width="1080" height="1920" data-layout-allow-overflow style="z-index: 0"></canvas>
+  <div id="textes-1" class="clip" style="z-index: 2" data-composition-id="textes-1" data-composition-src="compositions/textes-1.html" data-start="0" data-duration="11.9" data-track-index="1" data-width="1080" data-height="1920"></div>
+  <div id="textes-2" class="clip" style="z-index: 2" data-composition-id="textes-2" data-composition-src="compositions/textes-2.html" data-start="11.85" data-duration="9.6" data-track-index="2" data-width="1080" data-height="1920"></div>
+  <div id="textes-3" class="clip" style="z-index: 2" data-composition-id="textes-3" data-composition-src="compositions/textes-3.html" data-start="21.35" data-duration="9.15" data-track-index="1" data-width="1080" data-height="1920"></div>
+  <audio id="mix" src="assets/audio/mix.wav" data-start="0" data-duration="30.5" data-track-index="3" data-volume="1"></audio>
+</div>
+<script type="module" src="src/main.js"></script>
+<script>
+  window.__timelines["main"] = gsap.timeline({ paused: true });
+</script>
+</body>
+</html>

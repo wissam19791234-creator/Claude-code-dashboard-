@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="fr">
+<head><meta charset="UTF-8" /><title>textes-3</title></head>
+<body>
+<template id="textes-3">
+<style>
+@font-face { font-family: "Inter Tight"; src: url("assets/fonts/InterTight-var.woff2") format("woff2"); font-weight: 100 900; }
+#x8a { top: 236px; font-size: 76px; }
+#x8b { top: 300px; font-size: 300px; letter-spacing: -0.05em; }
+#x8m { top: 482px; left: 700px; font-size: 96px; }
+#x8c { top: 1312px; font-size: 76px; letter-spacing: -0.04em; line-height: 1.12; }
+#x9c { position: absolute; left: 76px; top: 236px; display: flex; align-items: center; gap: 30px; }
+#x9c svg { width: 150px; height: 150px; flex: none; filter: drop-shadow(0 18px 30px rgba(251,73,3,0.28)); }
+#x9c span { font-family: "Inter Tight", sans-serif; font-weight: 800; font-size: 132px; letter-spacing: -0.05em; color: #1d1d1f; line-height: 1; }
+#x9d { position: absolute; left: 76px; top: 430px; height: 76px; padding: 0 30px; border-radius: 38px; background: #1d1d1f; color: #ffffff;
+  font-family: "Inter Tight", sans-serif; font-weight: 700; font-size: 36px; line-height: 76px; letter-spacing: -0.01em; white-space: nowrap; }
+#x9d em { font-style: normal; color: #ffb36b; }
+</style>
+<div id="root" data-composition-id="textes-3" data-width="1080" data-height="1920">
+  <!-- « Dès 49 € par mois. Moins 30 % pour les 15 premiers. » · « Si ce risque ne vous fait pas peur… c'est le lien en bio. » -->
+  <div id="x8a" class="blk"><span class="ln"><span class="w q">Dès</span></span></div>
+  <div id="x8b" class="blk"><span class="ln"><span class="w">49 €</span></span></div>
+  <div id="x8m" class="blk"><span class="ln"><span class="w q">/mois</span></span></div>
+  <div id="x8c" class="blk"><span class="ln"><span class="w">pour</span> <span class="w">les</span> <span class="w">15</span> <span class="w">premiers</span></span></div>
+  <div id="x9a" class="blk"><span class="ln"><span class="w">Si</span> <span class="w">ce</span> <span class="w">risque</span></span><span class="ln"><span class="w">ne</span> <span class="w">vous</span> <span class="w">fait</span></span><span class="ln"><span class="w">pas</span> <span class="w">peur…</span></span></div>
+  <div id="x9b" class="blk"><span class="ln"><span class="w">C'est</span> <span class="w">le</span></span><span class="ln"><span class="w g">lien</span> <span class="w g">en</span> <span class="w g">bio.</span></span></div>
+  <div id="x9c"><svg viewBox="0 0 300 300"><defs><linearGradient id="x9g" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#ff8a3d"/><stop offset="1" stop-color="#fb4903"/></linearGradient></defs>
+    <rect x="0" y="0" width="300" height="300" rx="68" fill="url(#x9g)"/>
+    <path d="M 63 -66 H -30 a 37.5 37.5 0 0 0 0 75 h 56.6 a 37.5 37.5 0 0 1 0 75 H -66" transform="translate(150,108) scale(1.05)" fill="none" stroke="#ffffff" stroke-width="38" stroke-linecap="round" stroke-linejoin="round"/>
+    <circle cx="238" cy="236" r="20" fill="#ffffff"/></svg><span>Scalify</span></div>
+  <div id="x9d">Lancement le 2 novembre · <em>J-16</em></div>
+</div>
+<script>
+(function () {
+  var B = 21.35, tl = gsap.timeline({ paused: true });
+  TX.words(tl, '#x8a .w', [21.55], B);
+  TX.words(tl, '#x8b .w', [21.716], B, { dur: 0.6 });
+  TX.words(tl, '#x8m .w', [22.55], B);
+  TX.words(tl, '#x8c .w', [24.137, 24.305, 24.389, 24.55], B);
+  ['#x8a', '#x8b', '#x8m', '#x8c'].forEach(function (s) { TX.out(tl, s, 25.55, B); });
+  TX.words(tl, '#x9a .w', [25.85, 26.014, 26.147, 26.435, 26.531, 26.615, 26.736, 26.856], B);
+  TX.out(tl, '#x9a', 27.45, B);
+  TX.words(tl, '#x9b .w', [27.539, 27.671, 27.768, 28.008, 28.092], B);
+  TX.out(tl, '#x9b', 28.75, B);
+  TX.inn(tl, '#x9c', 28.95, B, { scale: 0.92 });
+  TX.inn(tl, '#x9d', 29.2, B);
+  window.__timelines["textes-3"] = tl;
+})();
+</script>
+</template>
+</body>
+</html>

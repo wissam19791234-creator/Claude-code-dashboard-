@@ -1,0 +1,32 @@
+{
+  "mascot": "a chubby orange cartoon hamster with big round black eyes, white cheeks and belly, small round ears, wearing a tiny black business suit, a white shirt and a red tie",
+  "style": "Simple bold 2D cartoon illustration, thick clean black outlines, flat bright colors, no shading, expressive and funny, vertical 9:16, leave the upper third fairly clear for captions, no text, no letters, no numbers, no logos.",
+  "brand_rule": "The restaurant is a generic burger fast-food with orange and white colors, no logo, no brand colors, no golden arches.",
+  "scenes": [
+    { "n": 1,  "anchor": "Sur ton menu",          "hamster": true,  "prompt": "close-up of Hamsterdam holding a fast-food tray with a burger and fries, staring in shock at a single tiny coin in his other paw" },
+    { "n": 2,  "anchor": "Moi c'est Hamsterdam",   "hamster": true,  "prompt": "wide shot of Hamsterdam standing proudly, arms open, in front of a generic burger fast-food restaurant with orange and white walls, sunny day" },
+    { "n": 3,  "anchor": "Première surprise",      "hamster": true,  "prompt": "medium shot of Hamsterdam wearing a kitchen apron over his suit, nervously learning to use a big fryer, a tall instructor watching with a clipboard" },
+    { "n": 4,  "anchor": "J'ai sorti mon",         "hamster": true,  "prompt": "Hamsterdam posing like a model in front of a mirror, straightening his red tie, sparkles around him" },
+    { "n": 5,  "anchor": "Ensuite, la facture",    "hamster": true,  "prompt": "Hamsterdam handing a huge bag of money to a stern doorman blocking a closed door" },
+    { "n": 6,  "anchor": "Le restaurant complet",  "hamster": true,  "prompt": "wide shot of a construction site building a burger restaurant with a drive-thru lane, cranes, workers, Hamsterdam in a hard hat looking worried" },
+    { "n": 7,  "anchor": "Et dans tout ça",        "hamster": true,  "prompt": "close-up of Hamsterdam emptying his pockets, only a few sunflower seeds falling out, embarrassed face" },
+    { "n": 8,  "anchor": "Bon. Imaginons",         "hamster": false, "prompt": "top-down view of a cartoon map of France covered with many tiny generic burger restaurant icons" },
+    { "n": 9,  "anchor": "Un McDo fait",           "hamster": true,  "prompt": "Hamsterdam lying happily on a giant pile of banknotes, throwing bills in the air" },
+    { "n": 10, "anchor": "Sauf que McDo",          "hamster": true,  "prompt": "a giant cartoon hand reaching from the sky and grabbing big slices of a money pie, Hamsterdam holding the last small slice, shocked" },
+    { "n": 11, "anchor": "Sur 2,5 millions",       "hamster": true,  "prompt": "Hamsterdam standing alone in a restaurant kitchen in front of an empty grill, a single fly buzzing" },
+    { "n": 12, "anchor": "Ensuite, il faut payer", "hamster": true,  "prompt": "Hamsterdam facing a large crowd of cartoon fast-food employees in orange caps, all smiling and holding out their hands for their pay" },
+    { "n": 13, "anchor": "La viande, le pain",     "hamster": false, "prompt": "insert close-up of a bubbling fryer full of fries, an electricity meter spinning wildly beside it" },
+    { "n": 14, "anchor": "À la fin, il reste",     "hamster": true,  "prompt": "Hamsterdam looking through a magnifying glass at a small pile of coins on a big empty table" },
+    { "n": 15, "anchor": "Alors, combien de",      "hamster": true,  "prompt": "a very long queue of cartoon customers going out of the restaurant door and around the street, Hamsterdam sweating behind the counter" },
+    { "n": 16, "anchor": "Tous les jours",         "hamster": true,  "prompt": "Hamsterdam asleep standing up behind the counter at night, a customer ringing the bell" },
+    { "n": 17, "anchor": "Et sur chaque client",   "hamster": true,  "prompt": "Hamsterdam serving a stack of trays one after another, then finally taking one small bite of his own burger" },
+    { "n": 18, "anchor": "Alors, ça vaut",         "hamster": true,  "prompt": "an empty restaurant with a single lonely fry on a tray, Hamsterdam sitting next to it, sad" },
+    { "n": 19, "anchor": "Quel business je",       "hamster": true,  "prompt": "Hamsterdam smiling and pointing up with one paw, plain bright orange background" }
+  ],
+  "counter": { "start": "Sauf que McDo", "end": "un seul steak", "base": 2500000,
+    "steps": [ { "at": "pour la marque", "value": 2375000, "chip": "−5 % marque" },
+               { "at": "pour la pub", "value": 2262500, "chip": "−4 à 5 % pub" },
+               { "at": "pour le loyer", "value": 2012500, "chip": "−10 % loyer" },
+               { "at": "repart directement", "value": 2000000, "chip": "≈ −20 % pour McDo" },
+               { "at": "500 000 euros", "value": 2000000, "chip": "−500 000 €" } ] }
+}

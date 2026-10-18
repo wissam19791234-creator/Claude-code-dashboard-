@@ -26,3 +26,16 @@ npx hyperframes check && npx hyperframes render --quality delivery --workers 3 -
 ```
 
 Pour un autre business : réécrire `captions.txt` et les ancres de `scenes.json`, puis adapter les plans dans `src/art/court.js`.
+
+## Description TikTok
+
+```
+J'ai calculé combien gagne VRAIMENT un patron de McDo 🍔💸
+Spoiler : c'est pas le burger qui le rend riche… 🥤
+Quel business je calcule ensuite ? Dis-le en com 👇
+(chiffres estimés)
+
+#mcdo #franchise #business #argent #entrepreneur #combiencarapporte #fastfood #pourtoi
+```
+
+Commentaire à épingler : `Prochain épisode : boulangerie, kebab ou salle de sport ? 🐹`

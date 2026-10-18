@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="fr"><head><meta charset="UTF-8" /><title>scenes</title></head><body>
+<template id="scenes">
+<style>
+.sc { position: absolute; inset: 0; overflow: hidden; opacity: 0; }
+.kb { position: absolute; left: 0; top: 0; width: 1080px; height: 1920px; transform-origin: 0 0; }
+.art { position: absolute; left: 0; top: 0; overflow: hidden; }
+</style>
+<div id="root" data-composition-id="scenes" data-width="1080" data-height="1920">
+  <!-- les 19 plans dessinés (src/art) dans l'ordre du script ; chacun s'anime, la caméra recadre toutes les 3-5 s -->
+  <div class="sc" id="s1"><div class="kb" id="k1"><svg class="art" id="g1" viewBox="0 0 1080 1920" width="1080" height="1920"></svg></div></div>
+  <div class="sc" id="s2"><div class="kb" id="k2"><svg class="art" id="g2" viewBox="0 0 1080 1920" width="1080" height="1920"></svg></div></div>
+  <div class="sc" id="s3"><div class="kb" id="k3"><svg class="art" id="g3" viewBox="0 0 1080 1920" width="1080" height="1920"></svg></div></div>
+  <div class="sc" id="s4"><div class="kb" id="k4"><svg class="art" id="g4" viewBox="0 0 1080 1920" width="1080" height="1920"></svg></div></div>
+  <div class="sc" id="s5"><div class="kb" id="k5"><svg class="art" id="g5" viewBox="0 0 1080 1920" width="1080" height="1920"></svg></div></div>
+  <div class="sc" id="s6"><div class="kb" id="k6"><svg class="art" id="g6" viewBox="0 0 1080 1920" width="1080" height="1920"></svg></div></div>
+  <div class="sc" id="s7"><div class="kb" id="k7"><svg class="art" id="g7" viewBox="0 0 1080 1920" width="1080" height="1920"></svg></div></div>
+  <div class="sc" id="s8"><div class="kb" id="k8"><svg class="art" id="g8" viewBox="0 0 1080 1920" width="1080" height="1920"></svg></div></div>
+  <div class="sc" id="s9"><div class="kb" id="k9"><svg class="art" id="g9" viewBox="0 0 1080 1920" width="1080" height="1920"></svg></div></div>
+  <div class="sc" id="s10"><div class="kb" id="k10"><svg class="art" id="g10" viewBox="0 0 1080 1920" width="1080" height="1920"></svg></div></div>
+  <div class="sc" id="s11"><div class="kb" id="k11"><svg class="art" id="g11" viewBox="0 0 1080 1920" width="1080" height="1920"></svg></div></div>
+  <div class="sc" id="s12"><div class="kb" id="k12"><svg class="art" id="g12" viewBox="0 0 1080 1920" width="1080" height="1920"></svg></div></div>
+  <div class="sc" id="s13"><div class="kb" id="k13"><svg class="art" id="g13" viewBox="0 0 1080 1920" width="1080" height="1920"></svg></div></div>
+  <div class="sc" id="s14"><div class="kb" id="k14"><svg class="art" id="g14" viewBox="0 0 1080 1920" width="1080" height="1920"></svg></div></div>
+  <div class="sc" id="s15"><div class="kb" id="k15"><svg class="art" id="g15" viewBox="0 0 1080 1920" width="1080" height="1920"></svg></div></div>
+  <div class="sc" id="s16"><div class="kb" id="k16"><svg class="art" id="g16" viewBox="0 0 1080 1920" width="1080" height="1920"></svg></div></div>
+  <div class="sc" id="s17"><div class="kb" id="k17"><svg class="art" id="g17" viewBox="0 0 1080 1920" width="1080" height="1920"></svg></div></div>
+  <div class="sc" id="s18"><div class="kb" id="k18"><svg class="art" id="g18" viewBox="0 0 1080 1920" width="1080" height="1920"></svg></div></div>
+  <div class="sc" id="s19"><div class="kb" id="k19"><svg class="art" id="g19" viewBox="0 0 1080 1920" width="1080" height="1920"></svg></div></div>
+</div>
+<script>
+(function () {
+  var SC = [[1, 0.0, 7.06], [2, 7.06, 10.24], [3, 10.24, 18.68], [4, 18.68, 20.54], [5, 20.54, 26.78], [6, 26.78, 34.0], [7, 34.0, 39.92], [8, 39.92, 47.72], [9, 47.72, 54.0], [10, 54.0, 65.18], [11, 65.18, 71.26], [12, 71.26, 74.24], [13, 74.24, 79.98], [14, 79.98, 86.2], [15, 86.2, 94.62], [16, 94.62, 96.96], [17, 96.96, 104.82], [18, 104.82, 113.28], [19, 113.28, 117.92]];
+  var tl = gsap.timeline({ paused: true });
+  ART.buildScenes(tl, SC);
+  window.__timelines["scenes"] = tl;
+})();
+</script>
+</template></body></html>

@@ -1,7 +1,8 @@
 # Génère la vidéo HyperFrames « Combien rapporte un McDo ? » à partir de :
-#   work/words.json (script aligné mot à mot), scenes.json (19 scènes + compteur),
-#   assets/images/scene_XX.(png|jpg) et, si présents, assets/clips/scene_XX.mp4 (animation image-vers-vidéo).
-# Usage : python3 build.py [--test]   (--test : images de remplacement test_XX.jpg et words_test.json)
+#   work/words.json (script aligné mot à mot), scenes.json (19 scènes + compteur), work/vo_r.wav (voix rythmée)
+#   et des 19 plans dessinés en SVG dans src/art/ (kit.js = Hamsterdam et accessoires, scenes1.js / scenes2.js = plans).
+# Écrit index.html, compositions/*.html, src/montage.js (mots horodatés + bouche) et work/montage.json (ding).
+# Usage : python3 build.py
 import json, os, re, sys, subprocess
 
 TEST = '--test' in sys.argv
@@ -24,16 +25,8 @@ for sc in S['scenes']:
     k = find(sc['anchor'], k); starts.append(0.0 if sc['n'] == 1 else round(toks[k]['start'] - 0.12, 3))
 shots = []
 for i, sc in enumerate(S['scenes']):
-    a = starts[i]; b = starts[i + 1] if i + 1 < len(starts) else END
-    n = sc['n']
-    img = next((f'assets/images/{p}' for p in ([f'test_{n:02d}.jpg'] if TEST else [f'scene_{n:02d}.png', f'scene_{n:02d}.jpg', f'scene_{n:02d}.webp'])
-                if os.path.exists(f'assets/images/{p}')), None)
-    if not img: raise SystemExit(f'image manquante pour la scène {n}')
-    clip = f'assets/clips/scene_{n:02d}.mp4'
-    clip = clip if (not TEST and os.path.exists(clip)) else None
-    clip_len = float(subprocess.run(['ffprobe', '-v', 'error', '-show_entries', 'format=duration', '-of', 'csv=p=0', clip],
-                                    capture_output=True, text=True).stdout or 0) if clip else 0
-    shots.append({'n': n, 'a': a, 'b': round(b, 3), 'img': img, 'clip': clip, 'clip_len': clip_len})
+    b = starts[i + 1] if i + 1 < len(starts) else END
+    shots.append({'n': sc['n'], 'a': starts[i], 'b': round(b, 3)})
 
 # ---------------------------------------------------------------- pages de sous-titres (2-4 mots)
 pages, cur = [], []
@@ -74,54 +67,43 @@ for t in toks:
         dings.append(round(t['start'] + 0.02, 3)); last = t['start']
 json.dump({'dings': dings, 'end': END, 'starts': starts}, open('work/montage.json', 'w'), indent=0)
 
+import numpy as np
+SR = 16000
+raw = subprocess.run(['ffmpeg', '-v', 'error', '-i', 'work/vo_r.wav' if not TEST else 'work/vo_test_r.wav', '-f', 's16le', '-ac', '1', '-ar', str(SR), '-'], capture_output=True).stdout
+v = np.frombuffer(raw, np.int16).astype(np.float32) / 32768
+hop = SR // 100
+rms = np.array([np.sqrt(np.mean(v[i:i + 2 * hop] ** 2)) for i in range(0, len(v) - 2 * hop, hop)])
+rms = np.convolve(rms, np.ones(3) / 3, 'same')
+mouth = []                  # une ouverture de bouche par syllabe (pic local de l'enveloppe de la voix)
+for i in range(7, len(rms) - 7):
+    if rms[i] > 0.04 and rms[i] == rms[i - 7:i + 8].max():
+        a0, b0 = round(i / 100 - 0.05, 2), round(i / 100 + 0.08, 2)
+        if mouth and a0 < mouth[-1][1] + 0.04: a0 = round(mouth[-1][1] + 0.04, 2)
+        if b0 - a0 >= 0.06: mouth.append([a0, b0])
+open('src/montage.js', 'w').write('// généré par build.py : mots horodatés, débuts des plans, bouche de Hamsterdam\nwindow.MCDO = ' +
+    json.dumps({'words': [[t['w'], t['start'], t['end']] for t in toks], 'starts': starts, 'end': END, 'mouth': mouth}, ensure_ascii=False, separators=(',', ':')) + ';\n')
+
 # ================================================================ HTML
 FF = '@font-face { font-family: "Luckiest Guy"; src: url("assets/fonts/LuckiestGuy.woff2") format("woff2"); font-weight: 400; }'
-scene_divs, scene_js = [], []
-for s in shots:
-    n = s['n']; dur = round(s['b'] - s['a'] + 0.2, 3)
-    if s['clip']:
-        rate = round(min(1.0, s['clip_len'] / max(0.1, s['b'] - s['a'])), 3) if s['clip_len'] < (s['b'] - s['a']) else 1.0
-        media = (f'<video id="v{n}" class="m" src="{s["clip"]}" muted playsinline data-start="{s["a"]}" data-duration="{dur}" '
-                 f'data-track-index="{n % 3 + 1}" data-playback-rate="{rate}"></video>')
-    else:
-        media = f'<img class="m" src="{s["img"]}" alt="">'
-    scene_divs.append(f'  <div class="sc" id="s{n}"><div class="kb" id="k{n}">{media}</div></div>')
-    scene_js.append([n, s['a'], s['b'], bool(s['clip'])])
-
+scene_divs = '\n'.join(f'  <div class="sc" id="s{x["n"]}"><div class="kb" id="k{x["n"]}"><svg class="art" id="g{x["n"]}" viewBox="0 0 1080 1920" width="1080" height="1920"></svg></div></div>' for x in shots)
+scene_js = [[x['n'], x['a'], x['b']] for x in shots]
 scenes_html = f'''<!doctype html>
 <html lang="fr"><head><meta charset="UTF-8" /><title>scenes</title></head><body>
 <template id="scenes">
 <style>
 .sc {{ position: absolute; inset: 0; overflow: hidden; opacity: 0; }}
-.kb {{ position: absolute; inset: 0; transform-origin: 50% 55%; }}
-.m {{ position: absolute; left: 0; top: 0; width: 1080px; height: 1920px; object-fit: cover; }}
+.kb {{ position: absolute; left: 0; top: 0; width: 1080px; height: 1920px; transform-origin: 0 0; }}
+.art {{ position: absolute; left: 0; top: 0; overflow: hidden; }}
 </style>
 <div id="root" data-composition-id="scenes" data-width="1080" data-height="1920">
-  <!-- les 19 plans, dans l'ordre du script ; chacun bouge (zoom / caméra) et passe au suivant par un fondu court -->
-{chr(10).join(scene_divs)}
+  <!-- les 19 plans dessinés (src/art) dans l'ordre du script ; chacun s'anime, la caméra recadre toutes les 3-5 s -->
+{scene_divs}
 </div>
 <script>
 (function () {{
   var SC = {json.dumps(scene_js)};
   var tl = gsap.timeline({{ paused: true }});
-  var ft = function (t, a, b, at) {{ b.immediateRender = false; tl.fromTo(t, a, b, at); }};
-  // mouvements de caméra déterministes : zoom avant/arrière + léger travelling, et un « recadrage » au milieu des plans longs
-  var MOVES = [[1.04, 1.13, 0, -40, 0, 30], [1.14, 1.04, -30, 0, 30, -20], [1.05, 1.12, 30, -30, -20, 0], [1.12, 1.05, 0, 30, -30, 20]];
-  var FRAMES = [[1.34, 1.42, -60, -20, -170, -200], [1.3, 1.22, 120, 60, 120, 80], [1.38, 1.46, -100, -160, 60, 20], [1.26, 1.34, 80, 140, -60, -120]];
-  SC.forEach(function (s, i) {{
-    var n = s[0], a = s[1], b = s[2], vid = s[3], d = b - a, m = MOVES[i % MOVES.length];
-    gsap.set('#s' + n, {{ opacity: 0 }});
-    ft('#s' + n, {{ opacity: 0 }}, {{ opacity: 1, duration: i ? 0.16 : 0.01, ease: 'none' }}, a);
-    ft('#s' + n, {{ opacity: 1 }}, {{ opacity: 0, duration: 0.01, ease: 'none' }}, b + 0.2);
-    if (vid) {{ ft('#k' + n, {{ scale: 1.0 }}, {{ scale: 1.05, duration: d + 0.2, ease: 'none' }}, a); return; }}
-    // plan long : plusieurs cadrages successifs (large, serré, travelling) pour changer d'image toutes les 3-5 s
-    var parts = Math.max(1, Math.ceil(d / 4.6)), h = d / parts;
-    for (var q = 0; q < parts; q++) {{
-      var f = FRAMES[(i + q) % FRAMES.length], z = q === 0 ? [m[0], m[1], m[2], m[3], m[4], m[5]] : f;
-      ft('#k' + n, {{ scale: z[0], x: z[2], y: z[4] }}, {{ scale: z[1], x: z[3], y: z[5], duration: h + (q === parts - 1 ? 0.2 : 0), ease: 'sine.inOut' }}, a + q * h);
-    }}
-    if (i) ft('#k' + n, {{ rotation: (i % 2 ? 0.8 : -0.8) }}, {{ rotation: 0, duration: 0.35, ease: 'power2.out' }}, a);
-  }});
+  ART.buildScenes(tl, SC);
   window.__timelines["scenes"] = tl;
 }})();
 </script>
@@ -135,7 +117,7 @@ subs_html = f'''<!doctype html>
 {FF}
 .pg {{ position: absolute; left: 70px; right: 70px; top: 470px; text-align: center; font-family: "Luckiest Guy", sans-serif; font-size: 104px;
   line-height: 1.08; color: #ffffff; text-transform: uppercase; opacity: 0; }}
-.w {{ display: inline-block; -webkit-text-stroke: 14px #000000; paint-order: stroke fill; text-shadow: 0 10px 0 rgba(0,0,0,0.85); transform-origin: 50% 70%; }}
+.w {{ display: inline-block; margin: 0 0.1em; -webkit-text-stroke: 14px #000000; paint-order: stroke fill; text-shadow: 0 10px 0 rgba(0,0,0,0.85); transform-origin: 50% 70%; }}
 .w.y {{ color: #ffd60a; }}
 .w.r {{ color: #ff3b30; }}
 </style>
@@ -218,7 +200,7 @@ index_html = f'''<!doctype html>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=1080, height=1920" />
 <title>Combien rapporte un McDo ?</title>
-<script src="src/vendor/gsap.min.js"></script>
+<script src="src/vendor/gsap.min.js"></script>\n<script src="src/montage.js"></script>\n<script src="src/art/kit.js"></script>\n<script src="src/art/scenes1.js"></script>\n<script src="src/art/scenes2.js"></script>\n<script src="src/art/build.js"></script>
 <style>
 {FF}
 * {{ margin: 0; padding: 0; box-sizing: border-box; }}
@@ -244,5 +226,5 @@ open('compositions/scenes.html', 'w').write(scenes_html)
 open('compositions/soustitres.html', 'w').write(subs_html)
 open('compositions/compteur.html', 'w').write(counter_html)
 open('index.html', 'w').write(index_html)
-lens = [round(s['b'] - s['a'], 2) for s in shots]
+lens = [round(x['b'] - x['a'], 2) for x in shots]
 print(f'durée {END} s · {len(pages)} pages de sous-titres · {len(dings)} ding · plans (s) : {lens}')

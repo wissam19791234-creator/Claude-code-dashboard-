@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="fr"><head><meta charset="UTF-8" /><title>compteur</title></head><body>
+<template id="compteur">
+<style>
+@font-face { font-family: "Luckiest Guy"; src: url("assets/fonts/LuckiestGuy.woff2") format("woff2"); font-weight: 400; }
+#cn { position: absolute; left: 0; right: 0; top: 176px; margin: 0 auto; width: 800px; height: 210px; opacity: 0; font-family: "Luckiest Guy", sans-serif; text-align: center; }
+#cn .box { position: absolute; inset: 0; border-radius: 40px; background: #111111; border: 8px solid #ffd60a; box-shadow: 0 14px 0 rgba(0,0,0,0.35); }
+#cn .lb { position: absolute; left: 0; right: 0; top: 22px; font-size: 40px; color: #ffd60a; letter-spacing: 0.04em; }
+#cn .val { position: absolute; left: 0; right: 0; top: 72px; font-size: 112px; line-height: 1; color: #ffffff; }
+.chip { position: absolute; left: 0; right: 0; top: 368px; margin: 0 auto; width: max-content; padding: 6px 26px; border-radius: 24px; background: #ff3b30;
+  border: 6px solid #000; font-family: "Luckiest Guy", sans-serif; font-size: 50px; line-height: 1.1; color: #fff; opacity: 0; white-space: nowrap; }
+</style>
+<div id="root" data-composition-id="compteur" data-width="1080" data-height="1920">
+  <!-- compteur d'argent : le chiffre d'affaires fond à chaque prélèvement de McDo -->
+  <div id="cn"><div class="box"></div><div class="lb">CHIFFRE D'AFFAIRES</div><div class="val" id="cv">2 500 000 €</div></div>
+  <div class="chip" id="ch0">−5 % marque</div>
+  <div class="chip" id="ch1">−4 à 5 % pub</div>
+  <div class="chip" id="ch2">−10 % loyer</div>
+  <div class="chip" id="ch3">≈ −20 % pour McDo</div>
+  <div class="chip" id="ch4">−500 000 €</div>
+</div>
+<script>
+(function () {
+  var C = {"a": 54.02, "b": 71.56, "base": 2500000, "steps": [[56.74, 2375000, "\u22125 % marque"], [58.38, 2262500, "\u22124 \u00e0 5 % pub"], [60.44, 2012500, "\u221210 % loyer"], [64.0, 2000000, "\u2248 \u221220 % pour McDo"], [68.06, 2000000, "\u2212500 000 \u20ac"]]};
+  var tl = gsap.timeline({ paused: true });
+  var ft = function (t, a, b, at) { b.immediateRender = false; tl.fromTo(t, a, b, at); };
+  var el = document.getElementById('cv');
+  var fmt = function (v) { return Math.round(v).toString().replace(/\B(?=(\d{3})+(?!\d))/g, '\u202f') + ' €'; };
+  // valeur affichée = propriété-fonction tweenée (rendue même quand la runtime cherche la timeline sans événements)
+  var box = { v: C.base, val: function (x) { if (arguments.length) { this.v = x; el.textContent = fmt(x); } return this.v; } };
+  gsap.set('#cn', { opacity: 0, y: -40 });
+  ft('#cn', { opacity: 0, y: -40, scale: 0.9 }, { opacity: 1, y: 0, scale: 1, duration: 0.35, ease: 'back.out(2)' }, C.a);
+  var prev = C.base;
+  C.steps.forEach(function (s, i) {
+    if (s[1] !== prev) ft(box, { val: prev }, { val: s[1], duration: 0.7, ease: 'power2.out' }, s[0]);
+    ft('#cn', { x: 0 }, { x: -14, duration: 0.05, ease: 'none', yoyo: true, repeat: 3 }, s[0]);
+    gsap.set('#ch' + i, { opacity: 0 });
+    ft('#ch' + i, { opacity: 0, y: -60, scale: 0.6 }, { opacity: 1, y: 0, scale: 1, duration: 0.25, ease: 'back.out(2.5)' }, s[0]);
+    var nxt = i + 1 < C.steps.length ? C.steps[i + 1][0] : C.b;
+    ft('#ch' + i, { opacity: 1, y: 0 }, { opacity: 0, y: 60, duration: 0.25, ease: 'power2.in' }, Math.min(nxt - 0.05, s[0] + 1.6));
+    prev = s[1];
+  });
+  ft('#cn', { opacity: 1, y: 0 }, { opacity: 0, y: -40, duration: 0.3, ease: 'power2.in' }, C.b);
+  window.__timelines["compteur"] = tl;
+})();
+</script>
+</template></body></html>

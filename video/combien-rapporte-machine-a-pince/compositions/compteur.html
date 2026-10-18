@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="fr"><head><meta charset="UTF-8" /><title>compteur</title></head><body>
+<template id="compteur">
+<style>
+@font-face { font-family: "Luckiest Guy"; src: url("assets/fonts/LuckiestGuy.woff2") format("woff2"); font-weight: 400; }
+@font-face { font-family: "Patrick Hand"; src: url("assets/fonts/PatrickHand.woff2") format("woff2"); font-weight: 400; }
+.cb { position: absolute; left: 0; right: 0; top: 96px; margin: 0 auto; width: 640px; height: 186px; background: #ffffff; border: 7px solid #111111;
+  border-radius: 10px; box-shadow: 8px 10px 0 rgba(0,0,0,0.18); text-align: center; opacity: 0; transform: rotate(-1.2deg); }
+.cb .lb { position: absolute; left: 0; right: 0; top: 16px; font-family: "Luckiest Guy", sans-serif; font-size: 30px; letter-spacing: 0.04em; color: #111111; }
+.cb .val { position: absolute; left: 0; right: 0; top: 56px; font-family: "Luckiest Guy", sans-serif; font-size: 104px; line-height: 1; color: #ff3b30;
+  -webkit-text-stroke: 10px #111111; paint-order: stroke fill; }
+</style>
+<div id="root" data-composition-id="compteur" data-width="1080" data-height="1920">
+  <!-- cadres « dépenses avant d'ouvrir » puis « charges par mois » : le total grimpe à chaque dépense -->
+  <div class="cb" id="cb0"><div class="lb">DÉPENSES AVANT D'OUVRIR</div><div class="val" id="cv0">0 €</div></div>
+</div>
+<script>
+(function () {
+  var CS = [{"label": "D\u00c9PENSES AVANT D'OUVRIR", "a": 7.39, "b": 11.07, "steps": [[7.44, -4000], [10.18, -4150]]}];
+  var tl = gsap.timeline({ paused: true });
+  var ft = function (t, a, b, at) { b.immediateRender = false; tl.fromTo(t, a, b, at); };
+  var fmt = function (v) { return (v < 0 ? '\u2212' : '') + Math.round(Math.abs(v)).toString().replace(/\B(?=(\d{3})+(?!\d))/g, '\u202f') + '\u202f€'; };
+  CS.forEach(function (c, i) {
+    var el = document.getElementById('cv' + i), box = '#cb' + i;
+    el.textContent = fmt(c.steps[0][1]);
+    // valeur affichée = propriété-fonction tweenée (rendue même quand la runtime cherche la timeline sans événements)
+    var px = { v: c.steps[0][1], val: function (x) { if (arguments.length) { this.v = x; el.textContent = fmt(x); } return this.v; } };
+    gsap.set(box, { opacity: 0, y: -60 });
+    ft(box, { opacity: 0, y: -60, scale: 0.85 }, { opacity: 1, y: 0, scale: 1, duration: 0.3, ease: 'back.out(2.2)' }, c.a);
+    var prev = c.steps[0][1];
+    c.steps.forEach(function (s, k) {
+      if (k) ft(px, { val: prev }, { val: s[1], duration: 0.55, ease: 'power2.out' }, s[0]);
+      ft(box, { scale: 1 }, { scale: 1.08, duration: 0.09, ease: 'power2.out', yoyo: true, repeat: 1 }, s[0]);
+      ft(box, { x: 0 }, { x: -10, duration: 0.04, ease: 'none', yoyo: true, repeat: 3 }, s[0] + 0.05);
+      prev = s[1];
+    });
+    ft(box, { opacity: 1, y: 0 }, { opacity: 0, y: -60, duration: 0.25, ease: 'power2.in' }, c.b);
+  });
+  window.__timelines["compteur"] = tl;
+})();
+</script>
+</template></body></html>

@@ -1,0 +1,104 @@
+{
+ "format": "Business pas très éthique (mais légal) : combien ça rapporte d'être propriétaire d'une machine à pince",
+ "scenes": [
+  {
+   "n": 1,
+   "anchor": "Tu ne gagneras"
+  },
+  {
+   "n": 2,
+   "anchor": "Combien ça rapporte"
+  },
+  {
+   "n": 3,
+   "anchor": "D'abord, tu achètes"
+  },
+  {
+   "n": 4,
+   "anchor": "Tu la poses dans"
+  },
+  {
+   "n": 5,
+   "anchor": "Et là, les clients"
+  },
+  {
+   "n": 6,
+   "anchor": "3 600 ! Je"
+  },
+  {
+   "n": 7,
+   "anchor": "Attends."
+  },
+  {
+   "n": 8,
+   "anchor": "Et voilà l'astuce"
+  },
+  {
+   "n": 9,
+   "anchor": "La pince serre"
+  },
+  {
+   "n": 10,
+   "anchor": "Donc sur 60"
+  },
+  {
+   "n": 11,
+   "anchor": "Après la part"
+  },
+  {
+   "n": 12,
+   "anchor": "Et avec 10"
+  },
+  {
+   "n": 13,
+   "anchor": "Alors la prochaine"
+  },
+  {
+   "n": 14,
+   "anchor": "Quel business louche"
+  }
+ ],
+ "counters": [
+  {
+   "label": "DÉPENSES AVANT D'OUVRIR",
+   "start": "4 000 euros.",
+   "end": "Tu la poses",
+   "steps": [
+    {
+     "at": "4 000 euros.",
+     "value": -4000
+    },
+    {
+     "at": "1 euro pièce.",
+     "value": -4150
+    }
+   ]
+  }
+ ],
+ "sfx": [
+  {
+   "at": "fait exprès",
+   "kind": "stamp"
+  },
+  {
+   "at": "Attends.",
+   "kind": "scratch"
+  },
+  {
+   "at": "l'astuce",
+   "kind": "sparkle"
+  },
+  {
+   "at": "sur 30.",
+   "kind": "cash"
+  },
+  {
+   "at": "réglée",
+   "kind": "stamp"
+  },
+  {
+   "at": "Dis-le",
+   "kind": "pop"
+  }
+ ]
+}

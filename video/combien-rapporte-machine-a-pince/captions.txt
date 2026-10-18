@@ -1,0 +1,13 @@
+Tu ne gagneras jamais à cette machine. Et c'est fait exprès.
+Combien ça rapporte d'être propriétaire d'une machine à pince ?
+D'abord, tu achètes la machine : {r:4 000 euros.} Tu la remplis de {y:150} peluches, achetées {r:1 euro} pièce.
+Tu la poses dans un bar ou un bowling, et le patron te prend {r:30 %} pour la place et l'électricité.
+Et là, les clients arrivent. {y:2 euros} la partie, {y:60} parties par jour : {y:3 600 euros} par mois.
+{y:3 600 !} Je m'achète une montre en or. Attends. Si tout le monde gagnait, tu donnerais {r:60} peluches par jour. Ta machine serait vide en {r:3 jours.}
+Et voilà l'astuce de pro : sur beaucoup de machines, c'est le propriétaire qui règle combien de fois on gagne.
+La pince serre mou… sauf {y:une partie sur 30.}
+Donc sur {y:60} parties, seulement {y:2} gagnants. {r:2 euros} de peluches pour {y:120 euros} encaissés.
+Après la part du patron, il te reste environ {y:2 400 euros} par mois. Par machine.
+Et avec {y:10} machines : {y:24 000 euros} par mois. Avec des peluches à {r:1 euro.}
+Alors la prochaine fois que la pince lâche, c'est pas toi qui es nul. Elle est réglée comme ça.
+Quel business louche je calcule la prochaine fois ? Dis-le en commentaire.

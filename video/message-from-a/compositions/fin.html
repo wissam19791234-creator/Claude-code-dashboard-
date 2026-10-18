@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="fr">
+<head><meta charset="UTF-8" /><title>fin</title></head>
+<body>
+<template id="fin">
+<style>
+@font-face { font-family: "Inter Tight"; src: url("assets/fonts/InterTight-var.woff2") format("woff2"); font-weight: 100 900; }
+#f-bg { position: absolute; inset: 0; background: radial-gradient(110% 70% at 50% 34%, #e65318 0%, #d63f0a 50%, #b33100 100%); }
+#f-grain { position: absolute; inset: 0; background: url("assets/grain.png") repeat; opacity: 0.3; mix-blend-mode: soft-light; }
+#f-in { position: absolute; inset: 0; font-family: "Inter Tight", sans-serif; color: #ffffff; text-align: center; }
+#f-mark { position: absolute; left: 430px; top: 300px; width: 220px; height: 220px; }
+#f-nom { position: absolute; left: 0; right: 0; top: 548px; font-weight: 800; font-size: 120px; line-height: 1; letter-spacing: -0.045em; }
+#f-big { position: absolute; left: 0; right: 0; top: 760px; font-weight: 800; font-size: 104px; line-height: 1.02; letter-spacing: -0.045em; }
+#f-big span { display: block; }
+#f-j { position: absolute; left: 0; right: 0; margin: 0 auto; width: max-content; top: 1010px; height: 84px; padding: 0 34px; border-radius: 42px; background: #ffffff;
+  color: #e03f00; font-weight: 800; font-size: 42px; line-height: 84px; letter-spacing: -0.02em; white-space: nowrap; }
+#f-offre { position: absolute; left: 0; right: 0; top: 1132px; font-weight: 600; font-size: 40px; line-height: 1.3; color: rgba(255,255,255,0.95); }
+#f-cta { position: absolute; left: 0; right: 0; margin: 0 auto; width: max-content; top: 1270px; height: 96px; padding: 0 44px; border-radius: 48px; background: #141018;
+  font-weight: 700; font-size: 40px; line-height: 96px; letter-spacing: -0.01em; white-space: nowrap; }
+#f-ps { position: absolute; left: 0; right: 0; top: 1396px; font-weight: 500; font-size: 32px; color: rgba(255,255,255,0.82); }
+</style>
+<div id="root" data-composition-id="fin" data-width="1080" data-height="1920">
+  <!-- carte finale : Scalify, lancement dans 15 jours (pas encore de lien : le site n'est pas lancé) -->
+  <div id="f-bg"></div><div id="f-grain"></div>
+  <div id="f-in">
+    <svg id="f-mark" viewBox="0 0 220 220"><rect width="220" height="220" rx="52" fill="#ffffff"/>
+      <path d="M 63 -66 H -30 a 37.5 37.5 0 0 0 0 75 h 56.6 a 37.5 37.5 0 0 1 0 75 H -66" transform="translate(110,80) scale(0.76)" fill="none" stroke="#fb4903" stroke-width="40" stroke-linecap="round" stroke-linejoin="round"/>
+      <circle cx="172" cy="170" r="15" fill="#141018"/></svg>
+    <div id="f-nom">Scalify</div>
+    <div id="f-big"><span>Lancement</span><span>dans 15 jours.</span></div>
+    <div id="f-j">Lundi 2 novembre · J-15</div>
+    <div id="f-offre">Dès 49 €/mois<br>−30 % sur l'annuel pour les 15 premiers</div>
+    <div id="f-cta">Abonnez-vous pour ne rien rater</div>
+    <div id="f-ps">(désolé, A.)</div>
+  </div>
+</div>
+<script>
+(function () {
+  var O = 25.9, T = function (t) { return +(t - O).toFixed(3); };
+  var tl = gsap.timeline({ paused: true });
+  var ft = function (t, a, b, at) { b.immediateRender = false; tl.fromTo(t, a, b, at); };
+  var pop = function (sel, at, from) {
+    gsap.set(sel, { opacity: 0 });
+    ft(sel, Object.assign({ opacity: 0, y: 40, scale: 0.96 }, from || {}), { opacity: 1, y: 0, scale: 1, duration: 0.5, ease: 'power3.out' }, at);
+  };
+  ft('#f-in', { scale: 0.94 }, { scale: 1, duration: 0.9, ease: 'power3.out' }, T(26.3));
+  pop('#f-mark', T(26.55), { scale: 0.6, y: 0, rotation: -12 });
+  pop('#f-nom', T(26.68));
+  pop('#f-big span:nth-child(1)', T(26.85));
+  pop('#f-big span:nth-child(2)', T(26.97));
+  pop('#f-j', T(27.25));
+  pop('#f-offre', T(27.45));
+  pop('#f-cta', T(27.7), { scale: 0.9 });
+  ft('#f-cta', { scale: 1 }, { scale: 1.05, duration: 0.25, ease: 'sine.inOut', yoyo: true, repeat: 3 }, T(28.4));
+  pop('#f-ps', T(28.6), { y: 12 });
+  window.__timelines["fin"] = tl;
+})();
+</script>
+</template>
+</body>
+</html>

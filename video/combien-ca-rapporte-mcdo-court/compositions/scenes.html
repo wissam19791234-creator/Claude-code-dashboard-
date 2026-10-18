@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="fr"><head><meta charset="UTF-8" /><title>scenes</title></head><body>
+<template id="scenes">
+<style>
+@font-face { font-family: "Luckiest Guy"; src: url("assets/fonts/LuckiestGuy.woff2") format("woff2"); font-weight: 400; }
+@font-face { font-family: "Patrick Hand"; src: url("assets/fonts/PatrickHand.woff2") format("woff2"); font-weight: 400; }
+.sc { position: absolute; inset: 0; overflow: hidden; opacity: 0; }
+.kb { position: absolute; left: 0; top: 0; width: 1080px; height: 1920px; transform-origin: 0 0; }
+.art { position: absolute; left: 0; top: 0; overflow: hidden; }
+</style>
+<div id="root" data-composition-id="scenes" data-width="1080" data-height="1920">
+  <!-- les 21 plans dessinés (src/art/court.js) dans l'ordre du script ; gros chiffres, étiquettes et réactions -->
+  <div class="sc" id="s1"><div class="kb" id="k1"><svg class="art" id="g1" viewBox="0 0 1080 1920" width="1080" height="1920"></svg></div></div>
+  <div class="sc" id="s2"><div class="kb" id="k2"><svg class="art" id="g2" viewBox="0 0 1080 1920" width="1080" height="1920"></svg></div></div>
+  <div class="sc" id="s3"><div class="kb" id="k3"><svg class="art" id="g3" viewBox="0 0 1080 1920" width="1080" height="1920"></svg></div></div>
+  <div class="sc" id="s4"><div class="kb" id="k4"><svg class="art" id="g4" viewBox="0 0 1080 1920" width="1080" height="1920"></svg></div></div>
+  <div class="sc" id="s5"><div class="kb" id="k5"><svg class="art" id="g5" viewBox="0 0 1080 1920" width="1080" height="1920"></svg></div></div>
+  <div class="sc" id="s6"><div class="kb" id="k6"><svg class="art" id="g6" viewBox="0 0 1080 1920" width="1080" height="1920"></svg></div></div>
+  <div class="sc" id="s7"><div class="kb" id="k7"><svg class="art" id="g7" viewBox="0 0 1080 1920" width="1080" height="1920"></svg></div></div>
+  <div class="sc" id="s8"><div class="kb" id="k8"><svg class="art" id="g8" viewBox="0 0 1080 1920" width="1080" height="1920"></svg></div></div>
+  <div class="sc" id="s9"><div class="kb" id="k9"><svg class="art" id="g9" viewBox="0 0 1080 1920" width="1080" height="1920"></svg></div></div>
+  <div class="sc" id="s10"><div class="kb" id="k10"><svg class="art" id="g10" viewBox="0 0 1080 1920" width="1080" height="1920"></svg></div></div>
+  <div class="sc" id="s11"><div class="kb" id="k11"><svg class="art" id="g11" viewBox="0 0 1080 1920" width="1080" height="1920"></svg></div></div>
+  <div class="sc" id="s12"><div class="kb" id="k12"><svg class="art" id="g12" viewBox="0 0 1080 1920" width="1080" height="1920"></svg></div></div>
+  <div class="sc" id="s13"><div class="kb" id="k13"><svg class="art" id="g13" viewBox="0 0 1080 1920" width="1080" height="1920"></svg></div></div>
+  <div class="sc" id="s14"><div class="kb" id="k14"><svg class="art" id="g14" viewBox="0 0 1080 1920" width="1080" height="1920"></svg></div></div>
+  <div class="sc" id="s15"><div class="kb" id="k15"><svg class="art" id="g15" viewBox="0 0 1080 1920" width="1080" height="1920"></svg></div></div>
+  <div class="sc" id="s16"><div class="kb" id="k16"><svg class="art" id="g16" viewBox="0 0 1080 1920" width="1080" height="1920"></svg></div></div>
+  <div class="sc" id="s17"><div class="kb" id="k17"><svg class="art" id="g17" viewBox="0 0 1080 1920" width="1080" height="1920"></svg></div></div>
+  <div class="sc" id="s18"><div class="kb" id="k18"><svg class="art" id="g18" viewBox="0 0 1080 1920" width="1080" height="1920"></svg></div></div>
+  <div class="sc" id="s19"><div class="kb" id="k19"><svg class="art" id="g19" viewBox="0 0 1080 1920" width="1080" height="1920"></svg></div></div>
+  <div class="sc" id="s20"><div class="kb" id="k20"><svg class="art" id="g20" viewBox="0 0 1080 1920" width="1080" height="1920"></svg></div></div>
+  <div class="sc" id="s21"><div class="kb" id="k21"><svg class="art" id="g21" viewBox="0 0 1080 1920" width="1080" height="1920"></svg></div></div>
+</div>
+<script>
+(function () {
+  var SC = [[1, 0.0, 2.18], [2, 2.18, 5.92], [3, 5.92, 10.4], [4, 10.4, 15.8], [5, 15.8, 19.22], [6, 19.22, 22.86], [7, 22.86, 26.18], [8, 26.18, 29.2], [9, 29.2, 32.38], [10, 32.38, 38.2], [11, 38.2, 41.32], [12, 41.32, 45.82], [13, 45.82, 49.0], [14, 49.0, 52.5], [15, 52.5, 57.81], [16, 57.81, 59.37], [17, 59.37, 63.39], [18, 63.39, 66.53], [19, 66.53, 68.53], [20, 68.53, 73.43], [21, 73.43, 77.53]];
+  var tl = gsap.timeline({ paused: true });
+  ART.buildScenes(tl, SC);
+  window.__timelines["scenes"] = tl;
+})();
+</script>
+</template></body></html>

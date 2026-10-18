@@ -1,0 +1,18 @@
+Combien ça rapporte d'être propriétaire d'un McDo ?
+D'abord, McDo doit t'accepter, puis te former pendant {y:9 à 24 mois.}
+Ensuite, tu payes le droit d'entrée : {r:45 000 euros.} Juste pour avoir le droit d'entrer.
+Puis tu rachètes tout le restaurant : les cuisines, le drive, les bornes. Entre {r:800 000 euros} et {r:2 millions.}
+Bref, t'as claqué plus d'un million avant même d'avoir vendu un seul burger.
+Et comme tout est à crédit, la banque te prélève {r:10 000 euros} par mois pendant {y:10 ans.}
+Côté charges : tes {y:48} salariés, {r:53 000 euros} par mois. La viande, le pain, les frites et les emballages, {r:59 000.} L'électricité des friteuses et l'entretien, {r:13 000.}
+Et McDo se sert en premier : {r:5 %} pour la marque, {r:5 %} pour la pub, {r:10 %} de loyer. Encore {r:38 000.}
+Avec le crédit, t'es à {r:173 000 euros} de charges par mois.
+Et là, tu ouvres ton McDo. {y:700} clients par jour à {y:10 euros} : {y:210 000 euros} par mois.
+{y:210 000 !} Je m'achète un jet privé. Attends. Enlève la TVA : il reste {y:191 000.}
+Moins tes {r:173 000} de charges, il te reste {y:18 000 euros.} Pour un resto ouvert {y:7 jours sur 7.}
+Et voilà l'astuce de pro : le soda.
+Un soda te coûte environ {r:25 centimes,} et tu le vends {y:2 euros 50.}
+La moitié des clients prend un soda : ça fait {y:21 000 euros} par mois.
+Sans les sodas, tu perdrais de l'argent.
+Après les impôts, il te reste environ {y:13 000 euros} net par mois. Grâce au soda, pas au burger.
+Quel business je calcule la prochaine fois ? Dis-le en commentaire.

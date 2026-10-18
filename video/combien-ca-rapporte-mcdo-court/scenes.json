@@ -1,0 +1,177 @@
+{
+ "format": "Combien ça rapporte d'être propriétaire d'un… (calqué sur les vidéos de référence)",
+ "brand_rule": "Fast-food générique orange et blanc : aucun logo, aucune couleur de marque.",
+ "scenes": [
+  {
+   "n": 1,
+   "anchor": "Combien ça rapporte"
+  },
+  {
+   "n": 2,
+   "anchor": "D'abord, McDo doit"
+  },
+  {
+   "n": 3,
+   "anchor": "Ensuite, tu payes"
+  },
+  {
+   "n": 4,
+   "anchor": "Puis tu rachètes"
+  },
+  {
+   "n": 5,
+   "anchor": "Bref, t'as claqué"
+  },
+  {
+   "n": 6,
+   "anchor": "Et comme tout est"
+  },
+  {
+   "n": 7,
+   "anchor": "Côté charges"
+  },
+  {
+   "n": 8,
+   "anchor": "La viande, le pain"
+  },
+  {
+   "n": 9,
+   "anchor": "L'électricité des friteuses"
+  },
+  {
+   "n": 10,
+   "anchor": "Et McDo se sert"
+  },
+  {
+   "n": 11,
+   "anchor": "Avec le crédit, t'es"
+  },
+  {
+   "n": 12,
+   "anchor": "Et là, tu ouvres"
+  },
+  {
+   "n": 13,
+   "anchor": "210 000 ! Je"
+  },
+  {
+   "n": 14,
+   "anchor": "Attends."
+  },
+  {
+   "n": 15,
+   "anchor": "Moins tes 173"
+  },
+  {
+   "n": 16,
+   "anchor": "Et voilà l'astuce"
+  },
+  {
+   "n": 17,
+   "anchor": "Un soda te coûte"
+  },
+  {
+   "n": 18,
+   "anchor": "La moitié des clients"
+  },
+  {
+   "n": 19,
+   "anchor": "Sans les sodas"
+  },
+  {
+   "n": 20,
+   "anchor": "Après les impôts"
+  },
+  {
+   "n": 21,
+   "anchor": "Quel business je"
+  }
+ ],
+ "counters": [
+  {
+   "label": "DÉPENSES AVANT D'OUVRIR",
+   "start": "45 000 euros.",
+   "end": "Et comme tout est",
+   "steps": [
+    {
+     "at": "45 000 euros.",
+     "value": -45000
+    },
+    {
+     "at": "800 000 euros",
+     "value": -845000
+    },
+    {
+     "at": "2 millions.",
+     "value": -2045000
+    }
+   ]
+  },
+  {
+   "label": "CHARGES PAR MOIS",
+   "start": "10 000 euros par mois pendant",
+   "end": "Et là, tu ouvres",
+   "steps": [
+    {
+     "at": "10 000 euros par mois pendant",
+     "value": -10000
+    },
+    {
+     "at": "53 000",
+     "value": -63000
+    },
+    {
+     "at": "59 000.",
+     "value": -122000
+    },
+    {
+     "at": "13 000.",
+     "value": -135000
+    },
+    {
+     "at": "38 000.",
+     "value": -173000
+    }
+   ]
+  }
+ ],
+ "sfx": [
+  {
+   "at": "t'accepter",
+   "kind": "stamp"
+  },
+  {
+   "at": "crédit,",
+   "kind": "stamp"
+  },
+  {
+   "at": "claqué",
+   "kind": "boing"
+  },
+  {
+   "at": "jet privé",
+   "kind": "whoosh",
+   "off": -0.4
+  },
+  {
+   "at": "Attends.",
+   "kind": "scratch"
+  },
+  {
+   "at": "l'astuce",
+   "kind": "sparkle"
+  },
+  {
+   "at": "perdrais",
+   "kind": "trombone"
+  },
+  {
+   "at": "13 000 euros net",
+   "kind": "cash"
+  },
+  {
+   "at": "Dis-le",
+   "kind": "pop"
+  }
+ ]
+}

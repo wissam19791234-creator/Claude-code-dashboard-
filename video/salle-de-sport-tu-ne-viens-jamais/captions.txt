@@ -1,0 +1,13 @@
+Ta salle de sport veut que tu ne viennes jamais. Et c'est comme ça qu'elle devient riche.
+Combien ça rapporte d'être propriétaire d'une salle de sport pas chère ?
+D'abord, tu loues un grand entrepôt : {r:15 000 euros} par mois. Tu achètes {y:150} machines : {r:400 000 euros,} à crédit.
+Avec le crédit, l'électricité, le ménage et {y:4} salariés, t'es à {r:45 000 euros} de charges par mois.
+Ta salle peut accueillir {y:300} personnes en même temps. Donc logiquement, tu vends {y:300} abonnements.
+Faux. Tu vends {y:4 000} abonnements. À {y:20 euros} par mois : {y:80 000 euros} par mois.
+{y:80 000 !} Je m'ouvre une deuxième salle. Attends. Si les {y:4 000} viennent en même temps, ta salle explose.
+Et voilà l'astuce de pro : en janvier, tout le monde vient. En mars, plus de la moitié ne vient presque plus.
+Mais ils continuent de payer. Chaque mois. Sans venir.
+Enlève la TVA et tes {r:45 000} de charges : il te reste environ {y:22 000 euros} par mois.
+Et tes meilleurs clients, c'est ceux qui ne viennent jamais : ils paient, ils n'usent pas les machines, et ils ne prennent pas de place.
+Alors si tu paies une salle où tu ne vas plus : bravo, t'es son client préféré.
+Quel business louche je calcule la prochaine fois ? Dis-le en commentaire.

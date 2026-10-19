@@ -1,0 +1,108 @@
+{
+ "format": "Business pas très éthique (mais légal) : la salle de sport qui veut que tu ne viennes jamais",
+ "scenes": [
+  {
+   "n": 1,
+   "anchor": "Ta salle de sport"
+  },
+  {
+   "n": 2,
+   "anchor": "Combien ça rapporte"
+  },
+  {
+   "n": 3,
+   "anchor": "D'abord, tu loues"
+  },
+  {
+   "n": 4,
+   "anchor": "Avec le crédit, l'électricité"
+  },
+  {
+   "n": 5,
+   "anchor": "Ta salle peut accueillir"
+  },
+  {
+   "n": 6,
+   "anchor": "Faux."
+  },
+  {
+   "n": 7,
+   "anchor": "80 000 ! Je"
+  },
+  {
+   "n": 8,
+   "anchor": "Attends."
+  },
+  {
+   "n": 9,
+   "anchor": "Et voilà l'astuce"
+  },
+  {
+   "n": 10,
+   "anchor": "Mais ils continuent"
+  },
+  {
+   "n": 11,
+   "anchor": "Enlève la TVA"
+  },
+  {
+   "n": 12,
+   "anchor": "Et tes meilleurs clients"
+  },
+  {
+   "n": 13,
+   "anchor": "Alors si tu paies"
+  },
+  {
+   "n": 14,
+   "anchor": "Quel business louche"
+  }
+ ],
+ "counters": [
+  {
+   "label": "CHARGES PAR MOIS",
+   "start": "15 000 euros par mois.",
+   "end": "Ta salle peut",
+   "steps": [
+    {
+     "at": "15 000 euros par mois.",
+     "value": -15000
+    },
+    {
+     "at": "45 000 euros de charges",
+     "value": -45000
+    }
+   ]
+  }
+ ],
+ "sfx": [
+  {
+   "at": "à crédit.",
+   "kind": "stamp"
+  },
+  {
+   "at": "Faux.",
+   "kind": "boing"
+  },
+  {
+   "at": "Attends.",
+   "kind": "scratch"
+  },
+  {
+   "at": "explose.",
+   "kind": "stamp"
+  },
+  {
+   "at": "l'astuce",
+   "kind": "sparkle"
+  },
+  {
+   "at": "bravo,",
+   "kind": "cash"
+  },
+  {
+   "at": "Dis-le",
+   "kind": "pop"
+  }
+ ]
+}

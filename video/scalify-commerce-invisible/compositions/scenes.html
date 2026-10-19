@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="fr"><head><meta charset="UTF-8" /><title>scenes</title></head><body>
+<template id="scenes">
+<style>
+@font-face { font-family: "Luckiest Guy"; src: url("assets/fonts/LuckiestGuy.woff2") format("woff2"); font-weight: 400; }
+@font-face { font-family: "Patrick Hand"; src: url("assets/fonts/PatrickHand.woff2") format("woff2"); font-weight: 400; }
+.sc { position: absolute; inset: 0; overflow: hidden; opacity: 0; }
+.kb { position: absolute; left: 0; top: 0; width: 1080px; height: 1920px; transform-origin: 0 0; }
+.art { position: absolute; left: 0; top: 0; overflow: hidden; }
+</style>
+<div id="root" data-composition-id="scenes" data-width="1080" data-height="1920">
+  <!-- calque 2D des 16 plans (src/art/scalify.js) posé sur le monde 3D : titres, gros chiffres, étiquettes, Hamsterdam -->
+  <div class="sc" id="s1"><div class="kb" id="k1"><svg class="art" id="g1" viewBox="0 0 1080 1920" width="1080" height="1920"></svg></div></div>
+  <div class="sc" id="s2"><div class="kb" id="k2"><svg class="art" id="g2" viewBox="0 0 1080 1920" width="1080" height="1920"></svg></div></div>
+  <div class="sc" id="s3"><div class="kb" id="k3"><svg class="art" id="g3" viewBox="0 0 1080 1920" width="1080" height="1920"></svg></div></div>
+  <div class="sc" id="s4"><div class="kb" id="k4"><svg class="art" id="g4" viewBox="0 0 1080 1920" width="1080" height="1920"></svg></div></div>
+  <div class="sc" id="s5"><div class="kb" id="k5"><svg class="art" id="g5" viewBox="0 0 1080 1920" width="1080" height="1920"></svg></div></div>
+  <div class="sc" id="s6"><div class="kb" id="k6"><svg class="art" id="g6" viewBox="0 0 1080 1920" width="1080" height="1920"></svg></div></div>
+  <div class="sc" id="s7"><div class="kb" id="k7"><svg class="art" id="g7" viewBox="0 0 1080 1920" width="1080" height="1920"></svg></div></div>
+  <div class="sc" id="s8"><div class="kb" id="k8"><svg class="art" id="g8" viewBox="0 0 1080 1920" width="1080" height="1920"></svg></div></div>
+  <div class="sc" id="s9"><div class="kb" id="k9"><svg class="art" id="g9" viewBox="0 0 1080 1920" width="1080" height="1920"></svg></div></div>
+  <div class="sc" id="s10"><div class="kb" id="k10"><svg class="art" id="g10" viewBox="0 0 1080 1920" width="1080" height="1920"></svg></div></div>
+  <div class="sc" id="s11"><div class="kb" id="k11"><svg class="art" id="g11" viewBox="0 0 1080 1920" width="1080" height="1920"></svg></div></div>
+  <div class="sc" id="s12"><div class="kb" id="k12"><svg class="art" id="g12" viewBox="0 0 1080 1920" width="1080" height="1920"></svg></div></div>
+  <div class="sc" id="s13"><div class="kb" id="k13"><svg class="art" id="g13" viewBox="0 0 1080 1920" width="1080" height="1920"></svg></div></div>
+  <div class="sc" id="s14"><div class="kb" id="k14"><svg class="art" id="g14" viewBox="0 0 1080 1920" width="1080" height="1920"></svg></div></div>
+  <div class="sc" id="s15"><div class="kb" id="k15"><svg class="art" id="g15" viewBox="0 0 1080 1920" width="1080" height="1920"></svg></div></div>
+  <div class="sc" id="s16"><div class="kb" id="k16"><svg class="art" id="g16" viewBox="0 0 1080 1920" width="1080" height="1920"></svg></div></div>
+</div>
+<script>
+(function () {
+  var SC = [[1, 0.0, 3.58], [2, 3.58, 5.84], [3, 5.84, 7.5], [4, 7.5, 11.76], [5, 11.76, 14.6], [6, 14.6, 16.12], [7, 16.12, 20.5], [8, 20.5, 24.98], [9, 24.98, 28.72], [10, 28.72, 31.32], [11, 31.32, 32.32], [12, 32.32, 34.08], [13, 34.08, 40.06], [14, 40.06, 44.44], [15, 44.44, 47.92], [16, 47.92, 54.0]];
+  var tl = gsap.timeline({ paused: true });
+  ART.buildScenes(tl, SC);
+  window.__timelines["scenes"] = tl;
+})();
+</script>
+</template></body></html>

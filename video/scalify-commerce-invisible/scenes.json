@@ -1,0 +1,123 @@
+{
+ "format": "Pub Scalify au format « Combien ça coûte » : Hamsterdam calcule ce que perd un commerce invisible — objets en 3D (three.js), calque 2D",
+ "scenes": [
+  {
+   "n": 1,
+   "anchor": "Cette boulangerie perd"
+  },
+  {
+   "n": 2,
+   "anchor": "Combien coûte"
+  },
+  {
+   "n": 3,
+   "anchor": "Imagine, c'est ta"
+  },
+  {
+   "n": 4,
+   "anchor": "Chaque jour"
+  },
+  {
+   "n": 5,
+   "anchor": "2 clients"
+  },
+  {
+   "n": 6,
+   "anchor": "ça fait 900"
+  },
+  {
+   "n": 7,
+   "anchor": "Tes avis restent"
+  },
+  {
+   "n": 8,
+   "anchor": "Et après 19"
+  },
+  {
+   "n": 9,
+   "anchor": "Total"
+  },
+  {
+   "n": 10,
+   "anchor": "20 000 ! Je"
+  },
+  {
+   "n": 11,
+   "anchor": "Attends."
+  },
+  {
+   "n": 12,
+   "anchor": "Et voilà l'astuce"
+  },
+  {
+   "n": 13,
+   "anchor": "Ton site,"
+  },
+  {
+   "n": 14,
+   "anchor": "Prix"
+  },
+  {
+   "n": 15,
+   "anchor": "Un commerce invisible,"
+  },
+  {
+   "n": 16,
+   "anchor": "Lancement"
+  }
+ ],
+ "counters": [],
+ "sfx": [
+  {
+   "at": "même pas.",
+   "kind": "boing"
+  },
+  {
+   "at": "invisible sur",
+   "kind": "whoosh",
+   "off": -0.3
+  },
+  {
+   "at": "voisin.",
+   "kind": "whoosh",
+   "off": -0.2
+  },
+  {
+   "at": "part.",
+   "kind": "whoosh",
+   "off": -0.2
+  },
+  {
+   "at": "Total",
+   "kind": "stamp"
+  },
+  {
+   "at": "Je ferme",
+   "kind": "trombone"
+  },
+  {
+   "at": "Attends.",
+   "kind": "scratch"
+  },
+  {
+   "at": "l'astuce",
+   "kind": "sparkle"
+  },
+  {
+   "at": "Scalify.",
+   "kind": "sparkle"
+  },
+  {
+   "at": "rentabiliser.",
+   "kind": "stamp"
+  },
+  {
+   "at": "secret.",
+   "kind": "stamp"
+  },
+  {
+   "at": "Abonne-toi",
+   "kind": "pop"
+  }
+ ]
+}

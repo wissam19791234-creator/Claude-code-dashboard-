@@ -481,24 +481,12 @@ export function buildWorld(canvas, W, H) {
     s.ic.forEach((m, i) => { const k = E.back(u(t, ts[i] - 0.05, ts[i] + 0.3)); show(m, k * [0.78, 0.75, 0.9, 0.85, 0.9][i]); m.position.set(pos[i][0], pos[i][1] + (i === 1 ? -0.55 : 0) + 0.07 * Math.sin(t * 2.2 + i), 0.5); m.rotation.y = (i === 2 ? (t - a) * 1.6 : 0.25 * Math.sin(t * 1.5 + i)); });
   });
 
-  // 14 · 49 € par mois : 4 clients suffisent (la balance bascule)
-  scn((t, a) => ({ p: [0.5 * Math.sin((t - a) * 0.4), 3.0, 18], q: [0, 1.35, 0] }), (g) => {
-    const bl = balance(g); const tg = tag(bl.userData.pans[0], '49 €', '#1d1d1f'); tg.position.set(0, -0.82, 0); tg.scale.setScalar(1.05);
-    const cs = [0, 1, 2, 3].map(() => coin(bl.userData.pans[1]));
-    return { bl, cs };
-  }, (t, a, b, s) => {
-    const t4 = K('4 clients', a), drops = [0, 1, 2, 3].map((i) => t4 - 0.1 + i * 0.28);
-    let ang = 0.24; drops.forEach((td) => { ang -= 0.11 * E.ela(u(t, td + 0.15, td + 0.9)); });
-    s.bl.userData.tilt(ang);
-    s.cs.forEach((c, i) => { const k = u(t, drops[i] - 0.25, drops[i]); c.visible = k > 0; c.position.set(0, -1.1 + i * 0.115 + (1 - E.i2(k)) * 2.2, 0); c.rotation.y = i; });
-  });
-
-  // 15 · « Un commerce invisible, c'est pas un commerce. C'est un secret. »
+  // 14 · « Un commerce invisible, c'est pas un commerce. C'est un secret. »
   scn((t, a, b) => ({ p: [lerp(1.0, -0.4, u(t, a, b)), 3.8, 21], q: [-0.4, 1.6, 0] }), (g) => ({ bk: bakery(g) }), (t, a, b, s) => {
     s.bk.userData.lights(1); s.bk.userData.ghost(0.85 + 0.1 * Math.sin((t - a) * 3));
   });
 
-  // 16 · lancement : la boutique bien visible, épingle Scalify, les clients entrent
+  // 15 · lancement : la boutique bien visible, épingle Scalify, les clients entrent
   scn((t, a) => ({ p: [lerp(0.8, -0.4, u(t, a, a + 6)), 3.6, 24], q: [0, 1.35, 0] }), (g) => {
     const bk = bakery(g); const pn = pin(g, '#4da2ff'); pn.scale.setScalar(0.9);
     const gl = sprite(blueGlow, 2.6); g.add(gl);

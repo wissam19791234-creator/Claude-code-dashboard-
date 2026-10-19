@@ -140,26 +140,22 @@
       pop(tl, '#s13-t', a + 0.05); pop(tl, '#s13-n', K('24 heures', a));
       [K('Ton site,', a), K('ta fiche Google,', a), K('tes avis,', a), K('tes posts…', a)].forEach(function (t, k) { pop(tl, '#s13-l' + k, t + 0.15, 0.5); });
     } };
-  // 14 · 49 € par mois, 4 clients suffisent
+  // 14 · « Un commerce invisible, c'est pas un commerce. C'est un secret. »
   S[14] = { cam: [[540, 960, 1.0, 1.0]], svg: function () {
-      return NUM('s14-n', 540, 250, '49 € / MOIS', GRN, 140, -3) + LAB('s14-l', 540, 400, '4 clients × 15 € = 60 €', BLU, 62, 2) + STAMP('s14-st', 540, 1400, 'RENTABILISÉ', GRN, -6);
-    }, anim: function (tl, a, b, K) { pop(tl, '#s14-n', K('49', a)); pop(tl, '#s14-l', K('4 clients', a), 0.5); stamp(tl, '#s14-st', K('rentabiliser.', a)); } };
-  // 15 · « Un commerce invisible, c'est pas un commerce. C'est un secret. »
+      return NUM('s14-t1', 540, 250, 'UN COMMERCE', '#ffffff', 104, -3) + NUM('s14-t2', 540, 380, 'INVISIBLE…', BLU, 130, 2) + STAMP('s14-st', 560, 560, "C'EST UN SECRET", RED, -7) +
+        baker('h14', 165, 0.5, { faces: ['awk'], blush: 1, armL: { a: 30 }, armR: { a: 135, hand: 'point' } });
+    }, anim: function (tl, a, b, K) { pop(tl, '#s14-t1', a + 0.05, 0.5); pop(tl, '#s14-t2', K('invisible,', a), 0.5); stamp(tl, '#s14-st', K("C'est un secret", a)); talk(tl, 'h14', 'awk', a, b); } };
+  // 15 · lancement dans 14 jours, −30 % pour les 15 premiers, abonne-toi
   S[15] = { cam: [[540, 960, 1.0, 1.0]], svg: function () {
-      return NUM('s15-t1', 540, 250, 'UN COMMERCE', '#ffffff', 104, -3) + NUM('s15-t2', 540, 380, 'INVISIBLE…', BLU, 130, 2) + STAMP('s15-st', 560, 560, "C'EST UN SECRET", RED, -7) +
-        baker('h15', 165, 0.5, { faces: ['awk'], blush: 1, armL: { a: 30 }, armR: { a: 135, hand: 'point' } });
-    }, anim: function (tl, a, b, K) { pop(tl, '#s15-t1', a + 0.05, 0.5); pop(tl, '#s15-t2', K('invisible,', a), 0.5); stamp(tl, '#s15-st', K("C'est un secret", a)); talk(tl, 'h15', 'awk', a, b); } };
-  // 16 · lancement : logo, 2 novembre, −30 % pour les 15 premiers, abonne-toi
-  S[16] = { cam: [[540, 960, 1.0, 1.0]], svg: function () {
-      return LOGO('s16-lg', 300, 230, 0.42) + NUM('s16-nm', 660, 236, 'SCALIFY', '#ffffff', 112, -2) +
-        TAG('s16-t', 540, 1250, 'LANCEMENT LE 2 NOVEMBRE', BLU, 54, -2) + NUM('s16-n', 540, 1370, '− 30 % SUR L\'ANNUEL', GRN, 86, 2) + LAB('s16-l', 540, 1475, 'pour les 15 premiers', ORA, 56, -2) +
-        G({ transform: T(540, 1360, 1, -3) }, G('s16-bt', R(-330, -84, 660, 168, 84, RED, LW) + el('text', { x: 0, y: 8, 'text-anchor': 'middle', 'dominant-baseline': 'central', 'font-family': 'Luckiest Guy', 'font-size': 100, fill: '#ffffff' }, 'ABONNE-TOI')));
+      return LOGO('s15-lg', 300, 230, 0.42) + NUM('s15-nm', 660, 236, 'SCALIFY', '#ffffff', 112, -2) +
+        TAG('s15-t', 540, 1250, 'LANCEMENT DANS 14 JOURS', BLU, 56, -2) + NUM('s15-n', 540, 1370, '− 30 % SUR L\'ANNUEL', GRN, 86, 2) + LAB('s15-l', 540, 1475, 'pour les 15 premiers', ORA, 56, -2) +
+        G({ transform: T(540, 1360, 1, -3) }, G('s15-bt', R(-330, -84, 660, 168, 84, RED, LW) + el('text', { x: 0, y: 8, 'text-anchor': 'middle', 'dominant-baseline': 'central', 'font-family': 'Luckiest Guy', 'font-size': 100, fill: '#ffffff' }, 'ABONNE-TOI')));
     }, anim: function (tl, a, b, K) {
       var ta = K('Abonne-toi', a);
-      pop(tl, '#s16-lg', a + 0.05); pop(tl, '#s16-nm', a + 0.15, 0.5);
-      ft(tl, '#s16-lg', { rotation: -200 }, { rotation: 0, duration: 0.6, ease: 'back.out(1.6)' }, a + 0.05);
-      pop(tl, '#s16-t', K('Lancement', a)); pop(tl, '#s16-n', K('moins 30', a)); pop(tl, '#s16-l', K('15 premiers', a), 0.5);
-      ['#s16-t', '#s16-n', '#s16-l'].forEach(function (s) { out(tl, s, ta - 0.1); });
-      pop(tl, '#s16-bt', ta); ft(tl, '#s16-bt', { scale: 1 }, { scale: 1.07, duration: 0.3, ease: 'sine.inOut', yoyo: true, repeat: Math.ceil((b - ta) / 0.3) }, ta + 0.35);
+      pop(tl, '#s15-lg', a + 0.05); pop(tl, '#s15-nm', a + 0.15, 0.5);
+      ft(tl, '#s15-lg', { rotation: -200 }, { rotation: 0, duration: 0.6, ease: 'back.out(1.6)' }, a + 0.05);
+      pop(tl, '#s15-t', K('Lancement', a)); pop(tl, '#s15-n', K('moins 30', a)); pop(tl, '#s15-l', K('15 premiers', a), 0.5);
+      ['#s15-t', '#s15-n', '#s15-l'].forEach(function (s) { out(tl, s, ta - 0.1); });
+      pop(tl, '#s15-bt', ta); ft(tl, '#s15-bt', { scale: 1 }, { scale: 1.07, duration: 0.3, ease: 'sine.inOut', yoyo: true, repeat: Math.ceil((b - ta) / 0.3) }, ta + 0.35);
     } };
 })();

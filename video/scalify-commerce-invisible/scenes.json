@@ -55,14 +55,10 @@
   },
   {
    "n": 14,
-   "anchor": "Prix"
-  },
-  {
-   "n": 15,
    "anchor": "Un commerce invisible,"
   },
   {
-   "n": 16,
+   "n": 15,
    "anchor": "Lancement"
   }
  ],
@@ -106,10 +102,6 @@
   {
    "at": "Scalify.",
    "kind": "sparkle"
-  },
-  {
-   "at": "rentabiliser.",
-   "kind": "stamp"
   },
   {
    "at": "secret.",

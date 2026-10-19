@@ -1,0 +1,97 @@
+{
+ "format": "Business pas très éthique (mais légal) : le magasin qui revend tes colis perdus — objets en 3D (three.js), calque 2D",
+ "scenes": [
+  {
+   "n": 1,
+   "anchor": "Ton colis perdu"
+  },
+  {
+   "n": 2,
+   "anchor": "Combien ça rapporte"
+  },
+  {
+   "n": 3,
+   "anchor": "D'abord, tu loues"
+  },
+  {
+   "n": 4,
+   "anchor": "Personne ne sait"
+  },
+  {
+   "n": 5,
+   "anchor": "Tu les revends"
+  },
+  {
+   "n": 6,
+   "anchor": "Tu en vends 8"
+  },
+  {
+   "n": 7,
+   "anchor": "32 000 ! Je"
+  },
+  {
+   "n": 8,
+   "anchor": "Attends."
+  },
+  {
+   "n": 9,
+   "anchor": "Et voilà l'astuce"
+  },
+  {
+   "n": 10,
+   "anchor": "Le client filme"
+  },
+  {
+   "n": 11,
+   "anchor": "Tu passes à 16"
+  },
+  {
+   "n": 12,
+   "anchor": "Le colis à 20"
+  },
+  {
+   "n": 13,
+   "anchor": "Quel business louche"
+  }
+ ],
+ "counters": [],
+ "sfx": [
+  {
+   "at": "revend",
+   "kind": "cash"
+  },
+  {
+   "at": "Même pas toi.",
+   "kind": "boing"
+  },
+  {
+   "at": "camion.",
+   "kind": "whoosh",
+   "off": -0.6
+  },
+  {
+   "at": "Attends.",
+   "kind": "scratch"
+  },
+  {
+   "at": "l'astuce",
+   "kind": "sparkle"
+  },
+  {
+   "at": "téléphone.",
+   "kind": "sparkle"
+  },
+  {
+   "at": "Sans payer",
+   "kind": "stamp"
+  },
+  {
+   "at": "ticket",
+   "kind": "stamp"
+  },
+  {
+   "at": "Dis-le",
+   "kind": "pop"
+  }
+ ]
+}

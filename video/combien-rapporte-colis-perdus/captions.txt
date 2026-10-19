@@ -1,0 +1,12 @@
+Ton colis perdu ? Quelqu'un l'a racheté. Et il le revend 20 euros, sans même l'ouvrir.
+Combien ça rapporte d'être propriétaire d'un magasin de colis perdus ?
+D'abord, tu loues un entrepôt : {r:3 000 euros} par mois. Tu achètes une palette de colis jamais livrés : {y:200} colis pour {r:1 500 euros.}
+Personne ne sait ce qu'il y a dedans. Même pas toi.
+Tu les revends fermés, {y:20 euros} le colis. Une palette : {y:4 000 euros.}
+Tu en vends {y:8} par mois : {y:32 000 euros.}
+{y:32 000 !} Je m'achète un camion. Attends. Enlève la TVA, les palettes, le loyer et tes {y:2} salariés : il te reste environ {y:6 000 euros} par mois.
+Et voilà l'astuce de pro : dans la plupart des colis, des coques et des câbles. Mais de temps en temps, un téléphone.
+Le client filme l'ouverture, la vidéo fait {y:2 millions} de vues… et tout le monde vient tenter sa chance.
+Tu passes à {y:16} palettes par mois. Il te reste presque {y:18 000 euros.} Sans payer une seule pub.
+Le colis à {y:20 euros,} c'est pas un colis. C'est un ticket de loto.
+Quel business louche je calcule la prochaine fois ? Dis-le en commentaire.

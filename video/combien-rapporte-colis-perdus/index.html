@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=1080, height=1920" />
+<title>Ce magasin revend tes colis perdus</title>
+<script src="src/vendor/gsap.min.js"></script>
+<script src="src/montage.js"></script>
+<script src="src/art/kit.js"></script>
+<script src="src/art/colis.js"></script>
+<script src="src/art/build.js"></script>
+<script type="importmap">{ "imports": { "three": "./src/vendor/three.module.js", "three/addons/": "./src/vendor/addons/" } }</script>
+<style>
+@font-face { font-family: "Luckiest Guy"; src: url("assets/fonts/LuckiestGuy.woff2") format("woff2"); font-weight: 400; }
+@font-face { font-family: "Patrick Hand"; src: url("assets/fonts/PatrickHand.woff2") format("woff2"); font-weight: 400; }
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html, body { width: 1080px; height: 1920px; overflow: hidden; background: #fff4e6; }
+#root { width: 100%; height: 100%; position: relative; overflow: hidden;
+  background: radial-gradient(80% 50% at 50% 62%, #fffdf8 0%, #fff4e6 55%, #f6e3c9 100%); }
+#gl { width: 100%; height: 100%; display: block; }
+.clip { position: absolute; inset: 0; }
+</style>
+</head>
+<body>
+<div id="root" data-composition-id="main" data-start="0" data-duration="52.88" data-width="1080" data-height="1920">
+  <canvas id="gl" class="clip" data-start="0" data-duration="52.88" data-track-index="4" width="1080" height="1920" data-layout-allow-overflow style="z-index: 0"></canvas>
+  <div id="scenes" class="clip" style="z-index: 1" data-composition-id="scenes" data-composition-src="compositions/scenes.html" data-start="0" data-duration="52.88" data-track-index="0" data-width="1080" data-height="1920"></div>
+  <div id="compteur" class="clip" style="z-index: 2" data-composition-id="compteur" data-composition-src="compositions/compteur.html" data-start="0" data-duration="52.88" data-track-index="1" data-width="1080" data-height="1920"></div>
+  <div id="soustitres" class="clip" style="z-index: 3" data-composition-id="soustitres" data-composition-src="compositions/soustitres.html" data-start="0" data-duration="52.88" data-track-index="2" data-width="1080" data-height="1920"></div>
+  <audio id="mix" src="assets/audio/mix.wav" data-start="0" data-duration="52.88" data-track-index="5" data-volume="1"></audio>
+</div>
+<script type="module" src="src/main.js"></script>
+<script>
+  window.__timelines["main"] = gsap.timeline({ paused: true });
+</script>
+</body>
+</html>

@@ -1,0 +1,97 @@
+{
+ "format": "Méthode légale : combien ça rapporte de louer des sapins de Noël — objets en 3D (three.js), calque 2D",
+ "scenes": [
+  {
+   "n": 1,
+   "anchor": "Ce gars loue"
+  },
+  {
+   "n": 2,
+   "anchor": "Combien ça rapporte"
+  },
+  {
+   "n": 3,
+   "anchor": "D'abord, tu achètes"
+  },
+  {
+   "n": 4,
+   "anchor": "Tu les loues"
+  },
+  {
+   "n": 5,
+   "anchor": "300 sapins loués"
+  },
+  {
+   "n": 6,
+   "anchor": "13 500 ! Je"
+  },
+  {
+   "n": 7,
+   "anchor": "Attends."
+  },
+  {
+   "n": 8,
+   "anchor": "Et voilà l'astuce"
+  },
+  {
+   "n": 9,
+   "anchor": "L'année d'après"
+  },
+  {
+   "n": 10,
+   "anchor": "Et les familles"
+  },
+  {
+   "n": 11,
+   "anchor": "Le sapin à 45"
+  },
+  {
+   "n": 12,
+   "anchor": "Quel business"
+  }
+ ],
+ "counters": [],
+ "sfx": [
+  {
+   "at": "Chaque année.",
+   "kind": "stamp"
+  },
+  {
+   "at": "traîneau.",
+   "kind": "whoosh",
+   "off": -0.6
+  },
+  {
+   "at": "Attends.",
+   "kind": "scratch"
+  },
+  {
+   "at": "Pour un mois.",
+   "kind": "boing"
+  },
+  {
+   "at": "l'astuce",
+   "kind": "sparkle"
+  },
+  {
+   "at": "grandissent.",
+   "kind": "sparkle"
+  },
+  {
+   "at": "Toujours pour",
+   "kind": "boing"
+  },
+  {
+   "at": "prénom.",
+   "kind": "pop"
+  },
+  {
+   "at": "abonnement.",
+   "kind": "stamp"
+  },
+  {
+   "at": "Dis-le",
+   "kind": "pop"
+  }
+ ]
+}

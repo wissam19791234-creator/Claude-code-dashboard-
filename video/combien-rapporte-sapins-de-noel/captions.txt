@@ -1,0 +1,12 @@
+Ce gars loue le même sapin de Noël à la même famille. Chaque année.
+Combien ça rapporte de louer des sapins de Noël ?
+D'abord, tu achètes des sapins en pot : {r:300} sapins à {r:25 euros.} Ça fait {r:7 500 euros.}
+Tu les loues {y:45 euros} pour le mois de décembre, livrés chez les gens et repris en janvier.
+{y:300} sapins loués : {y:13 500 euros.}
+{y:13 500 !} Je m'achète un traîneau. Attends.
+Enlève les sapins, la camionnette et l'essence : il te reste {y:4 000 euros.} Pour un mois.
+Et voilà l'astuce de pro : en janvier, tu ne jettes rien. Tu replantes les sapins dans un champ, et ils grandissent.
+L'année d'après, tu les reloues. Tu n'achètes presque rien : il te reste plus de {y:10 000 euros.} Toujours pour un mois.
+Et les familles redemandent le même sapin. Elles lui donnent même un prénom.
+Le sapin à {y:45 euros,} c'est pas un sapin. C'est un abonnement.
+Quel business je calcule la prochaine fois ? Dis-le en commentaire.

@@ -1,0 +1,129 @@
+{
+ "format": "Technique entre potes : porteurs de courses sur un parking de supermarché — accroche caddie fou, objets en 3D (three.js), calque 2D",
+ "scenes": [
+  {
+   "n": 1,
+   "anchor": "Toi et ton pote"
+  },
+  {
+   "n": 2,
+   "anchor": "Combien ça rapporte"
+  },
+  {
+   "n": 3,
+   "anchor": "D'abord, demande"
+  },
+  {
+   "n": 4,
+   "anchor": "Deux gilets"
+  },
+  {
+   "n": 5,
+   "anchor": "Ton pote pousse"
+  },
+  {
+   "n": 6,
+   "anchor": "Et la pièce"
+  },
+  {
+   "n": 7,
+   "anchor": "Un client toutes"
+  },
+  {
+   "n": 8,
+   "anchor": "120 ! Je"
+  },
+  {
+   "n": 9,
+   "anchor": "Attends."
+  },
+  {
+   "n": 10,
+   "anchor": "Et voilà l'astuce"
+  },
+  {
+   "n": 11,
+   "anchor": "Personne ne veut"
+  },
+  {
+   "n": 12,
+   "anchor": "Votre meilleur"
+  },
+  {
+   "n": 13,
+   "anchor": "Quelle technique"
+  }
+ ],
+ "counters": [],
+ "sfx": [
+  {
+   "t": 0.02,
+   "kind": "whoosh"
+  },
+  {
+   "t": 0.45,
+   "kind": "boing"
+  },
+  {
+   "at": "oui…",
+   "kind": "pop"
+  },
+  {
+   "at": "gratuitement.",
+   "kind": "boing"
+  },
+  {
+   "at": "pancarte:",
+   "kind": "stamp"
+  },
+  {
+   "at": "coffre.",
+   "kind": "whoosh",
+   "off": -0.2
+  },
+  {
+   "at": "Gardez-la,",
+   "kind": "sparkle"
+  },
+  {
+   "at": "À chaque fois.",
+   "kind": "stamp"
+  },
+  {
+   "at": "or.",
+   "kind": "sparkle"
+  },
+  {
+   "at": "Attends.",
+   "kind": "scratch"
+  },
+  {
+   "at": "Vous êtes deux.",
+   "kind": "pop"
+  },
+  {
+   "at": "En une journée.",
+   "kind": "boing"
+  },
+  {
+   "at": "l'astuce",
+   "kind": "sparkle"
+  },
+  {
+   "at": "pleut,",
+   "kind": "rain"
+  },
+  {
+   "at": "doublent.",
+   "kind": "cash"
+  },
+  {
+   "at": "kilos.",
+   "kind": "stamp"
+  },
+  {
+   "at": "Dis-le",
+   "kind": "pop"
+  }
+ ]
+}

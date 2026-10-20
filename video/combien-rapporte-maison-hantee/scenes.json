@@ -1,0 +1,116 @@
+{
+ "format": "Combien ça rapporte une maison hantée pour Halloween — accroche « BOUH ! », objets en 3D (three.js), calque 2D",
+ "scenes": [
+  {
+   "n": 1,
+   "anchor": "Ils paient"
+  },
+  {
+   "n": 2,
+   "anchor": "Combien ça rapporte"
+  },
+  {
+   "n": 3,
+   "anchor": "D'abord, tu loues"
+  },
+  {
+   "n": 4,
+   "anchor": "Décors, fumée"
+  },
+  {
+   "n": 5,
+   "anchor": "Et 10 étudiants"
+  },
+  {
+   "n": 6,
+   "anchor": "Tu ouvres 12"
+  },
+  {
+   "n": 7,
+   "anchor": "72 000 ! Je"
+  },
+  {
+   "n": 8,
+   "anchor": "Attends."
+  },
+  {
+   "n": 9,
+   "anchor": "Et voilà l'astuce"
+  },
+  {
+   "n": 10,
+   "anchor": "Tu vends un pass"
+  },
+  {
+   "n": 11,
+   "anchor": "Et à la sortie"
+  },
+  {
+   "n": 12,
+   "anchor": "Le vrai monstre"
+  },
+  {
+   "n": 13,
+   "anchor": "Quel business"
+  }
+ ],
+ "counters": [],
+ "sfx": [
+  {
+   "t": 0.0,
+   "kind": "scare"
+  },
+  {
+   "at": "queue.",
+   "kind": "boing"
+  },
+  {
+   "at": "maison hantée",
+   "kind": "whoosh",
+   "off": -0.2
+  },
+  {
+   "at": "zombies:",
+   "kind": "scream",
+   "gain": 0.35
+  },
+  {
+   "at": "manoir.",
+   "kind": "whoosh",
+   "off": -0.6
+  },
+  {
+   "at": "Attends.",
+   "kind": "scratch"
+  },
+  {
+   "at": "Pour un mois.",
+   "kind": "boing"
+  },
+  {
+   "at": "l'astuce",
+   "kind": "sparkle"
+  },
+  {
+   "at": "VIP",
+   "kind": "sparkle"
+  },
+  {
+   "at": "photo",
+   "kind": "shutter"
+  },
+  {
+   "at": "cri:",
+   "kind": "scream",
+   "gain": 0.6
+  },
+  {
+   "at": "C'est la file",
+   "kind": "stamp"
+  },
+  {
+   "at": "Dis-le",
+   "kind": "pop"
+  }
+ ]
+}

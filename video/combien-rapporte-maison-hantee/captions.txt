@@ -1,0 +1,12 @@
+Ils paient {y:20 euros}… pour avoir peur. Et ils font 2 heures de queue.
+Combien ça rapporte une maison hantée pour Halloween ?
+D'abord, tu loues un vieil entrepôt pour le mois d'octobre : {r:4 000 euros.}
+Décors, fumée, citrouilles : {r:3 000 euros.} Et {r:10} étudiants déguisés en zombies : {r:9 000 euros.}
+Tu ouvres {y:12} soirs. {y:300} visiteurs par soir, à {y:20 euros} : {y:72 000 euros.}
+{y:72 000 !} Je m'achète un manoir. Attends.
+Enlève la TVA, l'entrepôt, les décors, les zombies et la sécurité : il te reste environ {y:40 000 euros.} Pour un mois.
+Et voilà l'astuce de pro : la file d'attente. Plus elle est longue, plus ça rapporte.
+Tu vends un pass VIP sans attente à {y:10 euros.} Un visiteur sur trois le prend : {y:12 000 euros} de plus.
+Et à la sortie, la photo de ton cri : {y:8 euros.} Un visiteur sur deux l'achète : encore {y:14 000 euros.}
+Le vrai monstre de la maison hantée ? C'est la file d'attente.
+Quel business je calcule la prochaine fois ? Dis-le en commentaire.

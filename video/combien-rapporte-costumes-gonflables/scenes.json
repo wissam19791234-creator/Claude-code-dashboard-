@@ -1,0 +1,110 @@
+{
+ "format": "Combien ça rapporte de louer des costumes gonflables — accroche T-Rex qui se gonfle, objets en 3D (three.js), calque 2D",
+ "scenes": [
+  {
+   "n": 1,
+   "anchor": "Ce T-Rex gonflable"
+  },
+  {
+   "n": 2,
+   "anchor": "Combien ça rapporte"
+  },
+  {
+   "n": 3,
+   "anchor": "D'abord, tu achètes"
+  },
+  {
+   "n": 4,
+   "anchor": "Tu les loues"
+  },
+  {
+   "n": 5,
+   "anchor": "La semaine d'Halloween"
+  },
+  {
+   "n": 6,
+   "anchor": "9 000 ! Je"
+  },
+  {
+   "n": 7,
+   "anchor": "Attends."
+  },
+  {
+   "n": 8,
+   "anchor": "Et voilà l'astuce"
+  },
+  {
+   "n": 9,
+   "anchor": "Enterrements"
+  },
+  {
+   "n": 10,
+   "anchor": "Un costume loué"
+  },
+  {
+   "n": 11,
+   "anchor": "Ce T-Rex, c'est"
+  },
+  {
+   "n": 12,
+   "anchor": "Quel business"
+  }
+ ],
+ "counters": [],
+ "sfx": [
+  {
+   "t": 0.05,
+   "kind": "inflate"
+  },
+  {
+   "t": 0.55,
+   "kind": "boing"
+  },
+  {
+   "at": "gonflables?",
+   "kind": "whoosh",
+   "off": -0.3
+  },
+  {
+   "at": "dinosaure.",
+   "kind": "roar"
+  },
+  {
+   "at": "Attends.",
+   "kind": "scratch"
+  },
+  {
+   "at": "En une semaine.",
+   "kind": "boing"
+  },
+  {
+   "at": "l'astuce",
+   "kind": "sparkle"
+  },
+  {
+   "at": "placard.",
+   "kind": "inflate",
+   "gain": 0.6
+  },
+  {
+   "at": "Enterrements",
+   "kind": "pop"
+  },
+  {
+   "at": "anniversaires,",
+   "kind": "pop"
+  },
+  {
+   "at": "carnaval:",
+   "kind": "sparkle"
+  },
+  {
+   "at": "employé.",
+   "kind": "stamp"
+  },
+  {
+   "at": "Dis-le",
+   "kind": "pop"
+  }
+ ]
+}

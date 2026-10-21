@@ -1,0 +1,165 @@
+{
+ "format": "Méthode originale : plongeur récupérateur de balles de golf — accroche plongeon + « 3 000 balles, littéralement », objets en 3D (three.js), calque 2D",
+ "scenes": [
+  {
+   "n": 1,
+   "anchor": "Il plonge"
+  },
+  {
+   "n": 2,
+   "anchor": "Combien ça rapporte"
+  },
+  {
+   "n": 3,
+   "anchor": "Chaque année"
+  },
+  {
+   "n": 4,
+   "anchor": "D'abord, signe"
+  },
+  {
+   "n": 5,
+   "anchor": "Combinaison"
+  },
+  {
+   "n": 6,
+   "anchor": "En une plongée"
+  },
+  {
+   "n": 7,
+   "anchor": "Tu les laves"
+  },
+  {
+   "n": 8,
+   "anchor": "3 000 ! Je"
+  },
+  {
+   "n": 9,
+   "anchor": "Attends."
+  },
+  {
+   "n": 10,
+   "anchor": "Et voilà l'astuce"
+  },
+  {
+   "n": 11,
+   "anchor": "C'est là que"
+  },
+  {
+   "n": 12,
+   "anchor": "Le pire joueur"
+  },
+  {
+   "n": 13,
+   "anchor": "Quel business"
+  }
+ ],
+ "counters": [],
+ "sfx": [
+  {
+   "t": 0.02,
+   "kind": "whoosh"
+  },
+  {
+   "t": 0.34,
+   "kind": "splash"
+  },
+  {
+   "at": "ressort",
+   "kind": "splash",
+   "off": -0.28
+  },
+  {
+   "at": "Littéralement.",
+   "kind": "balls"
+  },
+  {
+   "at": "Combien ça",
+   "kind": "swing",
+   "off": 0.2
+  },
+  {
+   "at": "golf?",
+   "kind": "plouf",
+   "off": -0.05
+  },
+  {
+   "at": "Chaque année",
+   "kind": "bubbles"
+  },
+  {
+   "at": "signe",
+   "kind": "pop"
+  },
+  {
+   "at": "Combinaison,",
+   "kind": "pop"
+  },
+  {
+   "at": "bouteille,",
+   "kind": "pop"
+  },
+  {
+   "at": "filet:",
+   "kind": "pop"
+  },
+  {
+   "at": "En une plongée",
+   "kind": "bubbles"
+  },
+  {
+   "at": "laves,",
+   "kind": "bubbles",
+   "gain": 0.7
+  },
+  {
+   "at": "golf.",
+   "kind": "sparkle"
+  },
+  {
+   "at": "Attends.",
+   "kind": "scratch"
+  },
+  {
+   "at": "En une journée.",
+   "kind": "boing"
+  },
+  {
+   "at": "l'astuce",
+   "kind": "sparkle"
+  },
+  {
+   "at": "rate.",
+   "kind": "plouf",
+   "off": -0.5
+  },
+  {
+   "at": "rate.",
+   "kind": "plouf",
+   "off": -0.15
+  },
+  {
+   "at": "rate.",
+   "kind": "plouf",
+   "off": 0.2
+  },
+  {
+   "at": "club?",
+   "kind": "swing",
+   "off": -0.55
+  },
+  {
+   "at": "club?",
+   "kind": "plouf",
+   "off": 0.15
+  },
+  {
+   "at": "fournisseur.",
+   "kind": "stamp"
+  },
+  {
+   "at": "Dis-le",
+   "kind": "pop"
+  }
+ ]
+}

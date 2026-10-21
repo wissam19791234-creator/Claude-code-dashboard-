@@ -31,26 +31,34 @@
   },
   {
    "n": 8,
-   "anchor": "3 000 ! Je"
+   "anchor": "Parce qu'une"
   },
   {
    "n": 9,
-   "anchor": "Attends."
+   "anchor": "En moyenne"
   },
   {
    "n": 10,
-   "anchor": "Et voilà l'astuce"
+   "anchor": "3 000 ! Je"
   },
   {
    "n": 11,
-   "anchor": "C'est là que"
+   "anchor": "Attends."
   },
   {
    "n": 12,
-   "anchor": "Le pire joueur"
+   "anchor": "Et voilà l'astuce"
   },
   {
    "n": 13,
+   "anchor": "C'est là que"
+  },
+  {
+   "n": 14,
+   "anchor": "Le pire joueur"
+  },
+  {
+   "n": 15,
    "anchor": "Quel business"
   }
  ],
@@ -159,6 +167,22 @@
   },
   {
    "at": "Dis-le",
+   "kind": "pop"
+  },
+  {
+   "at": "supermarché",
+   "kind": "pop"
+  },
+  {
+   "at": "Titleist,",
+   "kind": "sparkle"
+  },
+  {
+   "at": "Callaway",
+   "kind": "pop"
+  },
+  {
+   "at": "TaylorMade,",
    "kind": "pop"
   }
  ]

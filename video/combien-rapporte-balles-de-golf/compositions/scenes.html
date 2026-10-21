@@ -9,7 +9,7 @@
 .art { position: absolute; left: 0; top: 0; overflow: hidden; }
 </style>
 <div id="root" data-composition-id="scenes" data-width="1080" data-height="1920">
-  <!-- calque 2D des 13 plans (src/art/golf.js) posé sur le monde 3D : titres, gros chiffres, étiquettes, Hamsterdam -->
+  <!-- calque 2D des 15 plans (src/art/golf.js) posé sur le monde 3D : titres, gros chiffres, étiquettes, Hamsterdam -->
   <div class="sc" id="s1"><div class="kb" id="k1"><svg class="art" id="g1" viewBox="0 0 1080 1920" width="1080" height="1920"></svg></div></div>
   <div class="sc" id="s2"><div class="kb" id="k2"><svg class="art" id="g2" viewBox="0 0 1080 1920" width="1080" height="1920"></svg></div></div>
   <div class="sc" id="s3"><div class="kb" id="k3"><svg class="art" id="g3" viewBox="0 0 1080 1920" width="1080" height="1920"></svg></div></div>
@@ -23,10 +23,12 @@
   <div class="sc" id="s11"><div class="kb" id="k11"><svg class="art" id="g11" viewBox="0 0 1080 1920" width="1080" height="1920"></svg></div></div>
   <div class="sc" id="s12"><div class="kb" id="k12"><svg class="art" id="g12" viewBox="0 0 1080 1920" width="1080" height="1920"></svg></div></div>
   <div class="sc" id="s13"><div class="kb" id="k13"><svg class="art" id="g13" viewBox="0 0 1080 1920" width="1080" height="1920"></svg></div></div>
+  <div class="sc" id="s14"><div class="kb" id="k14"><svg class="art" id="g14" viewBox="0 0 1080 1920" width="1080" height="1920"></svg></div></div>
+  <div class="sc" id="s15"><div class="kb" id="k15"><svg class="art" id="g15" viewBox="0 0 1080 1920" width="1080" height="1920"></svg></div></div>
 </div>
 <script>
 (function () {
-  var SC = [[1, 0.0, 5.02], [2, 5.02, 7.28], [3, 7.28, 10.62], [4, 10.62, 14.52], [5, 14.52, 17.56], [6, 17.56, 19.8], [7, 19.8, 22.9], [8, 22.9, 25.42], [9, 25.42, 31.58], [10, 31.58, 34.64], [11, 34.64, 37.36], [12, 37.36, 40.22], [13, 40.22, 44.38]];
+  var SC = [[1, 0.0, 5.02], [2, 5.02, 7.28], [3, 7.28, 10.58], [4, 10.58, 14.52], [5, 14.52, 17.56], [6, 17.56, 19.8], [7, 19.8, 21.58], [8, 21.58, 27.56], [9, 27.56, 30.02], [10, 30.02, 32.8], [11, 32.8, 38.84], [12, 38.84, 41.94], [13, 41.94, 44.66], [14, 44.66, 47.48], [15, 47.48, 51.66]];
   var tl = gsap.timeline({ paused: true });
   ART.buildScenes(tl, SC);
   window.__timelines["scenes"] = tl;

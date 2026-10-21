@@ -100,55 +100,69 @@
   S[6] = { cam: [[540, 960, 1.0, 1.0]], svg: function () {
       return LAB('s6-l', 540, 230, 'en une plongée…', '#222222', 66, -2) + NUM('s6-n', 540, 380, '3 000 BALLES', '#ffffff', 140, -3);
     }, anim: function (tl, a, b, K) { pop(tl, '#s6-l', a + 0.05, 0.5); pop(tl, '#s6-n', K('3 000 balles.', a)); } };
-  // 7 · lavées, revendues 1 € : 3 000 €
+  // 7 · lavées, triées par marque
   S[7] = { cam: [[540, 960, 1.0, 1.0]], svg: function () {
-      return LAB('s7-l', 540, 230, 'on les lave, on les revend…', '#1554c0', 62, -3) + NUM('s7-n', 540, 390, '3 000 €', GRN, 170, 2) + LAB('s7-x', 540, 1450, '3 000 balles × 1 €', '#222222', 60, -2);
-    }, anim: function (tl, a, b, K) { pop(tl, '#s7-l', K('laves,', a), 0.5); pop(tl, '#s7-n', K('3 000 euros.', a)); pop(tl, '#s7-x', K('3 000 euros.', a) + 0.2, 0.5); } };
-  // 8 · « 3 000 ! Je m'achète un golf »
+      return LAB('s7-l', 540, 230, 'on les lave…', '#1554c0', 64, -3) + TAG('s7-t', 540, 360, 'TRI PAR MARQUE', '#d9480f', 64, 2);
+    }, anim: function (tl, a, b, K) { pop(tl, '#s7-l', K('laves,', a), 0.5); pop(tl, '#s7-t', K('tries', a)); } };
+  // 8 · les marques : 30 centimes contre 3 €
   S[8] = { cam: [[540, 960, 1.0, 1.0]], svg: function () {
-      return NUM('s8-n', 540, 280, '3 000 € !', GRN, 180, -4) + LAB('s8-l', 740, 460, 'je m’achète un golf !', ORA, 66, 5) +
-        pote('h8', 170, 0.55, { faces: ['grin'], armL: { a: 140, hand: 'open' }, armR: { a: 150, hand: 'open' } });
-    }, anim: function (tl, a, b, K) { pop(tl, '#s8-n', a + 0.05); pop(tl, '#s8-l', K('golf.', a), 0.5);
-      ft(tl, '#h8-aL', { rotation: -130 }, { rotation: -165, duration: 0.3, ease: 'sine.inOut', yoyo: true, repeat: 7 }, a);
-      ft(tl, '#h8-aR', { rotation: -165 }, { rotation: -130, duration: 0.3, ease: 'sine.inOut', yoyo: true, repeat: 7 }, a); } };
-  // 9 · « Attends. » − part du golf, balles abîmées, essence → 1 900 €
+      return TAG('s8-b0', 270, 230, 'TITLEIST', '#111111', 58, -4) + TAG('s8-b1', 800, 230, 'CALLAWAY', '#111111', 58, 4) + TAG('s8-b2', 540, 345, 'TAYLORMADE', '#111111', 58, -2) +
+        NUM('s8-p0', 300, 1330, '0,30 €', RED, 100, -4) + NUM('s8-p1', 800, 1330, '3 €', GRN, 150, 4) +
+        LAB('s8-l0', 300, 1450, 'supermarché', '#222222', 56, -3) + LAB('s8-l1', 800, 1460, 'premium', '#222222', 56, 3);
+    }, anim: function (tl, a, b, K) {
+      pop(tl, '#s8-l0', K('supermarché', a), 0.5); pop(tl, '#s8-p0', K('30 centimes', a));
+      pop(tl, '#s8-b0', K('Titleist,', a)); pop(tl, '#s8-b1', K('Callaway', a)); pop(tl, '#s8-b2', K('TaylorMade,', a));
+      pop(tl, '#s8-l1', K('Titleist,', a) + 0.2, 0.5); pop(tl, '#s8-p1', K('3 euros.', a));
+    } };
+  // 9 · en moyenne 1 € pièce : 3 000 €
   S[9] = { cam: [[540, 960, 1.0, 1.0]], svg: function () {
-      return NUM('s9-a', 540, 380, 'ATTENDS.', '#ffffff', 170, -4) +
-        TAG('s9-t0', 280, 300, '− 300 € GOLF', RED, 46, -4) + TAG('s9-t1', 800, 300, '− 700 € ABÎMÉES', RED, 46, 3) + TAG('s9-t2', 540, 405, '− 100 € ESSENCE', RED, 46, -3) +
-        NUM('s9-n', 540, 535, '1 900 €', GRN, 150, -2) + LAB('s9-l', 820, 655, 'en une journée !', '#1554c0', 60, 5) + LAB('s9-c', 250, 655, '1 pièce = 100 €', '#222222', 50, -4);
+      return LAB('s9-l', 540, 230, 'en moyenne…', '#1554c0', 66, -3) + NUM('s9-n', 540, 390, '3 000 €', GRN, 170, 2) + LAB('s9-x', 540, 1450, '3 000 balles × 1 €', '#222222', 60, -2);
+    }, anim: function (tl, a, b, K) { pop(tl, '#s9-l', a + 0.05, 0.5); pop(tl, '#s9-n', K('3 000 euros.', a)); pop(tl, '#s9-x', K('3 000 euros.', a) + 0.2, 0.5); } };
+  // 10 · « 3 000 ! Je m'achète un golf »
+  S[10] = { cam: [[540, 960, 1.0, 1.0]], svg: function () {
+      return NUM('s10-n', 540, 280, '3 000 € !', GRN, 180, -4) + LAB('s10-l', 740, 460, 'je m’achète un golf !', ORA, 66, 5) +
+        pote('h10', 170, 0.55, { faces: ['grin'], armL: { a: 140, hand: 'open' }, armR: { a: 150, hand: 'open' } });
+    }, anim: function (tl, a, b, K) { pop(tl, '#s10-n', a + 0.05); pop(tl, '#s10-l', K('golf.', a), 0.5);
+      ft(tl, '#h10-aL', { rotation: -130 }, { rotation: -165, duration: 0.3, ease: 'sine.inOut', yoyo: true, repeat: 7 }, a);
+      ft(tl, '#h10-aR', { rotation: -165 }, { rotation: -130, duration: 0.3, ease: 'sine.inOut', yoyo: true, repeat: 7 }, a); } };
+  // 11 · « Attends. » − part du golf, balles abîmées, essence → 1 900 €
+  S[11] = { cam: [[540, 960, 1.0, 1.0]], svg: function () {
+      return NUM('s11-a', 540, 380, 'ATTENDS.', '#ffffff', 170, -4) +
+        TAG('s11-t0', 280, 300, '− 300 € GOLF', RED, 46, -4) + TAG('s11-t1', 800, 300, '− 700 € ABÎMÉES', RED, 46, 3) + TAG('s11-t2', 540, 405, '− 100 € ESSENCE', RED, 46, -3) +
+        NUM('s11-n', 540, 535, '1 900 €', GRN, 150, -2) + LAB('s11-l', 820, 655, 'en une journée !', '#1554c0', 60, 5) + LAB('s11-c', 250, 655, '1 pièce = 100 €', '#222222', 50, -4);
     }, anim: function (tl, a, b, K) {
       var tm = K('Moins', a);
-      pop(tl, '#s9-a', a + 0.02); out(tl, '#s9-a', tm - 0.1); pop(tl, '#s9-c', tm, 0.5);
-      [K('golf,', a), K('abîmées', a), K("l'essence:", a)].forEach(function (t, k) { pop(tl, '#s9-t' + k, t); });
-      pop(tl, '#s9-n', K('1 900', a)); pop(tl, '#s9-l', K('En une journée.', a), 0.5);
+      pop(tl, '#s11-a', a + 0.02); out(tl, '#s11-a', tm - 0.1); pop(tl, '#s11-c', tm, 0.5);
+      [K('golf,', a), K('abîmées', a), K("l'essence:", a)].forEach(function (t, k) { pop(tl, '#s11-t' + k, t); });
+      pop(tl, '#s11-n', K('1 900', a)); pop(tl, '#s11-l', K('En une journée.', a), 0.5);
     } };
-  // 10 · l'astuce de pro : le trou le plus dur
-  S[10] = { cam: [[540, 960, 1.0, 1.0]], svg: function () {
-      return G({ transform: T(540, 230, 1, -4) }, G('s10-ban', R(-380, -80, 760, 160, 14, '#ffffff', LW) + el('text', { x: 0, y: 6, 'text-anchor': 'middle', 'dominant-baseline': 'central', 'font-family': 'Luckiest Guy', 'font-size': 104, fill: RED }, 'ASTUCE DE PRO'))) +
-        LAB('s10-l', 540, 370, 'plonge devant…', '#1554c0', 70, 2) + NUM('s10-n', 540, 1450, 'LE TROU LE PLUS DUR', ORA, 96, -3);
-    }, anim: function (tl, a, b, K) { pop(tl, '#s10-ban', K("l'astuce", a)); pop(tl, '#s10-l', K('plonge devant', a), 0.5); pop(tl, '#s10-n', K('le trou', a)); } };
-  // 11 · tout le monde rate : × 10
-  S[11] = { cam: [[540, 960, 1.0, 1.0]], svg: function () {
-      return LAB('s11-l', 540, 240, 'c’est là que tout le monde rate…', '#222222', 58, -2) + NUM('s11-n', 540, 400, '× 10 BALLES', GRN, 150, 2);
-    }, anim: function (tl, a, b, K) { pop(tl, '#s11-l', K('tout le monde', a), 0.5); pop(tl, '#s11-n', K('dix fois', a)); } };
-  // 12 · « Le pire joueur du club ? C'est ton meilleur fournisseur. »
+  // 12 · l'astuce de pro : le trou le plus dur
   S[12] = { cam: [[540, 960, 1.0, 1.0]], svg: function () {
-      return NUM('s12-n', 540, 250, 'LE PIRE JOUEUR', '#ffffff', 104, -3) + NUM('s12-n2', 540, 375, 'DU CLUB ?', YEL, 116, 2) + STAMP('s12-st', 540, 1420, 'TON MEILLEUR FOURNISSEUR', RED, -5, 60);
-    }, anim: function (tl, a, b, K) { pop(tl, '#s12-n', a + 0.05, 0.5); pop(tl, '#s12-n2', K('du club?', a), 0.5); stamp(tl, '#s12-st', K("C'est ton", a)); } };
-  // 13 · « Quel business je calcule la prochaine fois ? » (plan entièrement 2D)
-  S[13] = { cam: [[540, 1100, 1.0, 1.08]], svg: function () {
-      var g = burst('s13-ray', '#7fd3ff', '#dff6ff', 540, 1200);
-      g += G({ transform: T(260, 1000) }, G('s13-cm', P('M -150 -100 Q -150 -150 -100 -150 L 100 -150 Q 150 -150 150 -100 L 150 20 Q 150 70 100 70 L -20 70 L -90 130 L -70 70 L -100 70 Q -150 70 -150 20 Z', C.w, LW) +
-        Ci(-60, -40, 18, BLU, 0, { id: 's13-d0' }) + Ci(0, -40, 18, BLU, 0, { id: 's13-d1' }) + Ci(60, -40, 18, BLU, 0, { id: 's13-d2' })));
-      g += NUM('s13-q', 830, 760, '?', YEL, 220, 10);
-      return g + A.hamster('h13', 560, 1880, 1.1, { hat: 'plongee', faces: ['happy'], armL: { a: 18 }, armR: { a: 166, hand: 'point' } });
+      return G({ transform: T(540, 230, 1, -4) }, G('s12-ban', R(-380, -80, 760, 160, 14, '#ffffff', LW) + el('text', { x: 0, y: 6, 'text-anchor': 'middle', 'dominant-baseline': 'central', 'font-family': 'Luckiest Guy', 'font-size': 104, fill: RED }, 'ASTUCE DE PRO'))) +
+        LAB('s12-l', 540, 370, 'plonge devant…', '#1554c0', 70, 2) + NUM('s12-n', 540, 1450, 'LE TROU LE PLUS DUR', ORA, 96, -3);
+    }, anim: function (tl, a, b, K) { pop(tl, '#s12-ban', K("l'astuce", a)); pop(tl, '#s12-l', K('plonge devant', a), 0.5); pop(tl, '#s12-n', K('le trou', a)); } };
+  // 13 · tout le monde rate : × 10
+  S[13] = { cam: [[540, 960, 1.0, 1.0]], svg: function () {
+      return LAB('s13-l', 540, 240, 'c’est là que tout le monde rate…', '#222222', 58, -2) + NUM('s13-n', 540, 400, '× 10 BALLES', GRN, 150, 2);
+    }, anim: function (tl, a, b, K) { pop(tl, '#s13-l', K('tout le monde', a), 0.5); pop(tl, '#s13-n', K('dix fois', a)); } };
+  // 14 · « Le pire joueur du club ? C'est ton meilleur fournisseur. »
+  S[14] = { cam: [[540, 960, 1.0, 1.0]], svg: function () {
+      return NUM('s14-n', 540, 250, 'LE PIRE JOUEUR', '#ffffff', 104, -3) + NUM('s14-n2', 540, 375, 'DU CLUB ?', YEL, 116, 2) + STAMP('s14-st', 540, 1420, 'TON MEILLEUR FOURNISSEUR', RED, -5, 60);
+    }, anim: function (tl, a, b, K) { pop(tl, '#s14-n', a + 0.05, 0.5); pop(tl, '#s14-n2', K('du club?', a), 0.5); stamp(tl, '#s14-st', K("C'est ton", a)); } };
+  // 15 · « Quel business je calcule la prochaine fois ? » (plan entièrement 2D)
+  S[15] = { cam: [[540, 1100, 1.0, 1.08]], svg: function () {
+      var g = burst('s15-ray', '#7fd3ff', '#dff6ff', 540, 1200);
+      g += G({ transform: T(260, 1000) }, G('s15-cm', P('M -150 -100 Q -150 -150 -100 -150 L 100 -150 Q 150 -150 150 -100 L 150 20 Q 150 70 100 70 L -20 70 L -90 130 L -70 70 L -100 70 Q -150 70 -150 20 Z', C.w, LW) +
+        Ci(-60, -40, 18, BLU, 0, { id: 's15-d0' }) + Ci(0, -40, 18, BLU, 0, { id: 's15-d1' }) + Ci(60, -40, 18, BLU, 0, { id: 's15-d2' })));
+      g += NUM('s15-q', 830, 760, '?', YEL, 220, 10);
+      return g + A.hamster('h15', 560, 1880, 1.1, { hat: 'plongee', faces: ['happy'], armL: { a: 18 }, armR: { a: 166, hand: 'point' } });
     }, anim: function (tl, a, b, K) {
       var td = K('Dis-le', a);
-      ft(tl, '#s13-ray', { rotation: 0 }, { rotation: 30, duration: b - a + 0.3, ease: 'none' }, a);
-      ft(tl, '#h13', { y: 200 }, { y: 0, duration: 0.4, ease: 'back.out(1.8)' }, a);
-      pop(tl, '#s13-q', a + 0.3); wob(tl, '#s13-q', a + 0.6, b - a);
-      talk(tl, 'h13', 'happy', a, b);
-      pop(tl, '#s13-cm', td - 0.05);
-      for (var i = 0; i < 3; i++) ft(tl, '#s13-d' + i, { y: 0 }, { y: -16, duration: 0.25, ease: 'sine.inOut', yoyo: true, repeat: Math.ceil((b - td) / 0.25) }, td + 0.3 + i * 0.1);
+      ft(tl, '#s15-ray', { rotation: 0 }, { rotation: 30, duration: b - a + 0.3, ease: 'none' }, a);
+      ft(tl, '#h15', { y: 200 }, { y: 0, duration: 0.4, ease: 'back.out(1.8)' }, a);
+      pop(tl, '#s15-q', a + 0.3); wob(tl, '#s15-q', a + 0.6, b - a);
+      talk(tl, 'h15', 'happy', a, b);
+      pop(tl, '#s15-cm', td - 0.05);
+      for (var i = 0; i < 3; i++) ft(tl, '#s15-d' + i, { y: 0 }, { y: -16, duration: 0.25, ease: 'sine.inOut', yoyo: true, repeat: Math.ceil((b - td) / 0.25) }, td + 0.3 + i * 0.1);
     } };
 })();

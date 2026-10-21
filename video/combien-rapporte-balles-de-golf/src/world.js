@@ -362,7 +362,8 @@ export function buildWorld(canvas, W, H) {
     s.tr.forEach((o, i) => { const kk = ((t * 1.3 + i * 0.1) % 1); o.position.set(x + 0.6 + 0.08 * Math.sin(i), 0.9 + kk * 2.2, 0.2); o.scale.setScalar(0.6 + (i % 3) * 0.3); });
   });
 
-  // 7 · on les lave, on les revend 1 € pièce
+  // 7 · on les lave, on les trie par marque
+  const tray = (parent, prem) => { const tr = grp(parent); add(tr, new RoundedBoxGeometry(0.62, 0.08, 0.46, 2, 0.02), prem ? GOLD : glossy('#f2f2f2', { r: 0.5 })).position.y = 0.04; for (let i = 0; i < 12; i++) ball(tr).position.set(-0.24 + (i % 4) * 0.16, 0.13, -0.16 + Math.floor(i / 4) * 0.16); return tr; };
   scn((t, a) => ({ p: [0.15 * Math.sin((t - a) * 0.6), 1.7, 6.6], q: [0, 0.72, 0], f: 34 }), (g) => {
     const bd = backdrop(g, '#bfeaff', '#e9f8ff');
     const tub = grp(g); tub.position.set(-0.52, 0, 0);
@@ -371,21 +372,53 @@ export function buildWorld(canvas, W, H) {
     disc(tub, 0.44, '#8fd8f5', 0.45);
     const foam = []; for (let i = 0; i < 16; i++) { const f = add(tub, new THREE.SphereGeometry(0.07 + (i % 4) * 0.02, 12, 8), new THREE.MeshStandardMaterial({ color: '#ffffff', roughness: 0.4 })); foam.push(f); }
     const tb = []; for (let i = 0; i < 9; i++) tb.push(ball(tub));
-    const trays = grp(g); trays.position.set(0.55, 0, 0.1);
-    for (let l = 0; l < 3; l++) { const tr = grp(trays); tr.position.y = l * 0.2; add(tr, new RoundedBoxGeometry(0.62, 0.08, 0.46, 2, 0.02), glossy('#f2f2f2', { r: 0.5 })).position.y = 0.04; for (let i = 0; i < 12; i++) ball(tr).position.set(-0.24 + (i % 4) * 0.16, 0.13, -0.16 + Math.floor(i / 4) * 0.16); }
-    const pt = tag(g, '1 € PIÈCE', '#1e8f3a', 1.3); pt.scale.setScalar(0.62); pt.position.set(0.55, 0.95, 0.3);
-    const cs = []; for (let i = 0; i < 10; i++) { const c = coin(g); c.scale.setScalar(0.4); cs.push(c); }
-    return { bd, foam, tb, trays, pt, cs };
+    const trays = [0, 1, 2].map((l) => { const tr = tray(g, l === 2); tr.position.set(0.55, l * 0.2, 0.1); return tr; });
+    return { bd, foam, tb, trays };
   }, (t, a, b, s) => {
     s.bd.rotation.z = (t - a) * 0.1;
     s.foam.forEach((f, i) => { const an = i * 2.4 + t * 0.6; f.position.set(Math.cos(an) * 0.28 * ((i % 3) / 3 + 0.4), 0.5 + 0.03 * Math.sin(t * 5 + i), Math.sin(an) * 0.25); });
     s.tb.forEach((o, i) => { const an = i * 0.7 + t * 1.5; o.position.set(Math.cos(an) * 0.22, 0.47 + 0.05 * Math.abs(Math.sin(t * 6 + i)), Math.sin(an) * 0.2); });
-    const tr = K('revends', a); show(s.trays, E.back(u(t, tr - 0.2, tr + 0.2))); show(s.pt, 0.62 * E.back(u(t, tr + 0.2, tr + 0.5)));
-    const te = K('3 000 euros.', a);
-    s.cs.forEach((c, i) => { const kc = u(t, te + i * 0.05, te + 0.9 + i * 0.05), an = i / 10 * TAU; c.visible = kc > 0 && kc < 1; c.position.set(Math.cos(an) * 0.8 * kc, 0.9 + 2.2 * kc - 2.6 * kc * kc, 0.5 + Math.sin(an) * 0.4 * kc); c.rotation.set(t * 5 + i, 0, t * 3); });
+    const tr = K('tries', a); s.trays.forEach((o, l) => show(o, E.back(u(t, tr - 0.2 + l * 0.15, tr + 0.15 + l * 0.15))));
   });
 
-  // 8 · « 3 000 ! Je m'achète un golf » : voiturette en or
+  // 8 · les marques : balle « promo » de supermarché (30 centimes) contre balle premium (jusqu'à 3 €)
+  const ballTex = (s, col) => tex(1024, 512, (c) => { c.fillStyle = '#ffffff'; c.fillRect(0, 0, 1024, 512); txt(c, s, 256, 250, 60, col); c.fillStyle = col; c.fillRect(150, 300, 212, 8); });
+  const bigBall = (parent, s, col, base) => add(parent, new THREE.SphereGeometry(0.34, 40, 28), new THREE.MeshPhysicalMaterial({ map: ballTex(s, col), color: base, roughness: base === '#ffffff' ? 0.2 : 0.6, clearcoat: base === '#ffffff' ? 1 : 0, bumpMap: TX_DIMPLE, bumpScale: 0.8 }));
+  function crown(parent) {
+    const g = grp(parent); add(g, new THREE.CylinderGeometry(0.17, 0.17, 0.1, 28, 1, true), GOLD).position.y = 0.05;
+    for (let i = 0; i < 5; i++) { const an = i / 5 * TAU; const c = add(g, new THREE.ConeGeometry(0.04, 0.12, 8), GOLD); c.position.set(Math.cos(an) * 0.16, 0.15, Math.sin(an) * 0.16); add(g, new THREE.SphereGeometry(0.025, 10, 8), glossy('#e0322b')).position.set(Math.cos(an) * 0.17, 0.06, Math.sin(an) * 0.17); }
+    return g;
+  }
+  scn((t, a) => ({ p: [0.15 * Math.sin((t - a) * 0.6), 1.25, 5.6], q: [0, 0.78, 0], f: 34 }), (g) => {
+    const bd = backdrop(g, '#ffe7a3', '#fff8dc');
+    const pl = grp(g); pl.position.set(-0.55, 0, 0); add(pl, new THREE.CylinderGeometry(0.34, 0.38, 0.4, 32), glossy('#9aa3ad', { r: 0.4 })).position.y = 0.2; const b1 = bigBall(pl, 'PROMO', '#e0322b', '#ece7da'); b1.position.y = 0.74; shadow(pl, 0, 0, 1.0, 0.8);
+    const pr = grp(g); pr.position.set(0.55, 0, 0); add(pr, new THREE.CylinderGeometry(0.34, 0.38, 0.75, 32), GOLD).position.y = 0.375; const b2 = bigBall(pr, 'PRO', '#111111', '#ffffff'); b2.position.y = 1.09; shadow(pr, 0, 0, 1.0, 0.8);
+    const cr = crown(pr); const gl = sprite(glowTex, 1.6, 0.8); gl.position.set(0, 1.09, -0.3); pr.add(gl);
+    const sp = []; for (let i = 0; i < 7; i++) { const s2 = sprite(glowTex, 0.3); g.add(s2); sp.push(s2); }
+    return { bd, pl, b1, pr, b2, cr, gl, sp };
+  }, (t, a, b, s) => {
+    s.bd.rotation.z = (t - a) * 0.1; const t1 = K('Titleist,', a), t3 = K('TaylorMade,', a);
+    show(s.pl, E.back(u(t, a, a + 0.35))); s.b1.rotation.y = 0.25 * Math.sin((t - a) * 1.5);
+    show(s.pr, E.back(u(t, t1 - 0.2, t1 + 0.2))); s.b2.rotation.y = 0.25 * Math.sin((t - a) * 1.5 + 1);
+    const kc = E.o3(u(t, t3, t3 + 0.35)); s.cr.visible = kc > 0; s.cr.position.y = lerp(2.2, 1.4, kc); s.cr.rotation.z = 0.15;
+    s.gl.material.opacity = 0.6 + 0.2 * Math.sin(t * 4);
+    s.sp.forEach((q, i) => { const ang = i / 7 * TAU + (t - a) * 1.4; q.position.set(0.55 + Math.cos(ang) * 0.6, 1.1 + Math.sin(ang) * 0.5, 0.4); q.visible = t > t1; q.scale.setScalar(0.25 + 0.12 * Math.sin(t * 6 + i)); });
+  });
+
+  // 9 · en moyenne 1 € pièce : 3 000 €
+  scn((t, a) => ({ p: [0.15 * Math.sin((t - a) * 0.6), 1.5, 5.4], q: [0, 0.62, 0], f: 34 }), (g) => {
+    const bd = backdrop(g, '#c9f3c9', '#effff0');
+    const st = grp(g); [[-0.36, 0], [0.36, 0], [0, 0.32]].forEach(([x, z], k) => [0, 1, 2].forEach((l) => { const tr = tray(st, k === 2 && l === 2); tr.position.set(x, l * 0.2, z - 0.15); }));
+    const pt = tag(g, '1 € PIÈCE', '#1e8f3a', 1.3); pt.scale.setScalar(0.62); pt.position.set(0, 0.95, 0.4);
+    const cs = []; for (let i = 0; i < 12; i++) { const c = coin(g); c.scale.setScalar(0.4); cs.push(c); }
+    return { bd, pt, cs };
+  }, (t, a, b, s) => {
+    s.bd.rotation.z = (t - a) * 0.1; show(s.pt, 0.62 * E.back(u(t, K('1 euro', a) - 0.1, K('1 euro', a) + 0.25)));
+    const te = K('3 000 euros.', a);
+    s.cs.forEach((c, i) => { const kc = u(t, te + i * 0.04, te + 0.9 + i * 0.04), an = i / 12 * TAU; c.visible = kc > 0 && kc < 1; c.position.set(Math.cos(an) * 0.9 * kc, 0.9 + 2.2 * kc - 2.6 * kc * kc, 0.5 + Math.sin(an) * 0.4 * kc); c.rotation.set(t * 5 + i, 0, t * 3); });
+  });
+
+  // 10 · « 3 000 ! Je m'achète un golf » : voiturette en or
   scn(() => ({ p: [0.6, 1.7, 7.5], q: [0.35, 0.8, 0], f: 32 }), (g) => {
     const bd = backdrop(g, '#ffd27a', '#fff3c4'); const bg = buggy(g, GOLD); bg.rotation.y = -0.5; bg.scale.setScalar(0.72);
     const sp = []; for (let i = 0; i < 8; i++) { const s2 = sprite(glowTex, 0.5); g.add(s2); sp.push(s2); }
@@ -396,7 +429,7 @@ export function buildWorld(canvas, W, H) {
     s.sp.forEach((q, i) => { const ang = i / 8 * TAU + (t - a) * 1.4; q.position.set(0.5 + Math.cos(ang) * 1.2, 1.0 + Math.sin(ang) * 0.85, 0.7); q.visible = t > to - 0.2; q.scale.setScalar(0.4 + 0.2 * Math.sin(t * 6 + i)); });
   });
 
-  // 9 · « Attends. » 30 pièces (1 pièce = 100 €) : − 3 (part du golf), − 7 (balles abîmées), − 1 (essence) → 19 = 1 900 €
+  // 11 · « Attends. » 30 pièces (1 pièce = 100 €) : − 3 (part du golf), − 7 (balles abîmées), − 1 (essence) → 19 = 1 900 €
   scn(() => ({ p: [0, 2.0, 7.5], q: [0, 1.0, 0], f: 34 }), (g) => {
     const st = [-0.8, 0, 0.8].map((x) => { const c = coinStack(g, 10); c.position.x = x; return c; });
     return { st };
@@ -406,7 +439,7 @@ export function buildWorld(canvas, W, H) {
     out.forEach(([t0, cs]) => cs.forEach((c, j) => { const y0 = c.userData.y0 ?? (c.userData.y0 = c.position.y); const kk = u(t, t0 + j * 0.06, t0 + 0.5 + j * 0.06); c.visible = kk < 1; c.position.set(2.4 * E.i2(kk), y0 + 2.6 * E.i2(kk), 0); }));
   });
 
-  // 10 · l'astuce de pro : le trou le plus dur, un green sur une île
+  // 12 · l'astuce de pro : le trou le plus dur, un green sur une île
   const island = (g) => {
     grass(g); const lk = lake(g, 4.6, 3.4, 0, -1.2);
     disc(g, 1.35, '#e8d49a', 0.012, 0, -1.2); disc(g, 1.15, '#8fe06a', 0.016, 0, -1.2); const fg = flag(g); fg.position.set(0.15, 0.016, -1.2);
@@ -415,7 +448,7 @@ export function buildWorld(canvas, W, H) {
   };
   scn((t, a, b) => { const f = lerp(-0.35, 0.25, u(t, a, b)); return { p: [6.2 * Math.sin(f), 4.4, -1.2 + 6.2 * Math.cos(f)], q: [0, 0.2, -1.4], f: 36 }; }, (g) => island(g), (t, a, b, s) => { ripple(s.lk, t); wave(s.fg, t); });
 
-  // 11 · tout le monde rate : les balles pleuvent autour de l'île (× 10)
+  // 13 · tout le monde rate : les balles pleuvent autour de l'île (× 10)
   scn((t, a) => ({ p: [0.4 * Math.sin((t - a) * 0.4), 3.2, 4.8], q: [0, 0.3, -1.3], f: 38 }), (g) => {
     const st = island(g); const r = rnd(66), bs = [];
     for (let i = 0; i < 12; i++) { const an = r() * TAU, rr = 1.55 + r() * 1.3; const o = { b: ball(g), sp: splash(g, 10, 20 + i), x: Math.cos(an) * rr * 1.2, z: -1.2 + Math.sin(an) * rr * 0.75, i }; o.sp.position.set(o.x, 0, o.z); o.sp.scale.setScalar(0.5); bs.push(o); }
@@ -425,7 +458,7 @@ export function buildWorld(canvas, W, H) {
     s.bs.forEach((o) => { const tl = o.i < 3 ? tr + offs[o.i] : a + 0.3 + o.i * 0.2, k = u(t, tl - 0.7, tl); o.b.visible = k > 0 && k < 1; o.b.position.set(o.x - 1.5 * (1 - k), 0.085 + 3.5 * (1 - k * k), o.z + 1.8 * (1 - k)); o.sp.userData.up(t - tl); });
   });
 
-  // 12 · le pire joueur du club : plouf… et le plongeur lève le pouce
+  // 14 · le pire joueur du club : plouf… et le plongeur lève le pouce
   scn((t, a) => ({ p: [0.25 + 0.15 * Math.sin((t - a) * 0.5), 1.6, 6.3], q: [0.15, 0.8, -0.5], f: 36 }), (g) => {
     grass(g); const lk = lake(g, 3.2, 1.6, 0.3, -2.4); trees(g, [[-2.6, -6, 1.2], [-0.6, -6.8, 1.3], [1.6, -6.6, 1.2], [3.3, -5.8, 1.3]]);
     const gf = golfer(g, 2, '#e0322b'); gf.position.set(-0.4, 0, 0.9); gf.rotation.y = 0.35; gf.scale.setScalar(1.1);
@@ -443,7 +476,7 @@ export function buildWorld(canvas, W, H) {
     s.dv.userData.arms[1].rotation.set(0, 0, 2.7); s.dv.userData.arms[0].rotation.set(0, 0, -0.3);
   });
 
-  // 13 · conclusion : tout en 2D
+  // 15 · conclusion : tout en 2D
   scn(() => ({ p: [0, 2, 10], q: [0, 1, 0] }), () => {}, () => {});
 
   // ================================================================ rendu à l'instant t

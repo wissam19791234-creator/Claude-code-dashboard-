@@ -1,5 +1,5 @@
 # Génère la vidéo HyperFrames « Combien ça rapporte de repêcher les balles de golf ? » (format court, objets en 3D)
-# à partir de work/words.json (script aligné mot à mot), scenes.json (13 plans, bruitages), work/vo_r.wav
+# à partir de work/words.json (script aligné mot à mot), scenes.json (15 plans, bruitages), work/vo_r.wav
 # du monde 3D src/world.js (three.js : lac de golf, plongeur, milliers de balles, green sur une île, golfeur…) et du calque 2D src/art/golf.js.
 # Écrit index.html, compositions/*.html, src/montage.js (mots horodatés + bouche) et work/montage.json (bruitages).
 # Usage : python3 build.py
@@ -95,7 +95,7 @@ scenes_html = f'''<!doctype html>
 .art {{ position: absolute; left: 0; top: 0; overflow: hidden; }}
 </style>
 <div id="root" data-composition-id="scenes" data-width="1080" data-height="1920">
-  <!-- calque 2D des 13 plans (src/art/golf.js) posé sur le monde 3D : titres, gros chiffres, étiquettes, Hamsterdam -->
+  <!-- calque 2D des 15 plans (src/art/golf.js) posé sur le monde 3D : titres, gros chiffres, étiquettes, Hamsterdam -->
 {scene_divs}
 </div>
 <script>

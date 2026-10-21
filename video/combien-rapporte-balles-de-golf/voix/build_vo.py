@@ -9,7 +9,7 @@ VOICE, RATE, OUT, OUTJ = sys.argv[1:5]
 SR = 48000
 lines = [l.strip() for l in open(os.path.join(os.path.dirname(os.path.abspath(__file__)), '../script.txt')).read().strip().split('\n') if l.strip()]
 CHUTES = ["Littéralement.", "Je m'achète un golf.", "Attends.", "En une journée.", "C'est ton meilleur fournisseur."]
-spoken = lambda s: s.replace('« ', '').replace(' »', '').replace('Littéralement.', 'Lit-té-ra-le-ment.')   # détaché, pour la blague   # les guillemets ne se lisent pas
+spoken = lambda s: s.replace('« ', '').replace(' »', '').replace('Littéralement.', 'Lit-té-ra-le-ment.').replace('Titleist', 'Taïtelist').replace('TaylorMade', 'Taylor Made')   # détaché, pour la blague   # les guillemets ne se lisent pas
 sents = []
 for li, l in enumerate(lines):
     for k, s in enumerate(re.findall(r'.+?(?:[.?!](?=\s|$)|$)', l)):

@@ -1,0 +1,72 @@
+---
+import { ClientRouter } from 'astro:transitions';
+import { site } from '../data/site';
+import Loader from '../components/Loader.astro';
+import Header from '../components/Header.astro';
+import '../styles/tokens.css';
+import '../styles/engine.css';
+import '../styles/site.css';
+
+interface Props { title?: string; description?: string; image?: string; state?: number }
+const { title, description = site.description, image = '/og.png', state } = Astro.props;
+const fullTitle = title ? `${title} | Scalify` : 'Scalify | Votre commerce, visible sur la carte';
+const canonical = new URL(Astro.url.pathname, Astro.site ?? site.url).href;
+const ogImage = new URL(image, Astro.site ?? site.url).href;
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'Organization',
+  name: site.name,
+  url: site.url,
+  email: `mailto:${site.email}`,
+  description: site.description,
+  logo: new URL('/favicon.svg', Astro.site ?? site.url).href,
+};
+---
+<!doctype html>
+<html lang="fr" transition:animate="none">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{fullTitle}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonical} />
+    <meta name="theme-color" content="#07090f" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="sitemap" href="/sitemap-index.xml" />
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="fr_FR" />
+    <meta property="og:site_name" content="Scalify" />
+    <meta property="og:title" content={fullTitle} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:image" content={ogImage} />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={fullTitle} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImage} />
+    <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
+    <link rel="preload" href="/fonts/cabinet-grotesk-800-normal.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href="/fonts/switzer-400-normal.woff2" as="font" type="font/woff2" crossorigin />
+    <script is:inline>
+      document.documentElement.classList.add('js');
+      if (!matchMedia('(prefers-reduced-motion: reduce)').matches) document.documentElement.classList.add('motion');
+    </script>
+    <ClientRouter fallback="swap" />
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Aller au contenu</a>
+    <div id="gl" transition:persist="gl" aria-hidden="true"></div>
+    <div id="curtain" transition:persist="curtain" aria-hidden="true"><div class="curtain__panel"><span class="curtain__bar"></span></div></div>
+    <Loader />
+    <Header />
+    <main id="main" tabindex="-1" data-state={state}>
+      <slot />
+    </main>
+    <slot name="footer" />
+    <script>
+      import { start } from '../engine/astro';
+      import { setupMotion } from '../motion/setup';
+      start(setupMotion);
+    </script>
+  </body>
+</html>

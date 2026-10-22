@@ -1,0 +1,21 @@
+---
+import { site } from '../data/site';
+interface Props { story?: boolean }
+const { story = false } = Astro.props;
+---
+<footer class="finale" data-story={story ? '' : undefined}>
+  <div class="finale__inner">
+    <p class="finale__line" data-split="lines">Votre commerce mérite d’être vu.</p>
+    <p class="finale__word" aria-hidden="true">Scalify</p>
+    <div class="finale__actions">
+      <a class="btn" data-fill href="/fondateurs/#reserver"><span class="btn__fill" aria-hidden="true"></span><span class="btn__label">Réserver ma place</span></a>
+      <p class="finale__note"><span data-countdown-long>Lancement le {site.launch.label}.</span> 15 places à −30 % sur l’annuel.</p>
+    </div>
+    <nav class="finale__links" aria-label="Pied de page">
+      <a class="draw" href="/#services">Services</a>
+      <a class="draw" href="/fondateurs/">Offre fondateurs</a>
+      <a class="draw" href={`mailto:${site.email}`}>{site.email}</a>
+    </nav>
+    <p class="finale__small">© 2026 Scalify. Site, fiche Google, avis, posts et messages des commerces de proximité.</p>
+  </div>
+</footer>

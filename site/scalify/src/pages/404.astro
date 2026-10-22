@@ -1,0 +1,11 @@
+---
+import Base from '../layouts/Base.astro';
+---
+<Base title="Page introuvable" description="Cette page n’existe pas. Revenez dans la rue : les commerces de Scalify sont allumés juste à côté." state={0}>
+  <section class="lost" aria-labelledby="l-title">
+    <p class="lost__code">404</p>
+    <h1 id="l-title" class="display lost__title" data-split="lines" data-intro>Ce commerce a baissé le rideau.</h1>
+    <p class="lede" data-reveal="up" data-intro data-delay="0.3">Cette page n’existe pas, ou plus. La rue, elle, est allumée juste à côté.</p>
+    <a class="btn" data-fill href="/" data-reveal="up" data-intro data-delay="0.45"><span class="btn__fill" aria-hidden="true"></span><span class="btn__label">Retour à la rue</span></a>
+  </section>
+</Base>

@@ -1,0 +1,11 @@
+---
+// Premier chargement : le « S » se trace avec le vrai chargement, puis le point bleu tombe dans la rue.
+import Logo from './Logo.astro';
+---
+<div id="loader" role="status" aria-label="Chargement">
+  <div class="loader__mark" data-loader-out><Logo size={88} draw /></div>
+  <div class="loader__inner">
+    <span class="loader__name" data-loader-out>Scalify</span>
+    <span class="loader__count" data-loader-out data-loader-count>000</span>
+  </div>
+</div>

@@ -1,0 +1,14 @@
+---
+import Logo from './Logo.astro';
+const path = Astro.url.pathname;
+---
+<header class="frame">
+  <a class="brand" href="/" aria-label="Scalify, accueil"><Logo size={30} /><span>Scalify</span></a>
+  <nav class="nav" aria-label="Navigation principale">
+    <a class="draw nav__link" href="/#services">Services</a>
+    <a class="draw nav__link" href="/fondateurs/" aria-current={path.startsWith('/fondateurs') ? 'page' : undefined}>Offre fondateurs</a>
+    <a class="btn btn--small" data-fill href="/fondateurs/#reserver"><span class="btn__fill" aria-hidden="true"></span><span class="btn__label">Réserver</span></a>
+  </nav>
+</header>
+<div class="corner corner--bl" aria-hidden="true"><span class="here__dot"></span><span class="corner__muted">Vous êtes ici</span> <strong data-here>Rue éteinte</strong></div>
+<div class="corner corner--br" aria-hidden="true"><strong data-countdown>Bientôt</strong> <span class="corner__muted">lundi 2 novembre</span></div>

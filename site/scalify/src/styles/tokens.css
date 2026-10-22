@@ -1,0 +1,47 @@
+/* DESIGN TOKENS : une rue commerçante de nuit, deux lumières (le point bleu du logo, la vitrine). Voir DESIGN.md. */
+@font-face { font-family: 'Cabinet Grotesk'; src: url('/fonts/cabinet-grotesk-800-normal.woff2') format('woff2'); font-weight: 800; font-style: normal; font-display: swap; }
+@font-face { font-family: 'Cabinet Grotesk'; src: url('/fonts/cabinet-grotesk-500-normal.woff2') format('woff2'); font-weight: 500; font-style: normal; font-display: swap; }
+@font-face { font-family: 'Switzer'; src: url('/fonts/switzer-400-normal.woff2') format('woff2'); font-weight: 400; font-style: normal; font-display: swap; }
+@font-face { font-family: 'Switzer'; src: url('/fonts/switzer-500-normal.woff2') format('woff2'); font-weight: 500; font-style: normal; font-display: swap; }
+@font-face { font-family: 'Switzer'; src: url('/fonts/switzer-600-normal.woff2') format('woff2'); font-weight: 600; font-style: normal; font-display: swap; }
+
+:root {
+  /* Couleur : par rôle */
+  --c-bg: #07090f;          /* la nuit */
+  --c-fg: #eef2f7;          /* l'encre */
+  --c-muted: #8f99ad;       /* texte secondaire, AA sur la nuit */
+  --c-line: rgb(238 242 247 / 0.14);
+  --c-accent: #4da2ff;      /* le point bleu du logo : « vous êtes ici » */
+  --c-light: #ffc46b;       /* la lumière d'une vitrine */
+  --c-curtain: #232833;     /* le rideau de fer */
+
+  /* Familles */
+  --f-display: 'Cabinet Grotesk', 'Switzer', system-ui, sans-serif;
+  --f-body: 'Switzer', system-ui, sans-serif;
+
+  /* Échelle fluide (375 px → 1440 px) */
+  --t-mega: clamp(3.4rem, 1.4rem + 8.6vw, 11rem);
+  --t-xl: clamp(2.6rem, 1.5rem + 4.6vw, 6.25rem);
+  --t-l: clamp(1.75rem, 1.3rem + 1.9vw, 3rem);
+  --t-m: clamp(1.2rem, 1.08rem + 0.55vw, 1.6rem);
+  --t-body: clamp(1rem, 0.96rem + 0.18vw, 1.125rem);
+  --t-s: 0.875rem;
+  --t-xs: 0.8125rem;
+
+  /* Espace */
+  --u: clamp(0.5rem, 0.35rem + 0.6vw, 1rem);
+  --gutter: clamp(1.15rem, 0.7rem + 1.6vw, 2.5rem);
+  --cols: 12;
+
+  /* Forme : pastilles rondes comme le point, angles droits partout ailleurs */
+  --radius: 0px;
+  --pill: 999px;
+
+  /* Calques */
+  --z-gl: 0;
+  --z-content: 1;
+  --z-header: 50;
+  --z-cursor: 80;
+  --z-curtain: 90;
+  --z-loader: 100;
+}

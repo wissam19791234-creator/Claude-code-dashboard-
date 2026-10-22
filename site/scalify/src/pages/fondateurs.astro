@@ -1,0 +1,43 @@
+---
+import Base from '../layouts/Base.astro';
+import Finale from '../components/Finale.astro';
+import { site, chapters, faq, steps } from '../data/site';
+const mail = `mailto:${site.email}?subject=${encodeURIComponent('Réservation offre fondateurs')}&body=${encodeURIComponent('Bonjour,\nJe réserve une place pour mon commerce : ')}`;
+---
+<Base title="Offre fondateurs" description="Les 15 premiers commerces inscrits ont 30 % de réduction sur l’abonnement annuel Scalify. Lancement le lundi 2 novembre 2026." state={8}>
+  <section class="page-hero" aria-labelledby="f-title">
+    <p class="page-hero__meta"><span data-countdown>Bientôt</span>, lancement lundi 2 novembre</p>
+    <h1 id="f-title" class="display page-hero__title" data-split="lines" data-intro>15 places. −30&nbsp;% sur l’annuel.</h1>
+    <p class="lede" data-reveal="up" data-intro data-delay="0.3">Les quinze premiers commerces inscrits paient leur abonnement annuel Scalify 30&nbsp;% moins cher. Les tarifs seront annoncés au lancement.</p>
+  </section>
+
+  <section class="panel" aria-labelledby="inclus">
+    <h2 id="inclus" class="panel__title" data-split="lines">Ce qui s’allume</h2>
+    <ul class="included">
+      {chapters.map((c) => (<li data-reveal="up"><strong>{c.title}</strong><span>{c.text}</span></li>))}
+    </ul>
+  </section>
+
+  <section class="panel" aria-labelledby="etapes">
+    <h2 id="etapes" class="panel__title" data-split="lines">Comment ça se passe</h2>
+    <ol class="steps">
+      {steps.map((s, i) => (<li data-reveal="up" data-delay={String(i * 0.08)}><span class="steps__n">{i + 1}</span><strong>{s.title}</strong><span>{s.text}</span></li>))}
+    </ol>
+  </section>
+
+  <section class="panel" aria-labelledby="questions">
+    <h2 id="questions" class="panel__title" data-split="lines">Questions</h2>
+    <div class="faq">
+      {faq.map((f) => (<details><summary>{f.q}</summary><p>{f.a}</p></details>))}
+    </div>
+  </section>
+
+  <section id="reserver" class="reserve" aria-labelledby="r-title">
+    <h2 id="r-title" class="display reserve__title" data-split="lines">Réservez votre place.</h2>
+    <p class="lede">Écrivez-nous avec le nom de votre commerce. Les places sont attribuées dans l’ordre d’arrivée.</p>
+    <a class="btn" data-fill href={mail}><span class="btn__fill" aria-hidden="true"></span><span class="btn__label">Réserver par e-mail</span></a>
+    <p class="reserve__mail">{site.email}</p>
+  </section>
+
+  <Finale slot="footer" />
+</Base>

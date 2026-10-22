@@ -1,0 +1,62 @@
+---
+import Base from '../layouts/Base.astro';
+import Finale from '../components/Finale.astro';
+import { site, chapters, night } from '../data/site';
+---
+<Base>
+  <section class="hero" data-story aria-labelledby="hero-title">
+    <div class="hero__stage">
+      <div class="hero__copy">
+        <h1 id="hero-title" class="display hero__title" data-split="lines" data-intro>Allumez votre commerce sur la carte.</h1>
+        <p class="lede hero__lede" data-reveal="up" data-intro data-delay="0.35">Scalify s’occupe de votre site, de votre fiche Google, de vos avis et de vos posts. Et une IA répond à vos clients, jour et nuit.</p>
+        <div class="hero__actions" data-reveal="up" data-intro data-delay="0.5">
+          <a class="btn" data-fill href="/fondateurs/#reserver"><span class="btn__fill" aria-hidden="true"></span><span class="btn__label">Réserver ma place</span></a>
+          <a class="arrow-link" href="#services"><span>Voir la rue s’allumer</span><span class="arrow-link__icon" aria-hidden="true">↓</span></a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="services" class="chapters" aria-labelledby="services-title">
+    <h2 id="services-title" class="sr-only">Ce que Scalify allume pour votre commerce</h2>
+    {chapters.map((c, i) => (
+      <article class="chapter" data-story id={c.id} aria-labelledby={`ch-${c.id}`}>
+        <div class="chapter__card">
+          <p class="chapter__meta"><span class="chapter__num">{i + 1}/5</span><span>{c.shop}, {c.tag.toLowerCase()}</span></p>
+          <h3 id={`ch-${c.id}`} class="chapter__title" data-split="lines">{c.title}</h3>
+          <p class="chapter__text" data-reveal="up" data-delay="0.15">{c.text}</p>
+        </div>
+      </article>
+    ))}
+  </section>
+
+  <section class="night" data-story aria-labelledby="night-title">
+    <div class="night__inner">
+      <h2 id="night-title" class="night__time"><span class="sr-only">Il est </span>{night.time}</h2>
+      <p class="night__label">{night.label}, La Page, librairie</p>
+      <ol class="chat">
+        {night.lines.map((l, i) => (
+          <li class={`chat__msg ${i % 2 ? 'chat__msg--ai' : ''}`} data-reveal="up" data-delay={String(0.15 + i * 0.35)}>
+            <span class="chat__who">{l.who}</span>
+            <p>{l.text}</p>
+          </li>
+        ))}
+      </ol>
+    </div>
+  </section>
+
+  <section class="offer" data-story aria-labelledby="offer-title">
+    <div class="offer__inner">
+      <h2 id="offer-title" class="offer__title" data-split="lines">L’offre des fondateurs</h2>
+      <dl class="facts">
+        <div class="fact"><dt>places</dt><dd>{site.offer.seats}</dd></div>
+        <div class="fact"><dt>sur l’abonnement annuel</dt><dd>−{site.offer.discount}&nbsp;%</dd></div>
+        <div class="fact"><dt>lancement, lundi</dt><dd>02.11</dd></div>
+      </dl>
+      <p class="offer__count" data-countdown-long>Lancement le {site.launch.label}.</p>
+      <a class="btn" data-fill href="/fondateurs/#reserver"><span class="btn__fill" aria-hidden="true"></span><span class="btn__label">Réserver ma place</span></a>
+    </div>
+  </section>
+
+  <Finale story slot="footer" />
+</Base>

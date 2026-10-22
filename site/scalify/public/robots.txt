@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://scalify.fr/sitemap-index.xml

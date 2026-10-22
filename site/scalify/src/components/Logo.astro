@@ -1,0 +1,12 @@
+---
+// Logo Scalify : pastille blanche cerclée d'encre, « S » épais, point bleu.
+interface Props { size?: number; class?: string; draw?: boolean }
+const { size = 28, class: cls = '', draw = false } = Astro.props;
+---
+<svg class={cls} width={size} height={size} viewBox="-210 -210 420 420" aria-hidden="true" focusable="false">
+  <circle r="200" fill="#fffdf8" stroke="#161311" stroke-width="16" />
+  <path d="M 63 -66 H -30 a 37.5 37.5 0 0 0 0 75 h 56.6 a 37.5 37.5 0 0 1 0 75 H -66" transform="translate(0,-42)"
+    fill="none" stroke="#161311" stroke-width="40" stroke-linecap="round" stroke-linejoin="round"
+    pathLength="1" stroke-dasharray={draw ? '1' : undefined} stroke-dashoffset={draw ? '1' : undefined} data-loader-s={draw ? '' : undefined} />
+  <circle cx="84" cy="81" r="26" fill="#4da2ff" stroke="#161311" stroke-width="10" data-loader-dot={draw ? '' : undefined} />
+</svg>

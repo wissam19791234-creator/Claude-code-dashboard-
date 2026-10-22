@@ -1,0 +1,1053 @@
+<title>Maison Tison</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<meta name="description" content="Maison Tison, cuisine au feu de bois à Lyon. On ne cuit jamais à la flamme : on attend la braise. Carte, galerie, avis et réservation en un geste.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400..800;1,6..96,400..800&family=Hanken+Grotesk:wght@400;500;600&family=Martian+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: un seul foyer au centre de la scène ; chaque section est une position de caméra autour du feu. */
+:root {
+  --charbon: #0b0806;
+  --suie: #17110d;
+  --cendre: #efe6da;
+  --fumee: #ab9c8c;
+  --eteint: #5e4f44;
+  --braise: #ff5a1f;
+  --flamme: #ffb057;
+  --ligne: rgb(239 230 218 / 0.14);
+  --voile: rgb(11 8 6 / 0.78);
+  --f-display: "Bodoni Moda", "Bodoni 72", Didot, Georgia, serif;
+  --f-text: "Hanken Grotesk", "Helvetica Neue", Arial, sans-serif;
+  --f-mono: "Martian Mono", ui-monospace, Menlo, monospace;
+  --gl: max(16px, env(safe-area-inset-left, 0px));
+  --gr: max(16px, env(safe-area-inset-right, 0px));
+  --ease: cubic-bezier(0.16, 1, 0.3, 1);
+  color-scheme: dark;
+}
+*, *::before, *::after { box-sizing: border-box; }
+html { background: var(--charbon); }
+body {
+  background: var(--charbon);
+  color: var(--cendre);
+  font: 400 17px/1.55 var(--f-text);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  overflow-x: clip;
+}
+::selection { background: var(--braise); color: var(--charbon); }
+a { color: inherit; }
+img { display: block; max-width: 100%; height: auto; }
+h1, h2, h3 { font-weight: 400; margin: 0; text-wrap: balance; }
+p { margin: 0; }
+:focus-visible { outline: 2px solid var(--flamme); outline-offset: 3px; border-radius: 2px; }
+.sr { position: absolute !important; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+.skip { position: fixed; left: var(--gl); top: 8px; z-index: 50; background: var(--cendre); color: var(--charbon); padding: 10px 14px; font-weight: 600; transform: translateY(-160%); transition: transform .3s var(--ease); }
+.skip:focus { transform: none; }
+
+/* scène 3D, fixe derrière la page */
+.scene { position: fixed; inset: 0; width: 100%; height: 100lvh; z-index: 0; display: block; pointer-events: none; }
+.no-gl .scene { display: none; }
+.no-gl body, .no-gl .fallback { background: radial-gradient(60% 45% at 50% 62%, rgb(255 90 31 / 0.28), transparent 70%), var(--charbon); }
+.fallback { position: fixed; inset: 0; z-index: 0; pointer-events: none; }
+main, .pied { position: relative; z-index: 1; }
+
+/* type */
+.eyebrow { font: 500 11px/1.4 var(--f-mono); letter-spacing: .14em; text-transform: uppercase; color: var(--flamme); display: flex; align-items: center; gap: 10px; }
+.eyebrow::before { content: ""; width: 7px; height: 7px; border-radius: 50%; background: var(--braise); box-shadow: 0 0 12px 2px rgb(255 90 31 / .7); }
+.h2 { font-family: var(--f-display); font-size: clamp(2.5rem, 10.5vw, 6.4rem); line-height: .94; letter-spacing: -0.03em; font-weight: 420; }
+.h2 em { font-style: italic; color: var(--flamme); }
+.lede { color: var(--fumee); max-width: 36ch; }
+
+/* mot qui s'embrase : lettres éteintes, puis braise, puis cendre claire */
+[data-split] .c { display: inline-block; color: var(--eteint); transition: color .9s var(--ease), text-shadow 1.2s var(--ease), transform .9s var(--ease); transform: translateY(.06em); }
+[data-split] .w { display: inline-block; white-space: nowrap; }
+[data-split].is-lit .c { color: var(--cendre); transform: none; animation: embrase 1.1s var(--ease); }
+[data-split].is-lit em .c, [data-split].is-lit .c.em { color: var(--flamme); }
+@keyframes embrase { 0% { color: var(--braise); text-shadow: 0 0 18px rgb(255 120 40 / .9); } 45% { color: var(--flamme); text-shadow: 0 0 22px rgb(255 160 80 / .6); } 100% { text-shadow: 0 0 0 transparent; } }
+
+/* boutons */
+.btn { --fill: 0; position: relative; display: inline-flex; align-items: center; gap: 12px; min-height: 52px; padding: 0 26px; border-radius: 999px; background: var(--cendre); color: var(--charbon); font: 600 15px/1 var(--f-text); text-decoration: none; letter-spacing: .01em; border: 0; cursor: pointer; overflow: hidden; isolation: isolate; transition: transform .5s var(--ease); }
+.btn::before { content: ""; position: absolute; inset: 0; z-index: -1; background: radial-gradient(120% 140% at 50% 120%, var(--flamme), var(--braise) 55%, #c6340b); clip-path: inset(calc(100% - var(--fill) * 100%) 0 0 0); transition: clip-path .55s var(--ease); }
+.btn:hover, .btn:focus-visible { --fill: 1; color: var(--charbon); }
+.btn:active { transform: scale(.97); }
+.btn .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--braise); box-shadow: 0 0 10px var(--braise); }
+.btn:hover .dot { background: var(--charbon); box-shadow: none; }
+.btn--ghost { background: transparent; color: var(--cendre); box-shadow: inset 0 0 0 1px rgb(239 230 218 / .4); }
+.btn--small { min-height: 40px; padding: 0 16px; font-size: 14px; }
+.link { color: var(--cendre); text-decoration: underline; text-decoration-color: rgb(239 230 218 / .4); text-underline-offset: 5px; font-weight: 500; transition: text-decoration-color .3s, color .3s; }
+.link:hover { color: var(--flamme); text-decoration-color: var(--flamme); }
+
+/* en-tête */
+.top { position: fixed; z-index: 20; inset: 0 0 auto; display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: calc(env(safe-area-inset-top, 0px) + 12px) var(--gr) 12px var(--gl); background: linear-gradient(rgb(11 8 6 / .82), rgb(11 8 6 / 0)); }
+.mark { display: inline-flex; align-items: baseline; gap: 8px; text-decoration: none; font-family: var(--f-display); font-size: 21px; letter-spacing: -0.01em; }
+.mark small { font: 500 10px/1 var(--f-mono); letter-spacing: .16em; text-transform: uppercase; color: var(--fumee); }
+.mark i { font-weight: 500; }
+.mark__dot { align-self: center; width: 9px; height: 9px; border-radius: 50%; background: var(--braise); box-shadow: 0 0 14px 3px rgb(255 90 31 / .65); animation: braiseDot 3.2s ease-in-out infinite; }
+@keyframes braiseDot { 50% { box-shadow: 0 0 6px 1px rgb(255 90 31 / .4); background: #d9440f; } }
+.top__nav { display: flex; align-items: center; gap: 22px; font-size: 14px; }
+.top__nav a.nav { text-decoration: none; color: var(--fumee); position: relative; padding: 6px 0; transition: color .3s; }
+.top__nav a.nav::after { content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 1px; background: var(--flamme); transform: scaleX(0); transform-origin: left; transition: transform .5s var(--ease); }
+.top__nav a.nav:hover, .top__nav a.nav.is-here { color: var(--cendre); }
+.top__nav a.nav:hover::after, .top__nav a.nav.is-here::after { transform: none; }
+@media (max-width: 720px) { .top__nav a.nav:not(.nav--keep) { display: none; } .top__nav { gap: 14px; } }
+
+/* jauge du foyer : l'heure du service et la température */
+.jauge { position: fixed; z-index: 20; left: 50%; bottom: calc(env(safe-area-inset-bottom, 0px) + 14px); translate: -50% 0; display: flex; align-items: center; gap: 10px; padding: 9px 14px; border-radius: 999px; background: rgb(23 17 13 / .72); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); box-shadow: inset 0 0 0 1px var(--ligne); font: 500 11px/1 var(--f-mono); letter-spacing: .06em; color: var(--fumee); white-space: nowrap; font-variant-numeric: tabular-nums; }
+.jauge b { color: var(--cendre); font-weight: 500; }
+.jauge .t { color: var(--flamme); }
+.jauge i { width: 7px; height: 7px; border-radius: 50%; background: var(--braise); box-shadow: 0 0 10px 2px rgb(255 90 31 / .7); }
+@media (min-width: 900px) { .jauge { left: var(--gl); translate: none; bottom: 22px; } }
+
+/* héros */
+.hero { height: 175svh; }
+.hero__stage { position: sticky; top: 0; height: 100svh; display: grid; grid-template-rows: 1fr auto; padding: calc(env(safe-area-inset-top, 0px) + 84px) var(--gr) calc(env(safe-area-inset-bottom, 0px) + 70px) var(--gl); overflow: clip; }
+.hero__head { align-self: start; display: grid; gap: 10px; }
+.hero__kicker { font: 500 11px/1.4 var(--f-mono); letter-spacing: .16em; text-transform: uppercase; color: var(--fumee); }
+.hero__title { font-family: var(--f-display); line-height: .8; }
+.hero__maison { display: block; font-size: clamp(1.3rem, 5.4vw, 2.6rem); letter-spacing: .28em; text-transform: uppercase; font-weight: 500; color: var(--cendre); margin: 0 0 .5em .08em; line-height: 1; }
+.hero__tison { display: block; font-size: clamp(6.8rem, 37vw, 21rem); font-style: italic; font-weight: 500; letter-spacing: -0.045em; margin-left: -0.05em; padding-right: .06em; background: linear-gradient(180deg, #fff3e3 8%, var(--flamme) 52%, var(--braise) 78%, #b02e0a); -webkit-background-clip: text; background-clip: text; color: transparent; filter: drop-shadow(0 0 34px rgb(255 90 31 / .32)); }
+.hero__tison { --lit: -16; -webkit-mask-image: linear-gradient(100deg, #000 calc(var(--lit) * 1%), rgb(0 0 0 / .06) calc(var(--lit) * 1% + 16%)); mask-image: linear-gradient(100deg, #000 calc(var(--lit) * 1%), rgb(0 0 0 / .06) calc(var(--lit) * 1% + 16%)); }
+.hero__foot { display: grid; gap: 18px; align-self: end; }
+.hero__line { font-family: var(--f-display); font-size: clamp(1.35rem, 5.6vw, 2.3rem); line-height: 1.12; max-width: 17ch; letter-spacing: -0.01em; }
+.hero__line em { color: var(--flamme); }
+.hero__cta { display: flex; flex-wrap: wrap; align-items: center; gap: 14px 22px; }
+@media (min-width: 900px) {
+  .hero__stage { grid-template-columns: 1fr auto; grid-template-rows: 1fr auto; padding-top: 96px; padding-bottom: 40px; }
+  .hero__head { grid-column: 1 / -1; }
+  .hero__foot { grid-column: 1; }
+}
+
+/* sections communes */
+.wrap { padding-left: var(--gl); padding-right: var(--gr); max-width: 1320px; margin: 0 auto; }
+section { position: relative; }
+
+/* histoire */
+.histoire { padding-block: 30svh 18svh; }
+.histoire .wrap { display: grid; gap: 34px; }
+.histoire__intro { display: grid; gap: 18px; max-width: 620px; padding: 26px 0; background: radial-gradient(80% 90% at 20% 50%, rgb(11 8 6 / .8), transparent 72%); }
+.temps { list-style: none; margin: 0; padding: 0; display: grid; gap: 14px; counter-reset: none; }
+.temps li { display: grid; grid-template-columns: 92px 1fr; gap: 16px; padding: 22px 20px; background: rgb(23 17 13 / .72); backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px); box-shadow: inset 0 0 0 1px var(--ligne); border-radius: 4px; }
+.temps time { font: 500 13px/1.6 var(--f-mono); color: var(--flamme); font-variant-numeric: tabular-nums; }
+.temps h3 { font-family: var(--f-display); font-size: 1.7rem; line-height: 1.05; margin-bottom: 6px; }
+.temps p { color: var(--fumee); font-size: 16px; }
+.histoire__forge { font-family: var(--f-display); font-style: italic; font-size: clamp(1.3rem, 4.6vw, 2rem); line-height: 1.25; max-width: 30ch; color: var(--cendre); }
+@media (min-width: 900px) {
+  .histoire .wrap { grid-template-columns: 1fr 1fr; align-items: end; }
+  .histoire__intro { grid-column: 1; }
+  .temps { grid-column: 1; }
+  .histoire__forge { grid-column: 2; align-self: start; }
+}
+
+/* carte */
+.carte { padding-block: 22svh 10svh; }
+.carte__pin { padding-left: var(--gl); padding-right: var(--gr); }
+.carte__head { display: grid; gap: 18px; padding: 26px 0; background: radial-gradient(90% 90% at 30% 50%, rgb(11 8 6 / .82), transparent 75%); }
+.plats { list-style: none; margin: 44px 0 0; padding: 0; display: grid; gap: 30px; perspective: 1100px; }
+.plat { background: var(--suie); border-radius: 6px; overflow: hidden; box-shadow: 0 40px 80px -30px rgb(0 0 0 / .9), inset 0 0 0 1px var(--ligne); transform-style: preserve-3d; will-change: transform; }
+.plat__img { margin: 0; position: relative; aspect-ratio: 5 / 4; overflow: hidden; background: #24170f; }
+.plat__img img { width: 100%; height: 100%; object-fit: cover; transform: scale(1.12); transition: filter .6s var(--ease); }
+.plat__img::after { content: ""; position: absolute; inset: 0; background: linear-gradient(0deg, rgb(255 90 31 / .55), rgb(255 176 87 / .1) 30%, transparent 55%); mix-blend-mode: screen; opacity: var(--sear, 0); pointer-events: none; }
+.plat__n { position: absolute; top: 12px; left: 12px; z-index: 1; font: 500 11px/1 var(--f-mono); letter-spacing: .1em; padding: 7px 9px; border-radius: 999px; background: rgb(11 8 6 / .66); color: var(--cendre); }
+.plat__body { display: grid; grid-template-columns: 1fr auto; gap: 8px 16px; padding: 20px 20px 22px; }
+.plat__bois { grid-column: 1 / -1; font: 500 11px/1.4 var(--f-mono); letter-spacing: .1em; text-transform: uppercase; color: var(--flamme); }
+.plat h3 { font-family: var(--f-display); font-size: 1.62rem; line-height: 1.05; letter-spacing: -0.01em; }
+.plat__prix .eur { font-family: var(--f-text); font-size: .62em; font-weight: 500; margin-left: .12em; vertical-align: .18em; }
+.plat__prix { font-family: var(--f-display); font-size: 1.62rem; line-height: 1.05; color: var(--cendre); font-variant-numeric: lining-nums; white-space: nowrap; }
+.plat__desc { grid-column: 1 / -1; color: var(--fumee); font-size: 15.5px; }
+.carte__plus { margin-top: 34px; color: var(--fumee); max-width: 52ch; padding: 18px 0; border-top: 1px solid var(--ligne); }
+.carte__plus b { color: var(--cendre); font-weight: 500; }
+@media (hover: hover) { .plat:hover .plat__img img { filter: saturate(1.15) brightness(1.06); } }
+@media (min-width: 900px) {
+  .carte { padding-block: 0; }
+  .carte__pin { height: 100svh; display: grid; grid-template-columns: minmax(300px, 30%) 1fr; align-items: center; gap: 4vw; overflow: hidden; padding-left: var(--gl); padding-right: 0; }
+  .carte__head { align-self: center; }
+  .carte__track { overflow: hidden; padding-block: 40px; margin-block: -40px; }
+  .plats { margin: 0; display: flex; gap: 28px; width: max-content; padding-right: 10vw; }
+  .plat { width: min(340px, 27vw); flex: none; }
+  .carte__plus { grid-column: 1; margin-top: 0; }
+}
+
+/* galerie */
+.galerie { height: 460svh; }
+.galerie__stage { position: sticky; top: 0; height: 100svh; display: grid; align-content: space-between; padding: calc(env(safe-area-inset-top, 0px) + 86px) var(--gr) calc(env(safe-area-inset-bottom, 0px) + 74px) var(--gl); pointer-events: none; }
+.galerie__head { display: grid; gap: 12px; }
+.galerie__cap { display: flex; align-items: baseline; gap: 14px; font-family: var(--f-display); font-size: clamp(1.4rem, 5.6vw, 2.4rem); line-height: 1.1; text-shadow: 0 2px 18px rgb(0 0 0 / .8); }
+.galerie__cap span:first-child { flex: none; white-space: nowrap; font: 500 12px/1 var(--f-mono); letter-spacing: .1em; color: var(--flamme); font-variant-numeric: tabular-nums; }
+.galerie__list { list-style: none; margin: 0; padding: 0; }
+.gl-on .galerie__list { position: absolute !important; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); }
+.no-gl .galerie { height: auto; padding-block: 12svh; }
+.no-gl .galerie__stage { position: static; height: auto; }
+.no-gl .galerie__cap { display: none; }
+.no-gl .galerie__list { display: grid; gap: 14px; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); padding: 0 var(--gr) 0 var(--gl); }
+.galerie__list figure { margin: 0; display: grid; gap: 8px; }
+.galerie__list img { width: 100%; aspect-ratio: 4 / 3; object-fit: cover; border-radius: 4px; }
+.galerie__list figcaption { color: var(--fumee); font-size: 14px; }
+
+/* avis */
+.avis { padding-block: 26svh 16svh; }
+.avis .wrap { display: grid; gap: 26px; }
+.avis__note { display: flex; flex-wrap: wrap; align-items: baseline; gap: 6px 14px; }
+.avis__chiffre { font-family: var(--f-display); font-size: clamp(4.4rem, 22vw, 9rem); line-height: .8; font-style: italic; letter-spacing: -0.04em; background: linear-gradient(180deg, #fff3e3, var(--flamme) 70%, var(--braise)); -webkit-background-clip: text; background-clip: text; color: transparent; }
+.avis__sur { font-family: var(--f-display); font-size: 1.6rem; color: var(--fumee); }
+.braises { display: inline-flex; gap: 7px; align-self: center; }
+.braises span { width: 13px; height: 13px; border-radius: 50%; background: radial-gradient(circle at 40% 35%, #ffd9a0, var(--braise) 60%, #9c2708); box-shadow: 0 0 12px 2px rgb(255 90 31 / .55); }
+.avis__compte { flex-basis: 100%; color: var(--fumee); font-size: 15px; }
+.avis__deck { position: relative; display: grid; min-height: 15.5rem; }
+.avis__item { grid-area: 1 / 1; margin: 0; display: grid; gap: 18px; align-content: start; padding: 28px 22px 24px; border-radius: 6px; background: rgb(23 17 13 / .8); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); box-shadow: inset 0 0 0 1px var(--ligne); }
+.avis__item blockquote { margin: 0; font-family: var(--f-display); font-size: clamp(1.45rem, 5.6vw, 2.3rem); line-height: 1.16; letter-spacing: -0.01em; }
+.avis__item figcaption { display: flex; justify-content: space-between; gap: 12px; color: var(--fumee); font-size: 14px; }
+.avis__item figcaption b { color: var(--cendre); font-weight: 500; }
+.js .avis__item { opacity: 0; visibility: hidden; }
+.js .avis__item.is-on { opacity: 1; visibility: visible; }
+.avis__ctrl { display: flex; align-items: center; gap: 16px; }
+.avis__bar { flex: 1; height: 2px; background: var(--ligne); position: relative; overflow: hidden; }
+.avis__bar span { position: absolute; inset: 0; background: linear-gradient(90deg, var(--braise), var(--flamme)); transform-origin: left; transform: scaleX(0); }
+.avis__live { display: inline-flex; align-items: center; gap: 8px; font: 500 11px/1 var(--f-mono); letter-spacing: .08em; color: var(--fumee); text-transform: uppercase; }
+.avis__live::before { content: ""; width: 7px; height: 7px; border-radius: 50%; background: #5fd68a; box-shadow: 0 0 8px #5fd68a; animation: braiseDot 2.4s infinite; }
+.avis__nav { width: 40px; height: 40px; border-radius: 50%; border: 0; background: rgb(239 230 218 / .08); color: var(--cendre); cursor: pointer; font-size: 18px; transition: background .3s, transform .3s var(--ease); }
+.avis__nav:hover { background: var(--braise); color: var(--charbon); }
+.avis__nav:active { transform: scale(.92); }
+@media (min-width: 900px) { .avis .wrap { grid-template-columns: 0.8fr 1.2fr; align-items: center; column-gap: 6vw; } .avis__left { display: grid; gap: 22px; } }
+
+/* réservation */
+.resa { padding-block: 20svh 16svh; }
+.resa .wrap { display: grid; gap: 30px; }
+.resa__intro { display: grid; gap: 16px; }
+.resa__form { display: grid; gap: 22px; padding: 24px 20px; border-radius: 8px; background: rgb(23 17 13 / .86); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); box-shadow: inset 0 0 0 1px var(--ligne), 0 50px 100px -40px rgb(255 90 31 / .35); }
+.resa__form fieldset { border: 0; margin: 0; padding: 0; display: grid; gap: 10px; }
+.resa__form legend { font: 500 11px/1.4 var(--f-mono); letter-spacing: .12em; text-transform: uppercase; color: var(--fumee); margin-bottom: 10px; padding: 0; }
+.chips { display: flex; flex-wrap: wrap; gap: 8px; }
+.chip { position: relative; }
+.chip input { position: absolute; opacity: 0; inset: 0; margin: 0; cursor: pointer; }
+.chip span { display: inline-flex; align-items: center; min-height: 42px; padding: 0 15px; border-radius: 999px; box-shadow: inset 0 0 0 1px rgb(239 230 218 / .22); font-size: 15px; font-variant-numeric: tabular-nums; transition: background .35s var(--ease), color .35s, box-shadow .35s; }
+.chip input:hover + span { box-shadow: inset 0 0 0 1px var(--flamme); }
+.chip input:checked + span { background: var(--cendre); color: var(--charbon); box-shadow: none; }
+.chip input:focus-visible + span { outline: 2px solid var(--flamme); outline-offset: 2px; }
+.chip input:disabled + span { color: var(--eteint); text-decoration: line-through; box-shadow: inset 0 0 0 1px rgb(239 230 218 / .08); }
+.chip input:disabled { cursor: not-allowed; }
+.resa__go { width: 100%; justify-content: center; min-height: 60px; font-size: 16px; }
+.resa__tel { color: var(--fumee); font-size: 15px; }
+.resa__tel b { color: var(--cendre); font-weight: 500; font-variant-numeric: tabular-nums; user-select: all; }
+.ticket { display: grid; gap: 14px; padding: 26px 22px 30px; border-radius: 6px; background: #f3ebdf; color: #1a120d; font: 500 13px/1.5 var(--f-mono); box-shadow: 0 40px 70px -30px rgb(0 0 0 / .9); clip-path: polygon(0 0, 100% 0, 100% calc(100% - 8px), 95% 100%, 90% calc(100% - 8px), 85% 100%, 80% calc(100% - 8px), 75% 100%, 70% calc(100% - 8px), 65% 100%, 60% calc(100% - 8px), 55% 100%, 50% calc(100% - 8px), 45% 100%, 40% calc(100% - 8px), 35% 100%, 30% calc(100% - 8px), 25% 100%, 20% calc(100% - 8px), 15% 100%, 10% calc(100% - 8px), 5% 100%, 0 calc(100% - 8px)); }
+.ticket__t { font-family: var(--f-display); font-size: 1.9rem; line-height: 1; font-style: italic; letter-spacing: -0.01em; }
+.ticket dl { margin: 0; display: grid; grid-template-columns: auto 1fr; gap: 6px 18px; }
+.ticket dt { color: #7a6656; text-transform: uppercase; letter-spacing: .08em; font-size: 11px; align-self: center; }
+.ticket dd { margin: 0; font-size: 15px; }
+.ticket__note { color: #7a6656; font-size: 11.5px; border-top: 1px dashed #c9b8a6; padding-top: 12px; }
+.ticket button { justify-self: start; background: none; border: 0; padding: 0; font: inherit; color: #b33a0f; text-decoration: underline; text-underline-offset: 4px; cursor: pointer; }
+@media (min-width: 900px) { .resa .wrap { grid-template-columns: 1fr 1fr; align-items: center; gap: 6vw; } .resa__form { padding: 32px; } }
+
+/* infos */
+.infos { padding-block: 22svh 14svh; }
+.infos .wrap { display: grid; gap: 34px; }
+.infos__intro { display: grid; gap: 16px; }
+.infos__live { display: inline-flex; align-items: center; gap: 10px; font: 500 12px/1.4 var(--f-mono); letter-spacing: .04em; color: var(--cendre); padding: 10px 14px; border-radius: 999px; background: rgb(23 17 13 / .8); box-shadow: inset 0 0 0 1px var(--ligne); justify-self: start; }
+.infos__live::before { content: ""; width: 8px; height: 8px; border-radius: 50%; background: var(--etat, var(--braise)); box-shadow: 0 0 10px var(--etat, var(--braise)); }
+.infos__grid { display: grid; gap: 14px; }
+.bloc { padding: 22px 20px; border-radius: 6px; background: rgb(23 17 13 / .82); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); box-shadow: inset 0 0 0 1px var(--ligne); display: grid; gap: 12px; align-content: start; }
+.bloc h3 { font: 500 11px/1.4 var(--f-mono); letter-spacing: .12em; text-transform: uppercase; color: var(--flamme); }
+.horaires { margin: 0; display: grid; gap: 10px; }
+.horaires div { display: flex; justify-content: space-between; gap: 16px; padding-bottom: 10px; border-bottom: 1px solid var(--ligne); }
+.horaires div:last-child { border-bottom: 0; padding-bottom: 0; }
+.horaires dt { color: var(--fumee); }
+.horaires dd { margin: 0; text-align: right; font-variant-numeric: tabular-nums; }
+.bloc address { font-style: normal; font-family: var(--f-display); font-size: 1.5rem; line-height: 1.2; }
+.bloc p { color: var(--fumee); font-size: 15.5px; }
+.bloc .num { font-family: var(--f-display); font-size: 1.5rem; color: var(--cendre); font-variant-numeric: lining-nums; user-select: all; }
+@media (min-width: 900px) { .infos .wrap { grid-template-columns: 0.9fr 1.6fr; align-items: start; } .infos__grid { grid-template-columns: 1.2fr 1fr 1fr; } }
+
+/* pied */
+.pied { padding: 12svh var(--gr) calc(env(safe-area-inset-bottom, 0px) + 90px) var(--gl); display: grid; gap: 26px; background: linear-gradient(rgb(11 8 6 / 0), var(--charbon) 30%); }
+.pied__mot { font-family: var(--f-display); font-style: italic; font-weight: 500; font-size: clamp(6rem, 40vw, 26rem); line-height: .78; letter-spacing: -0.05em; margin-left: -0.04em; color: transparent; -webkit-text-stroke: 1px rgb(255 176 87 / .55); user-select: none; }
+.pied__row { display: grid; gap: 18px; padding-top: 22px; border-top: 1px solid var(--ligne); }
+.pied__row p { color: var(--fumee); }
+.pied__row nav { display: flex; flex-wrap: wrap; gap: 10px 22px; font-size: 15px; }
+.pied__row nav a { color: var(--fumee); text-decoration: none; transition: color .3s; }
+.pied__row nav a:hover { color: var(--cendre); }
+.pied__credit { display: flex; flex-wrap: wrap; align-items: center; gap: 6px 14px; font-size: 13px; color: var(--fumee); }
+.pied__credit strong { color: var(--cendre); font-weight: 600; letter-spacing: .01em; }
+.pied__credit small { font-size: 12px; color: var(--eteint); }
+@media (min-width: 900px) { .pied__row { grid-template-columns: 1fr auto; align-items: center; } }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation: none !important; transition: none !important; }
+  [data-split] .c { color: var(--cendre); transform: none; }
+  .hero__tison { --lit: 100 !important; }
+}
+</style>
+
+<a class="skip" href="#main">Aller au contenu</a>
+<canvas class="scene" aria-hidden="true"></canvas>
+<div class="fallback" aria-hidden="true"></div>
+
+<header class="top">
+  <a class="mark" href="#top" aria-label="Maison Tison, retour en haut"><span class="mark__dot"></span><small>Maison</small><i>Tison</i></a>
+  <nav class="top__nav" aria-label="Sections">
+    <a class="nav nav--keep" href="#carte">La carte</a>
+    <a class="nav" href="#galerie">Galerie</a>
+    <a class="nav" href="#avis">Avis</a>
+    <a class="nav" href="#infos">Infos</a>
+    <a class="btn btn--small" href="#reserver">Réserver</a>
+  </nav>
+</header>
+
+<p class="jauge" aria-hidden="true"><i></i><b class="t">19:00</b><span class="l">allumage</span><b class="c">250 °C</b></p>
+
+<main id="main">
+  <section class="hero" id="top" data-keys="hero0@0,hero1@1">
+    <div class="hero__stage">
+      <div class="hero__head">
+        <p class="hero__kicker">Cuisine au feu de bois · Lyon 2<sup>e</sup></p>
+        <h1 class="hero__title"><span class="hero__maison">Maison</span><span class="hero__tison">Tison</span></h1>
+      </div>
+      <div class="hero__foot">
+        <p class="hero__line">On ne cuit jamais à la flamme. <em>On attend la braise.</em></p>
+        <div class="hero__cta">
+          <a class="btn" href="#reserver"><span class="dot"></span>Réserver une table</a>
+          <a class="link" href="#carte">Voir la carte</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="histoire" id="histoire" data-keys="hist@0.25" aria-labelledby="h-histoire">
+    <div class="wrap">
+      <div class="histoire__intro">
+        <p class="eyebrow">L'histoire</p>
+        <h2 class="h2" id="h-histoire" data-split>Un seul feu, allumé chaque jour à <em>16 h.</em></h2>
+      </div>
+      <ol class="temps">
+        <li><time>16:00</time><div><h3>Le bois</h3><p>Du chêne et du hêtre, fendus à la main et séchés deux hivers. Un bois humide fume, un bois sec chante.</p></div></li>
+        <li><time>18:30</time><div><h3>La flambée</h3><p>Le feu monte haut, puis on le laisse tomber. Pendant trente minutes, personne ne cuit rien.</p></div></li>
+        <li><time>19:00</time><div><h3>La braise</h3><p>Quand le bois devient braise, le service commence. Chaque pièce est posée, retournée, reposée. Rien ne passe au gaz.</p></div></li>
+      </ol>
+      <p class="histoire__forge">La maison a ouvert en 2019 dans une ancienne forge. Le foyer est resté, le soufflet aussi.</p>
+    </div>
+  </section>
+
+  <section class="carte" id="carte" data-keys="carte@0.1,carte@0.85" aria-labelledby="h-carte">
+    <div class="carte__pin">
+      <div class="carte__head">
+        <p class="eyebrow">La carte · automne</p>
+        <h2 class="h2" id="h-carte" data-split>Ce soir sur la <em>braise</em></h2>
+        <p class="lede">Le bois change selon la pièce : le chêne pour la viande, les sarments de vigne pour le poisson, le pommier pour le dessert.</p>
+      </div>
+      <div class="carte__track"><ol class="plats">
+        <li class="plat">
+          <figure class="plat__img"><span class="plat__n">N° 1</span><img data-img="cote" alt="Côte de bœuf saignante tranchée sur une planche en bois" width="820" height="547"></figure>
+          <div class="plat__body"><p class="plat__bois">Chêne · 18 min</p><h3>Côte de bœuf maturée 45 jours</h3><p class="plat__prix">89<span class="eur">€</span></p><p class="plat__desc">Pour deux. Tranchée à table, beurre noisette, sel fumé.</p></div>
+        </li>
+        <li class="plat">
+          <figure class="plat__img"><span class="plat__n">N° 2</span><img data-img="daurade" alt="Daurade entière grillée sur une planche, rondelle de citron" width="733" height="1100"></figure>
+          <div class="plat__body"><p class="plat__bois">Sarments de vigne · 9 min</p><h3>Daurade entière aux sarments</h3><p class="plat__prix">32<span class="eur">€</span></p><p class="plat__desc">Citron brûlé, fenouil croquant, huile d'herbes.</p></div>
+        </li>
+        <li class="plat">
+          <figure class="plat__img"><span class="plat__n">N° 3</span><img data-img="travers" alt="Travers de porc laqués avec tomates grillées sur une planche" width="820" height="548"></figure>
+          <div class="plat__body"><p class="plat__bois">Hêtre · 6 h de fumée</p><h3>Travers de porc laqués</h3><p class="plat__prix">27<span class="eur">€</span></p><p class="plat__desc">Laque miel et piment doux, tomates passées au feu.</p></div>
+        </li>
+        <li class="plat">
+          <figure class="plat__img"><span class="plat__n">N° 4</span><img data-img="pave" alt="Pavé de bœuf tranché et pommes grenailles dans une poêle en fonte" width="820" height="1026"></figure>
+          <div class="plat__body"><p class="plat__bois">Chêne · 11 min</p><h3>Pavé de bœuf, grenailles à la cendre</h3><p class="plat__prix">34<span class="eur">€</span></p><p class="plat__desc">Grenailles cuites sous la braise, jus corsé.</p></div>
+        </li>
+        <li class="plat">
+          <figure class="plat__img"><span class="plat__n">N° 5</span><img data-img="framboise" alt="Part de gâteau aux framboises sur une assiette sombre" width="820" height="1025"></figure>
+          <div class="plat__body"><p class="plat__bois">Pommier · 2 min</p><h3>Gâteau framboise, crème fumée</h3><p class="plat__prix">12<span class="eur">€</span></p><p class="plat__desc">Crème fumée au bois de pommier, framboises du jour.</p></div>
+        </li>
+      </ol></div>
+    </div>
+    <div class="wrap"><p class="carte__plus"><b>Tous les soirs :</b> pain au levain cuit dans le four à bois, légumes du marché grillés, pommes de terre à la cendre.</p></div>
+  </section>
+
+  <section class="galerie" id="galerie" data-keys="gal0@0,gal1@0.2,gal2@0.4,gal3@0.6,gal4@0.8,gal5@1" aria-labelledby="h-galerie">
+    <div class="galerie__stage">
+      <div class="galerie__head">
+        <p class="eyebrow">Galerie</p>
+        <h2 class="h2" id="h-galerie" data-split>Autour du <em>feu</em></h2>
+      </div>
+      <p class="galerie__cap" aria-hidden="true"><span>1 / 6</span><span class="galerie__t">La côte, tranchée à table</span></p>
+    </div>
+    <ul class="galerie__list">
+      <li><figure><img data-img="g-tranches" alt="Tranches de bœuf grillé sur une planche sombre" width="1280" height="720" loading="lazy"><figcaption>La côte, tranchée à table</figcaption></figure></li>
+      <li><figure><img data-img="g-cuisine" alt="Cuisinier de dos devant le passe, sous les lampes de la cuisine" width="1280" height="853" loading="lazy"><figcaption>La cuisine ouverte, en plein service</figcaption></figure></li>
+      <li><figure><img data-img="g-saignant" alt="Viande saignante en gros plan, croûte grillée" width="720" height="1280" loading="lazy"><figcaption>Saignant : 52 °C à cœur</figcaption></figure></li>
+      <li><figure><img data-img="g-salle2" alt="Grande salle sombre aux claustras de bois, tables dressées" width="1280" height="853" loading="lazy"><figcaption>La grande salle, 48 couverts</figcaption></figure></li>
+      <li><figure><img data-img="g-mains" alt="Mains qui ciselent des herbes sur une planche" width="853" height="1280" loading="lazy"><figcaption>Les herbes, ciselées au dernier moment</figcaption></figure></li>
+      <li><figure><img data-img="g-verre" alt="Cocktail ambré garni de romarin sur un comptoir en bois" width="1280" height="853" loading="lazy"><figcaption>Au bar, le verre fumé au pommier</figcaption></figure></li>
+    </ul>
+  </section>
+
+  <section class="avis" id="avis" data-keys="avis@0.3" aria-labelledby="h-avis">
+    <div class="wrap">
+      <div class="avis__left">
+        <p class="eyebrow">Avis clients</p>
+        <h2 class="sr" id="h-avis">Ce que disent nos clients</h2>
+        <div class="avis__note">
+          <span class="avis__chiffre">4,9</span><span class="avis__sur">/ 5</span>
+          <span class="braises" role="img" aria-label="Note de 5 braises sur 5"><span></span><span></span><span></span><span></span><span></span></span>
+          <p class="avis__compte">Sur 412 avis laissés après le repas.</p>
+        </div>
+      </div>
+      <div class="avis__right">
+        <div class="avis__deck" aria-live="polite">
+          <figure class="avis__item is-on"><blockquote>« On entend la braise depuis la table. La côte arrive encore fumante, tranchée devant nous. »</blockquote><figcaption><b>Camille R.</b><span>il y a 2 jours</span></figcaption></figure>
+          <figure class="avis__item"><blockquote>« La daurade aux sarments a un goût de vacances. Service attentif, sans chichis. »</blockquote><figcaption><b>Mehdi B.</b><span>il y a 4 jours</span></figcaption></figure>
+          <figure class="avis__item"><blockquote>« Réservé à 18 h depuis mon téléphone, à table près du feu à 20 h. Parfait. »</blockquote><figcaption><b>Antoine D.</b><span>la semaine dernière</span></figcaption></figure>
+          <figure class="avis__item"><blockquote>« La crème fumée au pommier, je n'avais jamais goûté ça. On revient samedi. »</blockquote><figcaption><b>Laure P.</b><span>la semaine dernière</span></figcaption></figure>
+          <figure class="avis__item"><blockquote>« Une adresse chaleureuse au sens propre. On ressort en sentant le feu de bois, et c'est très bien. »</blockquote><figcaption><b>Sophie L.</b><span>il y a 2 semaines</span></figcaption></figure>
+        </div>
+        <div class="avis__ctrl">
+          <button class="avis__nav" type="button" data-dir="-1" aria-label="Avis précédent">‹</button>
+          <div class="avis__bar"><span></span></div>
+          <button class="avis__nav" type="button" data-dir="1" aria-label="Avis suivant">›</button>
+        </div>
+        <p class="avis__live" style="margin-top:16px">Mis à jour automatiquement</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="resa" id="reserver" data-keys="resa@0.3" aria-labelledby="h-resa">
+    <div class="wrap">
+      <div class="resa__intro">
+        <p class="eyebrow">Réservation</p>
+        <h2 class="h2" id="h-resa" data-split>Une table près du <em>feu</em> ?</h2>
+        <p class="lede">Trois choix, un bouton. La table est bloquée tout de suite, sans compte à créer.</p>
+      </div>
+      <form class="resa__form" id="resa" novalidate>
+        <fieldset><legend>Couverts</legend><div class="chips" id="f-couverts"></div></fieldset>
+        <fieldset><legend>Jour</legend><div class="chips" id="f-jour"></div></fieldset>
+        <fieldset><legend>Heure</legend><div class="chips" id="f-heure"></div></fieldset>
+        <button class="btn resa__go" type="submit" id="resa-go"><span class="dot"></span><span id="resa-sum">Réserver</span></button>
+        <p class="resa__tel">Ou par téléphone : <b>04 65 71 20 19</b></p>
+      </form>
+      <div class="ticket" id="ticket" hidden tabindex="-1">
+        <p>BON N° <span id="t-num">0417</span> · MAISON TISON</p>
+        <p class="ticket__t">Table réservée</p>
+        <dl><dt>Couverts</dt><dd id="t-c"></dd><dt>Jour</dt><dd id="t-j"></dd><dt>Heure</dt><dd id="t-h"></dd><dt>Place</dt><dd>Près du foyer</dd></dl>
+        <p class="ticket__note">Démonstration : aucune réservation n'est envoyée.</p>
+        <button type="button" id="t-back">Modifier</button>
+      </div>
+    </div>
+  </section>
+
+  <section class="infos" id="infos" data-keys="infos@0.3" aria-labelledby="h-infos">
+    <div class="wrap">
+      <div class="infos__intro">
+        <p class="eyebrow">Infos pratiques</p>
+        <h2 class="h2" id="h-infos" data-split>Le feu prend à <em>19 h.</em></h2>
+        <p class="infos__live" id="live">Ce soir, service de 19:00 à 23:30</p>
+      </div>
+      <div class="infos__grid">
+        <div class="bloc">
+          <h3>Horaires</h3>
+          <dl class="horaires">
+            <div><dt>Mardi au samedi</dt><dd>19:00 · 23:30</dd></div>
+            <div><dt>Samedi et dimanche midi</dt><dd>12:00 · 14:30</dd></div>
+            <div><dt>Lundi</dt><dd>Fermé</dd></div>
+          </dl>
+        </div>
+        <div class="bloc">
+          <h3>Adresse</h3>
+          <address>14 rue du Four-à-Bois<br>69002 Lyon</address>
+          <p>Métro Bellecour, 6 min à pied.</p>
+        </div>
+        <div class="bloc">
+          <h3>Contact</h3>
+          <p class="num">04 65 71 20 19</p>
+          <p>Groupes jusqu'à 18 personnes, privatisation le dimanche soir.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="pied" data-keys="fin@1">
+  <p class="pied__mot" aria-hidden="true">Tison</p>
+  <div class="pied__row">
+    <p>Maison Tison · cuisine au feu de bois · Lyon</p>
+    <nav aria-label="Liens utiles"><a href="#reserver">Réserver</a><a href="#carte">La carte</a><a href="#infos">Venir</a><a href="#top">Haut de page</a></nav>
+  </div>
+  <p class="pied__credit"><span>Site réalisé par <strong>Scalify</strong></span><small>Maison Tison est un restaurant imaginaire, créé pour une démonstration.</small></p>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lenis@1.1.13/dist/lenis.min.js"></script>
+<script>/*IMAGES*/</script>
+<script>
+(() => {
+  const root = document.documentElement;
+  root.lang = 'fr';
+  root.classList.add('js');
+  const Q = new URLSearchParams(location.search);
+  const CAPTURE = Q.has('capture');
+  const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  // images embarquées
+  const IMG = window.TISON_IMG || {};
+  document.querySelectorAll('img[data-img]').forEach((im) => { const s = IMG[im.dataset.img]; if (s) im.src = s; });
+
+  // découpe des titres en lettres (le texte reste lisible par les lecteurs d'écran)
+  document.querySelectorAll('[data-split]').forEach((el) => {
+    el.setAttribute('aria-label', el.textContent.replace(/\s+/g, ' ').trim());
+    let i = 0;
+    const walk = (node, inEm) => {
+      [...node.childNodes].forEach((n) => {
+        if (n.nodeType === 3) {
+          const frag = document.createDocumentFragment();
+          n.textContent.split(/(\s+)/).forEach((part) => {
+            if (!part) return;
+            if (/^\s+$/.test(part)) { frag.append(document.createTextNode(' ')); return; }
+            const w = document.createElement('span'); w.className = 'w'; w.setAttribute('aria-hidden', 'true');
+            [...part].forEach((ch) => { const c = document.createElement('span'); c.className = 'c' + (inEm ? ' em' : ''); c.textContent = ch; c.style.animationDelay = (i * 0.035) + 's'; c.style.transitionDelay = (i * 0.035) + 's'; i++; w.append(c); });
+            frag.append(w);
+          });
+          n.replaceWith(frag);
+        } else if (n.nodeType === 1) walk(n, inEm || n.tagName === 'EM');
+      });
+    };
+    walk(el, false);
+  });
+
+  const hasGsap = !!window.gsap;
+  if (!hasGsap || reduced) {
+    document.querySelectorAll('[data-split]').forEach((el) => el.classList.add('is-lit'));
+  }
+
+  // --- état du foyer, piloté par le défilement (une seule variable pour la caméra, le feu et la jauge) ---
+  const R = (d) => d * Math.PI / 180;
+  const orb = (a) => ({ pos: [Math.sin(R(a)) * 9.4, 2.15, Math.cos(R(a)) * 9.4], orb: a });
+  const KEYS = {
+    hero0: { pos: [0, 1.5, 6.4], look: [0, 1.05, 0], fov: 40, heat: .6, flame: .8, swirl: 0, min: 1140, temp: 250, label: 'allumage' },
+    hero1: { pos: [.45, 1.0, 3.0], look: [0, .7, 0], fov: 48, heat: .95, flame: 1.3, swirl: .1, min: 1180, temp: 900, label: 'flambée' },
+    hist: { pos: [-3.6, 1.45, 2.3], look: [.6, .75, -.3], fov: 42, heat: 1, flame: .9, swirl: .15, min: 1210, temp: 820, label: 'braise vive' },
+    carte: { pos: [.15, 7.4, .55], look: [0, 0, 0], fov: 50, heat: 1.1, flame: .9, swirl: .4, min: 1245, temp: 950, label: 'coup de feu' },
+    gal0: { ...orb(200), look: [0, 1.55, 0], fov: 44, heat: 1, flame: .85, swirl: .7, min: 1275, temp: 880, label: 'service' },
+    gal1: { ...orb(260), look: [0, 1.55, 0], fov: 44, heat: 1, flame: .85, swirl: .7, min: 1280, temp: 880, label: 'service' },
+    gal2: { ...orb(320), look: [0, 1.55, 0], fov: 44, heat: 1, flame: .85, swirl: .7, min: 1285, temp: 870, label: 'service' },
+    gal3: { ...orb(380), look: [0, 1.55, 0], fov: 44, heat: 1, flame: .85, swirl: .7, min: 1290, temp: 860, label: 'service' },
+    gal4: { ...orb(440), look: [0, 1.55, 0], fov: 44, heat: 1, flame: .85, swirl: .7, min: 1295, temp: 850, label: 'service' },
+    gal5: { ...orb(500), look: [0, 1.55, 0], fov: 44, heat: 1, flame: .85, swirl: .7, min: 1300, temp: 840, label: 'service' },
+    avis: { pos: [0, 11.5, 6.8], look: [0, .4, 0], fov: 46, heat: .9, flame: .6, swirl: .25, min: 1340, temp: 760, label: 'braise vive' },
+    resa: { pos: [.4, 2.1, 5.3], look: [0, 1.0, 0], fov: 46, heat: 1.05, flame: 1.2, swirl: .1, min: 1365, temp: 820, label: 'dernières tables' },
+    infos: { pos: [3.1, .55, 5.2], look: [0, .55, 0], fov: 42, heat: .7, flame: .4, swirl: .05, min: 1390, temp: 520, label: 'braise douce' },
+    fin: { pos: [0, 2.5, 8.8], look: [0, .9, 0], fov: 40, heat: .45, flame: .14, swirl: 0, min: 1420, temp: 300, label: 'cendres chaudes' }
+  };
+  let anchors = [];
+  function measure() {
+    const vh = innerHeight; const y0 = scrollY;
+    const list = [];
+    document.querySelectorAll('[data-keys]').forEach((el) => {
+      const r = el.getBoundingClientRect(); const top = r.top + y0; const h = el.offsetHeight;
+      el.dataset.keys.split(',').forEach((k) => {
+        const [name, f] = k.split('@'); const fr = parseFloat(f);
+        let y;
+        if (el.classList.contains('hero') || el.classList.contains('galerie')) y = top + fr * Math.max(h - vh, 1);
+        else if (el.tagName === 'FOOTER') y = document.documentElement.scrollHeight - vh;
+        else y = top - vh * .45 + fr * Math.max(h - vh * .4, 1);
+        list.push({ y: Math.max(0, y), k: KEYS[name], name });
+      });
+    });
+    list.sort((a, b) => a.y - b.y);
+    anchors = list;
+  }
+  const lerp = (a, b, t) => a + (b - a) * t;
+  const ease = (t) => t * t * (3 - 2 * t);
+  const cat = (p0, p1, p2, p3, t) => { const t2 = t * t, t3 = t2 * t; return 0.5 * ((2 * p1) + (-p0 + p2) * t + (2 * p0 - 5 * p1 + 4 * p2 - p3) * t2 + (-p0 + 3 * p1 - 3 * p2 + p3) * t3); };
+  const S = { pos: [0, 1.5, 6.4], look: [0, 1, 0], fov: 40, heat: .6, flame: .8, swirl: 0, min: 1140, temp: 250, label: 'allumage', gal: -2, y: 0 };
+  window.TISON = { S, CAPTURE, reduced, ignite: reduced ? 1 : 0, ready: false };
+  function sample(y) {
+    const A = anchors; if (!A.length) return;
+    let i = 0; while (i < A.length - 1 && A[i + 1].y <= y) i++;
+    const a = A[i], b = A[Math.min(i + 1, A.length - 1)];
+    const raw = b.y > a.y ? Math.min(1, Math.max(0, (y - a.y) / (b.y - a.y))) : 0;
+    const t = ease(raw);
+    const pa = A[Math.max(i - 1, 0)].k, pb = A[Math.min(i + 2, A.length - 1)].k;
+    const ka = a.k, kb = b.k;
+    if (ka.orb !== undefined && kb.orb !== undefined) {
+      const ang = R(lerp(ka.orb, kb.orb, t));
+      S.pos = [Math.sin(ang) * 9.4, 2.15, Math.cos(ang) * 9.4];
+    } else {
+      S.pos = [0, 1, 2].map((j) => cat(pa.pos[j], ka.pos[j], kb.pos[j], pb.pos[j], t));
+    }
+    S.look = [0, 1, 2].map((j) => lerp(ka.look[j], kb.look[j], t));
+    ['fov', 'heat', 'flame', 'swirl', 'min', 'temp'].forEach((p) => { S[p] = lerp(ka[p], kb[p], t); });
+    S.label = raw < .5 ? ka.label : kb.label;
+    // progression dans la galerie (0 = première photo, 5 = dernière)
+    const g0 = A.find((x) => x.name === 'gal0'), g5 = A.find((x) => x.name === 'gal5');
+    if (g0 && g5) S.gal = (y - g0.y) / (g5.y - g0.y) * 5;
+  }
+  let ys = 0, first = true;
+  const jt = document.querySelector('.jauge .t'), jl = document.querySelector('.jauge .l'), jc = document.querySelector('.jauge .c');
+  const cap = document.querySelector('.galerie__cap'), capT = cap.querySelector('.galerie__t'), capN = cap.querySelector('span');
+  const caps = [...document.querySelectorAll('.galerie__list figcaption')].map((f) => f.textContent);
+  let lastJ = '', lastCap = -1;
+  function tick(time, dt) {
+    const y = scrollY;
+    if (first) { ys = y; first = false; }
+    const k = 1 - Math.exp(-(dt || 16) / 1000 * 5.5);
+    ys += (y - ys) * k;
+    sample(ys);
+    S.y = ys;
+    const m = Math.round(S.min), hh = String(Math.floor(m / 60)).padStart(2, '0'), mm = String(m % 60).padStart(2, '0');
+    const txt = hh + ':' + mm + '|' + S.label + '|' + Math.round(S.temp / 10) * 10;
+    if (txt !== lastJ) { lastJ = txt; jt.textContent = hh + ':' + mm; jl.textContent = S.label; jc.textContent = (Math.round(S.temp / 10) * 10) + ' °C'; }
+    const ci = Math.max(0, Math.min(5, Math.round(S.gal)));
+    if (ci !== lastCap) { lastCap = ci; capN.textContent = (ci + 1) + ' / 6'; capT.textContent = caps[ci]; }
+  }
+  window.TISON.tick = tick;
+  window.TISON.measure = measure;
+
+  if (!hasGsap) { measure(); addEventListener('scroll', () => tick(0, 1000)); addEventListener('resize', measure); return; }
+
+  gsap.registerPlugin(ScrollTrigger);
+  let lenis = null;
+  if (!reduced && !CAPTURE && window.Lenis) {
+    lenis = new Lenis({ lerp: 0.11, smoothWheel: true, syncTouch: false });
+    lenis.on('scroll', ScrollTrigger.update);
+    gsap.ticker.add((t) => lenis.raf(t * 1000));
+    gsap.ticker.lagSmoothing(0);
+  }
+  document.querySelectorAll('a[href^="#"]').forEach((a) => a.addEventListener('click', (e) => {
+    const id = a.getAttribute('href'); const el = id === '#top' ? document.body : document.querySelector(id);
+    if (!el) return; e.preventDefault();
+    if (lenis) lenis.scrollTo(id === '#top' ? 0 : el, { duration: 1.6 }); else el.scrollIntoView({ behavior: reduced ? 'auto' : 'smooth' });
+  }));
+
+  if (!CAPTURE) gsap.ticker.add((time, dt) => tick(time, dt));
+  ScrollTrigger.addEventListener('refresh', measure);
+
+  // héros : allumage
+  const tison = document.querySelector('.hero__tison');
+  const intro = () => {
+    const tl = gsap.timeline({ delay: CAPTURE ? 0.2 : 0.35 });
+    tl.to(window.TISON, { ignite: 1, duration: 2.6, ease: 'power2.out' }, 0)
+      .fromTo(tison, { '--lit': -16 }, { '--lit': 100, duration: 1.9, ease: 'power2.inOut' }, 0.45)
+      .from('.hero__maison', { y: 24, opacity: 0, duration: 1.1, ease: 'expo.out' }, 0.25)
+      .from('.hero__kicker', { y: 12, opacity: 0, duration: .9, ease: 'expo.out' }, 0.5)
+      .from('.hero__foot > *', { y: 26, opacity: 0, duration: 1.1, stagger: .12, ease: 'expo.out' }, 0.9)
+      .from('.top, .jauge', { opacity: 0, duration: 1, ease: 'power2.out' }, 1.0);
+  };
+  if (!reduced) {
+    if (CAPTURE) { gsap.set(tison, { '--lit': -16 }); window.TISON.intro = intro; } else intro();
+    gsap.to('.hero__head', { yPercent: -28, opacity: 0, ease: 'none', scrollTrigger: { trigger: '.hero', start: 'top top', end: 'bottom bottom', scrub: true } });
+    gsap.to('.hero__foot', { y: -40, opacity: 0, ease: 'none', scrollTrigger: { trigger: '.hero', start: '20% top', end: '70% top', scrub: true } });
+  } else { gsap.set(tison, { '--lit': 100 }); }
+
+  // titres qui s'embrasent à l'arrivée
+  if (!reduced) document.querySelectorAll('[data-split]:not(.hero__tison)').forEach((el) => {
+    ScrollTrigger.create({ trigger: el, start: 'top 82%', onEnter: () => el.classList.add('is-lit') });
+  });
+
+  // la carte : les assiettes se posent en 3D
+  const mm = gsap.matchMedia();
+  mm.add({ desk: '(min-width: 900px)', mob: '(max-width: 899px)', rm: '(prefers-reduced-motion: reduce)' }, (ctx) => {
+    const { desk, rm } = ctx.conditions;
+    if (rm) return;
+    const cards = gsap.utils.toArray('.plat');
+    if (desk) {
+      const track = document.querySelector('.plats');
+      const dist = () => track.scrollWidth - track.parentElement.clientWidth + innerWidth * 0.04;
+      const tw = gsap.to(track, { x: () => -dist(), ease: 'none', scrollTrigger: { trigger: '.carte__pin', start: 'top top', end: () => '+=' + dist() * 1.15, pin: true, scrub: 0.6, invalidateOnRefresh: true } });
+      cards.forEach((c, i) => {
+        gsap.fromTo(c, { rotateY: -38, z: -160, transformPerspective: 1200, transformOrigin: '0% 50%' }, { rotateY: 0, z: 0, ease: 'none', scrollTrigger: { trigger: c, containerAnimation: tw, start: 'left 100%', end: 'left 55%', scrub: true } });
+        gsap.fromTo(c, { '--sear': 1 }, { '--sear': 0, ease: 'none', scrollTrigger: { trigger: c, containerAnimation: tw, start: 'left 90%', end: 'left 40%', scrub: true } });
+        gsap.fromTo(c.querySelector('img'), { scale: 1.25 }, { scale: 1.02, ease: 'none', scrollTrigger: { trigger: c, containerAnimation: tw, start: 'left 100%', end: 'right 0%', scrub: true } });
+      });
+    } else {
+      cards.forEach((c) => {
+        gsap.fromTo(c, { rotateX: 32, y: 70, transformPerspective: 900, transformOrigin: '50% 100%' }, { rotateX: 0, y: 0, ease: 'none', scrollTrigger: { trigger: c, start: 'top 100%', end: 'top 50%', scrub: true } });
+        gsap.fromTo(c, { '--sear': 1 }, { '--sear': 0, ease: 'none', scrollTrigger: { trigger: c, start: 'top 85%', end: 'top 25%', scrub: true } });
+        gsap.fromTo(c.querySelector('img'), { scale: 1.22 }, { scale: 1.02, ease: 'none', scrollTrigger: { trigger: c, start: 'top 100%', end: 'bottom 0%', scrub: true } });
+      });
+    }
+  });
+  // inclinaison au survol (souris uniquement)
+  if (matchMedia('(hover: hover) and (pointer: fine)').matches && !reduced) {
+    document.querySelectorAll('.plat').forEach((c) => {
+      const img = c.querySelector('.plat__img');
+      const rx = gsap.quickTo(img, 'rotationX', { duration: .6, ease: 'power3' }), ry = gsap.quickTo(img, 'rotationY', { duration: .6, ease: 'power3' });
+      gsap.set(img, { transformPerspective: 700 });
+      c.addEventListener('pointermove', (e) => { const r = c.getBoundingClientRect(); ry(((e.clientX - r.left) / r.width - .5) * 8); rx(-((e.clientY - r.top) / r.height - .5) * 8); });
+      c.addEventListener('pointerleave', () => { rx(0); ry(0); });
+    });
+  }
+
+  // avis mis en avant automatiquement
+  const items = [...document.querySelectorAll('.avis__item')];
+  const bar = document.querySelector('.avis__bar span');
+  let cur = 0, run = null;
+  function show(n) {
+    const prev = items[cur]; cur = (n + items.length) % items.length; const next = items[cur];
+    if (prev !== next) {
+      gsap.to(prev, { opacity: 0, y: -14, duration: .45, ease: 'power2.in', onComplete: () => prev.classList.remove('is-on') });
+      next.classList.add('is-on');
+      gsap.fromTo(next, { opacity: 0, y: 18 }, { opacity: 1, y: 0, duration: .8, delay: .25, ease: 'expo.out' });
+    }
+    if (run) run.kill();
+    run = gsap.fromTo(bar, { scaleX: 0 }, { scaleX: 1, duration: 4.2, ease: 'none', onComplete: () => show(cur + 1) });
+    if (!avisVisible) run.pause();
+  }
+  let avisVisible = false;
+  ScrollTrigger.create({ trigger: '.avis', start: 'top 80%', end: 'bottom 20%', onToggle: (s) => { avisVisible = s.isActive; if (run) s.isActive ? run.play() : run.pause(); } });
+  document.querySelectorAll('.avis__nav').forEach((b) => b.addEventListener('click', () => show(cur + (+b.dataset.dir))));
+  if (!reduced) show(0); else { items.forEach((it) => { it.classList.add('is-on'); it.style.position = 'relative'; }); document.querySelector('.avis__deck').style.gap = '14px'; }
+
+  // navigation : section en cours
+  document.querySelectorAll('.top__nav a.nav').forEach((a) => {
+    const sec = document.querySelector(a.getAttribute('href'));
+    ScrollTrigger.create({ trigger: sec, start: 'top 50%', end: 'bottom 50%', onToggle: (s) => a.classList.toggle('is-here', s.isActive) });
+  });
+
+  // réservation
+  const now = new Date();
+  const jours = ['dimanche', 'lundi', 'mardi', 'mercredi', 'jeudi', 'vendredi', 'samedi'];
+  const ouvert = (d) => d.getDay() >= 2 && d.getDay() <= 6;
+  const chip = (box, name, value, label, opts = {}) => {
+    const id = 'r-' + name + '-' + value;
+    const l = document.createElement('label'); l.className = 'chip';
+    l.innerHTML = '<input type="radio" name="' + name + '" id="' + id + '" value="' + value + '"' + (opts.dis ? ' disabled' : '') + (opts.on ? ' checked' : '') + '><span>' + label + '</span>';
+    box.append(l);
+  };
+  const fc = document.getElementById('f-couverts'), fj = document.getElementById('f-jour'), fh = document.getElementById('f-heure');
+  [1, 2, 3, 4, 5, 6].forEach((n) => chip(fc, 'couverts', n, n === 6 ? '6 et +' : String(n), { on: n === 2 }));
+  let firstOpen = -1;
+  for (let i = 0; i < 4; i++) {
+    const d = new Date(now); d.setDate(now.getDate() + i);
+    const lab = i === 0 ? 'Ce soir' : i === 1 ? 'Demain' : jours[d.getDay()][0].toUpperCase() + jours[d.getDay()].slice(1) + ' ' + d.getDate();
+    const ok = ouvert(d); if (ok && firstOpen < 0) firstOpen = i;
+    chip(fj, 'jour', i, ok ? lab : lab + ' · fermé', { dis: !ok, on: false });
+  }
+  if (firstOpen >= 0) document.getElementById('r-jour-' + firstOpen).checked = true;
+  ['19:30', '20:00', '20:30', '21:00', '21:30', '22:00'].forEach((h) => chip(fh, 'heure', h.replace(':', ''), h, { dis: h === '21:00', on: h === '20:30' }));
+  const form = document.getElementById('resa'), sum = document.getElementById('resa-sum'), ticket = document.getElementById('ticket');
+  const val = (n) => form.querySelector('input[name="' + n + '"]:checked');
+  const jourLabel = (i) => { const d = new Date(now); d.setDate(now.getDate() + i); return i === 0 ? 'ce soir' : i === 1 ? 'demain' : jours[d.getDay()] + ' ' + d.getDate(); };
+  function upd() {
+    const c = val('couverts'), j = val('jour'), h = val('heure');
+    if (!c || !j || !h) { sum.textContent = 'Choisissez un jour'; return; }
+    const cv = c.value === '6' ? '6 couverts et +' : c.value + (c.value === '1' ? ' couvert' : ' couverts');
+    sum.textContent = 'Réserver · ' + cv + ', ' + jourLabel(+j.value) + ' ' + h.nextElementSibling.textContent;
+  }
+  form.addEventListener('change', upd); upd();
+  form.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const c = val('couverts'), j = val('jour'), h = val('heure'); if (!c || !j || !h) return;
+    document.getElementById('t-c').textContent = c.nextElementSibling.textContent;
+    const jl2 = jourLabel(+j.value); document.getElementById('t-j').textContent = jl2[0].toUpperCase() + jl2.slice(1);
+    document.getElementById('t-h').textContent = h.nextElementSibling.textContent;
+    document.getElementById('t-num').textContent = String(400 + Math.floor(Math.random() * 90)).padStart(4, '0');
+    form.hidden = true; ticket.hidden = false;
+    if (!reduced) gsap.fromTo(ticket, { clipPath: 'inset(0 0 100% 0)', y: -20 }, { clipPath: 'inset(0 0 -10% 0)', y: 0, duration: 1.1, ease: 'expo.out', clearProps: 'clipPath' });
+    ticket.focus({ preventScroll: true });
+    ScrollTrigger.refresh();
+  });
+  document.getElementById('t-back').addEventListener('click', () => { ticket.hidden = true; form.hidden = false; ScrollTrigger.refresh(); });
+
+  // infos : état du soir
+  const live = document.getElementById('live');
+  const hm = now.getHours() * 60 + now.getMinutes();
+  if (ouvert(now)) {
+    if (hm < 19 * 60) { live.textContent = 'Ouvert ce soir · le feu prend à 19:00'; live.style.setProperty('--etat', '#5fd68a'); }
+    else if (hm < 23 * 60 + 30) { live.textContent = 'Service en cours · jusqu’à 23:30'; live.style.setProperty('--etat', '#5fd68a'); }
+    else live.textContent = 'Service terminé · le feu reprend demain';
+  } else {
+    let d = new Date(now), n = 0; do { d.setDate(d.getDate() + 1); n++; } while (!ouvert(d) && n < 7);
+    live.textContent = 'Fermé ce soir · réouverture ' + jours[d.getDay()] + ' à 19:00';
+  }
+
+  addEventListener('load', () => ScrollTrigger.refresh());
+  setTimeout(() => { if (!window.TISON.ready && !root.classList.contains('gl-on')) { root.classList.add('no-gl'); ScrollTrigger.refresh(); } }, 6000);
+  if (document.fonts) document.fonts.ready.then(() => ScrollTrigger.refresh());
+  measure();
+})();
+</script>
+<script type="module">
+import * as THREE from 'https://cdn.jsdelivr.net/npm/three@0.170.0/build/three.module.min.js';
+const T = window.TISON;
+const root = document.documentElement;
+const canvas = document.querySelector('.scene');
+const fail = () => root.classList.add('no-gl');
+let renderer;
+if (T.reduced) fail();
+else {
+  try { renderer = new THREE.WebGLRenderer({ canvas, antialias: false, alpha: false, powerPreference: 'high-performance' }); }
+  catch (e) { fail(); }
+}
+if (renderer) {
+  root.classList.add('gl-on');
+  const mobile = matchMedia('(max-width: 760px), (pointer: coarse)').matches;
+  const DPR = Math.min(devicePixelRatio || 1, T.CAPTURE ? 2 : mobile ? 1.6 : 1.75);
+  renderer.setPixelRatio(DPR);
+  renderer.setClearColor(0x0b0806, 1);
+  const scene = new THREE.Scene();
+  scene.fog = new THREE.FogExp2(0x0b0806, 0.05);
+  const camera = new THREE.PerspectiveCamera(42, 1, 0.05, 80);
+
+  // --- texture de bruit précalculée (fbm, cellules), lue par tous les shaders : léger sur téléphone ---
+  const N = 256;
+  const noiseTex = (() => {
+    const data = new Uint8Array(N * N * 4);
+    const hash = (x, y, s) => { let h = (x * 374761393 + y * 668265263 + s * 982451653) | 0; h = (h ^ (h >>> 13)) * 1274126177 | 0; return ((h ^ (h >>> 16)) >>> 0) / 4294967295; };
+    const vnoise = (x, y, P, s) => {
+      const xi = Math.floor(x), yi = Math.floor(y), xf = x - xi, yf = y - yi;
+      const u = xf * xf * (3 - 2 * xf), v = yf * yf * (3 - 2 * yf);
+      const g = (a, b) => hash(((a % P) + P) % P, ((b % P) + P) % P, s);
+      return (g(xi, yi) * (1 - u) + g(xi + 1, yi) * u) * (1 - v) + (g(xi, yi + 1) * (1 - u) + g(xi + 1, yi + 1) * u) * v;
+    };
+    const fbm = (x, y, s) => { let a = 0, amp = .5, P = 4, f = 4 / N; for (let o = 0; o < 5; o++) { a += amp * vnoise(x * f, y * f, P, s + o); P *= 2; f *= 2; amp *= .5; } return a / .97; };
+    const C = 11, pts = [];
+    for (let j = 0; j < C; j++) for (let i = 0; i < C; i++) pts.push([(i + .15 + .7 * hash(i, j, 7)) / C, (j + .15 + .7 * hash(i, j, 9)) / C, hash(i, j, 3)]);
+    for (let y = 0; y < N; y++) for (let x = 0; x < N; x++) {
+      const k = (y * N + x) * 4;
+      data[k] = Math.min(255, fbm(x, y, 1) * 255);
+      data[k + 1] = Math.min(255, fbm(x + 77, y + 33, 5) * 255);
+      const px = x / N, py = y / N, ci = Math.floor(px * C), cj = Math.floor(py * C);
+      let f1 = 9, f2 = 9, id = 0;
+      for (let dj = -1; dj <= 1; dj++) for (let di = -1; di <= 1; di++) {
+        const ii = ((ci + di) % C + C) % C, jj = ((cj + dj) % C + C) % C, p = pts[jj * C + ii];
+        const dx = p[0] + (ci + di - ii) / C - px, dy = p[1] + (cj + dj - jj) / C - py;
+        const d = Math.hypot(dx, dy) * C;
+        if (d < f1) { f2 = f1; f1 = d; id = p[2]; } else if (d < f2) f2 = d;
+      }
+      data[k + 2] = Math.min(255, (f2 - f1) * 255);
+      data[k + 3] = id * 255;
+    }
+    const t = new THREE.DataTexture(data, N, N, THREE.RGBAFormat);
+    t.wrapS = t.wrapT = THREE.RepeatWrapping; t.magFilter = t.minFilter = THREE.LinearFilter; t.needsUpdate = true;
+    return t;
+  })();
+
+  const U = { uTime: { value: 0 }, uNoise: { value: noiseTex }, uHeat: { value: .6 }, uFlame: { value: .8 }, uIgnite: { value: 0 }, uSwirl: { value: 0 }, uFire: { value: new THREE.Vector3(0, .75, 0) } };
+  const FIRE = new THREE.Vector3(0, .75, 0);
+
+  // sol et pierres du foyer
+  const ground = new THREE.Mesh(new THREE.CircleGeometry(40, 48), new THREE.MeshStandardMaterial({ color: 0x1b130e, roughness: 1 }));
+  ground.rotation.x = -Math.PI / 2; scene.add(ground);
+  const stoneMat = new THREE.MeshStandardMaterial({ color: 0x4a3a30, roughness: .92, flatShading: true });
+  for (let i = 0; i < 17; i++) {
+    const g = new THREE.IcosahedronGeometry(.3, 1); const p = g.attributes.position;
+    for (let v = 0; v < p.count; v++) { const h = Math.sin(Math.round(p.getX(v) * 100) * 12.9898 + Math.round(p.getY(v) * 100) * 78.233 + Math.round(p.getZ(v) * 100) * 37.719 + i * 4.1) * 43758.5453; const s = .82 + .32 * (h - Math.floor(h)); p.setXYZ(v, p.getX(v) * s, p.getY(v) * s, p.getZ(v) * s); }
+    g.computeVertexNormals();
+    const m = new THREE.Mesh(g, stoneMat); const a = i / 17 * Math.PI * 2;
+    m.position.set(Math.cos(a) * 1.85, .1, Math.sin(a) * 1.85); m.scale.set(1.1, .62, 1); m.rotation.set(a * 3, a, a * 2); scene.add(m);
+  }
+  const light = new THREE.PointLight(0xff6a24, 30, 0, 1.7); light.position.set(0, .9, 0); scene.add(light);
+  scene.add(new THREE.AmbientLight(0x3a2418, .5));
+
+  // lit de braises
+  const bed = new THREE.Mesh(new THREE.CircleGeometry(1.75, 64), new THREE.ShaderMaterial({
+    uniforms: U, transparent: true, depthWrite: false,
+    vertexShader: 'varying vec2 vUv; void main(){ vUv = uv; gl_Position = projectionMatrix * modelViewMatrix * vec4(position,1.0); }',
+    fragmentShader: `uniform sampler2D uNoise; uniform float uTime, uHeat, uIgnite; varying vec2 vUv;
+      void main(){ vec2 c = vUv - .5; float r = length(c) * 2.0;
+        vec4 nz = texture2D(uNoise, vUv * 1.6); vec4 nz2 = texture2D(uNoise, vUv * 3.1 + .37);
+        float cell = nz.a; float edge = smoothstep(.0, .16, nz.b);
+        float pulse = .62 + .38 * sin(uTime * (.8 + cell * 2.2) + cell * 40.0);
+        float heatR = 1.0 - smoothstep(.1, .95, r);
+        float g = edge * heatR * (.4 + .6 * cell) * pulse * uHeat * mix(.15, 1.0, uIgnite) * (.75 + .5 * nz2.r);
+        vec3 col = mix(vec3(.05,.03,.02), vec3(.9,.16,.02), smoothstep(.04, .45, g));
+        col = mix(col, vec3(1.0,.62,.22), smoothstep(.45, .9, g));
+        col = mix(col, vec3(1.0,.9,.7), smoothstep(.9, 1.2, g));
+        float ash = smoothstep(.45, 1.0, r) * nz2.g; col = mix(col, vec3(.23,.2,.19), ash * .55);
+        gl_FragColor = vec4(col, 1.0 - smoothstep(.86, 1.0, r)); }`
+  }));
+  bed.rotation.x = -Math.PI / 2; bed.position.y = .02; scene.add(bed);
+
+  // bûches
+  const logMat = new THREE.ShaderMaterial({
+    uniforms: U,
+    vertexShader: `uniform sampler2D uNoise; varying vec2 vUv; varying vec3 vW; varying vec3 vN;
+      void main(){ vUv = uv; vec3 p = position; float n = texture2D(uNoise, uv * vec2(1.0, 2.0)).r; p += normal * (n - .5) * .07;
+        vec4 w = modelMatrix * vec4(p, 1.0); vW = w.xyz; vN = normalize(mat3(modelMatrix) * normal); gl_Position = projectionMatrix * viewMatrix * w; }`,
+    fragmentShader: `uniform sampler2D uNoise; uniform float uTime, uHeat, uIgnite; uniform vec3 uFire; varying vec2 vUv; varying vec3 vW; varying vec3 vN;
+      void main(){ vec2 uv = vec2(vUv.x * 1.0, vUv.y * 2.2);
+        vec4 nz = texture2D(uNoise, uv); vec4 nz2 = texture2D(uNoise, uv * 2.3 + .31);
+        vec3 bark = mix(vec3(.03,.024,.02), vec3(.14,.095,.07), nz.r * nz2.g * 1.7);
+        float zone = smoothstep(.32, .72, texture2D(uNoise, uv * .37 + .11).g);
+        float crack = (1.0 - smoothstep(.0, .07, nz.b)) * (.25 + .75 * zone); float fine = (1.0 - smoothstep(.0, .05, nz2.b)) * zone;
+        vec3 toF = uFire - vW; float d = length(toF);
+        float facing = clamp(dot(toF / d, normalize(vN)) * .6 + .4, 0.0, 1.0);
+        float near = 1.0 / (1.0 + d * d * 1.4);
+        float flick = .65 + .7 * texture2D(uNoise, vec2(uTime * .04 + vW.x * .2, vW.z * .2 + uTime * .03)).r;
+        float hot = uHeat * mix(.1, 1.0, uIgnite);
+        float glow = max(crack, fine * .55) * facing * smoothstep(.05, .5, near * 2.4) * hot * flick;
+        vec3 ember = mix(vec3(.85,.1,.02), vec3(1.0,.6,.2), smoothstep(.25, .85, glow));
+        ember = mix(ember, vec3(1.0,.92,.75), smoothstep(.85, 1.15, glow));
+        vec3 col = bark * (.35 + vec3(1.0,.42,.16) * facing * near * 7.0 * hot) + ember * glow * 2.1;
+        float ash = smoothstep(.35, .95, normalize(vN).y) * nz2.r * (1.0 - glow);
+        col = mix(col, vec3(.3,.27,.25) * (.35 + near * 2.5 * hot), ash * .5);
+        gl_FragColor = vec4(col, 1.0); }`
+  });
+  const logs = new THREE.Group();
+  [[0, .26, .5, 0, 3.0, .27], [0, .26, -.5, 0, 3.0, .29], [.48, .74, 0, Math.PI / 2, 2.7, .25], [-.5, .74, 0, Math.PI / 2, 2.6, .24], [.1, 1.12, .12, .5, 2.2, .2]].forEach(([x, y, z, ry, len, r], i) => {
+    const g = new THREE.CylinderGeometry(r, r * .92, len, 28, 10, false); g.rotateZ(Math.PI / 2);
+    const m = new THREE.Mesh(g, logMat); m.position.set(x, y, z); m.rotation.set(i * .06, ry, (i % 2 ? -1 : 1) * .05); logs.add(m);
+  });
+  scene.add(logs);
+
+  // flammes (panneaux tournés vers la caméra, bruit qui monte)
+  const flameMats = [];
+  const flames = new THREE.Group();
+  [[0, .35, 0, 1.05, 2.1, .1], [.4, .45, .2, .8, 1.6, .37], [-.42, .45, -.1, .85, 1.7, .62], [.15, .5, -.4, .7, 1.4, .91], [-.2, .5, .38, .72, 1.5, .23], [.55, .7, -.3, .5, 1.1, .55], [-.6, .7, .3, .5, 1.0, .77]].forEach(([x, y, z, w, h, s]) => {
+    const mat = new THREE.ShaderMaterial({
+      uniforms: { ...U, uCenter: { value: new THREE.Vector3(x, y, z) }, uSize: { value: new THREE.Vector2(w, h) }, uBase: { value: new THREE.Vector2(w, h) }, uSeed: { value: s } },
+      transparent: true, depthWrite: false, blending: THREE.AdditiveBlending,
+      vertexShader: `uniform vec3 uCenter; uniform vec2 uSize; varying vec2 vUv; varying float vTop;
+        void main(){ vUv = uv; vec3 up = vec3(0.0, 1.0, 0.0); vec3 toC = normalize(cameraPosition - uCenter);
+          vec3 right = cross(up, toC); float l = length(right); right = l > .08 ? right / l : vec3(viewMatrix[0][0], viewMatrix[1][0], viewMatrix[2][0]);
+          vTop = abs(toC.y);
+          vec3 wp = uCenter + right * position.x * uSize.x + up * (position.y + .5) * uSize.y;
+          gl_Position = projectionMatrix * viewMatrix * vec4(wp, 1.0); }`,
+      fragmentShader: `uniform sampler2D uNoise; uniform float uTime, uSeed, uFlame, uIgnite; varying vec2 vUv; varying float vTop;
+        void main(){ vec2 uv = vUv;
+          float n1 = texture2D(uNoise, vec2(uv.x * .5 + uSeed, uv.y * .55 - uTime * .42)).r;
+          float n2 = texture2D(uNoise, vec2(uv.x * 1.1 - uSeed, uv.y * 1.2 - uTime * .9)).g;
+          float n = n1 * .62 + n2 * .38;
+          float x = (uv.x - .5) * 2.0 + (n - .5) * 1.25 * uv.y;
+          float w = .95 * (1.0 - pow(uv.y, .75));
+          float body = 1.0 - smoothstep(w * .2, w, abs(x));
+          body *= smoothstep(.0, .16, uv.y);
+          body *= 1.0 - smoothstep(.3, .95, uv.y + (n - .5) * .7);
+          float core = body * (1.0 - smoothstep(.0, .5, uv.y));
+          vec3 col = vec3(.85,.14,.02) * body + vec3(1.0,.5,.1) * body * body + vec3(1.0,.86,.6) * core * core * .9;
+          col *= uFlame * uIgnite * (1.0 - smoothstep(.72, .96, vTop));
+          gl_FragColor = vec4(col, 1.0); }`
+    });
+    flameMats.push(mat);
+    const m = new THREE.Mesh(new THREE.PlaneGeometry(1, 1), mat); m.frustumCulled = false; flames.add(m);
+  });
+  scene.add(flames);
+
+  // halo de chaleur
+  const halo = new THREE.Mesh(new THREE.PlaneGeometry(1, 1), new THREE.ShaderMaterial({
+    uniforms: U, transparent: true, depthWrite: false, blending: THREE.AdditiveBlending,
+    vertexShader: `uniform vec3 uFire; varying vec2 vUv; void main(){ vUv = uv; vec3 r = vec3(viewMatrix[0][0], viewMatrix[1][0], viewMatrix[2][0]); vec3 u = vec3(viewMatrix[0][1], viewMatrix[1][1], viewMatrix[2][1]);
+      vec3 wp = uFire + (r * position.x + u * position.y) * 7.0; gl_Position = projectionMatrix * viewMatrix * vec4(wp, 1.0); }`,
+    fragmentShader: `uniform float uHeat, uIgnite, uTime; varying vec2 vUv; void main(){ float d = length(vUv - .5) * 2.0; float a = pow(1.0 - clamp(d, 0.0, 1.0), 2.6);
+      float f = .85 + .15 * sin(uTime * 7.3) * sin(uTime * 3.1); gl_FragColor = vec4(vec3(1.0,.38,.1) * a * .42 * uHeat * uIgnite * f, 1.0); }`
+  }));
+  halo.frustumCulled = false; scene.add(halo);
+
+  // braises qui montent + braises qui flottent
+  const pix = { value: 1 };
+  function embers(count, wide) {
+    const g = new THREE.BufferGeometry();
+    const seed = new Float32Array(count * 4), size = new Float32Array(count), pos = new Float32Array(count * 3);
+    for (let i = 0; i < count; i++) {
+      const a = Math.random() * Math.PI * 2, r = wide ? 2 + Math.pow(Math.random(), .7) * 12 : Math.pow(Math.random(), .8) * 1.15;
+      seed.set([Math.cos(a) * r, Math.sin(a) * r, wide ? .25 + Math.random() * .5 : .7 + Math.random() * 1.4, Math.random()], i * 4);
+      size[i] = wide ? 2 + Math.random() * 4 : 3 + Math.random() * 7;
+    }
+    g.setAttribute('position', new THREE.BufferAttribute(pos, 3));
+    g.setAttribute('aSeed', new THREE.BufferAttribute(seed, 4));
+    g.setAttribute('aSize', new THREE.BufferAttribute(size, 1));
+    const m = new THREE.ShaderMaterial({
+      uniforms: { ...U, uPix: pix, uWide: { value: wide ? 1 : 0 } }, transparent: true, depthWrite: false, blending: THREE.AdditiveBlending,
+      vertexShader: `uniform float uTime, uSwirl, uPix, uWide, uIgnite, uHeat; attribute vec4 aSeed; attribute float aSize; varying float vLife; varying float vA;
+        void main(){ float H = mix(8.5, 15.0, uWide); float life = fract(aSeed.w + uTime * aSeed.z * mix(.1, .025, uWide));
+          float y = life * H; vec3 p;
+          if (uWide < .5) { float sp = 1.0 + y * .42; p = vec3(aSeed.x * sp, y + .3, aSeed.y * sp);
+            p.x += sin(uTime * 1.7 * aSeed.z + aSeed.w * 31.0 + y * 1.9) * .09 * y;
+            p.z += cos(uTime * 1.3 * aSeed.z + aSeed.w * 17.0 + y * 1.4) * .09 * y; }
+          else { p = vec3(aSeed.x, y, aSeed.y); p.x += sin(uTime * .3 + aSeed.w * 40.0) * .6; p.z += cos(uTime * .27 + aSeed.w * 23.0) * .6; }
+          float ang = uSwirl * (y * .22 + uTime * .12) * (1.0 - uWide * .6);
+          float cs = cos(ang), sn = sin(ang); p.xz = mat2(cs, -sn, sn, cs) * p.xz;
+          vLife = life;
+          float rnd = fract(aSeed.w * 91.7);
+          vA = clamp(uIgnite * 1.5 - rnd * .5, 0.0, 1.0) * mix(.5 + .5 * uHeat, .75, uWide);
+          vec4 mv = modelViewMatrix * vec4(p, 1.0);
+          gl_PointSize = clamp(aSize * uPix * (1.0 - life * .55) / -mv.z, 1.0, 46.0);
+          gl_Position = projectionMatrix * mv; }`,
+      fragmentShader: `uniform float uWide; varying float vLife; varying float vA;
+        void main(){ vec2 c = gl_PointCoord - .5; float d = length(c); float a = smoothstep(.5, .0, d); a *= a;
+          vec3 col = mix(vec3(1.0,.86,.55), vec3(1.0,.28,.05), smoothstep(.0, mix(.55, .2, uWide), vLife));
+          float fade = smoothstep(.0, .06, vLife) * (1.0 - smoothstep(mix(.5, .7, uWide), 1.0, vLife));
+          gl_FragColor = vec4(col * a * fade * vA * mix(1.0, .55, uWide), 1.0); }`
+    });
+    const p = new THREE.Points(g, m); p.frustumCulled = false; return p;
+  }
+  scene.add(embers(mobile ? 700 : 1300, false));
+  scene.add(embers(mobile ? 450 : 900, true));
+
+  // photos de la galerie : elles sortent du feu (bord qui brûle)
+  const IMG = window.TISON_IMG || {};
+  const gal = ['g-tranches', 'g-cuisine', 'g-saignant', 'g-salle2', 'g-mains', 'g-verre'];
+  const photos = [];
+  const loader = new THREE.TextureLoader();
+  gal.forEach((key, i) => {
+    const ang = (200 + i * 60) * Math.PI / 180;
+    const mat = new THREE.ShaderMaterial({
+      uniforms: { uMap: { value: null }, uNoise: U.uNoise, uReveal: { value: 0 }, uTime: U.uTime, uSeed: { value: i * .173 } },
+      transparent: true, depthWrite: false,
+      vertexShader: 'varying vec2 vUv; void main(){ vUv = uv; gl_Position = projectionMatrix * modelViewMatrix * vec4(position, 1.0); }',
+      fragmentShader: `uniform sampler2D uMap, uNoise; uniform float uReveal, uTime, uSeed; varying vec2 vUv;
+        void main(){ vec3 tex = texture2D(uMap, vUv).rgb;
+          float n = texture2D(uNoise, vUv * .55 + uSeed).r * .75 + texture2D(uNoise, vUv * 1.7 + uSeed).g * .25;
+          n = n * .8 + (1.0 - vUv.y) * .2;
+          float t = uReveal * 1.3 - .15;
+          float m = smoothstep(t + .015, t - .015, n);
+          float e = smoothstep(.07, .0, abs(n - t)) * step(.001, uReveal) * (1.0 - step(.999, uReveal));
+          vec3 col = tex * m * (.92 + .08 * sin(uTime * 2.0 + vUv.y * 6.0));
+          col *= mix(vec3(1.0), vec3(1.06,.96,.86), .6);
+          col += vec3(1.0,.42,.08) * e * 2.2 + vec3(1.0,.85,.5) * pow(e, 4.0) * 1.5;
+          float a = max(m, e);
+          gl_FragColor = vec4(col, a); }`
+    });
+    const mesh = new THREE.Mesh(new THREE.PlaneGeometry(1, 1), mat);
+    mesh.position.set(Math.sin(ang) * 5.1, 1.6, Math.cos(ang) * 5.1);
+    mesh.lookAt(Math.sin(ang) * 20, 1.6, Math.cos(ang) * 20);
+    mesh.visible = false;
+    scene.add(mesh); photos.push({ mesh, mat, aspect: 1.5 });
+    if (IMG[key]) loader.load(IMG[key], (tx) => { tx.colorSpace = THREE.NoColorSpace; tx.minFilter = THREE.LinearFilter; tx.generateMipmaps = false; mat.uniforms.uMap.value = tx; photos[i].aspect = tx.image.width / tx.image.height; fitPhotos(); });
+  });
+  let portrait = false;
+  function fitPhotos() { photos.forEach((p) => { const h = portrait ? 2.25 : 2.7; const w = Math.min(h * p.aspect, portrait ? 3.1 : 4.2); p.mesh.scale.set(w, w / p.aspect, 1); }); }
+
+  // taille
+  function resize() {
+    const w = innerWidth, h = Math.max(innerHeight, canvas.clientHeight || 0);
+    renderer.setSize(w, h, false); camera.aspect = w / h; portrait = w / h < .9; camera.updateProjectionMatrix();
+    pix.value = h * DPR * .0045 * (portrait ? 1.25 : 1);
+    fitPhotos();
+  }
+  resize(); addEventListener('resize', resize);
+
+  // souris (léger décalage de caméra, ordinateur uniquement)
+  const mouse = { x: 0, y: 0, tx: 0, ty: 0 };
+  if (matchMedia('(pointer: fine)').matches) addEventListener('pointermove', (e) => { mouse.tx = e.clientX / innerWidth - .5; mouse.ty = e.clientY / innerHeight - .5; });
+
+  const V = new THREE.Vector3(), L = new THREE.Vector3();
+  let visible = true;
+  document.addEventListener('visibilitychange', () => { visible = !document.hidden; });
+  function frame(time) {
+    if (!visible) return;
+    const S = T.S;
+    const t = time;
+    U.uTime.value = t;
+    U.uIgnite.value = T.ignite;
+    U.uHeat.value = S.heat; U.uFlame.value = S.flame; U.uSwirl.value = S.swirl;
+    // caméra
+    mouse.x += (mouse.tx - mouse.x) * .05; mouse.y += (mouse.ty - mouse.y) * .05;
+    L.set(S.look[0], S.look[1], S.look[2]);
+    V.set(S.pos[0], S.pos[1], S.pos[2]);
+    if (portrait) { const k = 1.42; V.sub(L).multiplyScalar(k).add(L); }
+    V.x += Math.sin(t * .21) * .1 + mouse.x * .5; V.y += Math.sin(t * .17) * .05 - mouse.y * .25; V.z += Math.cos(t * .19) * .08;
+    camera.position.copy(V); camera.fov = S.fov + (portrait ? 8 : 0); camera.updateProjectionMatrix(); camera.lookAt(L);
+    // feu
+    const fl = (.82 + .18 * Math.sin(t * 9.1) * Math.sin(t * 3.7 + 1.3)) * S.heat * (.15 + .85 * T.ignite);
+    light.intensity = 34 * fl * (.6 + .4 * S.flame);
+    flameMats.forEach((m) => { const b = m.uniforms.uBase.value; m.uniforms.uSize.value.set(b.x * (.75 + .25 * S.flame), b.y * S.flame * (.4 + .6 * T.ignite)); });
+    // photos : apparition puis disparition au fil de la galerie
+    photos.forEach((p, i) => {
+      const g = S.gal;
+      const r = Math.min(1, Math.max(0, i === 0 ? (g + .4) / .5 : (g - (i - .95)) / .75)) * (1 - Math.min(1, Math.max(0, (g - 5.25) / .7))) * (g < -1.2 ? 0 : 1);
+      p.mat.uniforms.uReveal.value = r; p.mesh.visible = r > .001 && !!p.mat.uniforms.uMap.value;
+    });
+    renderer.render(scene, camera);
+  }
+  T.frame = frame;
+  if (T.CAPTURE) {} else if (window.gsap) gsap.ticker.add(frame); else { const loop = (ms) => { T.tick && T.tick(ms / 1000, 16); frame(ms / 1000); requestAnimationFrame(loop); }; requestAnimationFrame(loop); }
+  T.ready = true;
+  T.renderer = renderer;
+}
+</script>

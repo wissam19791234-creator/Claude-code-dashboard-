@@ -1,0 +1,428 @@
+[
+{
+"w": "Ton",
+"start": 0.25,
+"end": 0.35,
+"line": 0
+},
+{
+"w": "commerce",
+"start": 0.35,
+"end": 0.77,
+"line": 0
+},
+{
+"w": "n'a",
+"start": 0.77,
+"end": 1.01,
+"line": 0
+},
+{
+"w": "toujours",
+"start": 1.01,
+"end": 1.17,
+"line": 0
+},
+{
+"w": "pas",
+"start": 1.17,
+"end": 1.37,
+"line": 0
+},
+{
+"w": "de",
+"start": 1.37,
+"end": 1.49,
+"line": 0
+},
+{
+"w": "site ?",
+"start": 1.49,
+"end": 1.69,
+"line": 0
+},
+{
+"w": "Aujourd'hui,",
+"start": 3.0,
+"end": 3.56,
+"line": 1
+},
+{
+"w": "tes",
+"start": 3.68,
+"end": 4.0,
+"line": 1
+},
+{
+"w": "clients",
+"start": 4.0,
+"end": 4.26,
+"line": 1
+},
+{
+"w": "te",
+"start": 4.26,
+"end": 4.42,
+"line": 1
+},
+{
+"w": "cherchent",
+"start": 4.42,
+"end": 4.88,
+"line": 1
+},
+{
+"w": "sur",
+"start": 4.88,
+"end": 4.98,
+"line": 1
+},
+{
+"w": "leur",
+"start": 4.98,
+"end": 5.1,
+"line": 1
+},
+{
+"w": "téléphone.",
+"start": 5.1,
+"end": 5.56,
+"line": 1
+},
+{
+"w": "Et",
+"start": 5.95,
+"end": 6.09,
+"line": 2
+},
+{
+"w": "ils",
+"start": 6.09,
+"end": 6.19,
+"line": 2
+},
+{
+"w": "ne",
+"start": 6.19,
+"end": 6.29,
+"line": 2
+},
+{
+"w": "trouvent",
+"start": 6.29,
+"end": 6.49,
+"line": 2
+},
+{
+"w": "rien.",
+"start": 6.49,
+"end": 6.73,
+"line": 2
+},
+{
+"w": "Regarde",
+"start": 7.45,
+"end": 7.93,
+"line": 3
+},
+{
+"w": "ce",
+"start": 7.93,
+"end": 8.07,
+"line": 3
+},
+{
+"w": "qu'on",
+"start": 8.07,
+"end": 8.23,
+"line": 3
+},
+{
+"w": "peut",
+"start": 8.23,
+"end": 8.35,
+"line": 3
+},
+{
+"w": "faire",
+"start": 8.35,
+"end": 8.57,
+"line": 3
+},
+{
+"w": "pour",
+"start": 8.57,
+"end": 8.75,
+"line": 3
+},
+{
+"w": "toi.",
+"start": 8.75,
+"end": 8.93,
+"line": 3
+},
+{
+"w": "Un",
+"start": 10.3,
+"end": 10.5,
+"line": 4
+},
+{
+"w": "site",
+"start": 10.5,
+"end": 10.64,
+"line": 4
+},
+{
+"w": "premium,",
+"start": 10.64,
+"end": 11.0,
+"line": 4
+},
+{
+"w": "animé,",
+"start": 11.0,
+"end": 11.96,
+"line": 4
+},
+{
+"w": "en",
+"start": 11.96,
+"end": 12.34,
+"line": 4
+},
+{
+"w": "3D.",
+"start": 12.34,
+"end": 12.68,
+"line": 4
+},
+{
+"w": "Pensé",
+"start": 14.4,
+"end": 14.8,
+"line": 5
+},
+{
+"w": "pour",
+"start": 14.8,
+"end": 14.94,
+"line": 5
+},
+{
+"w": "le",
+"start": 14.94,
+"end": 15.04,
+"line": 5
+},
+{
+"w": "téléphone.",
+"start": 15.04,
+"end": 15.34,
+"line": 5
+},
+{
+"w": "Qui",
+"start": 20.7,
+"end": 20.8,
+"line": 6
+},
+{
+"w": "donne",
+"start": 20.8,
+"end": 20.94,
+"line": 6
+},
+{
+"w": "envie",
+"start": 20.94,
+"end": 21.18,
+"line": 6
+},
+{
+"w": "de",
+"start": 21.18,
+"end": 21.32,
+"line": 6
+},
+{
+"w": "réserver,",
+"start": 21.32,
+"end": 21.82,
+"line": 6
+},
+{
+"w": "d'appeler,",
+"start": 22.18,
+"end": 22.68,
+"line": 6
+},
+{
+"w": "de",
+"start": 22.98,
+"end": 23.14,
+"line": 6
+},
+{
+"w": "commander.",
+"start": 23.14,
+"end": 23.44,
+"line": 6
+},
+{
+"w": "Ta",
+"start": 25.2,
+"end": 25.32,
+"line": 7
+},
+{
+"w": "landing",
+"start": 25.32,
+"end": 25.52,
+"line": 7
+},
+{
+"w": "page",
+"start": 25.52,
+"end": 25.84,
+"line": 7
+},
+{
+"w": "premium :",
+"start": 25.84,
+"end": 26.22,
+"line": 7
+},
+{
+"w": "200",
+"start": 26.22,
+"end": 26.9,
+"line": 7
+},
+{
+"w": "€.",
+"start": 26.9,
+"end": 27.26,
+"line": 7
+},
+{
+"w": "Livrée",
+"start": 28.15,
+"end": 28.57,
+"line": 8
+},
+{
+"w": "en",
+"start": 28.57,
+"end": 28.69,
+"line": 8
+},
+{
+"w": "5",
+"start": 28.69,
+"end": 28.89,
+"line": 8
+},
+{
+"w": "jours.",
+"start": 28.89,
+"end": 29.11,
+"line": 8
+},
+{
+"w": "Et",
+"start": 29.55,
+"end": 29.69,
+"line": 9
+},
+{
+"w": "la",
+"start": 29.69,
+"end": 29.75,
+"line": 9
+},
+{
+"w": "maquette",
+"start": 29.75,
+"end": 30.11,
+"line": 9
+},
+{
+"w": "est",
+"start": 30.11,
+"end": 30.23,
+"line": 9
+},
+{
+"w": "offerte.",
+"start": 30.23,
+"end": 30.75,
+"line": 9
+},
+{
+"w": "Écris",
+"start": 31.2,
+"end": 31.54,
+"line": 10
+},
+{
+"w": "SITE",
+"start": 31.54,
+"end": 31.84,
+"line": 10
+},
+{
+"w": "en",
+"start": 31.84,
+"end": 31.98,
+"line": 10
+},
+{
+"w": "message",
+"start": 31.98,
+"end": 32.18,
+"line": 10
+},
+{
+"w": "privé.",
+"start": 32.18,
+"end": 32.66,
+"line": 10
+},
+{
+"w": "On",
+"start": 33.4,
+"end": 33.59,
+"line": 11
+},
+{
+"w": "te",
+"start": 33.59,
+"end": 33.779,
+"line": 11
+},
+{
+"w": "prépare",
+"start": 33.779,
+"end": 34.206,
+"line": 11
+},
+{
+"w": "ta",
+"start": 34.206,
+"end": 34.395,
+"line": 11
+},
+{
+"w": "maquette",
+"start": 34.395,
+"end": 34.869,
+"line": 11
+},
+{
+"w": "gratuitement.",
+"start": 34.869,
+"end": 35.58,
+"line": 11
+}
+]

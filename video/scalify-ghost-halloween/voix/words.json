@@ -1,0 +1,470 @@
+[
+{
+"w": "Quatre",
+"start": 0.22,
+"end": 0.44,
+"line": 0
+},
+{
+"w": "trucs",
+"start": 0.44,
+"end": 0.64,
+"line": 0
+},
+{
+"w": "que",
+"start": 0.64,
+"end": 0.78,
+"line": 0
+},
+{
+"w": "ton",
+"start": 0.78,
+"end": 0.86,
+"line": 0
+},
+{
+"w": "commerce",
+"start": 0.86,
+"end": 1.14,
+"line": 0
+},
+{
+"w": "doit",
+"start": 1.14,
+"end": 1.34,
+"line": 0
+},
+{
+"w": "ghoster",
+"start": 1.34,
+"end": 1.68,
+"line": 0
+},
+{
+"w": "avant",
+"start": 1.68,
+"end": 1.82,
+"line": 0
+},
+{
+"w": "Halloween.",
+"start": 1.82,
+"end": 2.06,
+"line": 0
+},
+{
+"w": "Un :",
+"start": 2.85,
+"end": 3.03,
+"line": 1
+},
+{
+"w": "le",
+"start": 3.41,
+"end": 3.49,
+"line": 1
+},
+{
+"w": "site",
+"start": 3.49,
+"end": 3.67,
+"line": 1
+},
+{
+"w": "fait",
+"start": 3.67,
+"end": 3.81,
+"line": 1
+},
+{
+"w": "par",
+"start": 3.81,
+"end": 3.93,
+"line": 1
+},
+{
+"w": "ton",
+"start": 3.93,
+"end": 4.07,
+"line": 1
+},
+{
+"w": "neveu",
+"start": 4.07,
+"end": 4.31,
+"line": 1
+},
+{
+"w": "en",
+"start": 4.31,
+"end": 4.37,
+"line": 1
+},
+{
+"w": "2012.",
+"start": 4.37,
+"end": 4.57,
+"line": 1
+},
+{
+"w": "Deux :",
+"start": 5.95,
+"end": 6.307,
+"line": 2
+},
+{
+"w": "les",
+"start": 6.307,
+"end": 6.529,
+"line": 2
+},
+{
+"w": "devis",
+"start": 6.529,
+"end": 6.841,
+"line": 2
+},
+{
+"w": "à",
+"start": 6.841,
+"end": 6.975,
+"line": 2
+},
+{
+"w": "3",
+"start": 6.975,
+"end": 7.109,
+"line": 2
+},
+{
+"w": "000",
+"start": 7.109,
+"end": 7.332,
+"line": 2
+},
+{
+"w": "€.",
+"start": 7.332,
+"end": 7.51,
+"line": 2
+},
+{
+"w": "Trois :",
+"start": 8.75,
+"end": 8.97,
+"line": 3
+},
+{
+"w": "attendre",
+"start": 9.45,
+"end": 9.69,
+"line": 3
+},
+{
+"w": "2",
+"start": 9.69,
+"end": 9.87,
+"line": 3
+},
+{
+"w": "mois",
+"start": 9.87,
+"end": 10.01,
+"line": 3
+},
+{
+"w": "pour",
+"start": 10.01,
+"end": 10.17,
+"line": 3
+},
+{
+"w": "être",
+"start": 10.17,
+"end": 10.29,
+"line": 3
+},
+{
+"w": "en",
+"start": 10.29,
+"end": 10.39,
+"line": 3
+},
+{
+"w": "ligne.",
+"start": 10.39,
+"end": 10.53,
+"line": 3
+},
+{
+"w": "Quatre :",
+"start": 11.85,
+"end": 12.05,
+"line": 4
+},
+{
+"w": "payer",
+"start": 12.55,
+"end": 12.71,
+"line": 4
+},
+{
+"w": "avant",
+"start": 12.71,
+"end": 12.81,
+"line": 4
+},
+{
+"w": "d'avoir",
+"start": 12.81,
+"end": 13.03,
+"line": 4
+},
+{
+"w": "vu",
+"start": 13.03,
+"end": 13.21,
+"line": 4
+},
+{
+"w": "quoi",
+"start": 13.21,
+"end": 13.35,
+"line": 4
+},
+{
+"w": "que",
+"start": 13.35,
+"end": 13.43,
+"line": 4
+},
+{
+"w": "ce",
+"start": 13.43,
+"end": 13.51,
+"line": 4
+},
+{
+"w": "soit.",
+"start": 13.51,
+"end": 13.71,
+"line": 4
+},
+{
+"w": "Par",
+"start": 15.0,
+"end": 15.14,
+"line": 5
+},
+{
+"w": "contre",
+"start": 15.14,
+"end": 15.36,
+"line": 5
+},
+{
+"w": "lui,",
+"start": 15.36,
+"end": 15.6,
+"line": 5
+},
+{
+"w": "tu",
+"start": 15.88,
+"end": 16.08,
+"line": 5
+},
+{
+"w": "le",
+"start": 16.08,
+"end": 16.16,
+"line": 5
+},
+{
+"w": "ghostes",
+"start": 16.16,
+"end": 16.4,
+"line": 5
+},
+{
+"w": "pas.",
+"start": 16.4,
+"end": 16.52,
+"line": 5
+},
+{
+"w": "Une",
+"start": 16.95,
+"end": 17.11,
+"line": 6
+},
+{
+"w": "landing",
+"start": 17.11,
+"end": 17.29,
+"line": 6
+},
+{
+"w": "page",
+"start": 17.29,
+"end": 17.55,
+"line": 6
+},
+{
+"w": "premium",
+"start": 17.55,
+"end": 17.89,
+"line": 6
+},
+{
+"w": "à",
+"start": 17.89,
+"end": 18.05,
+"line": 6
+},
+{
+"w": "200",
+"start": 18.05,
+"end": 18.25,
+"line": 6
+},
+{
+"w": "€.",
+"start": 18.25,
+"end": 18.51,
+"line": 6
+},
+{
+"w": "Livrée",
+"start": 19.0,
+"end": 19.38,
+"line": 7
+},
+{
+"w": "en",
+"start": 19.38,
+"end": 19.48,
+"line": 7
+},
+{
+"w": "5",
+"start": 19.48,
+"end": 19.64,
+"line": 7
+},
+{
+"w": "jours.",
+"start": 19.64,
+"end": 19.86,
+"line": 7
+},
+{
+"w": "Et",
+"start": 20.25,
+"end": 20.37,
+"line": 8
+},
+{
+"w": "tu",
+"start": 20.37,
+"end": 20.43,
+"line": 8
+},
+{
+"w": "vois",
+"start": 20.43,
+"end": 20.55,
+"line": 8
+},
+{
+"w": "ta",
+"start": 20.55,
+"end": 20.65,
+"line": 8
+},
+{
+"w": "maquette",
+"start": 20.65,
+"end": 20.93,
+"line": 8
+},
+{
+"w": "avant",
+"start": 20.93,
+"end": 21.09,
+"line": 8
+},
+{
+"w": "de",
+"start": 21.09,
+"end": 21.19,
+"line": 8
+},
+{
+"w": "payer.",
+"start": 21.19,
+"end": 21.37,
+"line": 8
+},
+{
+"w": "Écris",
+"start": 22.6,
+"end": 22.9,
+"line": 9
+},
+{
+"w": "SITE",
+"start": 22.9,
+"end": 23.1,
+"line": 9
+},
+{
+"w": "en",
+"start": 23.1,
+"end": 23.2,
+"line": 9
+},
+{
+"w": "message",
+"start": 23.2,
+"end": 23.36,
+"line": 9
+},
+{
+"w": "privé.",
+"start": 23.36,
+"end": 23.82,
+"line": 9
+},
+{
+"w": "On",
+"start": 24.3,
+"end": 24.42,
+"line": 10
+},
+{
+"w": "te",
+"start": 24.42,
+"end": 24.52,
+"line": 10
+},
+{
+"w": "la",
+"start": 24.52,
+"end": 24.58,
+"line": 10
+},
+{
+"w": "prépare",
+"start": 24.58,
+"end": 24.94,
+"line": 10
+},
+{
+"w": "gratuitement.",
+"start": 24.94,
+"end": 25.46,
+"line": 10
+}
+]

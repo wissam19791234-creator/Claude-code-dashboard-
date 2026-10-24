@@ -1,0 +1,228 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=1080, height=1920" />
+<title>Scalify : les trucs que ton commerce doit ghoster</title>
+<script src="src/vendor/gsap.min.js"></script>
+<script src="src/data.js"></script>
+<script type="importmap">{ "imports": { "three": "./src/vendor/three.module.js" } }</script>
+<style>
+@font-face { font-family: "Fredoka"; src: url("assets/fonts/Fredoka-700.woff2") format("woff2"); font-weight: 300 700; }
+@font-face { font-family: "Rubik Wet Paint"; src: url("assets/fonts/RubikWetPaint-400.woff2") format("woff2"); font-weight: 400; }
+@font-face { font-family: "Comic Neue"; src: url("assets/fonts/ComicNeue-700.woff2") format("woff2"); font-weight: 700; }
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html, body { width: 1080px; height: 1920px; overflow: hidden; background: #5a2fe0; }
+#root { width: 100%; height: 100%; position: relative; overflow: hidden; font-family: "Fredoka", sans-serif; color: #fffaf2; }
+.abs { position: absolute; }
+.full { position: absolute; inset: 0; }
+#bg { background: radial-gradient(85% 55% at 50% 42%, #9b78ff 0%, #6c3cf5 45%, #3f1bb3 100%); }
+#glowLime { background: radial-gradient(55% 35% at 50% 52%, rgba(200,255,62,.55), rgba(200,255,62,.12) 50%, transparent 72%); opacity: 0; }
+#dots { opacity: .5; background-image: radial-gradient(rgba(255,255,255,.14) 3px, transparent 3.5px); background-size: 54px 54px; }
+.spark { position: absolute; width: 34px; height: 34px; }
+.spark svg { width: 100%; height: 100%; display: block; }
+.bat { position: absolute; width: 150px; height: 70px; opacity: 0; }
+#gl { width: 100%; height: 100%; display: block; }
+#flash { background: #fffaf2; opacity: 0; }
+.st { -webkit-text-stroke: 14px #130a24; paint-order: stroke fill; text-shadow: 0 9px 0 #130a24; }
+
+/* accroche */
+#hook { left: 30px; right: 30px; top: 175px; text-align: center; }
+#hookA { font-size: 72px; font-weight: 700; line-height: 1.02; letter-spacing: -0.01em; }
+#hookB { font-family: "Rubik Wet Paint", "Fredoka", sans-serif; font-size: 194px; line-height: 1; color: #c8ff3e; margin-top: 6px; letter-spacing: .01em; -webkit-text-stroke: 16px #130a24; paint-order: stroke fill; text-shadow: 0 12px 0 #130a24; }
+#hookC { display: inline-block; margin-top: 18px; padding: 10px 34px 16px; border-radius: 999px; background: #ff8a2a; color: #130a24; font-size: 70px; font-weight: 700; box-shadow: 0 0 0 7px #130a24, 0 12px 0 7px #130a24; }
+.hw { display: inline-block; opacity: 0; margin: 0 .08em; }
+
+/* titres karaoké */
+.chip { left: 470px; top: 150px; width: 140px; height: 96px; border-radius: 999px; background: #c8ff3e; color: #130a24; display: grid; place-items: center; font-size: 66px; font-weight: 700; box-shadow: 0 0 0 7px #130a24, 0 10px 0 7px #130a24; opacity: 0; }
+.ttl { position: absolute; left: 40px; right: 40px; top: 282px; text-align: center; font-size: 80px; font-weight: 700; line-height: 1.04; letter-spacing: -0.01em; opacity: 0; }
+.ttl .w { display: inline-block; margin: 0 .09em; opacity: 0; -webkit-text-stroke: 14px #130a24; paint-order: stroke fill; text-shadow: 0 9px 0 #130a24; color: #fffaf2; }
+.ttl.top { top: 170px; }
+
+/* plateau des trucs ghostés */
+.slot { position: absolute; top: 1412px; width: 150px; height: 160px; border-radius: 22px; border: 5px dashed rgba(255,250,242,.55); opacity: 0; }
+.slot b { position: absolute; right: -16px; top: -18px; width: 58px; height: 58px; opacity: 0; }
+.slot b svg { width: 100%; height: 100%; display: block; }
+
+/* tampon « ghosté » */
+.stamp { position: absolute; left: 0; width: 1080px; top: 860px; text-align: center; font-family: "Rubik Wet Paint", "Fredoka", sans-serif; font-size: 170px; color: #c8ff3e; -webkit-text-stroke: 15px #130a24; paint-order: stroke fill; text-shadow: 0 12px 0 #130a24; opacity: 0; }
+.puff { position: absolute; width: 150px; height: 150px; margin: -75px 0 0 -75px; border-radius: 50%; background: radial-gradient(circle at 40% 35%, #ffffff, #e6dcff 60%, rgba(230,220,255,0) 72%); opacity: 0; }
+
+/* preuve : le téléphone */
+#phone { left: 325px; top: 520px; width: 430px; height: 930px; border-radius: 70px; background: #fffaf2; box-shadow: 0 0 0 12px #130a24, 18px 22px 0 12px #130a24; opacity: 0; }
+#screen { position: absolute; left: 14px; top: 14px; right: 14px; bottom: 14px; border-radius: 58px; overflow: hidden; background: #000; }
+#site { position: absolute; left: 0; top: 0; width: 402px; height: 869px; object-fit: cover; display: block; }
+#tagEx { left: 150px; top: 470px; padding: 14px 30px 18px; border-radius: 999px; background: #c8ff3e; color: #130a24; font-size: 48px; font-weight: 700; box-shadow: 0 0 0 7px #130a24, 0 10px 0 7px #130a24; opacity: 0; white-space: nowrap; }
+#tag200 { left: 640px; top: 1150px; width: 330px; height: 330px; border-radius: 50%; background: #ff8a2a; color: #130a24; display: grid; place-items: center; text-align: center; box-shadow: 0 0 0 10px #130a24, 0 14px 0 10px #130a24; opacity: 0; }
+#tag200 b { font-size: 118px; line-height: .9; font-weight: 700; display: block; }
+#tag200 small { font-size: 40px; font-weight: 600; display: block; margin-top: 4px; }
+
+/* appel à l'action */
+#ctaTop { left: 0; right: 0; top: 150px; display: flex; align-items: center; justify-content: center; gap: 22px; opacity: 0; }
+#ctaTop .lg { width: 118px; height: 118px; filter: drop-shadow(0 8px 0 #130a24); }
+#ctaTop .lg svg { width: 100%; height: 100%; display: block; overflow: visible; }
+#ctaTop span { font-size: 92px; font-weight: 700; }
+#ctaEcris { left: 0; right: 0; top: 300px; text-align: center; font-size: 132px; font-weight: 700; opacity: 0; }
+#ctaMp { left: 0; right: 0; top: 1045px; text-align: center; font-size: 104px; font-weight: 700; line-height: 1; opacity: 0; }
+#dm { left: 90px; right: 90px; top: 1200px; height: 300px; }
+.bub { position: absolute; padding: 20px 34px 24px; border-radius: 42px; font-size: 50px; font-weight: 600; line-height: 1.1; box-shadow: 0 0 0 6px #130a24, 0 9px 0 6px #130a24; opacity: 0; white-space: nowrap; }
+#bSent { right: 0; top: 0; background: #c8ff3e; color: #130a24; border-bottom-right-radius: 12px; }
+#bDots { left: 0; top: 130px; background: #fffaf2; border-bottom-left-radius: 12px; display: flex; gap: 12px; padding: 30px 34px; }
+#bDots i { width: 18px; height: 18px; border-radius: 50%; background: #6c3cf5; display: block; }
+#bRecv { left: 0; top: 130px; background: #fffaf2; color: #130a24; border-bottom-left-radius: 12px; }
+#bRecv strong { color: #6c3cf5; }
+</style>
+</head>
+<body>
+<div id="root" data-composition-id="main" data-start="0" data-duration="27.18" data-width="1080" data-height="1920">
+  <div id="bg" class="full"></div>
+  <div id="dots" class="full"></div>
+  <div id="glowLime" class="full"></div>
+  <div id="sparks" class="full"></div>
+  <div id="bats" class="full"></div>
+  <canvas id="gl" class="full clip" data-start="0" data-duration="27.18" data-track-index="4" width="1080" height="1920" data-layout-allow-overflow></canvas>
+
+  <div id="hook" class="abs">
+    <p id="hookA" class="st"><span class="hw">4</span> <span class="hw">trucs</span> <span class="hw">que</span> <span class="hw">ton</span> <span class="hw">commerce</span><br><span class="hw">doit</span></p>
+    <p id="hookB"><span class="hw">GHOSTER</span></p>
+    <p><span id="hookC" class="hw">avant Halloween</span></p>
+  </div>
+
+  <div id="chip0" class="chip abs">#1</div><div id="chip1" class="chip abs">#2</div><div id="chip2" class="chip abs">#3</div><div id="chip3" class="chip abs">#4</div>
+  <div id="titles" class="full"></div>
+  <div id="slots" class="full"></div>
+  <div id="stamps" class="full"></div>
+  <div id="puffs" class="full"></div>
+
+  <div id="phone" class="abs"><div id="screen"><video id="site" src="assets/video/site.mp4" muted playsinline data-start="16.9" data-duration="2.25" data-media-start="1.7" data-track-index="2"></video></div></div>
+  <div id="tagEx" class="abs">Exemple de site Scalify</div>
+  <div id="tag200" class="abs"><div><b>200&nbsp;€</b><small>le site</small></div></div>
+
+  <div id="ctaTop" class="abs"><div class="lg" id="lgSvg"></div><span class="st">Scalify</span></div>
+  <p id="ctaEcris" class="abs st">Écris</p>
+  <p id="ctaMp" class="abs st">en message privé</p>
+  <div id="dm" class="abs">
+    <div id="bSent" class="bub">SITE</div>
+    <div id="bDots" class="bub"><i></i><i></i><i></i></div>
+    <div id="bRecv" class="bub">On te la prépare <strong>gratuitement</strong> !</div>
+  </div>
+
+  <div id="flash" class="full"></div>
+  <audio id="mix" src="assets/audio/mix.wav" data-start="0" data-duration="27.18" data-track-index="5" data-volume="1"></audio>
+</div>
+<script type="module" src="src/main.js"></script>
+<script>
+(function () {
+  var G = window.GHOST, END = G.end;
+  var GH = '<svg viewBox="0 0 100 110"><path d="M50 6 C24 6 12 26 12 48 L12 96 L24 86 L36 98 L50 86 L64 98 L76 86 L88 96 L88 48 C88 26 76 6 50 6 Z" fill="#fffaf2" stroke="#130a24" stroke-width="7" stroke-linejoin="round"/><ellipse cx="38" cy="46" rx="6" ry="9" fill="#130a24"/><ellipse cx="62" cy="46" rx="6" ry="9" fill="#130a24"/><ellipse cx="50" cy="64" rx="5" ry="6" fill="#130a24"/></svg>';
+  var STAR = '<svg viewBox="0 0 40 40"><path d="M20 2 L24 16 L38 20 L24 24 L20 38 L16 24 L2 20 L16 16 Z" fill="#fffaf2"/></svg>';
+  var BAT = '<svg viewBox="0 0 150 70"><path d="M75 22 C70 10 62 8 58 16 C50 6 30 4 2 18 C18 22 24 34 26 46 C34 36 46 36 52 46 C58 38 66 38 75 52 C84 38 92 38 98 46 C104 36 116 36 124 46 C126 34 132 22 148 18 C120 4 100 6 92 16 C88 8 80 10 75 22 Z" fill="#130a24"/><circle cx="69" cy="26" r="3" fill="#c8ff3e"/><circle cx="81" cy="26" r="3" fill="#c8ff3e"/></svg>';
+  var LOGO = '<svg viewBox="-210 -210 420 420"><circle r="200" fill="#fffdf8" stroke="#161311" stroke-width="16"/><path d="M 63 -66 H -30 a 37.5 37.5 0 0 0 0 75 h 56.6 a 37.5 37.5 0 0 1 0 75 H -66" transform="translate(0,-42)" fill="none" stroke="#161311" stroke-width="40" stroke-linecap="round" stroke-linejoin="round"/><circle cx="84" cy="81" r="26" fill="#4da2ff" stroke="#161311" stroke-width="10"/></svg>';
+  document.getElementById('lgSvg').innerHTML = LOGO;
+  // étoiles (positions fixes)
+  var sp = document.getElementById('sparks'), s = 11;
+  function rnd() { s = (s * 16807) % 2147483647; return s / 2147483647; }
+  for (var i = 0; i < 22; i++) { var d = document.createElement('div'); d.className = 'spark'; d.id = 'sp' + i; d.innerHTML = STAR; var sz = 18 + rnd() * 30; d.style.cssText = 'left:' + (rnd() * 1040) + 'px;top:' + (rnd() * 1880) + 'px;width:' + sz + 'px;height:' + sz + 'px;opacity:.' + (3 + Math.floor(rnd() * 6)); sp.appendChild(d); }
+  var bats = document.getElementById('bats');
+  for (i = 0; i < 3; i++) { d = document.createElement('div'); d.className = 'bat'; d.id = 'bat' + i; d.innerHTML = BAT; bats.appendChild(d); }
+  // plateau
+  var slots = document.getElementById('slots');
+  for (i = 0; i < 4; i++) { d = document.createElement('div'); d.className = 'slot'; d.id = 'slot' + i; d.style.left = (195 + i * 180) + 'px'; d.innerHTML = '<b>' + GH + '</b>'; slots.appendChild(d); }
+  // tampons et bouffées
+  var stamps = document.getElementById('stamps'), puffs = document.getElementById('puffs');
+  for (i = 0; i < 4; i++) {
+    d = document.createElement('div'); d.className = 'stamp'; d.id = 'stamp' + i; d.textContent = 'GHOSTÉ'; stamps.appendChild(d);
+    for (var k = 0; k < 7; k++) { var p = document.createElement('div'); p.className = 'puff'; p.id = 'pf' + i + '_' + k; var a = k / 7 * Math.PI * 2; p.style.left = (540 + Math.cos(a) * 60) + 'px'; p.style.top = (980 + Math.sin(a) * 80) + 'px'; puffs.appendChild(p); }
+  }
+  // titres
+  var titles = document.getElementById('titles');
+  G.pages.forEach(function (pg, i) {
+    var el = document.createElement('div'); el.className = 'ttl' + (pg.line >= 5 ? ' top' : ''); el.id = 'tt' + i;
+    el.innerHTML = pg.w.map(function (w, k) { return '<span class="w" id="tw' + i + '_' + k + '">' + w[0].replace(/ ([?:!€])/g, ' $1').replace(/^(\d) (\d{3})$/, '$1 $2') + '</span>'; }).join(' ');
+    titles.appendChild(el);
+  });
+
+  var tl = gsap.timeline({ paused: true });
+  function ft(sel, from, to, at) { to.immediateRender = false; tl.fromTo(sel, from, to, at); }
+  var Lw = function (li) { return G.words.filter(function (w) { return w[3] === li; }); };
+
+  // décor : étoiles qui scintillent, chauves-souris
+  for (i = 0; i < 22; i++) ft('#sp' + i, { scale: .6, rotation: 0 }, { scale: 1.15, rotation: 45, duration: .9 + (i % 5) * .25, yoyo: true, repeat: Math.ceil(END / 1.2), ease: 'sine.inOut' }, (i % 7) * .13);
+  [[0.15, 1.6, 0, 300, 520], [0.35, 1.9, 1, 520, 760], [14.95, 1.5, 2, 380, 640]].forEach(function (b) {
+    var el = '#bat' + b[2];
+    ft(el, { x: -200, y: b[3], opacity: 1, scale: .8 }, { x: 1200, y: b[4], duration: b[1], ease: 'none' }, b[0]);
+    ft(el, { scaleY: 1 }, { scaleY: .45, duration: .09, yoyo: true, repeat: Math.round(b[1] / .18), ease: 'sine.inOut' }, b[0]);
+  });
+
+  // ====================== accroche
+  var w0 = Lw(0), hw = gsap.utils.toArray('#hook .hw'), map0 = [0, 1, 2, 3, 4, 5, 6, 7];
+  hw.forEach(function (el, k) {
+    var t = Math.max(.05, w0[map0[k]][1] - .03);
+    var big = k === 6;
+    ft(el, { opacity: 0, scale: big ? 2.4 : 1.6, y: big ? -60 : 30, rotation: big ? -8 : 0 }, { opacity: 1, scale: 1, y: 0, rotation: big ? -3 : 0, duration: big ? .38 : .24, ease: big ? 'back.out(2.4)' : 'back.out(3)' }, t);
+  });
+  ft('#flash', { opacity: 0 }, { opacity: .35, duration: .04 }, w0[6][1]); ft('#flash', { opacity: .35 }, { opacity: 0, duration: .25 }, w0[6][1] + .05);
+  ft('#hookB .hw', { scale: 1 }, { scale: 1.06, duration: .28, yoyo: true, repeat: 3, ease: 'sine.inOut' }, w0[6][1] + .45);
+  ft('#hook', { opacity: 1, y: 0, scale: 1 }, { opacity: 0, y: -160, scale: .9, duration: .32, ease: 'power3.in' }, 2.42);
+
+  // ====================== les quatre trucs
+  G.cards.forEach(function (c, i) {
+    var chipT = c.num - .03;
+    ft('#chip' + i, { opacity: 0, scale: .3, rotation: -20 }, { opacity: 1, scale: 1, rotation: i % 2 ? 4 : -4, duration: .3, ease: 'back.out(3)' }, chipT);
+    ft('#chip' + i, { opacity: 1 }, { opacity: 0, duration: .15 }, c.tray + .02);
+    // tampon + bouffées au passage du fantôme
+    var at = c.swoop + .24;
+    ft('#stamp' + i, { opacity: 0, scale: 2.4, rotation: -4 }, { opacity: 1, scale: 1, rotation: -11, duration: .26, ease: 'back.out(2.6)' }, at);
+    ft('#stamp' + i, { opacity: 1 }, { opacity: 0, scale: .6, duration: .2, ease: 'power2.in' }, c.tray - .02);
+    for (var k = 0; k < 7; k++) {
+      var a = k / 7 * Math.PI * 2;
+      ft('#pf' + i + '_' + k, { opacity: .95, scale: .3, x: 0, y: 0 }, { opacity: 0, scale: 1.6, x: Math.cos(a) * 260, y: Math.sin(a) * 320, duration: .7, ease: 'power2.out' }, at - .04 + k * .012);
+    }
+    ft('#slot' + i + ' b', { opacity: 0, scale: 0 }, { opacity: 1, scale: 1, duration: .3, ease: 'back.out(3)' }, c.tray + .42);
+  });
+  ft('#slots .slot', { opacity: 0 }, { opacity: 1, duration: .3 }, G.cards[0].in + .2);
+  ft('#slots .slot', { opacity: 1 }, { opacity: 0, duration: .25 }, G.grid + .1);
+
+  // ====================== retournement : « lui, tu le ghostes pas »
+  ft('#glowLime', { opacity: 0 }, { opacity: 1, duration: .4 }, G.twist + .1);
+  ft('#glowLime', { opacity: 1 }, { opacity: .35, duration: .5 }, G.proof - .2);
+  ft('#flash', { opacity: 0 }, { opacity: .3, duration: .04 }, G.twist + .12); ft('#flash', { opacity: .3 }, { opacity: 0, duration: .3 }, G.twist + .16);
+
+  // ====================== preuve : le téléphone
+  ft('#phone', { opacity: 0, x: 600, rotation: 18, scale: .8 }, { opacity: 1, x: 0, rotation: 5, scale: 1, duration: .5, ease: 'back.out(1.6)' }, G.proof);
+  ft('#tagEx', { opacity: 0, scale: .3, rotation: -20 }, { opacity: 1, scale: 1, rotation: -6, duration: .35, ease: 'back.out(3)' }, G.proof + .35);
+  ft('#tag200', { opacity: 0, scale: 2.6, rotation: -30 }, { opacity: 1, scale: 1, rotation: 10, duration: .3, ease: 'back.out(2.2)' }, G.t200 - .04);
+  ft('#phone, #tagEx, #tag200', { opacity: 1, y: 0 }, { opacity: 0, y: 260, duration: .3, ease: 'power3.in' }, G.grid - .12);
+
+  // ====================== appel à l'action
+  var w9 = Lw(9), w10 = Lw(10);
+  ft('#ctaTop', { opacity: 0, y: -60 }, { opacity: 1, y: 0, duration: .45, ease: 'back.out(2)' }, G.cta + .1);
+  ft('#ctaEcris', { opacity: 0, scale: 1.8 }, { opacity: 1, scale: 1, duration: .3, ease: 'back.out(2.5)' }, w9[0][1] - .04);
+  ft('#ctaMp', { opacity: 0, y: 60 }, { opacity: 1, y: 0, duration: .32, ease: 'back.out(2)' }, w9[2][1] - .04);
+  ft('#bSent', { opacity: 0, scale: .3, transformOrigin: '100% 100%' }, { opacity: 1, scale: 1, duration: .3, ease: 'back.out(2.6)' }, w9[4][1] + .1);
+  ft('#bDots', { opacity: 0, scale: .5, transformOrigin: '0% 100%' }, { opacity: 1, scale: 1, duration: .2, ease: 'back.out(2)' }, w10[0][1] - .45);
+  gsap.utils.toArray('#bDots i').forEach(function (d, i) { ft(d, { y: 0 }, { y: -12, duration: .14, yoyo: true, repeat: 1, ease: 'sine.inOut' }, w10[0][1] - .4 + i * .08); });
+  ft('#bDots', { opacity: 1 }, { opacity: 0, duration: .08 }, w10[0][1] - .05);
+  ft('#bRecv', { opacity: 0, scale: .4, transformOrigin: '0% 100%' }, { opacity: 1, scale: 1, duration: .32, ease: 'back.out(2.4)' }, w10[0][1] - .03);
+  ft('#ctaMp', { scale: 1 }, { scale: 1.05, duration: .4, yoyo: true, repeat: 5, ease: 'sine.inOut' }, w10[4][1] + .3);
+  ft('#glowLime', { opacity: .35 }, { opacity: .8, duration: .6 }, G.cta);
+
+  // ====================== titres karaoké
+  G.pages.forEach(function (pg, i) {
+    var el = '#tt' + i;
+    ft(el, { opacity: 0 }, { opacity: 1, duration: .01 }, pg.a);
+    ft(el, { opacity: 1, y: 0 }, { opacity: 0, y: -40, duration: .16, ease: 'power2.in' }, pg.b - .16);
+    pg.w.forEach(function (w, k) {
+      var s = '#tw' + i + '_' + k, t = Math.max(pg.a, w[1] - .04);
+      ft(s, { opacity: 0, scale: .4, y: 34 }, { opacity: 1, scale: 1, y: 0, duration: .2, ease: 'back.out(3)' }, t);
+      ft(s, { color: '#fffaf2' }, { color: '#c8ff3e', duration: .04 }, t);
+      ft(s, { color: '#c8ff3e' }, { color: '#fffaf2', duration: .12 }, Math.max(w[2], w[1] + .22));
+    });
+  });
+  tl.set({}, {}, END);
+  window.__timelines = window.__timelines || {};
+  window.__timelines['main'] = tl;
+})();
+</script>
+</body>
+</html>

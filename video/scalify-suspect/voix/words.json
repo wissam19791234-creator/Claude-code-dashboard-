@@ -1,0 +1,440 @@
+[
+{
+"w": "Le",
+"start": 0.22,
+"end": 0.38,
+"line": 0
+},
+{
+"w": "suspect",
+"start": 0.38,
+"end": 0.66,
+"line": 0
+},
+{
+"w": "est",
+"start": 0.66,
+"end": 0.86,
+"line": 0
+},
+{
+"w": "un",
+"start": 0.86,
+"end": 0.98,
+"line": 0
+},
+{
+"w": "commerçant.",
+"start": 0.98,
+"end": 1.4,
+"line": 0
+},
+{
+"w": "Il",
+"start": 2.2,
+"end": 2.36,
+"line": 1
+},
+{
+"w": "a",
+"start": 2.36,
+"end": 2.42,
+"line": 1
+},
+{
+"w": "une",
+"start": 2.42,
+"end": 2.5,
+"line": 1
+},
+{
+"w": "super",
+"start": 2.5,
+"end": 2.74,
+"line": 1
+},
+{
+"w": "boutique…",
+"start": 2.74,
+"end": 3.28,
+"line": 1
+},
+{
+"w": "mais",
+"start": 3.46,
+"end": 3.56,
+"line": 1
+},
+{
+"w": "toujours",
+"start": 3.56,
+"end": 3.84,
+"line": 1
+},
+{
+"w": "pas",
+"start": 3.84,
+"end": 4.02,
+"line": 1
+},
+{
+"w": "de",
+"start": 4.02,
+"end": 4.16,
+"line": 1
+},
+{
+"w": "site.",
+"start": 4.16,
+"end": 4.34,
+"line": 1
+},
+{
+"w": "Signe",
+"start": 5.4,
+"end": 5.64,
+"line": 2
+},
+{
+"w": "distinctif :",
+"start": 5.64,
+"end": 6.3,
+"line": 2
+},
+{
+"w": "il",
+"start": 6.46,
+"end": 6.54,
+"line": 2
+},
+{
+"w": "répète",
+"start": 6.54,
+"end": 6.92,
+"line": 2
+},
+{
+"w": "ses",
+"start": 6.92,
+"end": 7.02,
+"line": 2
+},
+{
+"w": "horaires",
+"start": 7.02,
+"end": 7.28,
+"line": 2
+},
+{
+"w": "au",
+"start": 7.28,
+"end": 7.38,
+"line": 2
+},
+{
+"w": "téléphone,",
+"start": 7.38,
+"end": 7.84,
+"line": 2
+},
+{
+"w": "15",
+"start": 8.18,
+"end": 8.36,
+"line": 2
+},
+{
+"w": "fois",
+"start": 8.36,
+"end": 8.56,
+"line": 2
+},
+{
+"w": "par",
+"start": 8.56,
+"end": 8.74,
+"line": 2
+},
+{
+"w": "jour.",
+"start": 8.74,
+"end": 8.94,
+"line": 2
+},
+{
+"w": "Il",
+"start": 9.8,
+"end": 9.948,
+"line": 3
+},
+{
+"w": "pense",
+"start": 9.948,
+"end": 10.206,
+"line": 3
+},
+{
+"w": "que",
+"start": 10.206,
+"end": 10.391,
+"line": 3
+},
+{
+"w": "le",
+"start": 10.391,
+"end": 10.538,
+"line": 3
+},
+{
+"w": "bouche-à-oreille,",
+"start": 10.538,
+"end": 11.24,
+"line": 3
+},
+{
+"w": "ça",
+"start": 11.24,
+"end": 11.388,
+"line": 3
+},
+{
+"w": "suffit.",
+"start": 11.388,
+"end": 11.72,
+"line": 3
+},
+{
+"w": "Et",
+"start": 12.4,
+"end": 12.58,
+"line": 4
+},
+{
+"w": "quand",
+"start": 12.58,
+"end": 12.7,
+"line": 4
+},
+{
+"w": "ses",
+"start": 12.7,
+"end": 12.84,
+"line": 4
+},
+{
+"w": "clients",
+"start": 12.84,
+"end": 13.1,
+"line": 4
+},
+{
+"w": "le",
+"start": 13.1,
+"end": 13.24,
+"line": 4
+},
+{
+"w": "cherchent",
+"start": 13.24,
+"end": 13.66,
+"line": 4
+},
+{
+"w": "en",
+"start": 13.66,
+"end": 13.66,
+"line": 4
+},
+{
+"w": "ligne :",
+"start": 13.66,
+"end": 13.9,
+"line": 4
+},
+{
+"w": "introuvable.",
+"start": 14.14,
+"end": 14.54,
+"line": 4
+},
+{
+"w": "Bonne",
+"start": 16.0,
+"end": 16.34,
+"line": 5
+},
+{
+"w": "nouvelle :",
+"start": 16.34,
+"end": 16.6,
+"line": 5
+},
+{
+"w": "on",
+"start": 16.8,
+"end": 16.88,
+"line": 5
+},
+{
+"w": "l'a",
+"start": 16.88,
+"end": 17.0,
+"line": 5
+},
+{
+"w": "retrouvé.",
+"start": 17.0,
+"end": 17.46,
+"line": 5
+},
+{
+"w": "Son",
+"start": 18.0,
+"end": 18.18,
+"line": 6
+},
+{
+"w": "complice ?",
+"start": 18.18,
+"end": 18.72,
+"line": 6
+},
+{
+"w": "Scalify.",
+"start": 19.52,
+"end": 20.2,
+"line": 6
+},
+{
+"w": "Une",
+"start": 20.581,
+"end": 20.761,
+"line": 7
+},
+{
+"w": "landing",
+"start": 20.761,
+"end": 20.961,
+"line": 7
+},
+{
+"w": "page",
+"start": 20.961,
+"end": 21.261,
+"line": 7
+},
+{
+"w": "premium",
+"start": 21.261,
+"end": 21.561,
+"line": 7
+},
+{
+"w": "à",
+"start": 21.561,
+"end": 21.721,
+"line": 7
+},
+{
+"w": "200",
+"start": 21.721,
+"end": 22.241,
+"line": 7
+},
+{
+"w": "€,",
+"start": 22.541,
+"end": 22.901,
+"line": 7
+},
+{
+"w": "livrée",
+"start": 22.901,
+"end": 23.001,
+"line": 7
+},
+{
+"w": "en",
+"start": 23.001,
+"end": 23.181,
+"line": 7
+},
+{
+"w": "5",
+"start": 23.181,
+"end": 23.461,
+"line": 7
+},
+{
+"w": "jours,",
+"start": 23.781,
+"end": 23.921,
+"line": 7
+},
+{
+"w": "maquette",
+"start": 23.921,
+"end": 24.121,
+"line": 7
+},
+{
+"w": "offerte.",
+"start": 24.121,
+"end": 24.581,
+"line": 7
+},
+{
+"w": "Tu",
+"start": 24.891,
+"end": 25.086,
+"line": 8
+},
+{
+"w": "connais",
+"start": 25.086,
+"end": 25.524,
+"line": 8
+},
+{
+"w": "ce",
+"start": 25.524,
+"end": 25.719,
+"line": 8
+},
+{
+"w": "suspect ?",
+"start": 25.719,
+"end": 26.255,
+"line": 8
+},
+{
+"w": "Écris",
+"start": 26.255,
+"end": 26.596,
+"line": 8
+},
+{
+"w": "SITE",
+"start": 26.596,
+"end": 26.888,
+"line": 8
+},
+{
+"w": "en",
+"start": 26.888,
+"end": 27.083,
+"line": 8
+},
+{
+"w": "message",
+"start": 27.083,
+"end": 27.521,
+"line": 8
+},
+{
+"w": "privé.",
+"start": 27.521,
+"end": 27.911,
+"line": 8
+}
+]
